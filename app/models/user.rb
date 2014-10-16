@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :assistance
+  has_many :assistances
 end

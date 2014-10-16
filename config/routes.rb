@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root 'main#index'
+
+
 #Facebook auth roots
 	get 'auth/:provider/callback', to: 'sessions#create'
 	get 'auth/failure', to: redirect('/')
@@ -6,6 +9,4 @@ Rails.application.routes.draw do
 	resources :sessions, only: [:create, :destroy]
 	resource :home, only: [:show]
 #	
-
-	root to: "home#show"
 end

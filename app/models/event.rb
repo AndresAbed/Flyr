@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-	has_many :assistance
+	has_many :assistances
 end
