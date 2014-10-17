@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'main#index'
-
+devise_for :users
+devise_scope :user do
+  root to: "devise/sessions#new"
+end
 
 #Facebook auth roots
 	get 'auth/:provider/callback', to: 'sessions#create'
