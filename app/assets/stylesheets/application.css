@@ -92,7 +92,7 @@
 }
 
 body{
-	background-image: url('banner.jpg');
+	background: url('banner.jpg');
 }
 
 /* -------------------*/
