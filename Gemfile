@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'devise'
+gem 'omniauth-facebook'
 gem 'pg'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-gem 'devise'
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

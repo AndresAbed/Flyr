@@ -14,34 +14,6 @@
  *= require_self
  */
 
-/* Devise forms */
-
-.sign_in{
-	text-align: center;
-	padding: 20px;
-	margin-left: auto;
-    margin-right: auto;
-    width: 300px;
-}
-
-#form{
-	padding: 30px;
-	background: white;
-	border-radius: 10px 10px 10px 10px;
-	rder: -moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	bo0px solid #000000;
-	box-shadow: 0 1px 5px 0 #ccc;
-	color: #3D78D3;
-	border-color: #3D78D3;
-}
-
-.elements{
-	margin: 15px;
-}
-
-/*-------------------------*/
-
 
 /* Navbar styles */
 
@@ -91,16 +63,4 @@
 	padding-bottom: 20px;
 }
 
-body{
-	background: url('banner.jpg');
-}
-
 /* -------------------*/
-
-
-.fb-btn{
-	width: 200px;
-	height: auto;
-	margin: auto;
-	text-align: center;
-}

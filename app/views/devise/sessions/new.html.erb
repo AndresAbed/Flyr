@@ -1,29 +1,32 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="container">
-  <div class="sign_in">
-    <div id="form">
-      <h2>Iniciar sesión</h2>
+<body class="unique">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="container">
+    <div class="sign_in">
+      <div id="form">
+        <h2>Iniciar sesión</h2>
+        <h5 class="label label-danger">Exclusivo para públicas</h5>
 
-      <div class="elements">
-      <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
+        <div class="elements">
+        <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
 
-      <div class="elements">
-      <%= f.password_field :password, :placeholder => "Password", class: "form-control" %></div>
+        <div class="elements">
+        <%= f.password_field :password, :placeholder => "Password", class: "form-control" %></div>
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="elements"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-      <% end %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="elements"><%= f.check_box :remember_me %> <%= f.label :remember_me, "Recordarme" %></div>
+        <% end %>
 
-      <div class="elements"><%= f.submit "Sign in", class: "btn btn-primary" %></div>
+        <div class="elements"><%= f.submit "Ingresar", class: "btn btn-primary" %></div>
 
-      <%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
-</div>
-<% end %>
+  <% end %>
 
-<div class="container">
-	<div class="fb-btn">
-		<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
-	</div>	
-</div>	
+  <div class="container">
+  	<div class="fb-btn">
+        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+  	</div>	
+  </div>	
+</body>
