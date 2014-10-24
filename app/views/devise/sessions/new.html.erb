@@ -16,7 +16,7 @@
           <div class="elements"><%= f.check_box :remember_me %> <%= f.label :remember_me, "Recordarme" %></div>
         <% end %>
 
-        <div class="elements"><%= f.submit "Ingresar", class: "btn btn-primary" %></div>
+        <div class="elements"><%= f.submit "Ingresar", class: "btn btn-warning" %></div>
 
         <%= render "devise/shared/links" %>
       </div>
@@ -26,7 +26,23 @@
 
   <div class="container">
   	<div class="fb-btn">
-        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
-  	</div>	
-  </div>	
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
+          <i class="fa fa-facebook"></i>
+          Iniciar sesión con Facebook
+        </a>
+      <% end %>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="copy">
+        <p>© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
+      </div>
+    </div>
+  </footer>	
 </body>

@@ -1,8 +1,22 @@
 .unique{
-	background: url('banner.jpg');
+	background: url('banner.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* Devise forms */
+
+.btn-primary{
+	background-color: #82b440;
+	border-color: #82b440;
+}
+
+.btn-primary:hover{
+	background-color: #8EBE4D;
+	border-color: #8EBE4D;
+}
 
 .sign_in{
 	text-align: center;
@@ -13,9 +27,17 @@
     
 }
 
+.forgot_pass{
+	text-align: center;
+	padding: 20px;
+	margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
 #form{
 	padding: 30px;
-	background: white;
+	background-color: rgba(255, 255, 255, 1);
 	border-radius: 10px 10px 10px 10px;
 	rder: -moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -31,11 +53,37 @@
 
 /*-------------------------*/
 
+/* Facebook Button*/
+
 .fb-btn{
-	width: 200px;
+	width: 230px;
 	height: auto;
 	margin: auto;
 	text-align: center;
 	padding-bottom: 20px;
 }
 
+.btn-block{
+	padding-left: 40px;
+	text-indent: 1px;
+}
+
+.btn-facebook:hover{
+	color: white;
+}
+
+/* Footer */
+
+.copy{
+	padding-top: 10px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+footer{
+	margin-top: 330px;
+	font-size: 10px;
+	text-align: center;
+
+}

@@ -7,37 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- Facebook SDK -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=842551059109662&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-<!-- -->
-
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">Logotipo</a>
-  </div>
- 
-  <div class="collapse navbar-collapse navbar-ex1-collapse"> 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">¿Sos RRPP?</a></li>
-      <li><a href="#">Contacto</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
-  </div>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"
+              data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Desplegar navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Logotipo</a>
+    </div>
+   
+    <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">¿Sos RRPP?</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="/users/sign_up">About</a></li>
+      </ul>
+    </div>
+  </div>  
 </nav>
 
 <p class="notice"><%= notice %></p>

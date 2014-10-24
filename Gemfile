@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'devise'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'pg'
 gem "therubyracer"
 gem "less-rails"

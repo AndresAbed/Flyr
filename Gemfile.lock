@@ -173,7 +173,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
-  omniauth-facebook
+  omniauth-facebook (= 1.4.0)
   pg
   rails (= 4.1.4)
   rails_12factor
