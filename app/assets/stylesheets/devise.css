@@ -8,16 +8,6 @@
 
 /* Devise forms */
 
-.btn-primary{
-	background-color: #82b440;
-	border-color: #82b440;
-}
-
-.btn-primary:hover{
-	background-color: #8EBE4D;
-	border-color: #8EBE4D;
-}
-
 .sign_in{
 	text-align: center;
 	padding: 20px;
@@ -56,7 +46,7 @@
 /* Facebook Button*/
 
 .fb-btn{
-	width: 230px;
+	width: 240px;
 	height: auto;
 	margin: auto;
 	text-align: center;
@@ -75,14 +65,14 @@
 /* Footer */
 
 .copy{
-	padding-top: 10px;
+	
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	color: #fff;
 }
 
 footer{
-	margin-top: 330px;
+	margin-top: 340px;
 	font-size: 10px;
 	text-align: center;
 

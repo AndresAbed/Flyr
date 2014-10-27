@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 devise_for :users
 devise_scope :user do
   root to: "devise/sessions#new"
+  match '/sessions/user', to: 'devise/sessions#create', via: :post
 end
 
 get 'auth/:provider/callback', to: 'sessions#create'
