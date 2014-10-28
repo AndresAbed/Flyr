@@ -13,28 +13,51 @@
 <script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
 <!-- -->
 
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse"
-              data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Desplegar navegación</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Logotipo</a>
-    </div>
-   
-    <div class="collapse navbar-collapse navbar-ex1-collapse"> 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">¿Sos RRPP?</a></li>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="/users/sign_up">Crear</a></li>
-      </ul>
-    </div>
-  </div>  
-</nav>
+<% if user_signed_in? %>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Desplegar navegación</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Logotipo</a>
+      </div>
+     
+      <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">prueba</a></li>
+        </ul>
+      </div>
+    </div>  
+  </nav>
+<% else %>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Desplegar navegación</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Logotipo</a>
+      </div>
+     
+      <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">¿Sos RRPP?</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="/users/sign_up">Crear</a></li>
+        </ul>
+      </div>
+    </div>  
+  </nav>
+<% end %>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
