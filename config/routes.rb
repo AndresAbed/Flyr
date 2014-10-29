@@ -11,5 +11,5 @@ get 'auth/failure', to: redirect('/')
 get 'signout', to: 'sessions#destroy', as: 'signout'
 resources :sessions, only: [:create, :destroy]
 
-get '/home/show', as: :home
+get '/home/index', as: :home
 end
