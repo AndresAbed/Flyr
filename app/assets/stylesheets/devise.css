@@ -11,18 +11,23 @@
 .sign_in{
 	text-align: center;
 	padding: 20px;
-	margin-left: auto;
-    margin-right: auto;
-    width: 300px;
-    
+	margin: auto;
+  width: 300px;
+  margin-top: 150px;
+}
+
+@media (max-width: 360px){
+	.sign_in{
+		width: 100%;
+	}
 }
 
 .forgot_pass{
 	text-align: center;
 	padding: 20px;
 	margin-left: auto;
-    margin-right: auto;
-    width: 500px;
+  margin-right: auto;
+  width: 500px;
 }
 
 #form{
@@ -41,38 +46,6 @@
 	margin: 15px;
 }
 
-/*-------------------------*/
 
-/* Facebook Button*/
 
-.fb-btn{
-	width: 250px;
-	height: auto;
-	margin: auto;
-	text-align: center;
-	padding-bottom: 20px;
-}
 
-.btn-block{
-	padding-left: 30px;
-	text-indent: 1px;
-}
-
-.btn-facebook:hover{
-	color: white;
-}
-
-/* Footer */
-
-.copy{
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	color: #fff;
-	padding-bottom: 35px;
-	font-size: 10px;
-}
-
-footer{
-	margin-top: 300px;
-	text-align: center;
-}

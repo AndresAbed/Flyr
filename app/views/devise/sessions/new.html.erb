@@ -1,47 +1,178 @@
-<body class="unique">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="banner">
   <div class="container">
-    <div class="sign_in">
-      <div id="form">
-        <h2>Iniciar sesión</h2>
-        <h5 class="label label-danger">Exclusivo para públicas</h5>
+    <div class="col-lg-6">
+      <div class="sign_in">
+        <div id="form">
 
-        <div class="elements">
-        <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
+          <h2>Iniciar sesión</h2>
+          <h5 class="label label-danger">Solo para públicas</h5>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="elements">
+            <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
 
-        <div class="elements">
-        <%= f.password_field :password, :placeholder => "Password", class: "form-control" %></div>
+            <div class="elements">
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control" %></div>
 
-        <% if devise_mapping.rememberable? -%>
-          <div class="elements"><%= f.check_box :remember_me %> <%= f.label :remember_me, "Recordarme" %></div>
+            <% if devise_mapping.rememberable? -%>
+              <div class="elements"><%= f.check_box :remember_me %> <%= f.label :remember_me, "Recordarme" %></div>
+            <% end %>
+
+            <div class="elements"><%= f.submit "Ingresar", class: "btn btn-warning" %></div>
+
+            <%= render "devise/shared/links" %>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="fb-btn">
+        <% if current_user %>
+          Signed in as <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
+            <i class="fa fa-facebook"></i>
+            Iniciar sesión con Facebook
+          </a>
         <% end %>
+      </div>
+    </div>
 
-        <div class="elements"><%= f.submit "Ingresar", class: "btn btn-warning" %></div>
+  </div>  
+</div>
 
-        <%= render "devise/shared/links" %>
+<div class="container steps">
+  <div class="row">
+
+    <div id="numbers" class="col-lg-4">
+      <img class="img-circle" src="http://s17.postimg.org/tnprer7wv/number_1.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <h2>Paso 1</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Mas detalles
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator separator-first"></div>
+
+    <div id="numbers" class="col-lg-4">
+      <img class="img-circle" src="http://s4.postimg.org/6isjrvx2l/number_2.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <h2>Paso 2</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Mas detalles
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator separator-second"></div>
+
+    <div id="numbers" class="col-lg-4">
+      <img class="img-circle" src="http://s2.postimg.org/4noi2gphl/number_3.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <h2>Paso 3</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Mas detalles
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <% end %>
+</div>
 
-  <div class="container">
-  	<div class="fb-btn">
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
-          <i class="fa fa-facebook"></i>
-          Iniciar sesión con Facebook
-        </a>
-      <% end %>
+<div class="container photos">
+  <div class="row first">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMjAzMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <p class="copy">© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
-    </div>
-  </footer>	
-</body>
+  <hr class="featurette-divider">
 
+  <div class="row">
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMjAzMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+    </div>
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMjAzMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container first-footer">
+  <p>LOGO</p>
+  </div>    
+  <div class="container second-footer">
+    <div class="row social">
+      <a class="btn btn-social-icon btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-facebook"></i></a>
+      <a class="btn btn-social-icon btn-google-plus" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-google-plus"></i></a>
+      <a class="btn btn-social-icon btn-instagram" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-instagram"></i></a>
+      <a class="btn btn-social-icon btn-twitter" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-twitter"></i></a>
+    </div>  
+    <p class="pull-right"><a href="#"><img src="http://swe.com.pt/bundles/beubiswe/images/prelanding/arrow2.png" style="width: 40px; height: 40px;"></a></p>
+    <p class="copy">© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
+  </div>    
+</footer>
