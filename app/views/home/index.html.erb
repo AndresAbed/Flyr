@@ -1,9 +1,53 @@
-<div>
- <strong>Facebook</strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+<div class="carousel slide" id="myCarousel">
+	<ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>   
+	<div class="carousel-inner">
+		<div class="item active">
+			<img alt="Slide-home2" src="https://bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/13/slide-home2.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>High-end Software Development</h1>
+					<p>We help companies unlock value and productivity through technology.<br>
+					<strong><a href="http://bvision.com/services">/ Let's Work Together </a></strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<img alt="Slide-home" src="https://bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/33/slide-home.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Deliver Better Software, Faster</h1>
+					<p>Implement, integrate and customize top industry ALM solutions now.</p>
+					<p><strong><a href="http://bvision.com/offerings/application-lifecycle-management-alm">/ Learn More</a></strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<img alt="Slide-home_4" src="https://bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/34/slide-home_4.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Leverage the Benefits of the Cloud Today</h1>
+					<p>We build high-performance, secure and scalable apps on the cloud, across different verticals and areas.</p>
+					<p><strong><a href="http://bvision.com/services">/ Let's Work Together </a></strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<img alt="Slide-home3" src="https://bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/32/slide-home3.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Win With Mobile</h1>
+					<p>Unwire your business and drive sales now.</p>
+					<p><strong><a href="http://bvision.com/offerings/mobile">/ Learn More</a></strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="left carousel-control" data-slide="prev" href="#myCarousel">‹</a>
+	<a class="right carousel-control" data-slide="next" href="#myCarousel">›</a>
 </div>
-
-
- <strong>Devise</strong>!
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><div>
-</div>
+ 

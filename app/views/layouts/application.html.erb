@@ -7,15 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
 </head>
 <body>
 
-<!-- remove facebook hash -->
+<!-- Remove facebook hash -->
 <script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
 <!-- -->
 
 <% if user_signed_in? %>
-  <nav class="navbar navbar-inverse" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -30,7 +31,8 @@
      
       <div class="collapse navbar-collapse navbar-ex1-collapse"> 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">prueba</a></li>
+          <li class="navbar-item"><%= link_to "F Sign out", signout_path, id: "sign_out" %></li>
+          <li class="navbar-item"><%= link_to('D Logout', destroy_user_session_path, :method => :delete) %></li>
         </ul>
       </div>
     </div>  
@@ -51,9 +53,9 @@
      
       <div class="collapse navbar-collapse navbar-ex1-collapse"> 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">¿Sos RRPP?</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="/users/sign_up">Crear</a></li>
+          <li class="navbar-item"><a href="#">¿Sos RRPP?</a></li>
+          <li class="navbar-item"><a href="#">Nosotros</a></li>
+          <li class="navbar-item"><a href="/users/sign_up">Crear</a></li>
         </ul>
       </div>
     </div>  

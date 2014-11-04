@@ -1,12 +1,10 @@
 <body class="unique">
-	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-	  <%= devise_error_messages! %>
-
 		<div class="container">
-	    <div class="forgot_pass">
+	    <div class="sign_in">
 	      <div id="form">
 	        <h2>Recuperar contraseña</h2>
-
+	        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  			<%= devise_error_messages! %>
 	        <div class="elements">
 	        <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
 

@@ -17,30 +17,45 @@
 
 /* Navbar styles */
 
-.navbar-default{
-	border-bottom: 1px solid #dededa;
-	box-shadow: 0px 3px 6px rgba(127,127,127,0.5);
+.navbar-fixed-top{
+	border-bottom: none;
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	font-size: 13px;
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(26, 27, 34, 1);
 	border-radius: 0px 0px 0px 0px;
 }
 
-@media (min-width: 1600px){
-	.navbar-header{
-		padding-left: 100px;
-	}
-	.navbar-collapse{
-		padding-right: 50px;
-	}
+.navbar-item:hover{
+	background-color: #c50000;
 }
 
 @media (max-width: 1600px){
 	.navbar-header{
 		padding-left: 50px;
 	}
+}
+
+
+.navbar-header{
+	padding-top: 5px;
+}
+
+.navbar-fixed-top .navbar-brand{
+	color: white;
+}
+
+.navbar-fixed-top .navbar-nav>li>a{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	color: white;
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+.navbar-fixed-top .navbar-nav>li>a:hover{
+	color: white;
 }
 
 @media (max-width: 770px){
@@ -50,23 +65,21 @@
 	.navbar-collapse{
 		padding-right: 0px;
 	}
-	.navbar-default .navbar-nav>li>a{
+	.navbar-fixed-top .navbar-nav>li>a{
 		text-align: center;
 	}
 }
 
-.navbar-header{
-	padding-top: 5px;
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: white;	
 }
 
-.navbar-default .navbar-brand{
-	color: black;
+.navbar-default .navbar-toggle{
+	border-color: transparent;
 }
 
-.navbar-default .navbar-nav>li>a{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	color: black;
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: transparent;
 }
 
 /* -------------------*/
