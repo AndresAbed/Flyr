@@ -13387,25 +13387,11 @@ return jQuery;
   };
 
 }).call(this);
-(function() {
-  jQuery(function() {
-    $("a[rel~=popover], .has-popover").popover();
-    return $("a[rel~=tooltip], .has-tooltip").tooltip();
-  });
-
-}).call(this);
-(function() {
-
-
-}).call(this);
-(function() {
-
-
-}).call(this);
-(function() {
-
-
-}).call(this);
+$(document).ready(function(){
+     $("#myCarousel").carousel({
+         interval : 5000
+     });
+});
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -13418,6 +13404,7 @@ return jQuery;
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 
 
 

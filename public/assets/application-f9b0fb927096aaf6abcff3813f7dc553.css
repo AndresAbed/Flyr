@@ -7901,32 +7901,20 @@ button.close {
 
 /* Devise forms */
 
-.btn-primary{
-	background-color: #82b440;
-	border-color: #82b440;
-}
-
-.btn-primary:hover{
-	background-color: #8EBE4D;
-	border-color: #8EBE4D;
-}
-
 .sign_in{
 	text-align: center;
 	padding: 20px;
-	margin-left: auto;
-    margin-right: auto;
-    width: 300px;
-    
+	margin: auto;
+  width: 300px;
+  margin-top: 150px;
 }
 
-.forgot_pass{
-	text-align: center;
-	padding: 20px;
-	margin-left: auto;
-    margin-right: auto;
-    width: 500px;
+@media (max-width: 360px){
+	.sign_in{
+		width: 100%;
+	}
 }
+
 
 #form{
 	padding: 30px;
@@ -7944,12 +7932,108 @@ button.close {
 	margin: 15px;
 }
 
-/*-------------------------*/
+
+
+
+/* Carousel*/
+
+
+.slide {
+	position: relative;
+	line-height: 1;
+	margin-top: -2px;
+}
+
+.item>img {
+min-width: 100%;
+}
+
+.carousel-control {
+	height: 80px;
+	margin-top: 2%;
+	font-size: 120px;
+	font-weight: normal;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	background-color: transparent;
+	border: 0;
+}
+
+.carousel-control.left {
+	top: 30%;
+	background-image: none;
+}
+
+.carousel-control.right {
+	right: 15px;
+	top: 30%;
+	background-image: none;
+}
+
+@media (max-width: 1000px){
+	.carousel-control.left {
+		top: 20%;
+	}
+
+.carousel-control.right {
+		top: 20%;
+	}
+}
+
+@media (max-width: 767px){
+	.carousel-control.left {
+		top: 15%;
+	}
+
+	.carousel-control.right {
+			top: 15%;
+	}
+	.slide{
+		margin-top: -7px;
+	}
+	.carousel-inner > .item > img{
+		height: 300px;
+	}
+}
+
+@media (max-width: 550px){
+	.carousel-control.left {
+		top: 25%;
+	}
+
+	.carousel-control.right {
+		top: 25%;
+	}
+
+	.slide{
+		margin-top: -7px;
+	}
+}
+
+
+/* Banner */
+
+
+.banner{
+	border-bottom: 1px solid #dededa;
+	background: url('banner.png') no-repeat center 20%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	margin-top: -100px;
+	height: 800px;
+}
+
+@media (max-width: 1199px){
+	.banner{
+		height: 1400px;
+	}
+}
 
 /* Facebook Button*/
 
 .fb-btn{
-	width: 230px;
+	width: 250px;
 	height: auto;
 	margin: auto;
 	text-align: center;
@@ -7957,28 +8041,134 @@ button.close {
 }
 
 .btn-block{
-	padding-left: 40px;
+	padding-left: 30px;
 	text-indent: 1px;
+}
+
+/* Arrow */
+
+
+/* Steps*/
+
+.steps{
+	text-align: center;
+	width: 100%;
+	padding-top: 30px;
+	width: 100%;
+	border-bottom: 1px solid #d1d1cf;
+	background: rgb(255,255,255);
+}
+
+.separator-first {
+left: 33.333%;
+}
+
+.separator-second {
+left: 66.667%;
+}
+
+.separator {
+position: absolute;
+width: 1px;
+top: 28px;
+bottom: 28px;
+background: #d1d1cf;
+float: left;
+height: 300px;
+margin-top:  800px;
+}
+
+#numbers{
+	padding-bottom: 40px;
+}
+
+#details-button{
+	background-color: #c50000;
+	border-color: #c50000;
+	color: white;
+}
+
+@media (max-width: 1199px){
+	#numbers{
+		padding-bottom: 40px;
+		margin-top: 0px;
+	}
+	#numbers:first-child{
+		margin-top: 0px;
+	}
+	.separator{
+		width: 90%;
+		height: 1px;
+		position: relative;
+		top: auto;
+		bottom: auto;
+		left: 5%;
+		margin-top: 0px;
+	}
+}
+
+/*photos*/
+
+.photos{
+	width: 100%;
+}
+
+.first{
+	padding-top: 50px;
+}
+
+/* Footer */
+
+.copy{
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: white;
+	padding-bottom: 35px;
+	font-size: 10px;
+}
+
+footer{
+	margin-top: 50px;
+	text-align: center;
+	background-color: #1a1b22;
+	height: 300px;
+}
+
+.first-footer{
+	color: white;
+	font-size: 30px;
+	padding-top: 50px;
+}
+
+.second-footer{
+	border-top: 2px solid #c50000;
+	width: 100%;
+	margin-top: 20px;
+	padding-top: 30px;
+}
+
+.social{
+	padding: 20px 0px 20px 0px;
+}
+
+.pull-right{
+	margin-top: -30px;
 }
 
 .btn-facebook:hover{
 	color: white;
 }
 
-/* Footer */
-
-.copy{
-	padding-top: 10px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	color: #fff;
+.btn-google-plus:hover{
+	color: white;
 }
 
-footer{
-	margin-top: 330px;
-	font-size: 10px;
-	text-align: center;
+.btn-instagram:hover{
+	color: white;
+}
 
+.btn-twitter:hover{
+	color: white;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -8000,29 +8190,45 @@ footer{
 /* Navbar styles */
 
 
-.navbar-inverse{
+.navbar-fixed-top{
 	border-bottom: none;
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	font-size: 13px;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(26, 27, 34, 1);
 	border-radius: 0px 0px 0px 0px;
 }
 
-@media (min-width: 1600px){
-	.navbar-header{
-		padding-left: 100px;
-	}
-	.navbar-collapse{
-		padding-right: 50px;
-	}
+.navbar-item:hover{
+	background-color: #c50000;
 }
 
 @media (max-width: 1600px){
 	.navbar-header{
 		padding-left: 50px;
 	}
+}
+
+
+.navbar-header{
+	padding-top: 5px;
+}
+
+.navbar-fixed-top .navbar-brand{
+	color: white;
+}
+
+.navbar-fixed-top .navbar-nav>li>a{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	color: white;
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+.navbar-fixed-top .navbar-nav>li>a:hover{
+	color: white;
 }
 
 @media (max-width: 770px){
@@ -8032,20 +8238,21 @@ footer{
 	.navbar-collapse{
 		padding-right: 0px;
 	}
+	.navbar-fixed-top .navbar-nav>li>a{
+		text-align: center;
+	}
 }
 
-.navbar-header{
-	padding-top: 5px;
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: white;	
 }
 
-.navbar-inverse .navbar-brand{
-	color: white;
+.navbar-default .navbar-toggle{
+	border-color: transparent;
 }
 
-.navbar-inverse .navbar-nav>li>a{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	color: white;
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: transparent;
 }
 
 /* -------------------*/
