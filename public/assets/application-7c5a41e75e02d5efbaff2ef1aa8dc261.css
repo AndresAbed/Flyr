@@ -7906,15 +7906,59 @@ button.close {
 	padding: 20px;
 	margin: auto;
   width: 300px;
-  margin-top: 150px;
+}
+
+#sign_in{
+	margin-top: -380px;
+}
+
+/* Close button */
+
+#close { 
+ 
+  position: relative;
+  padding: 1px 5px;
+  top: -30px;
+  left: 144px;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  color: #c50000;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 0 1px 5px 0 #ccc;
+  border-color: #3D78D3;
 }
 
 @media (max-width: 360px){
 	.sign_in{
 		width: 100%;
 	}
+	.other-forms{
+		width: 100%;
+	}
 }
 
+.other-forms{
+	text-align: center;
+	padding: 20px;
+	margin: auto;
+  width: 500px;
+  margin-top: 170px;
+}
+
+#sign_in_form{
+	padding: 30px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 10px 0px 10px 10px;
+	rder: -moz-border-radius: 10px 0px 10px 10px;
+	-webkit-border-radius: 10px 0px 10px 10px;
+	bo0px solid #000000;
+	box-shadow: 0 1px 5px 0 #ccc;
+	color: #3D78D3;
+	border-color: #3D78D3;
+}
 
 #form{
 	padding: 30px;
@@ -8029,6 +8073,7 @@ min-width: 100%;
 		height: 1400px;
 	}
 }
+
 
 /* Facebook Button*/
 
@@ -8170,6 +8215,96 @@ footer{
 .btn-twitter:hover{
 	color: white;
 }
+	#li {
+		list-style: none;
+		position: absolute;
+		display: block;
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0px;
+		right: 0px;
+		width: 100px;
+		height: 100px;
+	}
+
+	.round {
+		color: white;
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding-top: 30px;				
+		text-align: center;
+		font-size: 25px;		
+		text-shadow: 0 1px 0 rgba(255,255,255,.7);
+		letter-spacing: -.065em;
+		font-family: "Hammersmith One", sans-serif;		
+		-webkit-transition: all .25s ease-in-out;
+		-o-transition: all .25s ease-in-out;
+		-moz-transition: all .25s ease-in-out;
+		transition: all .25s ease-in-out;
+		border-radius: 300px;
+		z-index: 1;
+		border-width: 4px;
+	}
+
+	.round:hover {
+		width: 130%;
+		height: 130%;
+		left: -15%;
+		top: -15%;
+		font-size: 33px;
+		padding-top: 38px;
+		-webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		-o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		-moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		z-index: 2;
+		border-size: 10px;
+		-webkit-transform: rotate(-360deg);
+		-moz-transform: rotate(-360deg);
+		-o-transform: rotate(-360deg);
+		transform: rotate(-360deg);
+	}
+
+	a.red {
+		background-color: rgba(197, 0, 0, 1);
+		border-color: rgba(26, 27, 34, 1);;
+	}
+
+	a.red:hover {
+		color: rgba(239,57,50,1);
+		text-decoration: none;
+	}
+
+	.round span.round {
+		display: block;
+		opacity: 0;
+		-webkit-transition: all .5s ease-in-out;
+		-moz-transition: all .5s ease-in-out;
+		-o-transition: all .5s ease-in-out;
+		transition: all .5s ease-in-out;
+		font-size: 1px;
+		border: none;
+		padding: 40% 20% 0 20%;
+		color: #fff;
+	}
+
+	.round span:hover {
+		opacity: .85;
+		font-size: 16px;
+		-webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		-moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		-o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		text-shadow: 0 1px 1px rgba(0,0,0,.5);	
+	}
+
+	.red span {
+		background: rgba(197, 0, 0, 1);		
+	}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -8256,3 +8391,22 @@ footer{
 }
 
 /* -------------------*/
+
+/* Scroll to top */
+
+.scrollToTop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+	top:90%;
+	right:40px;
+	display:none;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}
