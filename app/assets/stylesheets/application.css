@@ -83,3 +83,22 @@
 }
 
 /* -------------------*/
+
+/* Scroll to top */
+
+.scrollToTop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+	top:90%;
+	right:40px;
+	display:none;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}
