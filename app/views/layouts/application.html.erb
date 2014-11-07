@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>QSH</title>
+  <link rel="shortcut icon" href="http://s24.postimg.org/scjpdceed/oie_transparent.png"/>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,13 +29,32 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Logotipo</a>
+        <a class="navbar-brand" href="/home/index">Logotipo</a>
       </div>
      
       <div class="collapse navbar-collapse navbar-ex1-collapse"> 
         <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-item"><%= link_to "F Sign out", signout_path, id: "sign_out" %></li>
-          <li class="navbar-item"><%= link_to('D Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% if log_in_using_fb? %>
+          <li class="dropdown">
+            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cuenta <span class="caret"></span>
+            </a>
+            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+              <li><a href="#">Perfil</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
+            </ul>
+          </li>
+          <% else %> 
+          <li class="dropdown">
+            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cuenta <span class="caret"></span>
+            </a>
+            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+              <li><a href="#">Perfil</a></li>
+              <li class="divider"></li>
+              <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </li> 
+          <% end %>  
         </ul>
       </div>
     </div>  
@@ -51,14 +71,18 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Logotipo</a>
-        <li id="li"><a href="#" class="round red">Ingresar<span class="round">Descubrí todo lo que tiene qsh para vos</span></a></li>
+        <li id="sign_in_btn"><a href="#" class="round red">Ingresar<span class="round">Descubrí todo lo que tiene qsh para vos</span></a></li>
 
       </div>
      
       <div class="collapse navbar-collapse navbar-ex1-collapse"> 
         <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-item"><a href="#">¿Sos RRPP?</a></li>
-          <li class="navbar-item"><a href="#">Nosotros</a></li>
+          <li class="navbar-item">
+            <a href="#" data-toggle="modal" data-target="#rrpp-modal">¿Sos RRPP?</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" data-toggle="modal" data-target="#nosotros-modal">Nosotros</a>
+          </li>
           <li class="navbar-item"><a href="/users/sign_up">Crear</a></li>
         </ul>
       </div>
@@ -66,12 +90,7 @@
   </nav>
 <% end %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-
 <%= yield %>
-
 
 <!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
@@ -94,6 +113,6 @@ loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure"
 olark.identify('3044-778-10-1415');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3044-778-10-1415/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
 <!-- end olark code -->
 
-<p class="pull-right"><a id="scrollToTop" class="scrollToTop" href="#"><img src="http://www.elduderino.se/wp-content/uploads/2014/03/top_arrow.png" style="width: 40px; height: 40px;"></a></p>
+<p class="arrow"><a id="scrollToTop" class="scrollToTop" href="#"><img src="http://s24.postimg.org/scjpdceed/oie_transparent.png" style="width: 40px; height: 40px;"></a></p>
 </body>
 </html>

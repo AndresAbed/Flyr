@@ -71,4 +71,34 @@ min-width: 100%;
 	}
 }
 
+/* Grid */
 
+.grid{
+	text-align: center;
+	background-color: rgba(26, 27, 34, 1);
+	margin-bottom: -10px;
+}
+
+.grids-container{
+	width: 80%;
+}
+
+/* Days */
+
+.days{
+	margin-top: 20px;
+}
+
+.panel-group .panel{
+	margin-bottom: 20px;
+	border-radius: 0px 0px 0px 0px;
+}
+
+.panel-heading{
+	text-align: center;
+	height: 50px;
+}
+
+.panel-title{
+	padding-top: 5px;
+}

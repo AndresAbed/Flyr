@@ -1,10 +1,14 @@
 <body class="unique">
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-	  <%= devise_error_messages! %>
-
 	  <div class="container">
+	  	<% if resource.errors.empty? %>
+			<% else %>  
+			  <div id="devise_error" class="alert alert-danger">
+			    <%= devise_error_messages! %>
+			  </div>
+			<% end %>
 	    <div class="other-forms">
 	      <div id="form">
+	      	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	        <h2>Crear cuenta</h2>
 
 	        <div class="elements">

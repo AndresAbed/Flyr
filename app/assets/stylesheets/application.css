@@ -31,6 +31,17 @@
 	background-color: #c50000;
 }
 
+.dropdown:hover{
+	background-color: #c50000;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus{
+	background-color: #c50000;
+	color: white;
+}
+
 @media (max-width: 1600px){
 	.navbar-header{
 		padding-left: 50px;
@@ -95,10 +106,16 @@
 	color: #444;
 	text-decoration: none;
 	position:fixed;
-	top:90%;
-	right:40px;
+	top:10%;
+	right: 0px;
 	display:none;
 }
 .scrollToTop:hover{
 	text-decoration:none;
+}
+
+@media (max-width: 550px){
+	.arrow{
+		display: none;
+	}
 }
