@@ -1,13 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'devise'
-gem 'omniauth-facebook', '1.4.0'
-gem 'pg'
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
-gem 'rails_12factor', group: :production
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use SCSS for stylesheets
@@ -43,3 +35,13 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'pry'
+gem 'devise'
+gem 'omniauth-facebook', '1.4.0'
+gem 'pg'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+gem 'rails_12factor', group: :production
+gem 'rails-i18n', '~> 4.0.0'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"

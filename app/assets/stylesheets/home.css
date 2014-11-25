@@ -1,9 +1,13 @@
 /* Carousel*/
 
+.carousel-inner{
+	height: 600px;
+}
+
 .slide {
 	position: relative;
 	line-height: 1;
-	margin-top: -2px;
+	margin-top: 60px;
 }
 
 .item>img {
@@ -12,8 +16,8 @@ min-width: 100%;
 
 .carousel-control {
 	height: 80px;
-	margin-top: 2%;
-	font-size: 120px;
+	margin-top: 4%;
+	font-size: 90px;
 	font-weight: normal;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 	background-color: transparent;
@@ -26,12 +30,15 @@ min-width: 100%;
 }
 
 .carousel-control.right {
-	right: 15px;
 	top: 30%;
 	background-image: none;
 }
 
-@media (max-width: 1000px){
+.carousel-caption{
+	padding-bottom: 70px;
+}
+
+@media (max-width: 1300px){
 	.carousel-control.left {
 		top: 20%;
 	}
@@ -47,7 +54,7 @@ min-width: 100%;
 	}
 
 	.carousel-control.right {
-			top: 15%;
+		top: 15%;
 	}
 	.slide{
 		margin-top: -7px;
@@ -55,15 +62,19 @@ min-width: 100%;
 	.carousel-inner > .item > img{
 		height: 300px;
 	}
+
+	.carousel-caption{
+	padding-bottom: 0px;
+	}
 }
 
 @media (max-width: 550px){
 	.carousel-control.left {
-		top: 25%;
+		top: 15%;
 	}
 
 	.carousel-control.right {
-		top: 25%;
+		top: 15%;
 	}
 
 	.slide{
@@ -71,34 +82,73 @@ min-width: 100%;
 	}
 }
 
+/* Events */
+
+/* Tabs panel */
+.tabbable-panel {
+  border:1px solid #eee;
+  padding: 10px;
+}
+
+/* Default mode */
+.tabbable-line > .nav-tabs {
+  border: none;
+  margin-left: 35%;
+}
+.tabbable-line > .nav-tabs > li {
+  margin-right: 2px;
+}
+.tabbable-line > .nav-tabs > li > a {
+  border: 0;
+  margin-right: 0;
+  color: #737373;
+}
+.tabbable-line > .nav-tabs > li > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+  border-bottom: 4px solid #fbcdcf;
+}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+.tabbable-line > .nav-tabs > li.active {
+  border-bottom: 4px solid #f3565d;
+  position: relative;
+}
+.tabbable-line > .nav-tabs > li.active > a {
+  border: 0;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.active > a > i {
+  color: #404040;
+}
+.tabbable-line > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+.portlet .tabbable-line > .tab-content {
+  padding-bottom: 0;
+}
+
 /* Grid */
 
 .grid{
 	text-align: center;
-	background-color: rgba(26, 27, 34, 1);
 	margin-bottom: -10px;
 }
 
 .grids-container{
 	width: 80%;
-}
-
-/* Days */
-
-.days{
-	margin-top: 20px;
-}
-
-.panel-group .panel{
-	margin-bottom: 20px;
-	border-radius: 0px 0px 0px 0px;
-}
-
-.panel-heading{
-	text-align: center;
-	height: 50px;
-}
-
-.panel-title{
-	padding-top: 5px;
 }

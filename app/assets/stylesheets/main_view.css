@@ -11,12 +11,6 @@
 	height: 800px;
 }
 
-@media (max-width: 1199px){
-	.banner{
-		height: 1400px;
-	}
-}
-
 
 /* Facebook Button*/
 
@@ -28,12 +22,18 @@
 	padding-bottom: 20px;
 }
 
+#fb-sign-in{
+	color: white;
+}
+
+.btn:hover{
+	color: white;
+}
+
 .btn-block{
 	padding-left: 30px;
 	text-indent: 1px;
 }
-
-/* Arrow */
 
 
 /* Steps*/
@@ -58,16 +58,17 @@ left: 66.667%;
 .separator {
 position: absolute;
 width: 1px;
-top: 28px;
+top: 0px;
 bottom: 28px;
 background: #d1d1cf;
 float: left;
-height: 300px;
-margin-top:  800px;
+height: 320px;
+margin-top:  730px;
 }
 
 #numbers{
 	padding-bottom: 40px;
+	padding-top: 30px;
 }
 
 #details-button{
@@ -99,63 +100,9 @@ margin-top:  800px;
 
 .photos{
 	width: 100%;
+	background-color: #f2f2f2;
 }
 
 .first{
 	padding-top: 50px;
-}
-
-/* Footer */
-
-.copy{
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	color: white;
-	padding-bottom: 35px;
-	font-size: 10px;
-}
-
-footer{
-	margin-top: 50px;
-	text-align: center;
-	background-color: #1a1b22;
-	height: 300px;
-	margin-bottom: -10px;
-}
-
-.first-footer{
-	color: white;
-	font-size: 30px;
-	padding-top: 50px;
-}
-
-.second-footer{
-	border-top: 2px solid #c50000;
-	width: 100%;
-	margin-top: 20px;
-	padding-top: 30px;
-}
-
-.social{
-	padding: 20px 0px 20px 0px;
-}
-
-.pull-right{
-	margin-top: -30px;
-}
-
-.btn-facebook:hover{
-	color: white;
-}
-
-.btn-google-plus:hover{
-	color: white;
-}
-
-.btn-instagram:hover{
-	color: white;
-}
-
-.btn-twitter:hover{
-	color: white;
 }

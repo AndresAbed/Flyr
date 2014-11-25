@@ -1,0 +1,35 @@
+<%= form_for :event, url: events_path do |e| %>
+	<div class="container events">
+		<div class="row">
+			<%= e.label "Nombre" %><br>
+	    <%= e.text_field :name %>
+		</div>
+		<div class="row">
+			<%= e.label "Dirección" %><br>
+	    <%= e.text_field :address %>
+		</div>
+		<div class="row">
+	    <%= e.label "Fecha" %><br>
+	    <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
+   	</div>
+   	<div class="row">
+	    <%= e.label "Hora" %><br>
+	    <%= e.time_select :hour, :ignore_date => true %>
+   	</div>
+   	<div class="row">
+	    <%= e.label "Edad" %><br>
+      <%= e.select :age, [['+18'],['+21'],['+25']] %>
+   	</div>
+   	<div class="row">
+	    <%= e.label "Información" %><br>
+      <%= e.text_area :description %>
+   	</div>
+   	<div class="row">
+	  <%= e.label "Imagen del evento" %><br>
+      <%= e.file_field :image %>
+   	</div>
+   	<div class="row">
+   		<%= e.submit "Crear evento"%>
+   	</div>
+	</div>
+<% end %>

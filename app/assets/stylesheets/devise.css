@@ -12,7 +12,7 @@
 	text-align: center;
 	padding: 20px;
 	margin: auto;
-  width: 300px;
+  	width: 300px;
 }
 
 #sign_in{
@@ -31,7 +31,7 @@
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  color: #c50000;
+  color: #1a1b22;
   background-color: white;
   border-radius: 0px 10px 10px 0px;
   box-shadow: 0 1px 5px 0 #ccc;
@@ -47,6 +47,9 @@
 	}
 	.other-forms{
 		width: 100%;
+	}
+	#close{
+		left: 134px;
 	}
 }
 

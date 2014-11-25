@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :log_in_using_fb?
   alias_method :devise_current_user, :current_user
 
-  # Check if user is loged in
   def current_user
     @current_user ||= if session[:user_id]
       User.find(session[:user_id]) 
@@ -24,5 +23,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     session[:previous_url] || home_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_path
 	end
 end

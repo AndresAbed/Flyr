@@ -1,4 +1,41 @@
+ <!-- Modal rrpp -->
+<div class="modal fade" id="rrpp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">RRPP</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal nosotros -->
+<div class="modal fade" id="nosotros-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nosotros</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="banner">
+  <!-- Sign in form -->
   <div class="container">
     <div id="sign_in">
       <div class="sign_in">
@@ -6,25 +43,24 @@
           <span id="close" class="glyphicon glyphicon-chevron-up"></span>
           <div class="row">
             <% if alert %>
-                  <h2 class="label label-danger"><%= alert %></h2>
+              <h2 class="label label-danger"><%= alert %></h2>
             <% end %>
           </div>
           <h2>Iniciar sesión</h2>
-          <h5 class="label label-warning">Solo para públicas</h5>
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <h5 class="label label-info">Solo para públicas</h5>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="elements">
             <%= f.email_field :email, autofocus: true, :placeholder => "Email", 
             class: "form-control" %></div>
 
             <div class="elements">
             <%= f.password_field :password, :placeholder => "Contraseña",
-             class: "form-control" %></div>
+            class: "form-control" %></div>
 
-            <div class="elements"><%= f.submit "Ingresar", class: "btn btn-warning" %></div>
+            <div class="elements"><%= f.submit "Ingresar", class: "btn btn-info" %></div>
 
             <%= render "devise/shared/links" %>
           <% end %>
-
         </div>
       </div>
 
@@ -34,7 +70,7 @@
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
           <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
-            <i class="fa fa-facebook"></i>
+            <i id="fb-sign-in" class="fa fa-facebook"></i>
             Iniciar sesión con Facebook
           </a>
         <% end %>
@@ -42,49 +78,13 @@
     </div>
   </div>
 
-  <!-- Modal rrpp -->
-  <div class="modal fade" id="rrpp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">RRPP</h4>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal nosotros -->
-  <div class="modal fade" id="nosotros-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Nosotros</h4>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<div class="container steps">
+<div id="steps" class="container steps">
   <div class="row">
 
     <div id="numbers" class="col-lg-4">
-      <img class="img-circle" src="http://s17.postimg.org/tnprer7wv/number_1.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <img class="img-circle" src="//s12.postimg.org/6qx4mboy5/button1.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
       <h2>Paso 1</h2>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
       <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
@@ -111,7 +111,7 @@
     <div class="separator separator-first"></div>
 
     <div id="numbers" class="col-lg-4">
-      <img class="img-circle" src="http://s4.postimg.org/6isjrvx2l/number_2.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <img class="img-circle" src="//s12.postimg.org/6ffo9k8i5/button2.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
       <h2>Paso 2</h2>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
       <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
@@ -138,7 +138,7 @@
     <div class="separator separator-second"></div>
 
     <div id="numbers" class="col-lg-4">
-      <img class="img-circle" src="http://s2.postimg.org/4noi2gphl/number_3.png" alt="Generic placeholder image" style="width: 200px; height: 200px;">
+      <img class="img-circle" src="//s12.postimg.org/8y1da8u8d/button3.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
       <h2>Paso 3</h2>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
       <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
@@ -199,18 +199,3 @@
     </div>
   </div>
 </div>
-
-<footer>
-  <div class="container first-footer">
-  <p>LOGO</p>
-  </div>    
-  <div class="container second-footer">
-    <div class="row social">
-      <a class="btn btn-social-icon btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-facebook"></i></a>
-      <a class="btn btn-social-icon btn-google-plus" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-google-plus"></i></a>
-      <a class="btn btn-social-icon btn-instagram" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-instagram"></i></a>
-      <a class="btn btn-social-icon btn-twitter" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-md']);"><i class="fa fa-twitter"></i></a>
-    </div> 
-    <p class="copy">© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
-  </div>    
-</footer>

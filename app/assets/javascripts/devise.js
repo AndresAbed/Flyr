@@ -12,7 +12,7 @@ $(document).ready(function(){
 	      $element.css({
 	      	"position":"absolute", 
 	      	"display":"block", 
-	      	"margin-top":"150px", 
+	      	"margin-top":"160px", 
 	      	"margin-left":"auto", 
 	      	"margin-right":"auto", 
 	      	"left":"0", 
@@ -97,16 +97,3 @@ $(document).ready(function(){
 	})
 })
 
-/* Alerts */
-
-$(document).ready(function(){
-	$('#alert').addClass('animated fadeInDownBig');
-	      $element.css({
-	      	"position":"absolute", 
-	      	"display":"block",  
-	      	"margin-left":"auto", 
-	      	"margin-right":"auto", 
-	      	"left":"0", 
-	      	"right":"0",
-	      });
-})

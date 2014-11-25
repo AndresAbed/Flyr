@@ -12,7 +12,7 @@
 	}
 
 	.round {
-		color: white;
+		color: #47a3da;
 		display: block;
 		position: absolute;
 		left: 0;
@@ -31,7 +31,7 @@
 		transition: all .25s ease-in-out;
 		border-radius: 300px;
 		z-index: 1;
-		border-width: 4px;
+		background-color: white;
 	}
 
 	.round:hover {
@@ -53,13 +53,13 @@
 		transform: rotate(-360deg);
 	}
 
-	a.red {
-		background-color: rgba(197, 0, 0, 1);
-		border-color: rgba(26, 27, 34, 1);;
+	a.white {
+		background-color: white;
+		box-shadow: 0 1px 10px 0 #ccc;
 	}
 
-	a.red:hover {
-		color: rgba(239,57,50,1);
+	a.white:hover {
+		color: #47a3da;
 		text-decoration: none;
 	}
 
@@ -71,20 +71,19 @@
 		-o-transition: all .5s ease-in-out;
 		transition: all .5s ease-in-out;
 		font-size: 1px;
-		border: none;
 		padding: 40% 20% 0 20%;
-		color: #fff;
+		color: #47a3da;
 	}
 
 	.round span:hover {
 		opacity: .85;
 		font-size: 16px;
-		-webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-		-moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-		-o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-		text-shadow: 0 1px 1px rgba(0,0,0,.5);	
+		-webkit-text-shadow: 0 1px 1px rgba(255,255,255,.5);
+		-moz-text-shadow: 0 1px 1px rgba(255,255,255,.5);
+		-o-text-shadow: 0 1px 1px rgba(255,255,255,.5);
+		text-shadow: 0 1px 1px rgba(255,255,255,.5);	
 	}
 
-	.red span {
-		background: rgba(197, 0, 0, 1);		
+	.white span {
+		background: white;		
 	}
