@@ -1,6 +1,43 @@
 <body class="events">
+	<div class="headerbg">
+		<div class="container header-content">
+			<div class="row">
+				<p class="event-name"><%= @event.name %></p>
+				<p class="club-name">Nombre boliche</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="image" class="row image" style="background-image: url(<%= @event.image.url %>)">
+		</div>
+	</div>	
 	<div class="container event-content">
-		<div class="row image" style="background-image: url(<%= @event.image.url %>)">
+		<div class="col-lg-8">
+			<p class="description-name"><%= @event.name %></p>
+			<p><%= @event.description %></p>
+			<hr class="featurette-divider">
+		</div>
+		<div id="info-col" class="col-lg-4">
+			<div class="container event-logo" 
+				style="background-image: url(<%= @event.club_logo.url %>);">
+			</div>
+			<ul class="info-list">
+				<li class="address-item">
+					<p class="address-title">Dirección:</p>
+				</li>
+				<li>
+					<p class="address"><%= @event.address %></p>
+				</li>
+				<li class="info-item">
+					<p class="date"><i class="fa fa-calendar fa-cal"></i>
+					<%= l @event.date, :format => '%B' %>
+					<b><%= @event.date.strftime('%d') %></b></p>
+					<p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
+					Hora<b><%= @event.hour.strftime("%H:%M") %></b></p>
+					<p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
+					Edad<b><%= @event.age %></b></p>
+				</li>
+			</ul>
 		</div>
 	</div>
 </body>		

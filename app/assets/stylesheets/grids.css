@@ -23,7 +23,6 @@ img{
 }
 
 #events-pic{
-	max-width:400px;
 	max-height:150px;
 }
 
@@ -42,6 +41,10 @@ img{
 	opacity:0;
 }
 
+#pic-caption-events{
+	padding: 10px;
+}
+
 span.pic-caption a:hover{
 	text-decoration: none;
 }
@@ -50,21 +53,6 @@ span.pic-caption a:hover{
 	.pic-caption{
 		padding: 40px;
 	}
-}
-
-.pic-caption-events{
-	cursor:default;
-	position:absolute;
-	width:100%;
-	height:100%;
-	background:rgba(44,62,80,0.92);
-	padding:10px;
-	text-align:center;
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
-	filter:alpha(opacity=0);
-	-moz-opacity:0;
-	-khtml-opacity:0;
-	opacity:0;
 }
 
 .pic-image{

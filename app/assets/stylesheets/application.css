@@ -14,10 +14,10 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Medula+One);
 
 *{
-	font-family: 'Open Sans', sans-serif;
+	font-family: Helvetica, sans-serif;
 }
 
 body{
@@ -102,9 +102,6 @@ body{
 	text-transform: uppercase;
 }
 
-.navbar-fixed-top .navbar-nav>li>a:hover{
-	color: #47a3da;
-}
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background-color: transparent;

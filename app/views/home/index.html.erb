@@ -56,90 +56,105 @@
 <div class="tabbable-panel">
 	<div class="tabbable-line">
 		<ul class="nav nav-tabs ">
-			<li class="active">
-				<a href="#monday_tab" data-toggle="tab">Lunes</a>
+			<li id="monday-mark">
+				<a href="#monday" data-toggle="tab">Lunes</a>
 			</li>
-			<li>
-				<a href="#tuesday_tab" data-toggle="tab">Martes</a>
+			<li id="tuesday-mark">
+				<a href="#tuesday" data-toggle="tab">Martes</a>
 			</li>
-			<li>
-				<a href="#wednesday_tab" data-toggle="tab">Miercoles</a>
+			<li id="wednesday-mark">
+				<a href="#wednesday" data-toggle="tab">Miercoles</a>
 			</li>
-			<li>
-				<a href="#thursday_tab" data-toggle="tab">Jueves</a>
+			<li id="thursday-mark">
+				<a href="#thursday" data-toggle="tab">Jueves</a>
 			</li>
-			<li>
-				<a href="#friday_tab" data-toggle="tab">Viernes</a>
+			<li id="friday-mark">
+				<a href="#friday" data-toggle="tab">Viernes</a>
 			</li>
-			<li>
-				<a href="#saturday_tab" data-toggle="tab">Sabado</a>
+			<li id="saturday-mark">
+				<a href="#saturday" data-toggle="tab">Sabado</a>
 			</li>
-			<li>
-				<a href="#sunday_tab" data-toggle="tab">Domingo</a>
+			<li id="sunday-mark">
+				<a href="#sunday" data-toggle="tab">Domingo</a>
 			</li>
 		</ul>
 		<div class="tab-content">
-			<div class="tab-pane active" id="monday_tab">
-				<p>I'm in Tab 1.</p>
-				<p>
-					Duis autem eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
-				</p>
-			</div>
-			<div class="tab-pane" id="tuesday_tab">
-				<p>Howdy, I'm in Tab 2.</p>
-				<p>
-					Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
-				</p>
-			</div>
-			<div class="tab-pane" id="wednesday_tab">
-				<p>Howdy, I'm in Tab 3.</p>
-				<p>
-					Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
-				</p>
-			</div>
-			<div class="tab-pane" id="thursday_tab">
-				<p>Howdy, I'm in Tab 3.</p>
-				<p>
-					Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
-				</p>
-			</div>
-			<div class="tab-pane" id="friday_tab">
-				<p>Howdy, I'm in Tab 3.</p>
-				<p>
-					Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
-				</p>
-			</div>
-			<div class="tab-pane" id="saturday_tab">
-				<div id="events-pic" class="pic">
-					<img src="//s7.postimg.org/fzb6t6xff/image.jpg" class="pic-image" alt="Pic">
-					<span class="pic-caption-events left-to-right">
-					  <h1 class="pic-title">Rotate In</h1>
-					  <p class="pic-subtitle">Hi, this is a simple example =D</p>
-					</span>
-				</div>
-				<div id="events-pic" class="pic">
-					<img src="//s7.postimg.org/fzb6t6xff/image.jpg" class="pic-image" alt="Pic">
-					<span class="pic-caption-events left-to-right">
-					  <h1 class="pic-title">Rotate In</h1>
-					  <p class="pic-subtitle">Hi, this is a simple example =D</p>
-					</span>
-				</div>
-			</div>
-			<div class="tab-pane" id="sunday_tab">
+			<div class="tab-pane" id="monday">
+				<% @events.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="//s7.postimg.org/yg5lk0ddn/image.png" class="pic-image" alt="Pic">
-						<span class="pic-caption-events left-to-right">
-						  <h1 class="pic-title">Rotate In</h1>
-						  <p class="pic-subtitle">Hi, this is a simple example =D</p>
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
 						</span>
 					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="tuesday">
+				<% @events.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="//s7.postimg.org/yg5lk0ddn/image.png" class="pic-image" alt="Pic">
-						<span class="pic-caption-events left-to-right">
-						  <h1 class="pic-title">Rotate In</h1>
-						  <p class="pic-subtitle">Hi, this is a simple example =D</p>
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
 						</span>
 					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="wednesday">
+				<% @events.each do |e| %>
+					<div id="events-pic" class="pic">
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
+						</span>
+					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="thursday">
+				<% @events.each do |e| %>
+					<div id="events-pic" class="pic">
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
+						</span>
+					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="friday">
+				<% @events.each do |e| %>
+					<div id="events-pic" class="pic">
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
+						</span>
+					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="saturday">
+				<% @events.each do |e| %>
+					<div id="events-pic" class="pic">
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
+						</span>
+					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="sunday">
+				<% @events.each do |e| %>
+					<div id="events-pic" class="pic">
+						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<span id="pic-caption-events" class="pic-caption left-to-right">
+						  <h1 class="pic-title"><%= e.name %></h1>
+						  <p class="pic-subtitle"><%= e.address %></p>
+						</span>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

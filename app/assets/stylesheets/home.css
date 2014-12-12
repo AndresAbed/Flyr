@@ -1,9 +1,5 @@
 /* Carousel*/
 
-.carousel-inner{
-	height: 600px;
-}
-
 .slide {
 	position: relative;
 	line-height: 1;
@@ -90,7 +86,6 @@ min-width: 100%;
   padding: 10px;
 }
 
-/* Default mode */
 .tabbable-line > .nav-tabs {
   border: none;
   margin-left: 35%;

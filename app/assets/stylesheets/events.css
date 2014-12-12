@@ -2,21 +2,180 @@
 	background: url('graybg.jpg');
 }
 
-.event-photo{
-	margin-top: 100px;
-	margin-bottom: 12px;
+.headerbg{
+	width: 100%;
+	background: url('bluesquare.jpg');
+}
+
+.header-content{
+	margin-top: 60px;
+	height: 450px;
+}
+
+.event-name{
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 80pt;
+	font-weight: 200;
+	color: #fff;
+	margin-bottom: -20px;
+	font-family: 'Medula One', cursive;
+}
+
+.club-name{
+	text-align: center;
+	font-size: 15pt;
+	color: #A5D0F2;
+	text-transform: uppercase;
 }
 
 .image{
-	height: 450px;
+	height: 600px;
 	background-size: cover;
-	background-position: center;
-	margin: 10px;
-	margin-top: 20px
+	background-repeat: no-repeat;
+	border: 10px #fff solid;
+	margin-top: -250px;
 }
 
 .event-content{
-	margin-top: 100px;
-	height: 1000px;
+	margin-top: 20px;
 	background-color: white;
+}
+
+.description-name{
+	text-transform: uppercase;
+	font-size: 40pt;
+	font-weight: 200;
+	color: #000;
+	font-family: 'Medula One', cursive;
+	margin: 10px 0px 20px 0px;
+	display: inline-block;
+	border-bottom: 2px #000 solid;
+}
+
+#info-col{
+	padding: 30px 30px 10px 0px;
+}
+
+.event-logo{
+	width: 300px; 
+	height: 300px;
+	background-repeat: no-repeat;
+	-webkit-box-shadow: 0 5px 5px #d0d0d0;
+  -moz-box-shadow: 0 5px 5px #d0d0d0;
+  box-shadow: 0 5px 5px #d0d0d0;
+  border-radius: 10px 10px 10px 10px;
+  background-position: center;
+  background-size: cover;
+}
+
+.info-list{
+	list-style: none;
+	padding-right: 40px;
+	text-align: center;
+}
+
+.address-item{
+	margin-top: 25px;
+}
+
+.address-title{
+	font-family: 'Medula One', cursive;
+	font-size: 40pt;
+	color: #47a3da;
+}
+
+.address{
+	margin-top: -35px;
+	font-family: 'Medula One', cursive;
+	font-size: 20pt;
+	color: #000;
+}
+
+.info-item{
+	margin-top: 40px;
+}
+
+.fa-cal{
+	font-size: 15pt;
+	position: absolute;
+	margin-left: 22px;
+	margin-top: -40px;
+	color: #ccc;
+}
+
+.fa-clo{
+	font-size: 15pt;
+	position: absolute;
+	margin-left: 5px;
+	margin-top: -40px;
+	color: #ccc;
+}
+
+.fa-thumbs{
+	font-size: 15pt;
+	position: absolute;
+	margin-left: 5px;
+	margin-top: -40px;
+	color: #ccc;
+}
+
+.date{
+	width: 80px;
+	height: 78px;
+	padding: 10px 0px 0px 0px;
+	background: url('events-info.jpg') repeat left top;
+	line-height: normal;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	font-weight: 300;
+	color: #FFFFFF;
+	display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+.date b {
+display: block;
+margin: 13px 0px 0px 0px;
+padding: 0;
+letter-spacing: -1px;
+font-size: 3em;
+font-weight: 300;
+color: #FFFFFF;
+}
+
+.hour-age{
+	width: 90px;
+	height: 78px;
+	padding: 10px 0px 0px 0px;
+	background: url('events-info.jpg') repeat left top;
+	line-height: normal;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	font-weight: 300;
+	color: #FFFFFF;
+	display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+@media(max-width: 408px){
+	.hour-age:last-child{
+		margin-top: 40px;
+	}
+}
+
+.hour-age b{
+	display: block;
+	margin: 13px 0px 0px 0px;
+	padding: 0;
+	letter-spacing: -1px;
+	font-size: 3em;
+	font-weight: 300;
+	color: #FFFFFF;
 }
