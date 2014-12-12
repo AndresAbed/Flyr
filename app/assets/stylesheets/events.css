@@ -24,10 +24,47 @@
 
 .club-name{
 	text-align: center;
-	font-size: 15pt;
+	font-size: 12pt;
 	color: #A5D0F2;
 	text-transform: uppercase;
 }
+
+/* Edit Modal */
+
+.event-buttons{
+	float: right;
+	margin-top: -285px;
+}
+
+.name-address-field{
+	width: 45%;
+	display: inline-block;
+	margin-left: 3%;
+}
+
+.modal-row-2{
+	padding: 20px 0px 20px 0px;
+}
+
+.title-label{
+	margin-left: 20px;
+}
+
+.desc-area{
+	margin-left: 20px;
+	height: 300px;
+	min-width: 90%;
+}
+
+.modal-row-4{
+	margin: 0px 0px 0px 5px;
+}
+
+.image-title{
+	margin-top: 10px;
+}
+
+/* /Edit Modal */
 
 .image{
 	height: 600px;
@@ -40,6 +77,9 @@
 .event-content{
 	margin-top: 20px;
 	background-color: white;
+	margin-bottom: 100px;
+	padding-bottom: 50px;
+	border-radius: 0px 0px 10px 10px;
 }
 
 .description-name{

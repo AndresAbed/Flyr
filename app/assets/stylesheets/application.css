@@ -24,6 +24,10 @@ body{
 	margin-top: 60px;
 }
 
+.btn-default:hover{
+	border-color: transparent;
+}
+
 /* Navbar styles */
 
 .navbar-fixed-top{
@@ -148,7 +152,7 @@ body{
 	color: #444;
 	text-decoration: none;
 	position:fixed;
-	top:10%;
+	top:80%;
 	right: 0px;
 	display:none;
 	border: 0px;
