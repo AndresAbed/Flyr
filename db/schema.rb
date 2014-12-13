@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126200430) do
+ActiveRecord::Schema.define(version: 20141213123240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20141126200430) do
     t.string   "club_logo_content_type"
     t.integer  "club_logo_file_size"
     t.datetime "club_logo_updated_at"
+    t.string   "slug"
   end
+
+  add_index "events", ["slug"], name: "index_events_on_slug", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

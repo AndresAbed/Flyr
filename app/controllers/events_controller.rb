@@ -5,16 +5,17 @@ class EventsController < ApplicationController
 
   def create
   	@events = Event.new(event_params)
-	  @events.save
-	  redirect_to home_path
+	  if @events.save
+      redirect_to @events
+	  end
   end
 
   def show
-  	@events = Event.find(params[:id])
+  	@events = Event.friendly.find(params[:id])
 	end
 
   def update
-    @events = Event.find(params[:id])
+    @events = Event.friendly.find(params[:id])
    
     if @events.update(event_params)
       redirect_to @events
@@ -24,7 +25,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @events = Event.find(params[:id])
+    @events = Event.friendly.find(params[:id])
     @events.destroy
    
     redirect_to home_path

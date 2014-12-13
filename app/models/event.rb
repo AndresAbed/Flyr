@@ -9,5 +9,12 @@ class Event < ActiveRecord::Base
 	has_attached_file :club_logo, :styles => { :medium => "300x300>"}, 
 	:url  => "/assets/events/:id/:style/:basename.:extension"
 	validates_attachment :club_logo, content_type: { content_type: 
-		["image/jpg", "image/jpeg", "image/png", "image/gif"] }	
+		["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
+	extend FriendlyId
+	friendly_id :name, use: :slugged
+
+	def should_generate_new_friendly_id?
+	  name_changed?
+	end		
 end
