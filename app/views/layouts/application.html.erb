@@ -38,16 +38,18 @@
           <li class="dropdown">
             <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
             </a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
               <li><a href="/events/new">Crear</a></li>
               <li class="divider"></li>
               <li><a href="/events/21">Ver</a></li>
             </ul>
           </li> 
           <li class="dropdown">
-            <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg" style="width: 32px; height: 32px; border-radius: 20px;"> Hola <%= current_user.name %>!<span class="caret"></span>
+            <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
+              Hola <%= current_user.name %>!<span class="caret"></span>
             </a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
               <li><a href="/user/profile">Perfil</a></li>
               <li class="divider"></li>
               <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
@@ -57,7 +59,7 @@
           <li class="dropdown">
             <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
             </a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
               <li><a href="/events/new">Crear</a></li>
               <li class="divider"></li>
               <a href="/events/21">Ver</a>
@@ -66,7 +68,7 @@
           <li class="dropdown">
             <a class="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg" style="width: 32px; height: 32px; border-radius: 20px;"> Hola <%= current_user.name %>!<span class="caret"></span>
             </a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
               <li><a href="/user/profile">Perfil</a></li>
               <li class="divider"></li>
               <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
@@ -155,6 +157,6 @@ loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure"
 olark.identify('3044-778-10-1415');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3044-778-10-1415/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
 <!-- end olark code -->
 
-<p class="arrow"><a id="scrollToTop" class="scrollToTop" href="#"><img src="//s27.postimg.org/5wshzsecj/oie_transparent.png" style="width: 40px; height: 40px;"></a></p>
+<p class="arrow"><a id="scrollToTop" class="scrollToTop" href="#"><img src="http://s27.postimg.org/5wshzsecj/oie_transparent.png" style="width: 40px; height: 40px;"></a></p>
 </body>
 </html>

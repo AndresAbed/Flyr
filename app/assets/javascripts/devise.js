@@ -84,11 +84,20 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-		$('#sign_in_btn').addClass('animated zoomIn');
-		window.setTimeout( function(){
-		    $('#sign_in_btn').removeClass('animated zoomIn');
-		}, 1000);
-	
+	$('#sign_in_btn').addClass('animated zoomIn');
+	window.setTimeout( function(){
+		   $('#sign_in_btn').removeClass('animated zoomIn');
+	}, 1000);
+		
+	$('#sign_in_btn').fadeIn();
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300) {
+			$('#sign_in_btn').fadeOut();
+		} else {
+			$('#sign_in_btn').fadeIn();
+		}
+	});
 })
 
 $(document).ready(function(){

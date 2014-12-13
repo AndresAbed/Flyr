@@ -18,15 +18,12 @@
 /* Scroll to top */ 
 
 $(document).ready(function(){
-	
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 300) {
 			$('#scrollToTop').fadeIn();
-			$('#sign_in_btn').fadeOut();
 		} else {
 			$('#scrollToTop').fadeOut();
-			$('#sign_in_btn').fadeIn();
 		}
 	});
 	
