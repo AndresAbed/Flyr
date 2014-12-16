@@ -227,6 +227,11 @@ ul.contact li a {
 .fa-facebook, .fa-google-plus,
 .fa-twitter, .fa-instagram{
 	color: #777;
+	-moz-transition: color 0.35s ease-in-out;
+	-webkit-transition: color 0.35s ease-in-out;
+	-o-transition: color 0.35s ease-in-out;
+	-ms-transition: color 0.35s ease-in-out;
+	transition: color 0.35s ease-in-out;
 }
 
 .fa-facebook:hover{
