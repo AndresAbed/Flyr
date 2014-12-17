@@ -1,12 +1,43 @@
 <!-- Carousel -->
-<div class="edit-popover">
-	 <a href="#" class="banner-btn"></a>
-	<div class="head hide">
-	  Cambiar imagenes del banner
+<button id="example" type="button" class="banner-btn" data-toggle="modal" 
+data-target=".bs-example-modal-sm" data-toggle="tooltip" 
+data-placement="right" title="Actualizar banner"></button>
+
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	      <h4 class="modal-title" id="myModalLabel">Actualizar banner</h4>
+	    </div>
+	    <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
+	     	<div class="modal-body">
+					<div class="row images-fields">
+					  <%= b.label "Imagen 1", class: "label label-success image-label" %>
+					  <%= b.file_field :image1, class: "choose-btn" %>
+					</div>
+					<div class="row images-fields">
+					  <%= b.label "Imagen 2", class: "label label-success image-label" %>
+					  <%= b.file_field :image2, class: "choose-btn" %>
+					</div>
+					<div class="row images-fields">
+					  <%= b.label "Imagen 3", class: "label label-success image-label" %>
+					  <%= b.file_field :image3, class: "choose-btn" %>
+					</div>
+					<div class="row images-fields">
+					  <%= b.label "Imagen 4", class: "label label-success image-label" %>
+					  <%= b.file_field :image4, class: "choose-btn" %>
+					</div>
+		    </div>
+		    <div class="modal-footer">
+		      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		      <%= b.submit 'Actualizar', class: "btn btn-primary" %>
+		    </div>
+	    <% end %>
+	  </div>
 	</div>
-	<div class="content hide">		    
-  </div>
 </div>
+
 <div class="carousel slide" id="myCarousel">
 	<ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -16,44 +47,16 @@
   </ol>   
 	<div class="carousel-inner">
 		<div class="item active">
-			<img alt="Slide-home2" src="//bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/13/slide-home2.jpg">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>High-end Software Development</h1>
-					<p>We help companies unlock value and productivity through technology.<br>
-					<strong><a href="#">/ Let's Work Together </a></strong></p>
-				</div>
-			</div>
+			<img alt="Image1" src="<%= @banner.first.image1.url %>">
 		</div>
 		<div class="item">
-			<img alt="Slide-home" src="//bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/33/slide-home.jpg">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>Deliver Better Software, Faster</h1>
-					<p>Implement, integrate and customize top industry ALM solutions now.</p>
-					<p><strong><a href="#">/ Learn More</a></strong></p>
-				</div>
-			</div>
+			<img alt="Image2" src="<%= @banner.first.image2.url %>">
 		</div>
 		<div class="item">
-			<img alt="Slide-home_4" src="//bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/34/slide-home_4.jpg">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>Leverage the Benefits of the Cloud Today</h1>
-					<p>We build high-performance, secure and scalable apps on the cloud, across different verticals and areas.</p>
-					<p><strong><a href="#">/ Let's Work Together </a></strong></p>
-				</div>
-			</div>
+			<img alt="Image3" src="<%= @banner.first.image3.url %>">
 		</div>
 		<div class="item">
-			<img alt="Slide-home3" src="//bvision-corporate-website.s3.amazonaws.com/uploads/carousel_picture/image/32/slide-home3.jpg">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>Win With Mobile</h1>
-					<p>Unwire your business and drive sales now.</p>
-					<p><strong><a href="#">/ Learn More</a></strong></p>
-				</div>
-			</div>
+			<img alt="Image4" src="<%= @banner.first.image4.url %>">
 		</div>
 	</div>
 	<a class="left carousel-control" data-slide="prev" href="#myCarousel">‹</a>
@@ -94,6 +97,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
@@ -105,6 +109,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
@@ -116,6 +121,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
@@ -127,6 +133,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
@@ -138,6 +145,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
@@ -161,6 +169,7 @@
 						<span id="pic-caption-events" class="pic-caption left-to-right">
 						  <h1 class="pic-title"><%= e.name %></h1>
 						  <p class="pic-subtitle"><%= e.address %></p>
+						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>

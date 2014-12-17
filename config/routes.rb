@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   resources :events
   get 'user/profile'
 	get 'home/index', as: :home
+
+	#Banner
+	resources :banners
 end

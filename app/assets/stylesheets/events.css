@@ -67,9 +67,6 @@
 /* /Edit Modal */
 
 .image{
-	height: 600px;
-	background-size: cover;
-	background-repeat: no-repeat;
 	border: 10px #fff solid;
 	margin-top: -250px;
 }

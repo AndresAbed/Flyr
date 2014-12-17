@@ -1,0 +1,25 @@
+<%= form_for :banner, url: banners_path do |b| %>
+  <div class="row">
+    <%= b.label "Imagen 1" %><br>
+    <%= b.file_field :image1 %>
+  </div>
+  
+  <div class="row">
+    <%= b.label "Imagen 2" %><br>
+    <%= b.file_field :image2 %>
+  </div>
+
+  <div class="row">
+    <%= b.label "Imagen 3" %><br>
+    <%= b.file_field :image3 %>
+  </div>
+
+  <div class="row">
+    <%= b.label "Imagen 4" %><br>
+    <%= b.file_field :image4 %>
+  </div>
+
+  <p>
+    <%= b.submit %>
+  </p>
+<% end %>
