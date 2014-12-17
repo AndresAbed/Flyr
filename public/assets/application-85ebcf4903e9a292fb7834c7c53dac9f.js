@@ -12709,6 +12709,10 @@ return jQuery;
 
 
 
+(function() {
+
+
+}).call(this);
 /* Sign_in form */
 
 
@@ -12796,11 +12800,20 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-		$('#sign_in_btn').addClass('animated zoomIn');
-		window.setTimeout( function(){
-		    $('#sign_in_btn').removeClass('animated zoomIn');
-		}, 1000);
-	
+	$('#sign_in_btn').addClass('animated zoomIn');
+	window.setTimeout( function(){
+		   $('#sign_in_btn').removeClass('animated zoomIn');
+	}, 1000);
+		
+	$('#sign_in_btn').fadeIn();
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300) {
+			$('#sign_in_btn').fadeOut();
+		} else {
+			$('#sign_in_btn').fadeIn();
+		}
+	});
 })
 
 $(document).ready(function(){
@@ -12812,7 +12825,7 @@ $(document).ready(function(){
 ;
 $(document).ready(function(){
   $("#myCarousel").carousel({
-    interval : 5000,
+    interval : 7000,
     pause:true
   });
 });
@@ -12862,6 +12875,11 @@ $(document).ready(function(){
 	}
 
 });
+
+$(document).ready(function(){
+  $('#example').tooltip()
+})
+;
 $(document).ready(function(){
 	$('#discover').click(function(){
 		$('html, body').animate({scrollTop : 650},1000);
@@ -12890,15 +12908,12 @@ $(document).ready(function(){
  
 
 $(document).ready(function(){
-	
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 300) {
 			$('#scrollToTop').fadeIn();
-			$('#sign_in_btn').fadeOut();
 		} else {
 			$('#scrollToTop').fadeOut();
-			$('#sign_in_btn').fadeIn();
 		}
 	});
 	

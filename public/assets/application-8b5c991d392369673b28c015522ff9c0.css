@@ -8053,9 +8053,6 @@ button.close {
 /* /Edit Modal */
 
 .image{
-	height: 600px;
-	background-size: cover;
-	background-repeat: no-repeat;
 	border: 10px #fff solid;
 	margin-top: -250px;
 }
@@ -8524,10 +8521,56 @@ span.pic-caption a:hover{
 /* Carousel*/
 
 
+.banner-btn{
+	background-image: url('http://s18.postimg.org/43too9139/Puy_R8_Oy6_W1_C.png');
+	position: absolute;
+	z-index: 1;
+	margin-left: 20px;
+	margin-top: 20px;
+	height: 30px;
+	width: 30px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	opacity: 0.5;
+	-moz-transition: opacity 0.35s ease-in-out;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	-o-transition: opacity 0.35s ease-in-out;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+
+.banner-btn:hover{
+	opacity: 1;
+	-moz-transition: opacity 0.35s ease-in-out;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	-o-transition: opacity 0.35s ease-in-out;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+
+.images-fields{
+	margin-left: 100px;
+	display: inline-flex;
+}
+
+.image-label{
+	font-size: 10pt;
+}
+
+.choose-btn{
+	margin-left: 60px;
+}
+
 .slide {
 	position: relative;
 	line-height: 1;
 	margin-top: 60px;
+}
+
+.item{
+	max-height: 700px;
 }
 
 .item>img {
@@ -8542,6 +8585,23 @@ min-width: 100%;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 	background-color: transparent;
 	border: 0;
+	opacity: 0.7;
+	-moz-transition: opacity 0.35s ease-in-out;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	-o-transition: opacity 0.35s ease-in-out;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+
+.carousel-control:hover, .carousel-control:focus {
+	outline: 0;
+	text-decoration: none;
+	opacity: 1;
+	-moz-transition: opacity 0.35s ease-in-out;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	-o-transition: opacity 0.35s ease-in-out;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
 }
 
 .carousel-control.left {
@@ -8552,10 +8612,6 @@ min-width: 100%;
 .carousel-control.right {
 	top: 30%;
 	background-image: none;
-}
-
-.carousel-caption{
-	padding-bottom: 70px;
 }
 
 @media (max-width: 1300px){
@@ -8577,14 +8633,10 @@ min-width: 100%;
 		top: 15%;
 	}
 	.slide{
-		margin-top: -7px;
+		margin-top: 55px;
 	}
 	.carousel-inner > .item > img{
 		height: 300px;
-	}
-
-	.carousel-caption{
-	padding-bottom: 0px;
 	}
 }
 
@@ -8596,9 +8648,17 @@ min-width: 100%;
 	.carousel-control.right {
 		top: 15%;
 	}
+}
 
-	.slide{
-		margin-top: -7px;
+@media (max-width: 600px){
+	.carousel-inner > .item > img{
+		height: 250px;
+	}
+}
+
+@media (max-width: 450px){
+	.carousel-inner > .item > img{
+		height: 150px;
 	}
 }
 
@@ -9007,6 +9067,14 @@ body{
 	text-transform: none;
 }
 
+.profile-image{
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-position: center 30%;
+	background-repeat: no-repeat;
+}
+
 .navbar-fixed-top .navbar-nav>li>a{
 	padding-top: 20px;
 	padding-left: 20px;
@@ -9130,6 +9198,11 @@ ul.contact li a {
 .fa-facebook, .fa-google-plus,
 .fa-twitter, .fa-instagram{
 	color: #777;
+	-moz-transition: color 0.35s ease-in-out;
+	-webkit-transition: color 0.35s ease-in-out;
+	-o-transition: color 0.35s ease-in-out;
+	-ms-transition: color 0.35s ease-in-out;
+	transition: color 0.35s ease-in-out;
 }
 
 .fa-facebook:hover{
