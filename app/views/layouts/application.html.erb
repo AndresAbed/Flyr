@@ -35,46 +35,46 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse"> 
         <ul class="nav navbar-nav navbar-right">
           <% if log_in_using_fb? %>
-          <li class="dropdown">
-            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-            </a>
-            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-              <li><a href="/events/new">Crear</a></li>
-              <li class="divider"></li>
-              <li><a href="/events/21">Ver</a></li>
-            </ul>
-          </li> 
-          <li class="dropdown">
-            <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
-              Hola <%= current_user.name %>!<span class="caret"></span>
-            </a>
-            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-              <li><a href="/user/profile">Perfil</a></li>
-              <li class="divider"></li>
-              <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
-            </ul>
-          </li>
+            <li class="dropdown">
+              <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
+              </a>
+              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li><a href="/events/new">Crear</a></li>
+                <li class="divider"></li>
+                <li><a href="/events/21">Ver</a></li>
+              </ul>
+            </li> 
+            <li class="dropdown">
+              <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
+                Hola <%= current_user.name %>!<span class="caret"></span>
+              </a>
+              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li><a href="/user/profile">Perfil</a></li>
+                <li class="divider"></li>
+                <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
+              </ul>
+            </li>
           <% else %>
-          <li class="dropdown">
-            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-            </a>
-            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-              <li><a href="/events/new">Crear</a></li>
-              <li class="divider"></li>
-              <a href="/events/21">Ver</a>
-            </ul>
-          </li> 
-          <li class="dropdown">
-            <a class="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg" style="width: 32px; height: 32px; border-radius: 20px;"> Hola <%= current_user.name %>!<span class="caret"></span>
-            </a>
-            <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-              <li><a href="/user/profile">Perfil</a></li>
-              <li class="divider"></li>
-              <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-          </li>
-          <li class="user-nav"><img src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg" style="width: 32px; height: 32px; border-radius: 20px;"> Hola <%= current_user.name %>!</li> 
+            <li class="dropdown">
+              <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
+              </a>
+              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li><a href="/events/new">Crear</a></li>
+                <li class="divider"></li>
+                <a href="/events/21">Ver</a>
+              </ul>
+            </li> 
+            <li class="dropdown">
+              <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="profile-image" src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg"> Hola <%= current_user.username %>!<span class="caret"></span>
+              </a>
+              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li><a href="/users/edit">Editar cuenta</a></li>
+                <li class="divider"></li>
+                <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
+              </ul>
+            </li> 
           <% end %>  
         </ul>
       </div>

@@ -12,7 +12,10 @@
 	        <h2>Crear cuenta</h2>
 
 	        <div class="elements">
-	        <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control" %></div>
+	        <%= f.text_field :username, autofocus: true, :placeholder => "Nombre de usuario", class: "form-control" %></div>
+
+	        <div class="elements">
+	        <%= f.email_field :email, :placeholder => "Email", class: "form-control" %></div>
 
 	        <div class="elements"><% if @validatable %>(<%= @minimum_password_length %> caracteres mínimo)<% end %>
 	        <%= f.password_field :password, autocomplete: "off", :placeholder => "Contraseña", class: "form-control" %></div>
