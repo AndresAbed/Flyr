@@ -1,162 +1,160 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>QSH</title>
-  <link rel="shortcut icon" href="http://s24.postimg.org/scjpdceed/oie_transparent.png"/>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.min.css">
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>QSH</title>
+    <link rel="shortcut icon" href="http://s24.postimg.org/scjpdceed/oie_transparent.png"/>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.min.css">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<!-- Remove facebook hash -->
-<script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
-<!-- -->
+  <!-- Remove facebook hash -->
+  <script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
+  <!-- -->
 
-<% if user_signed_in? %>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Desplegar navegación</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/home/index">Logotipo</a>
-      </div>
-     
-      <div class="collapse navbar-collapse navbar-ex1-collapse"> 
-        <ul class="nav navbar-nav navbar-right">
-          <% if log_in_using_fb? %>
-            <li class="dropdown">
-              <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-              </a>
-              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li><a href="/events/new">Crear</a></li>
-                <li class="divider"></li>
-                <li><a href="/events/21">Ver</a></li>
-              </ul>
-            </li> 
-            <li class="dropdown">
-              <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
-                Hola <%= current_user.name %>!<span class="caret"></span>
-              </a>
-              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li><a href="/user/profile">Perfil</a></li>
-                <li class="divider"></li>
-                <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
-              </ul>
+  <% if user_signed_in? %>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Desplegar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/home/index">Logotipo</a>
+        </div>
+       
+        <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+          <ul class="nav navbar-nav navbar-right">
+            <% if log_in_using_fb? %>
+              <li class="dropdown">
+                <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
+                </a>
+                <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <li><a href="/events/new">Crear</a></li>
+                  <li class="divider"></li>
+                </ul>
+              </li> 
+              <li class="dropdown">
+                <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
+                  Hola <%= current_user.name %>!<span class="caret"></span>
+                </a>
+                <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <li><a href="/user/profile">Perfil</a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Cerrar sesión", signout_path, id: "sign_out" %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="dropdown">
+                <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
+                </a>
+                <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <li><a href="/events/new">Crear</a></li>
+                  <li class="divider"></li>
+                </ul>
+              </li> 
+              <li class="dropdown">
+                <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="profile-image" src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg"> Hola <%= current_user.username %>!<span class="caret"></span>
+                </a>
+                <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <li><a href="/users/edit">Editar cuenta</a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
+                </ul>
+              </li> 
+            <% end %>  
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  <% else %>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Desplegar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Logotipo</a>
+          <li id="sign_in_btn"><a href="#" class="round white">Ingresar<span class="round">Descubrí todo lo que tiene qsh para vos</span></a></li>
+
+        </div>
+       
+        <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+          <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-item">
+              <a href="#" data-toggle="modal" data-target="#rrpp-modal">¿Sos RRPP?</a>
             </li>
-          <% else %>
-            <li class="dropdown">
-              <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-              </a>
-              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li><a href="/events/new">Crear</a></li>
-                <li class="divider"></li>
-                <a href="/events/21">Ver</a>
-              </ul>
-            </li> 
-            <li class="dropdown">
-              <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="profile-image" src="//s30.postimg.org/o6zip7d0h/1800359_10152365920904073_1861252036_n.jpg"> Hola <%= current_user.username %>!<span class="caret"></span>
-              </a>
-              <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li><a href="/users/edit">Editar cuenta</a></li>
-                <li class="divider"></li>
-                <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
-              </ul>
-            </li> 
-          <% end %>  
+            <li class="navbar-item">
+              <a href="#" data-toggle="modal" data-target="#nosotros-modal">Nosotros</a>
+            </li>
+            <li class="navbar-item"><a href="/users/sign_up">Crear</a></li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  <% end %>
+
+  <%= yield %>
+
+  <footer>
+    <div>
+      <section style="margin-bottom: -10px;">
+        <header>
+          <p style="color: white; font-size: 3em;">LOGO</p>
+          <h2>Mantente actualizado</h2>
+          <span>Seguinos en nuestras redes sociales</span>
+        </header>
+        <ul class="contact">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         </ul>
-      </div>
-    </div>  
-  </nav>
-<% else %>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      </section>
+    </div>   
+  </footer>
+  <div class="copyright">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Desplegar navegación</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Logotipo</a>
-        <li id="sign_in_btn"><a href="#" class="round white">Ingresar<span class="round">Descubrí todo lo que tiene qsh para vos</span></a></li>
-
-      </div>
-     
-      <div class="collapse navbar-collapse navbar-ex1-collapse"> 
-        <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-item">
-            <a href="#" data-toggle="modal" data-target="#rrpp-modal">¿Sos RRPP?</a>
-          </li>
-          <li class="navbar-item">
-            <a href="#" data-toggle="modal" data-target="#nosotros-modal">Nosotros</a>
-          </li>
-          <li class="navbar-item"><a href="/users/sign_up">Crear</a></li>
-        </ul>
-      </div>
-    </div>  
-  </nav>
-<% end %>
-
-<%= yield %>
-
-<footer>
-  <div>
-    <section style="margin-bottom: -10px;">
-      <header>
-        <p style="color: white; font-size: 3em;">LOGO</p>
-        <h2>Mantente actualizado</h2>
-        <span>Seguinos en nuestras redes sociales</span>
-      </header>
-      <ul class="contact">
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-google-plus"></i></a></a></li>
-        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-      </ul>
-    </section>
-  </div>   
-</footer>
-<div class="copyright">
-  <div class="container">
-    <p style="font-size: 0.9em;">© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
+      <p style="font-size: 0.9em;">© 2014 QUE SALE HOY. TODOS LOS DERECHOS RESERVADOS.</p>
+    </div>
   </div>
-</div>
 
-<!-- begin olark code -->
-<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
-f[z]=function(){
-(a.s=a.s||[]).push(arguments)};var a=f[z]._={
-},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
-f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
-0:+new Date};a.P=function(u){
-a.p[u]=new Date-a.p[0]};function s(){
-a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
-hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
-return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
-b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
-b.contentWindow[g].open()}catch(w){
-c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
-var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
-b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
-loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
-/* custom configuration goes here (www.olark.com/documentation) */
-olark.identify('3044-778-10-1415');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3044-778-10-1415/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
-<!-- end olark code -->
+  <!-- begin olark code -->
+  <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+  f[z]=function(){
+  (a.s=a.s||[]).push(arguments)};var a=f[z]._={
+  },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+  f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+  0:+new Date};a.P=function(u){
+  a.p[u]=new Date-a.p[0]};function s(){
+  a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+  hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+  return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+  b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+  b.contentWindow[g].open()}catch(w){
+  c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+  var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+  b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+  loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('3044-778-10-1415');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3044-778-10-1415/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+  <!-- end olark code -->
 
-<p class="arrow"><a id="scrollToTop" class="scrollToTop" href="#"><img src="http://s27.postimg.org/5wshzsecj/oie_transparent.png" style="width: 40px; height: 40px;"></a></p>
-</body>
+  <p class="arrow"><a id="scrollToTop" class="scrollToTop" href="#"><img src="http://s27.postimg.org/5wshzsecj/oie_transparent.png" style="width: 40px; height: 40px;"></a></p>
+  </body>
 </html>
