@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   #has_many :assistances
   #has_many :events, through: :assistances
 
+  has_attached_file :profile_img, :styles => { :medium => "600x600>", 
+    :small => "50x50>" }, :url  => "/assets/users/:id/:style/:basename.:extension"
+  validates_attachment :profile_img, content_type: { content_type: 
+    ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
