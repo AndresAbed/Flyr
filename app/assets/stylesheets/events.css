@@ -19,7 +19,7 @@
 	font-weight: 200;
 	color: #fff;
 	margin-bottom: -20px;
-	font-family: 'Medula One', cursive;
+	font-family: Medula One;
 }
 
 .club-name{
@@ -84,7 +84,7 @@
 	font-size: 40pt;
 	font-weight: 200;
 	color: #000;
-	font-family: 'Medula One', cursive;
+	font-family: 'Medula One';
 	margin: 10px 0px 20px 0px;
 	display: inline-block;
 	border-bottom: 2px #000 solid;

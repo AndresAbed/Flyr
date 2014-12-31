@@ -1,0 +1,69 @@
+.body{
+  background: url('../graybg.jpg');
+  background-repeat: repeat;
+  margin-top: 100px;
+}
+
+.ue-cont{
+  margin-bottom: 150px;
+  margin-top: 150px;
+}
+
+/* Profile image */
+
+.ue-information{
+  font-weight: bold;
+  color: #3D78D3;
+}
+
+.ue-img{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 1px 5px 0 #ccc;
+  color: #3D78D3;
+  border-color: #3D78D3;
+  margin-left: 5px;
+}
+
+.ue-img img{
+  width: 250px;
+  height: 250px;
+}
+
+.user-photo-label{
+  margin-top: 20px;
+}
+
+/* Form */
+
+.ue-title{
+  font-size: 30px;
+  font-weight: bold;
+  color: #ccc;
+  text-align: center;
+}
+
+.ue-elements{
+  margin: 20px;
+  text-align: right;
+}
+
+.ue-labels{
+  margin-right: 10px;
+}
+
+.user-fields{
+  width: 50%;
+  display: inline-flex;
+  margin-right: 15%;
+}
+
+.email-conf-msj{
+  margin-right: 15%;
+}
+
+.ue-btns{
+  margin-right: 15%;
+}
+

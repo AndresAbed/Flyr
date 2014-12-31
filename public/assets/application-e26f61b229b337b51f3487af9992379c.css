@@ -1,3 +1,162 @@
+.unique{
+  background: url('../banner.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Devise forms */
+
+.sign_in{
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+    width: 300px;
+}
+
+#sign_in{
+  margin-top: -380px;
+}
+
+/* Close button */
+
+#close { 
+ 
+  position: relative;
+  padding: 1px 5px;
+  top: -30px;
+  left: 144px;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  color: #1a1b22;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 0 1px 5px 0 #ccc;
+  -webkit-box-shadow: 0 1px 5px 0 #ccc;
+  -o-box-shadow: 0 1px 5px 0 #ccc;
+  -moz-box-shadow: 0 1px 5px 0 #ccc;
+  border-color: #3D78D3;
+}
+
+@media (max-width: 360px){
+  .sign_in{
+    width: 100%;
+  }
+  .other-forms{
+    width: 100%;
+  }
+  #close{
+    left: 134px;
+  }
+}
+
+.other-forms{
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+#sign_in_form{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px 0px 10px 10px;
+  rder: -moz-border-radius: 10px 0px 10px 10px;
+  -webkit-border-radius: 10px 0px 10px 10px;
+  bo0px solid #000000;
+  box-shadow: 0 1px 5px 0 #ccc;
+  color: #3D78D3;
+  border-color: #3D78D3;
+}
+
+#form{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 1px 5px 0 #ccc;
+  color: #3D78D3;
+  border-color: #3D78D3;
+}
+
+.elements{
+  margin: 15px;
+}
+
+#devise_error{
+  margin-top: 100px;
+}
+.body{
+  background: url('../graybg.jpg');
+  background-repeat: repeat;
+  margin-top: 100px;
+}
+
+.ue-cont{
+  margin-bottom: 150px;
+  margin-top: 150px;
+}
+
+/* Profile image */
+
+.ue-information{
+  font-weight: bold;
+  color: #3D78D3;
+}
+
+.ue-img{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 1px 5px 0 #ccc;
+  color: #3D78D3;
+  border-color: #3D78D3;
+  margin-left: 5px;
+}
+
+.ue-img img{
+  width: 250px;
+  height: 250px;
+}
+
+.user-photo-label{
+  margin-top: 20px;
+}
+
+/* Form */
+
+.ue-title{
+  font-size: 30px;
+  font-weight: bold;
+  color: #ccc;
+  text-align: center;
+}
+
+.ue-elements{
+  margin: 20px;
+  text-align: right;
+}
+
+.ue-labels{
+  margin-right: 10px;
+}
+
+.user-fields{
+  width: 50%;
+  display: inline-flex;
+  margin-right: 15%;
+}
+
+.email-conf-msj{
+  margin-right: 15%;
+}
+
+.ue-btns{
+  margin-right: 15%;
+}
+
 /*
  * Social Buttons for Bootstrap
  *
@@ -7891,99 +8050,6 @@ button.close {
 .fa-bomb:before {
   content: "\f1e2";
 }
-.unique{
-	background: url('banner.png') no-repeat center center fixed;
-	-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-/* Devise forms */
-
-.sign_in{
-	text-align: center;
-	padding: 20px;
-	margin: auto;
-  	width: 300px;
-}
-
-#sign_in{
-	margin-top: -380px;
-}
-
-/* Close button */
-
-#close { 
- 
-  position: relative;
-  padding: 1px 5px;
-  top: -30px;
-  left: 144px;
-  font-size: 25px;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-  color: #1a1b22;
-  background-color: white;
-  border-radius: 0px 10px 10px 0px;
-  box-shadow: 0 1px 5px 0 #ccc;
-  -webkit-box-shadow: 0 1px 5px 0 #ccc;
-	-o-box-shadow: 0 1px 5px 0 #ccc;
-	-moz-box-shadow: 0 1px 5px 0 #ccc;
-  border-color: #3D78D3;
-}
-
-@media (max-width: 360px){
-	.sign_in{
-		width: 100%;
-	}
-	.other-forms{
-		width: 100%;
-	}
-	#close{
-		left: 134px;
-	}
-}
-
-.other-forms{
-	text-align: center;
-	padding: 20px;
-	margin: auto;
-  margin-top: 100px;
-}
-
-#sign_in_form{
-	padding: 30px;
-	background-color: rgba(255, 255, 255, 1);
-	border-radius: 10px 0px 10px 10px;
-	rder: -moz-border-radius: 10px 0px 10px 10px;
-	-webkit-border-radius: 10px 0px 10px 10px;
-	bo0px solid #000000;
-	box-shadow: 0 1px 5px 0 #ccc;
-	color: #3D78D3;
-	border-color: #3D78D3;
-}
-
-#form{
-	padding: 30px;
-	background-color: rgba(255, 255, 255, 1);
-	border-radius: 10px 10px 10px 10px;
-	rder: -moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	bo0px solid #000000;
-	box-shadow: 0 1px 5px 0 #ccc;
-	color: #3D78D3;
-	border-color: #3D78D3;
-}
-
-.elements{
-	margin: 15px;
-}
-
-#devise_error{
-	margin-top: 100px;
-}
 .events{
 	background: url('graybg.jpg');
 }
@@ -8005,7 +8071,7 @@ button.close {
 	font-weight: 200;
 	color: #fff;
 	margin-bottom: -20px;
-	font-family: 'Medula One', cursive;
+	font-family: Medula One;
 }
 
 .club-name{
@@ -8900,7 +8966,7 @@ margin-top:  730px;
 		box-shadow: 0 1px 10px 0 #ccc;
 	}
 
-	a.white:hover {
+	a.white:hover, a.white:focus {
 		color: #47a3da;
 		text-decoration: none;
 	}
@@ -8919,7 +8985,7 @@ margin-top:  730px;
 
 	.round span:hover {
 		opacity: .85;
-		font-size: 16px;
+		font-size: 18px;
 		-webkit-text-shadow: 0 1px 1px rgba(255,255,255,.5);
 		-moz-text-shadow: 0 1px 1px rgba(255,255,255,.5);
 		-o-text-shadow: 0 1px 1px rgba(255,255,255,.5);
@@ -8985,7 +9051,10 @@ margin-top:  730px;
  */
 
 
-@import url(http://fonts.googleapis.com/css?family=Medula+One);
+@font-face{
+	font-family: Medula One;
+	src: url(MedulaOne-Regular.ttf);
+}
 
 *{
 	font-family: Helvetica, sans-serif;
@@ -8997,6 +9066,10 @@ body{
 
 .btn-default:hover{
 	border-color: transparent;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
 }
 
 /* Navbar styles */
@@ -9070,7 +9143,6 @@ body{
 .profile-image{
 	width: 32px;
 	height: 32px;
-	border-radius: 50%;
 	background-position: center 30%;
 	background-repeat: no-repeat;
 }

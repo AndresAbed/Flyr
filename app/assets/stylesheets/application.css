@@ -14,7 +14,10 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Medula+One);
+@font-face{
+	font-family: Medula One;
+	src: url(MedulaOne-Regular.ttf);
+}
 
 *{
 	font-family: Helvetica, sans-serif;
@@ -103,7 +106,6 @@ a:hover, a:focus {
 .profile-image{
 	width: 32px;
 	height: 32px;
-	border-radius: 50%;
 	background-position: center 30%;
 	background-repeat: no-repeat;
 }
