@@ -8,9 +8,14 @@ es:
       already_confirmed: "ya fue confirmada. Intenta ingresar."
       not_locked: "no ha sido bloqueada"
       not_saved:
-        one: "Ha habido 1 error:"
-        other: "Han habido %{count} errores:"
-
+        one: 
+        other:
+  activerecord:
+    attributes:
+      user:
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        current_password: Contraseña actual
   devise:
     failure:
       not_found_in_database: "Usuario o contraseña inválidos."

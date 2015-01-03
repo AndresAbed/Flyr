@@ -1,104 +1,104 @@
 .events{
-	background: url('graybg.jpg');
+  background: url('graybg.jpg');
 }
 
 .headerbg{
-	width: 100%;
-	background: url('bluesquare.jpg');
+  width: 100%;
+  background: url('bluesquare.jpg');
 }
 
 .header-content{
-	margin-top: 60px;
-	height: 450px;
+  margin-top: 60px;
+  height: 450px;
 }
 
 .event-name{
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 80pt;
-	font-weight: 200;
-	color: #fff;
-	margin-bottom: -20px;
-	font-family: Medula One;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 80pt;
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: -20px;
+  font-family: Medula One;
 }
 
 .club-name{
-	text-align: center;
-	font-size: 12pt;
-	color: #A5D0F2;
-	text-transform: uppercase;
+  text-align: center;
+  font-size: 12pt;
+  color: #A5D0F2;
+  text-transform: uppercase;
 }
 
 /* Edit Modal */
 
 .event-buttons{
-	float: right;
-	margin-top: -285px;
+  float: right;
+  margin-top: -285px;
 }
 
 .name-address-field{
-	width: 45%;
-	display: inline-block;
-	margin-left: 3%;
+  width: 45%;
+  display: inline-block;
+  margin-left: 3%;
 }
 
 .modal-row-2{
-	padding: 20px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
 }
 
 .title-label{
-	margin-left: 20px;
+  margin-left: 20px;
 }
 
 .desc-area{
-	margin-left: 20px;
-	height: 300px;
-	min-width: 90%;
+  margin-left: 20px;
+  height: 300px;
+  min-width: 90%;
 }
 
 .modal-row-4{
-	margin: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 5px;
 }
 
 .image-title{
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* /Edit Modal */
 
 .image{
-	border: 10px #fff solid;
-	margin-top: -250px;
+  border: 10px #fff solid;
+  margin-top: -250px;
 }
 
 .event-content{
-	margin-top: 20px;
-	background-color: white;
-	margin-bottom: 100px;
-	padding-bottom: 50px;
-	border-radius: 0px 0px 10px 10px;
+  margin-top: 20px;
+  background-color: white;
+  margin-bottom: 100px;
+  padding-bottom: 50px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .description-name{
-	text-transform: uppercase;
-	font-size: 40pt;
-	font-weight: 200;
-	color: #000;
-	font-family: 'Medula One';
-	margin: 10px 0px 20px 0px;
-	display: inline-block;
-	border-bottom: 2px #000 solid;
+  text-transform: uppercase;
+  font-size: 40pt;
+  font-weight: 200;
+  color: #000;
+  font-family: 'Medula One';
+  margin: 10px 0px 20px 0px;
+  display: inline-block;
+  border-bottom: 2px #000 solid;
 }
 
 #info-col{
-	padding: 30px 30px 10px 0px;
+  padding: 30px 30px 10px 0px;
 }
 
 .event-logo{
-	width: 300px; 
-	height: 300px;
-	background-repeat: no-repeat;
-	-webkit-box-shadow: 0 5px 5px #d0d0d0;
+  width: 300px; 
+  height: 300px;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 5px 5px #d0d0d0;
   -moz-box-shadow: 0 5px 5px #d0d0d0;
   box-shadow: 0 5px 5px #d0d0d0;
   border-radius: 10px 10px 10px 10px;
@@ -107,68 +107,68 @@
 }
 
 .info-list{
-	list-style: none;
-	padding-right: 40px;
-	text-align: center;
+  list-style: none;
+  padding-right: 40px;
+  text-align: center;
 }
 
 .address-item{
-	margin-top: 25px;
+  margin-top: 25px;
 }
 
 .address-title{
-	font-family: 'Medula One', cursive;
-	font-size: 40pt;
-	color: #47a3da;
+  font-family: 'Medula One', cursive;
+  font-size: 40pt;
+  color: #47a3da;
 }
 
 .address{
-	margin-top: -35px;
-	font-family: 'Medula One', cursive;
-	font-size: 20pt;
-	color: #000;
+  margin-top: -35px;
+  font-family: 'Medula One', cursive;
+  font-size: 20pt;
+  color: #000;
 }
 
 .info-item{
-	margin-top: 40px;
+  margin-top: 40px;
 }
 
 .fa-cal{
-	font-size: 15pt;
-	position: absolute;
-	margin-left: 22px;
-	margin-top: -40px;
-	color: #ccc;
+  font-size: 15pt;
+  position: absolute;
+  margin-left: 22px;
+  margin-top: -40px;
+  color: #ccc;
 }
 
 .fa-clo{
-	font-size: 15pt;
-	position: absolute;
-	margin-left: 5px;
-	margin-top: -40px;
-	color: #ccc;
+  font-size: 15pt;
+  position: absolute;
+  margin-left: 5px;
+  margin-top: -40px;
+  color: #ccc;
 }
 
 .fa-thumbs{
-	font-size: 15pt;
-	position: absolute;
-	margin-left: 5px;
-	margin-top: -40px;
-	color: #ccc;
+  font-size: 15pt;
+  position: absolute;
+  margin-left: 5px;
+  margin-top: -40px;
+  color: #ccc;
 }
 
 .date{
-	width: 80px;
-	height: 78px;
-	padding: 10px 0px 0px 0px;
-	background: url('events-info.jpg') repeat left top;
-	line-height: normal;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	font-weight: 300;
-	color: #FFFFFF;
-	display:inline-block;
+  width: 80px;
+  height: 78px;
+  padding: 10px 0px 0px 0px;
+  background: url('events-info.jpg') repeat left top;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #FFFFFF;
+  display:inline-block;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
@@ -185,34 +185,34 @@ color: #FFFFFF;
 }
 
 .hour-age{
-	width: 90px;
-	height: 78px;
-	padding: 10px 0px 0px 0px;
-	background: url('events-info.jpg') repeat left top;
-	line-height: normal;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	font-weight: 300;
-	color: #FFFFFF;
-	display:inline-block;
+  width: 90px;
+  height: 78px;
+  padding: 10px 0px 0px 0px;
+  background: url('events-info.jpg') repeat left top;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #FFFFFF;
+  display:inline-block;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
 }
 
 @media(max-width: 408px){
-	.hour-age:last-child{
-		margin-top: 40px;
-	}
+  .hour-age:last-child{
+    margin-top: 40px;
+  }
 }
 
 .hour-age b{
-	display: block;
-	margin: 13px 0px 0px 0px;
-	padding: 0;
-	letter-spacing: -1px;
-	font-size: 3em;
-	font-weight: 300;
-	color: #FFFFFF;
+  display: block;
+  margin: 13px 0px 0px 0px;
+  padding: 0;
+  letter-spacing: -1px;
+  font-size: 3em;
+  font-weight: 300;
+  color: #FFFFFF;
 }

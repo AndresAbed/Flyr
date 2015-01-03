@@ -15,142 +15,148 @@
  */
 
 @font-face{
-	font-family: Medula One;
-	src: url(MedulaOne-Regular.ttf);
+  font-family: Medula One;
+  src: url(MedulaOne-Regular.ttf);
 }
 
 *{
-	font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 body{
-	margin-top: 60px;
+  margin-top: 60px;
 }
 
 .btn-default:hover{
-	border-color: transparent;
+  border-color: transparent;
 }
 
 a:hover, a:focus {
-	text-decoration: none;
+  text-decoration: none;
+}
+
+.alert{
+  padding: 0px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 /* Navbar styles */
 
 .navbar-fixed-top{
-	border-bottom: none;
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	font-size: 13px;
-	background: url('navbg.jpg');
-	border-radius: 0px 0px 0px 0px;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 13px;
+  background: url('navbg.jpg');
+  border-radius: 0px 0px 0px 0px;
 }
 
 .navbar-item:hover{
-	background-color: white;
+  background-color: white;
 }
 
 
 @media (max-width: 1600px){
-	.navbar-header{
-		padding-left: 50px;
-	}
+  .navbar-header{
+    padding-left: 50px;
+  }
 }
 
 
 .navbar-header{
-	padding-top: 5px;
+  padding-top: 5px;
 }
 
 .navbar-fixed-top .navbar-brand{
-	color: white;
+  color: white;
 }
 
 .navbar-right{
-	margin-right: -150px;
+  margin-right: -150px;
 }
 
 @media (max-width: 1600px){
-	.navbar-right{
-		margin-right: -80px;
-	}
+  .navbar-right{
+    margin-right: -80px;
+  }
 }
 
 @media (max-width: 1300px){
-	.navbar-right{
-		margin-right: -30px;
-	}
+  .navbar-right{
+    margin-right: -30px;
+  }
 }
 
 @media (max-width: 767px){
-	.navbar-right{
-		margin-right: -20px;
-	}
+  .navbar-right{
+    margin-right: -20px;
+  }
 }
 
 .caret{
-	margin-left: 5px;
+  margin-left: 5px;
 }
 
 #user-nav{
-	padding-top: 15px;
-	padding-left: 20px;
-	padding-bottom: 10px;
-	color: white;
-	letter-spacing: 1px;
-	font-size: 1em;
-	text-transform: none;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 1em;
+  text-transform: none;
 }
 
 .profile-image{
-	width: 32px;
-	height: 32px;
-	background-position: center 30%;
-	background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  background-position: center 30%;
+  background-repeat: no-repeat;
 }
 
 .navbar-fixed-top .navbar-nav>li>a{
-	padding-top: 20px;
-	padding-left: 20px;
-	padding-bottom: 20px;
-	color: white;
-	letter-spacing: 1px;
-	font-size: 0.9em;
-	text-transform: uppercase;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+  text-transform: uppercase;
 }
 
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-	background-color: transparent;
-	color: white;
+  background-color: transparent;
+  color: white;
 }
 
 @media (max-width: 770px){
-	.navbar-header{
-		padding-left: 0px;
-	}
-	.navbar-collapse{
-		padding-right: 0px;
-	}
-	.navbar-fixed-top .navbar-nav>li>a{
-		text-align: center;
-	}
-	.user-nav{
-		text-align: center;
-	}
+  .navbar-header{
+    padding-left: 0px;
+  }
+  .navbar-collapse{
+    padding-right: 0px;
+  }
+  .navbar-fixed-top .navbar-nav>li>a{
+    text-align: center;
+  }
+  .user-nav{
+    text-align: center;
+  }
 }
 
 .navbar-default .navbar-toggle .icon-bar{
-	background-color: white;	
+  background-color: white;  
 }
 
 .navbar-default .navbar-toggle{
-	border-color: transparent;
+  border-color: transparent;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 /* -------------------*/
@@ -158,133 +164,133 @@ a:hover, a:focus {
 /* Scroll to top */
 
 .scrollToTop{
-	width:100px; 
-	height:130px;
-	padding:10px; 
-	text-align:center; 
-	font-weight: bold;
-	color: #444;
-	text-decoration: none;
-	position:fixed;
-	top:80%;
-	right: 0px;
-	display:none;
-	border: 0px;
+  width:100px; 
+  height:130px;
+  padding:10px; 
+  text-align:center; 
+  font-weight: bold;
+  color: #444;
+  text-decoration: none;
+  position:fixed;
+  top:80%;
+  right: 0px;
+  display:none;
+  border: 0px;
 }
 .scrollToTop:hover{
-	text-decoration:none;
+  text-decoration:none;
 }
 
 @media (max-width: 550px){
-	.arrow{
-		display: none;
-	}
+  .arrow{
+    display: none;
+  }
 }
 
 /* Footer */
 
 footer{
-	background-color: rgba(20,20,20,1);
-	text-align: center;
-	padding: 6em;
+  background-color: rgba(20,20,20,1);
+  text-align: center;
+  padding: 6em;
 }
 
 header h2{
-	color: white; 
-	font-size: 3em;
+  color: white; 
+  font-size: 3em;
 }
 
 header span{
-	font-size: 1.7em;
+  font-size: 1.7em;
 }
 
 ul.contact {
-	padding: 1.5em;
-	list-style: none;
-	cursor: default;
+  padding: 1.5em;
+  list-style: none;
+  cursor: default;
 }
 
 ul.contact li {
-	display: inline-block;
-	margin: 0 1em;
+  display: inline-block;
+  margin: 0 1em;
 }
 
 @media (max-width: 445px){
-	ul.contact li {
-		display: block;
-		margin: 0 1em;
-	}
-	header h2{
-		color: white; 
-		font-size: 1.80em;
-	}
+  ul.contact li {
+    display: block;
+    margin: 0 1em;
+  }
+  header h2{
+    color: white; 
+    font-size: 1.80em;
+  }
 
-	header span{
-		font-size: 1.25em;
-	}
+  header span{
+    font-size: 1.25em;
+  }
 }
 
 ul.contact li a {
-	font-size: 2.75em;
-	display: inline-block;
-	
+  font-size: 2.75em;
+  display: inline-block;
+  
 }
 
 .fa-facebook, .fa-google-plus,
 .fa-twitter, .fa-instagram{
-	color: #777;
-	-moz-transition: color 0.35s ease-in-out;
-	-webkit-transition: color 0.35s ease-in-out;
-	-o-transition: color 0.35s ease-in-out;
-	-ms-transition: color 0.35s ease-in-out;
-	transition: color 0.35s ease-in-out;
+  color: #777;
+  -moz-transition: color 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  -ms-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
 .fa-facebook:hover{
-	color: rgb(59,89,152);
-	-moz-transition: color 0.35s ease-in-out;
-	-webkit-transition: color 0.35s ease-in-out;
-	-o-transition: color 0.35s ease-in-out;
-	-ms-transition: color 0.35s ease-in-out;
-	transition: color 0.35s ease-in-out;
+  color: rgb(59,89,152);
+  -moz-transition: color 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  -ms-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
 .fa-google-plus:hover{
-	color: rgb(211, 72, 54);
-	-moz-transition: color 0.35s ease-in-out;
-	-webkit-transition: color 0.35s ease-in-out;
-	-o-transition: color 0.35s ease-in-out;
-	-ms-transition: color 0.35s ease-in-out;
-	transition: color 0.35s ease-in-out;
+  color: rgb(211, 72, 54);
+  -moz-transition: color 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  -ms-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
 .fa-twitter:hover{
-	color: rgb(64,153,255);
-	-moz-transition: color 0.35s ease-in-out;
-	-webkit-transition: color 0.35s ease-in-out;
-	-o-transition: color 0.35s ease-in-out;
-	-ms-transition: color 0.35s ease-in-out;
-	transition: color 0.35s ease-in-out;
+  color: rgb(64,153,255);
+  -moz-transition: color 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  -ms-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
 .fa-instagram:hover{
-	color: rgb(81, 127, 164);
-	-moz-transition: color 0.35s ease-in-out;
-	-webkit-transition: color 0.35s ease-in-out;
-	-o-transition: color 0.35s ease-in-out;
-	-ms-transition: color 0.35s ease-in-out;
-	transition: color 0.35s ease-in-out;
+  color: rgb(81, 127, 164);
+  -moz-transition: color 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  -ms-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
 .copyright{
-	background-color: rgba(20,20,20,1);
-	margin-bottom: -10px;
-	text-align: center;
+  background-color: rgba(20,20,20,1);
+  margin-bottom: -10px;
+  text-align: center;
 }
 
 .copyright .container{
-	padding: 3em;
-	border-top: 1px solid;
-	border-color: rgba(255,255,255,0.2);
-	color: #777;
+  padding: 3em;
+  border-top: 1px solid;
+  border-color: rgba(255,255,255,0.2);
+  color: #777;
 }

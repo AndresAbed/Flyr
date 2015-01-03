@@ -1,5 +1,5 @@
 .body{
-  background: url('../graybg.jpg');
+  background: url('graybg.jpg');
   background-repeat: repeat;
   margin-top: 100px;
 }
@@ -9,6 +9,15 @@
   margin-top: 150px;
 }
 
+.ue-errors{
+  text-align: center;
+  margin-top: -50px;
+}
+
+.ue-errors li{
+  display: block;
+}
+
 /* Profile image */
 
 .ue-information{
@@ -16,23 +25,29 @@
   color: #3D78D3;
 }
 
-.ue-img{
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: 0 1px 5px 0 #ccc;
-  color: #3D78D3;
-  border-color: #3D78D3;
-  margin-left: 5px;
-}
 
 .ue-img img{
   width: 250px;
   height: 250px;
 }
 
-.user-photo-label{
+.ue-file-btn{
   margin-top: 20px;
+}
+
+@media (max-width: 1200px){
+  .ue-file-btn{
+    margin: 0px auto;
+    margin-top: 15px;
+  }
+  .ue-img-col{
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .ue-cont{
+    margin-bottom: 150px;
+    margin-top: 0px;
+  }
 }
 
 /* Form */
@@ -46,24 +61,13 @@
 
 .ue-elements{
   margin: 20px;
-  text-align: right;
 }
 
 .ue-labels{
   margin-right: 10px;
 }
 
-.user-fields{
-  width: 50%;
-  display: inline-flex;
-  margin-right: 15%;
-}
-
 .email-conf-msj{
-  margin-right: 15%;
-}
-
-.ue-btns{
   margin-right: 15%;
 }
 
