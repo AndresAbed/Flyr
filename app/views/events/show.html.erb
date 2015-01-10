@@ -1,107 +1,110 @@
+<head>
+  <title><% @title = @events.name %></title>
+</head>
 <body class="events">
-	<div class="headerbg">
-		<div class="container header-content">
-			<div class="row">
-				<p class="event-name"><%= @events.name %></p>
-				<p class="club-name">Nombre boliche</p>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="event-buttons">
-			<button type="button" class="btn btn-info btn-sm" 
-			data-toggle="modal" data-target="#myModal">Editar evento</button>
-			<%= link_to 'Borrar evento', event_path(@events),
-	    method: :delete, data: { confirm: 'Eliminar?' },
-	    class: 'btn btn-danger btn-sm' %>
-	  </div>
+  <div class="headerbg">
+    <div class="container header-content">
+      <div class="row">
+        <p class="event-name"><%= @events.name %></p>
+        <p class="club-name">Nombre boliche</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="event-buttons">
+      <button type="button" class="btn btn-info btn-sm" 
+      data-toggle="modal" data-target="#myModal">Editar evento</button>
+      <%= link_to 'Borrar evento', event_path(@events),
+      method: :delete, data: { confirm: 'Eliminar?' },
+      class: 'btn btn-danger btn-sm' %>
+    </div>
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">
-		        <span aria-hidden="true">&times;</span><span class="sr-only">
-		        Cerrar</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Editar</h4>
-		      </div>
-		      <%= form_for :events, url: event_path(@events), method: :patch do |e| %>
-			      <div class="modal-body">
-							<div class="row">
-							  <%= e.text_field :name, :placeholder => 'Nombre del evento',
-							  class: 'form-control name-address-field' %>
-							  <%= e.text_field :address, :placeholder => 'Dirección',
-							  class: 'form-control name-address-field' %>
-							</div>
-							<div class="row modal-row-2">
-							  <%= e.label "Fecha", class: 'label label-danger title-label' %>
-	    					<%= e.date_select :date, :start_year => Date.current.year, 
-	    					:end_year => Date.current.year+5 %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+    aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">
+            Cerrar</span></button>
+            <h4 class="modal-title" id="myModalLabel">Editar</h4>
+          </div>
+          <%= form_for :events, url: event_path(@events), method: :patch do |e| %>
+            <div class="modal-body">
+              <div class="row">
+                <%= e.text_field :name, :placeholder => 'Nombre del evento',
+                class: 'form-control name-address-field' %>
+                <%= e.text_field :address, :placeholder => 'Dirección',
+                class: 'form-control name-address-field' %>
+              </div>
+              <div class="row modal-row-2">
+                <%= e.label "Fecha", class: 'label label-danger title-label' %>
+                <%= e.date_select :date, :start_year => Date.current.year, 
+                :end_year => Date.current.year+5 %>
 
-	    					<%= e.label "Hora", class: 'label label-danger title-label' %>
-	   					 	<%= e.time_select :hour, :ignore_date => true %>
+                <%= e.label "Hora", class: 'label label-danger title-label' %>
+                <%= e.time_select :hour, :ignore_date => true %>
 
-	   					 	<%= e.label "Edad", class: 'label label-danger title-label' %>
-      					<%= e.select :age, [['+18'],['+21'],['+25']] %>
-							</div>
-							<div class="row">
-						    <h4><%= e.label "Descripción del evento", 
-						    class: 'label label-success title-label' %></h4>
-					      <%= e.text_area :description, class: 'desc-area' %>
-					   	</div>
-					   	<div class="row modal-row-4">
-						  	<%= e.label "Portada", class: 'image-title' %>
-					      <%= e.file_field :image %>
+                <%= e.label "Edad", class: 'label label-danger title-label' %>
+                <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+              </div>
+              <div class="row">
+                <h4><%= e.label "Descripción del evento", 
+                class: 'label label-success title-label' %></h4>
+                <%= e.text_area :description, class: 'desc-area' %>
+              </div>
+              <div class="row modal-row-4">
+                <%= e.label "Portada", class: 'image-title' %>
+                <%= e.file_field :image %>
 
-					      <%= e.label "Logo", class: 'image-title' %>
-     						<%= e.file_field :club_logo %>
-					   	</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" 
-			        data-dismiss="modal">Cancelar</button>
-			        <%= e.submit "Guardar", class: "btn btn-primary" %>
-			      </div>
-		      <% end %>
-		    </div>
-		  </div>
-		</div>
-		<div class="row image">
-			<img src="<%= @events.image.url %>">
-		</div>
-	</div>	
-	<div class="container event-content">
-		<div class="col-lg-8">
-			<p class="description-name"><%= @events.name %></p>
-			<p><%= @events.description %></p>
-			<hr class="featurette-divider">
-			<div class="row">
-				<%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
-				<%= link_to 'Volver', url_for(:back), class: 'btn btn-primary' %>
-			</div>
-		</div>
-		<div id="info-col" class="col-lg-4">
-			<div class="container event-logo" 
-				style="background-image: url(<%= @events.club_logo.url %>);">
-			</div>
-			<ul class="info-list">
-				<li class="address-item">
-					<p class="address-title">Dirección:</p>
-				</li>
-				<li>
-					<p class="address"><%= @events.address %></p>
-				</li>
-				<li class="info-item">
-					<p class="date"><i class="fa fa-calendar fa-cal"></i>
-					<%= l @events.date, :format => '%B' %>
-					<b><%= @events.date.strftime('%d') %></b></p>
-					<p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
-					Hora<b><%= @events.hour.strftime("%H:%M") %></b></p>
-					<p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
-					Edad<b><%= @events.age %></b></p>
-				</li>
-			</ul>
-		</div>
-	</div>
-</body>		
+                <%= e.label "Logo", class: 'image-title' %>
+                <%= e.file_field :club_logo %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" 
+              data-dismiss="modal">Cancelar</button>
+              <%= e.submit "Guardar", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row image">
+      <img src="<%= @events.image.url %>">
+    </div>
+  </div>  
+  <div class="container event-content">
+    <div class="col-lg-8">
+      <p class="description-name"><%= @events.name %></p>
+      <p><%= @events.description %></p>
+      <hr class="featurette-divider">
+      <div class="row">
+        <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
+        <%= link_to 'Volver', url_for(:back), class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <div id="info-col" class="col-lg-4">
+      <div class="container event-logo" 
+        style="background-image: url(<%= @events.club_logo.url %>);">
+      </div>
+      <ul class="info-list">
+        <li class="address-item">
+          <p class="address-title">Dirección:</p>
+        </li>
+        <li>
+          <p class="address"><%= @events.address %></p>
+        </li>
+        <li class="info-item">
+          <p class="date"><i class="fa fa-calendar fa-cal"></i>
+          <%= l @events.date, :format => '%B' %>
+          <b><%= @events.date.strftime('%d') %></b></p>
+          <p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
+          Hora<b><%= @events.hour.strftime("%H:%M") %></b></p>
+          <p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
+          Edad<b><%= @events.age %></b></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>   

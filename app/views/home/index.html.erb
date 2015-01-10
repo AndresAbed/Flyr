@@ -1,221 +1,240 @@
+<head>
+  <title><% @title = "Inicio" %></title>
+</head>
 <!-- Carousel -->
-<button id="example" type="button" class="banner-btn" data-toggle="modal" 
+<button id="modal-banner" type="button" class="banner-btn" data-toggle="modal" 
 data-target=".bs-example-modal-sm" data-toggle="tooltip" 
-data-placement="right" title="Actualizar banner"></button>
+data-placement="right" title="Cambiar banner"></button>
 
 <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	      <h4 class="modal-title" id="myModalLabel">Actualizar banner</h4>
-	    </div>
-	    <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
-	     	<div class="modal-body">
-					<div class="row images-fields">
-					  <%= b.label "Imagen 1", class: "label label-success image-label" %>
-					  <%= b.file_field :image1, class: "choose-btn" %>
-					</div>
-					<div class="row images-fields">
-					  <%= b.label "Imagen 2", class: "label label-success image-label" %>
-					  <%= b.file_field :image2, class: "choose-btn" %>
-					</div>
-					<div class="row images-fields">
-					  <%= b.label "Imagen 3", class: "label label-success image-label" %>
-					  <%= b.file_field :image3, class: "choose-btn" %>
-					</div>
-					<div class="row images-fields">
-					  <%= b.label "Imagen 4", class: "label label-success image-label" %>
-					  <%= b.file_field :image4, class: "choose-btn" %>
-					</div>
-		    </div>
-		    <div class="modal-footer">
-		      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-		      <%= b.submit 'Actualizar', class: "btn btn-primary" %>
-		    </div>
-	    <% end %>
-	  </div>
-	</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Actualizar banner</h4>
+      </div>
+      <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
+        <div class="modal-body">
+          <div class="row images-fields">
+            <%= b.label "Imagen 1", class: "label label-success image-label" %>
+            <%= b.file_field :image1, class: "choose-btn" %>
+          </div>
+          <div class="row images-fields">
+            <%= b.label "Imagen 2", class: "label label-success image-label" %>
+            <%= b.file_field :image2, class: "choose-btn" %>
+          </div>
+          <div class="row images-fields">
+            <%= b.label "Imagen 3", class: "label label-success image-label" %>
+            <%= b.file_field :image3, class: "choose-btn" %>
+          </div>
+          <div class="row images-fields">
+            <%= b.label "Imagen 4", class: "label label-success image-label" %>
+            <%= b.file_field :image4, class: "choose-btn" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= b.submit 'Actualizar', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class="carousel slide" id="myCarousel">
-	<ol class="carousel-indicators">
+  <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
   </ol>   
-	<div class="carousel-inner">
-		<div class="item active">
-			<img alt="Image1" src="<%= @banner.first.image1.url %>">
-		</div>
-		<div class="item">
-			<img alt="Image2" src="<%= @banner.first.image2.url %>">
-		</div>
-		<div class="item">
-			<img alt="Image3" src="<%= @banner.first.image3.url %>">
-		</div>
-		<div class="item">
-			<img alt="Image4" src="<%= @banner.first.image4.url %>">
-		</div>
-	</div>
-	<a class="left carousel-control" data-slide="prev" href="#myCarousel">‹</a>
-	<a class="right carousel-control" data-slide="next" href="#myCarousel">›</a>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img alt="Image1" src="<%= @banner.first.image1.url %>">
+    </div>
+    <div class="item">
+      <img alt="Image2" src="<%= @banner.first.image2.url %>">
+    </div>
+    <div class="item">
+      <img alt="Image3" src="<%= @banner.first.image3.url %>">
+    </div>
+    <div class="item">
+      <img alt="Image4" src="<%= @banner.first.image4.url %>">
+    </div>
+  </div>
+  <a class="left carousel-control" data-slide="prev" href="#myCarousel">‹</a>
+  <a class="right carousel-control" data-slide="next" href="#myCarousel">›</a>
 </div>
 
 <!-- Events -->
 <div class="tabbable-panel">
-	<div class="tabbable-line">
-		<ul class="nav nav-tabs ">
-			<li id="monday-mark">
-				<a href="#monday" data-toggle="tab">Lunes</a>
-			</li>
-			<li id="tuesday-mark">
-				<a href="#tuesday" data-toggle="tab">Martes</a>
-			</li>
-			<li id="wednesday-mark">
-				<a href="#wednesday" data-toggle="tab">Miercoles</a>
-			</li>
-			<li id="thursday-mark">
-				<a href="#thursday" data-toggle="tab">Jueves</a>
-			</li>
-			<li id="friday-mark">
-				<a href="#friday" data-toggle="tab">Viernes</a>
-			</li>
-			<li id="saturday-mark">
-				<a href="#saturday" data-toggle="tab">Sabado</a>
-			</li>
-			<li id="sunday-mark">
-				<a href="#sunday" data-toggle="tab">Domingo</a>
-			</li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane" id="monday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="tuesday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="wednesday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="thursday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="friday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="saturday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-			<div class="tab-pane" id="sunday">
-				<% @events.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption left-to-right">
-						  <h1 class="pic-title"><%= e.name %></h1>
-						  <p class="pic-subtitle"><%= e.address %></p>
-						  <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="tabbable-line">
+    <ul class="nav nav-tabs ">
+      <li id="all-mark">
+        <a href="#all" data-toggle="tab"><i class="fa fa-search" 
+        style="font-size: 12pt; color: black;"></i></a>
+      </li>
+      <li id="monday-mark">
+        <a href="#monday" data-toggle="tab">Lunes</a>
+      </li>
+      <li id="tuesday-mark">
+        <a href="#tuesday" data-toggle="tab">Martes</a>
+      </li>
+      <li id="wednesday-mark">
+        <a href="#wednesday" data-toggle="tab">Miercoles</a>
+      </li>
+      <li id="thursday-mark">
+        <a href="#thursday" data-toggle="tab">Jueves</a>
+      </li>
+      <li id="friday-mark">
+        <a href="#friday" data-toggle="tab">Viernes</a>
+      </li>
+      <li id="saturday-mark">
+        <a href="#saturday" data-toggle="tab">Sabado</a>
+      </li>
+      <li id="sunday-mark">
+        <a href="#sunday" data-toggle="tab">Domingo</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" id="all">
+        <%= form_tag home_path, :method => 'get', :id => "events_search" do %>  
+          <div class="input-group search">
+            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+            <%= text_field_tag :search, params[:search], 
+            :placeholder => "Buscar nombre, dirección o edad", 
+            class: 'form-control' %>
+          </div>
+          <div id="events-partial"><%= render 'events' %></div>
+          <%= submit_tag 'submit', disabled: true, :style => "display: none;" %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="monday">
+        <% @monday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="tuesday">
+        <% @tuesday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="wednesday">
+        <% @wednesday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="thursday">
+        <% @thursday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="friday">
+        <% @friday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="saturday">
+        <% @saturday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="sunday">
+        <% @sunday.each do |e| %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Grid -->
 <div class="grid">
-	<div class="container grids-container">
-			<div class="pic">
-			    <img src="http://s29.postimg.org/44rfw60k7/week.jpg" class="pic-image" alt="Pic">
-			    <span class="pic-caption left-to-right">
-			        <h1 class="pic-title">Week</h1>
-			        <p class="pic-subtitle">Subtitle</p>
-			        <a href="#" class="btn-default btn-sm">Ver boliche</a>
-			    </span>
-			</div>
+  <div class="container grids-container">
+      <div class="pic">
+          <img src="http://s29.postimg.org/44rfw60k7/week.jpg" class="pic-image" alt="Pic">
+          <span class="pic-caption left-to-right">
+              <h1 class="pic-title">Week</h1>
+              <p class="pic-subtitle">Subtitle</p>
+              <a href="#" class="btn-default btn-sm">Ver boliche</a>
+          </span>
+      </div>
 
-			<div class="pic">
-			    <img src="http://3.bp.blogspot.com/-bYlwVdMJCxE/UzTgRZ_07iI/AAAAAAAAE_E/7Jya-StymwE/s1600/jet+club+divino+(2).jpg" class="pic-image" alt="Pic">
-			    <span class="pic-caption left-to-right">
-			        <h1 class="pic-title">Jet</h1>
-			        <p class="pic-subtitle">Subtitle</p>
-			        <a href="#" class="btn-default btn-sm">Ver boliche</a>
-			    </span>
-			</div>
+      <div class="pic">
+          <img src="http://3.bp.blogspot.com/-bYlwVdMJCxE/UzTgRZ_07iI/AAAAAAAAE_E/7Jya-StymwE/s1600/jet+club+divino+(2).jpg" class="pic-image" alt="Pic">
+          <span class="pic-caption left-to-right">
+              <h1 class="pic-title">Jet</h1>
+              <p class="pic-subtitle">Subtitle</p>
+              <a href="#" class="btn-default btn-sm">Ver boliche</a>
+          </span>
+      </div>
 
-			<div class="pic">
-			    <img src="http://s29.postimg.org/40kau27vb/eldivino.jpg" class="pic-image" alt="Pic">
-			    <span class="pic-caption left-to-right">
-			        <h1 class="pic-title">El Divino</h1>
-			        <p class="pic-subtitle">Subtitle</p>
-			        <a href="#" class="btn-default btn-sm">Ver boliche</a>
-			    </span>
-			</div>
+      <div class="pic">
+          <img src="http://s29.postimg.org/40kau27vb/eldivino.jpg" class="pic-image" alt="Pic">
+          <span class="pic-caption left-to-right">
+              <h1 class="pic-title">El Divino</h1>
+              <p class="pic-subtitle">Subtitle</p>
+              <a href="#" class="btn-default btn-sm">Ver boliche</a>
+          </span>
+      </div>
 
-			<div class="pic">
-			    <img src="http://s29.postimg.org/6ebfck11z/laboite.jpg" class="pic-image" alt="Pic">
-			    <span class="pic-caption left-to-right">
-			        <h1 class="pic-title">La Boite</h1>
-			        <p class="pic-subtitle">Subtitle</p>
-			        <a href="#" class="btn-default btn-sm">Ver boliche</a>
-			    </span>
-			</div>
+      <div class="pic">
+          <img src="http://s29.postimg.org/6ebfck11z/laboite.jpg" class="pic-image" alt="Pic">
+          <span class="pic-caption left-to-right">
+              <h1 class="pic-title">La Boite</h1>
+              <p class="pic-subtitle">Subtitle</p>
+              <a href="#" class="btn-default btn-sm">Ver boliche</a>
+          </span>
+      </div>
 
-	</div>
+  </div>
 </div>

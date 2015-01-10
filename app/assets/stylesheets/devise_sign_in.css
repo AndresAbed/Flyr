@@ -1,8 +1,5 @@
 .unique{
-  background: url('../banner.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url('banner.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -35,9 +32,6 @@
   background-color: white;
   border-radius: 0px 10px 10px 0px;
   box-shadow: 0 1px 5px 0 #ccc;
-  -webkit-box-shadow: 0 1px 5px 0 #ccc;
-  -o-box-shadow: 0 1px 5px 0 #ccc;
-  -moz-box-shadow: 0 1px 5px 0 #ccc;
   border-color: #3D78D3;
 }
 
@@ -64,9 +58,6 @@
   padding: 30px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px 0px 10px 10px;
-  rder: -moz-border-radius: 10px 0px 10px 10px;
-  -webkit-border-radius: 10px 0px 10px 10px;
-  bo0px solid #000000;
   box-shadow: 0 1px 5px 0 #ccc;
   color: #3D78D3;
   border-color: #3D78D3;

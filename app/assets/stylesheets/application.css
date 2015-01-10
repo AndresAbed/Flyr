@@ -239,46 +239,26 @@ ul.contact li a {
 .fa-facebook, .fa-google-plus,
 .fa-twitter, .fa-instagram{
   color: #777;
-  -moz-transition: color 0.35s ease-in-out;
-  -webkit-transition: color 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out;
-  -ms-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
 .fa-facebook:hover{
   color: rgb(59,89,152);
-  -moz-transition: color 0.35s ease-in-out;
-  -webkit-transition: color 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out;
-  -ms-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
 .fa-google-plus:hover{
   color: rgb(211, 72, 54);
-  -moz-transition: color 0.35s ease-in-out;
-  -webkit-transition: color 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out;
-  -ms-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
 .fa-twitter:hover{
   color: rgb(64,153,255);
-  -moz-transition: color 0.35s ease-in-out;
-  -webkit-transition: color 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out;
-  -ms-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
 .fa-instagram:hover{
   color: rgb(81, 127, 164);
-  -moz-transition: color 0.35s ease-in-out;
-  -webkit-transition: color 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out;
-  -ms-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
