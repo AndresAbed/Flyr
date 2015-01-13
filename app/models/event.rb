@@ -32,4 +32,7 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # Geocoder
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
 end

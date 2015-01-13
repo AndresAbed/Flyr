@@ -70,8 +70,8 @@
         </div>
       </div>
     </div>
-    <div class="row image">
-      <img src="<%= @events.image.url %>">
+    <div class="row event-image">
+      <img src="<%= @events.image.url %>" style="width: 100%;">
     </div>
   </div>  
   <div class="container event-content">
@@ -79,9 +79,15 @@
       <p class="description-name"><%= @events.name %></p>
       <p><%= @events.description %></p>
       <hr class="featurette-divider">
-      <div class="row">
+      <div class="map">
+        <div id="map" data-latitude="<%= @events.latitude %>" 
+        data-longitude="<%= @events.longitude %>" 
+        data-markerName="<%= @events.name %>"
+        style='height: 300px;'></div>
+      </div>
+      <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
-        <%= link_to 'Volver', url_for(:back), class: 'btn btn-primary' %>
+        <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
       </div>
     </div>
     <div id="info-col" class="col-lg-4">
@@ -93,7 +99,7 @@
           <p class="address-title">Dirección:</p>
         </li>
         <li>
-          <p class="address"><%= @events.address %></p>
+          <p class="address"><%= @events.address.partition(',').first %></p>
         </li>
         <li class="info-item">
           <p class="date"><i class="fa fa-calendar fa-cal"></i>
@@ -105,6 +111,35 @@
           Edad<b><%= @events.age %></b></p>
         </li>
       </ul>
+      <hr class="featurette-divider">
     </div>
   </div>
+
+  <!-- Goole maps -->
+  <script type="text/javascript">
+    $(document).ready(function(){
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {
+        maxZoom: 17, 
+        minZoom: 13,
+        mapTypeControl: false,
+        panControl: false,
+        noClear: true
+      }, internal: {id: "map"}}, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": $("#map").data('latitude'),
+            "lng": $("#map").data('longitude'),
+            "picture": {
+              "url": "http://uptownartsdistrict.org/wp-content/uploads/leaflet-maps-marker-icons/map-marker.png",
+              "width":  40,
+              "height": 40
+            }
+          }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  </script>
 </body>   

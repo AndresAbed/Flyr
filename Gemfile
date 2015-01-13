@@ -35,15 +35,23 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pry'
+# Users login
 gem 'devise'
 gem 'omniauth-facebook', '1.4.0'
+#DB
 gem 'pg'
+# Bootstrap
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
+# Rails Internationalization 
 gem 'rails-i18n', '~> 4.0.0'
+# Image attachment
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "friendly_id"
 gem "letter_opener", :group => :development
+# Google maps
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'geocoder'

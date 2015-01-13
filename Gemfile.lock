@@ -45,7 +45,6 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
-    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -67,6 +66,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    geocoder (1.2.6)
+    gmaps4rails (2.1.2)
     hashie (3.3.1)
     hike (1.2.3)
     httpauth (0.2.1)
@@ -93,7 +94,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.4.2)
     multi_json (1.10.1)
@@ -115,10 +115,6 @@ GEM
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -160,7 +156,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    slop (3.6.0)
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -192,6 +187,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.7.0)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -202,6 +198,8 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   friendly_id
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
@@ -209,7 +207,6 @@ DEPENDENCIES
   omniauth-facebook (= 1.4.0)
   paperclip!
   pg
-  pry
   rails (= 4.1.4)
   rails-i18n (~> 4.0.0)
   rails_12factor
@@ -220,3 +217,4 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
+  underscore-rails
