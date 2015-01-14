@@ -1,11 +1,11 @@
 <head>
-  <title><% @title = @events.name %></title>
+  <title><% @title = @event.name %></title>
 </head>
 <body class="events">
   <div class="headerbg">
     <div class="container header-content">
       <div class="row">
-        <p class="event-name"><%= @events.name %></p>
+        <p class="event-name"><%= @event.name %></p>
         <p class="club-name">Nombre boliche</p>
       </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="event-buttons">
       <button type="button" class="btn btn-info btn-sm" 
       data-toggle="modal" data-target="#myModal">Editar evento</button>
-      <%= link_to 'Borrar evento', event_path(@events),
+      <%= link_to 'Borrar evento', event_path(@event),
       method: :delete, data: { confirm: 'Eliminar?' },
       class: 'btn btn-danger btn-sm' %>
     </div>
@@ -29,7 +29,7 @@
             Cerrar</span></button>
             <h4 class="modal-title" id="myModalLabel">Editar</h4>
           </div>
-          <%= form_for :events, url: event_path(@events), method: :patch do |e| %>
+          <%= form_for :events, url: event_path(@event), method: :patch do |e| %>
             <div class="modal-body">
               <div class="row">
                 <%= e.text_field :name, :placeholder => 'Nombre del evento',
@@ -71,20 +71,33 @@
       </div>
     </div>
     <div class="row event-image">
-      <img src="<%= @events.image.url %>" style="width: 100%;">
+      <img src="<%= @event.image.url %>" style="width: 100%;">
     </div>
   </div>  
   <div class="container event-content">
     <div class="col-lg-8">
-      <p class="description-name"><%= @events.name %></p>
-      <p><%= @events.description %></p>
+      <p class="description-name"><%= @event.name %></p>
+      <p><%= @event.description %></p>
       <hr class="featurette-divider">
       <div class="map">
-        <div id="map" data-latitude="<%= @events.latitude %>" 
-        data-longitude="<%= @events.longitude %>" 
-        data-markerName="<%= @events.name %>"
+        <div id="map" data-latitude="<%= @event.latitude %>" 
+        data-longitude="<%= @event.longitude %>" 
+        data-markerName="<%= @event.name %>"
         style='height: 300px;'></div>
       </div>
+      <h1>Eventos cercanos</h1>
+      <% for e in @event.nearbys(2) %>
+        <% if e.date == @event.date %>
+          <div id="events-pic" class="pic">
+            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <%= link_to 'Ver evento', e, class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
+        <% end %>  
+      <% end %> 
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
@@ -92,23 +105,23 @@
     </div>
     <div id="info-col" class="col-lg-4">
       <div class="container event-logo" 
-        style="background-image: url(<%= @events.club_logo.url %>);">
+        style="background-image: url(<%= @event.club_logo.url %>);">
       </div>
       <ul class="info-list">
         <li class="address-item">
           <p class="address-title">Dirección:</p>
         </li>
         <li>
-          <p class="address"><%= @events.address.partition(',').first %></p>
+          <p class="address"><%= @event.address.partition(',').first %></p>
         </li>
         <li class="info-item">
           <p class="date"><i class="fa fa-calendar fa-cal"></i>
-          <%= l @events.date, :format => '%B' %>
-          <b><%= @events.date.strftime('%d') %></b></p>
+          <%= l @event.date, :format => '%B' %>
+          <b><%= @event.date.strftime('%d') %></b></p>
           <p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
-          Hora<b><%= @events.hour.strftime("%H:%M") %></b></p>
+          Hora<b><%= @event.hour.strftime("%H:%M") %></b></p>
           <p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
-          Edad<b><%= @events.age %></b></p>
+          Edad<b><%= @event.age %></b></p>
         </li>
       </ul>
       <hr class="featurette-divider">
@@ -120,12 +133,13 @@
     $(document).ready(function(){
       handler = Gmaps.build('Google');
       handler.buildMap({ provider: {
-        maxZoom: 17, 
-        minZoom: 13,
-        mapTypeControl: false,
-        panControl: false,
-        noClear: true
-      }, internal: {id: "map"}}, function(){
+          maxZoom: 17, 
+          minZoom: 13,
+          mapTypeControl: false,
+          panControl: false,
+          noClear: true
+        }, 
+      internal: {id: "map"}}, function(){
         markers = handler.addMarkers([
           {
             "lat": $("#map").data('latitude'),
@@ -139,6 +153,7 @@
         ]);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
+        handler.getMap().setZoom(17);
       });
     })
   </script>

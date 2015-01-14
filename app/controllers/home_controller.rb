@@ -10,6 +10,6 @@ class HomeController < ApplicationController
   	@saturday = Event.where("extract(dow from date) = ?", 6)
   	@sunday = Event.where("extract(dow from date) = ?", 0)
 
-    @events = Event.search(params[:search])
+    @event = Event.search(params[:search])
   end
 end

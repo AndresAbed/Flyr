@@ -4,29 +4,29 @@ class EventsController < ApplicationController
   end
 
   def create
-  	@events = Event.new(event_params)
-	  if @events.save
-      redirect_to @events
+  	@event = Event.new(event_params)
+	  if @event.save
+      redirect_to @event
 	  end
   end
 
   def show
-  	@events = Event.friendly.find(params[:id])
+  	@event = Event.friendly.find(params[:id])
 	end
 
   def update
-    @events = Event.friendly.find(params[:id])
+    @event = Event.friendly.find(params[:id])
    
-    if @events.update(event_params)
-      redirect_to @events
+    if @event.update(event_params)
+      redirect_to @event
     else
       render 'edit'
     end
   end
 
   def destroy
-    @events = Event.friendly.find(params[:id])
-    @events.destroy
+    @event = Event.friendly.find(params[:id])
+    @event.destroy
    
     redirect_to home_path
   end
