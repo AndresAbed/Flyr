@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
  
 
-  helper_method :current_user, :log_in_using_fb?
+  helper_method :current_user, :log_in_using_OAuth?
   alias_method :devise_current_user, :current_user
 
   def current_user
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Check if user is loged in with facebook
-  def log_in_using_fb?
+  def log_in_using_OAuth?
     if session[:user_id]
       User.find(session[:user_id]) 
     end 

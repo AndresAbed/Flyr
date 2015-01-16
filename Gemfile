@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 # Users login
 gem 'devise'
 gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-twitter'
 #DB
 gem 'pg'
 # Bootstrap
@@ -55,3 +56,4 @@ gem "letter_opener", :group => :development
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
+# Social share buttons

@@ -1,4 +1,7 @@
- <!-- Modal rrpp -->
+<head>
+  <title><%= @title = 'QSH' %></title>
+</head>
+<!-- Modal rrpp -->
 <div class="modal fade" id="rrpp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -64,7 +67,7 @@
         </div>
       </div>
 
-      <div class="fb-btn">
+      <div class="Oauth-btns">
         <% if current_user %>
           Signed in as <strong><%= current_user.name %></strong>!
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
@@ -74,6 +77,10 @@
             Iniciar sesión con Facebook
           </a>
         <% end %>
+        <a href="/auth/twitter" class="btn btn-block btn-social btn-twitter">
+            <i id="fb-sign-in" class="fa fa-twitter"></i>
+            Iniciar sesión con Twitter
+        </a>
       </div>
     </div>
   </div>

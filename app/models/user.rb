@@ -20,8 +20,14 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.image = auth.info.image
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save(:validate => false) 
+      user.skip_confirmation!
+      user.save(:validate => false)
     end
+  end
+
+  before_save :set_dummy_email
+
+  def set_dummy_email
+    self.email ||= "Ingresa un email"
   end
 end
