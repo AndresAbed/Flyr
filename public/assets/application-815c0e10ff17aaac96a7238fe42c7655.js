@@ -12709,6 +12709,2414 @@ return jQuery;
 
 
 
+//     Underscore.js 1.7.0
+//     http://underscorejs.org
+//     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+//     Underscore may be freely distributed under the MIT license.
+
+(function() {
+
+  // Baseline setup
+  // --------------
+
+  // Establish the root object, `window` in the browser, or `exports` on the server.
+  var root = this;
+
+  // Save the previous value of the `_` variable.
+  var previousUnderscore = root._;
+
+  // Save bytes in the minified (but not gzipped) version:
+  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+
+  // Create quick reference variables for speed access to core prototypes.
+  var
+    push             = ArrayProto.push,
+    slice            = ArrayProto.slice,
+    concat           = ArrayProto.concat,
+    toString         = ObjProto.toString,
+    hasOwnProperty   = ObjProto.hasOwnProperty;
+
+  // All **ECMAScript 5** native function implementations that we hope to use
+  // are declared here.
+  var
+    nativeIsArray      = Array.isArray,
+    nativeKeys         = Object.keys,
+    nativeBind         = FuncProto.bind;
+
+  // Create a safe reference to the Underscore object for use below.
+  var _ = function(obj) {
+    if (obj instanceof _) return obj;
+    if (!(this instanceof _)) return new _(obj);
+    this._wrapped = obj;
+  };
+
+  // Export the Underscore object for **Node.js**, with
+  // backwards-compatibility for the old `require()` API. If we're in
+  // the browser, add `_` as a global object.
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = _;
+    }
+    exports._ = _;
+  } else {
+    root._ = _;
+  }
+
+  // Current version.
+  _.VERSION = '1.7.0';
+
+  // Internal function that returns an efficient (for current engines) version
+  // of the passed-in callback, to be repeatedly applied in other Underscore
+  // functions.
+  var createCallback = function(func, context, argCount) {
+    if (context === void 0) return func;
+    switch (argCount == null ? 3 : argCount) {
+      case 1: return function(value) {
+        return func.call(context, value);
+      };
+      case 2: return function(value, other) {
+        return func.call(context, value, other);
+      };
+      case 3: return function(value, index, collection) {
+        return func.call(context, value, index, collection);
+      };
+      case 4: return function(accumulator, value, index, collection) {
+        return func.call(context, accumulator, value, index, collection);
+      };
+    }
+    return function() {
+      return func.apply(context, arguments);
+    };
+  };
+
+  // A mostly-internal function to generate callbacks that can be applied
+  // to each element in a collection, returning the desired result — either
+  // identity, an arbitrary callback, a property matcher, or a property accessor.
+  _.iteratee = function(value, context, argCount) {
+    if (value == null) return _.identity;
+    if (_.isFunction(value)) return createCallback(value, context, argCount);
+    if (_.isObject(value)) return _.matches(value);
+    return _.property(value);
+  };
+
+  // Collection Functions
+  // --------------------
+
+  // The cornerstone, an `each` implementation, aka `forEach`.
+  // Handles raw objects in addition to array-likes. Treats all
+  // sparse array-likes as if they were dense.
+  _.each = _.forEach = function(obj, iteratee, context) {
+    if (obj == null) return obj;
+    iteratee = createCallback(iteratee, context);
+    var i, length = obj.length;
+    if (length === +length) {
+      for (i = 0; i < length; i++) {
+        iteratee(obj[i], i, obj);
+      }
+    } else {
+      var keys = _.keys(obj);
+      for (i = 0, length = keys.length; i < length; i++) {
+        iteratee(obj[keys[i]], keys[i], obj);
+      }
+    }
+    return obj;
+  };
+
+  // Return the results of applying the iteratee to each element.
+  _.map = _.collect = function(obj, iteratee, context) {
+    if (obj == null) return [];
+    iteratee = _.iteratee(iteratee, context);
+    var keys = obj.length !== +obj.length && _.keys(obj),
+        length = (keys || obj).length,
+        results = Array(length),
+        currentKey;
+    for (var index = 0; index < length; index++) {
+      currentKey = keys ? keys[index] : index;
+      results[index] = iteratee(obj[currentKey], currentKey, obj);
+    }
+    return results;
+  };
+
+  var reduceError = 'Reduce of empty array with no initial value';
+
+  // **Reduce** builds up a single result from a list of values, aka `inject`,
+  // or `foldl`.
+  _.reduce = _.foldl = _.inject = function(obj, iteratee, memo, context) {
+    if (obj == null) obj = [];
+    iteratee = createCallback(iteratee, context, 4);
+    var keys = obj.length !== +obj.length && _.keys(obj),
+        length = (keys || obj).length,
+        index = 0, currentKey;
+    if (arguments.length < 3) {
+      if (!length) throw new TypeError(reduceError);
+      memo = obj[keys ? keys[index++] : index++];
+    }
+    for (; index < length; index++) {
+      currentKey = keys ? keys[index] : index;
+      memo = iteratee(memo, obj[currentKey], currentKey, obj);
+    }
+    return memo;
+  };
+
+  // The right-associative version of reduce, also known as `foldr`.
+  _.reduceRight = _.foldr = function(obj, iteratee, memo, context) {
+    if (obj == null) obj = [];
+    iteratee = createCallback(iteratee, context, 4);
+    var keys = obj.length !== + obj.length && _.keys(obj),
+        index = (keys || obj).length,
+        currentKey;
+    if (arguments.length < 3) {
+      if (!index) throw new TypeError(reduceError);
+      memo = obj[keys ? keys[--index] : --index];
+    }
+    while (index--) {
+      currentKey = keys ? keys[index] : index;
+      memo = iteratee(memo, obj[currentKey], currentKey, obj);
+    }
+    return memo;
+  };
+
+  // Return the first value which passes a truth test. Aliased as `detect`.
+  _.find = _.detect = function(obj, predicate, context) {
+    var result;
+    predicate = _.iteratee(predicate, context);
+    _.some(obj, function(value, index, list) {
+      if (predicate(value, index, list)) {
+        result = value;
+        return true;
+      }
+    });
+    return result;
+  };
+
+  // Return all the elements that pass a truth test.
+  // Aliased as `select`.
+  _.filter = _.select = function(obj, predicate, context) {
+    var results = [];
+    if (obj == null) return results;
+    predicate = _.iteratee(predicate, context);
+    _.each(obj, function(value, index, list) {
+      if (predicate(value, index, list)) results.push(value);
+    });
+    return results;
+  };
+
+  // Return all the elements for which a truth test fails.
+  _.reject = function(obj, predicate, context) {
+    return _.filter(obj, _.negate(_.iteratee(predicate)), context);
+  };
+
+  // Determine whether all of the elements match a truth test.
+  // Aliased as `all`.
+  _.every = _.all = function(obj, predicate, context) {
+    if (obj == null) return true;
+    predicate = _.iteratee(predicate, context);
+    var keys = obj.length !== +obj.length && _.keys(obj),
+        length = (keys || obj).length,
+        index, currentKey;
+    for (index = 0; index < length; index++) {
+      currentKey = keys ? keys[index] : index;
+      if (!predicate(obj[currentKey], currentKey, obj)) return false;
+    }
+    return true;
+  };
+
+  // Determine if at least one element in the object matches a truth test.
+  // Aliased as `any`.
+  _.some = _.any = function(obj, predicate, context) {
+    if (obj == null) return false;
+    predicate = _.iteratee(predicate, context);
+    var keys = obj.length !== +obj.length && _.keys(obj),
+        length = (keys || obj).length,
+        index, currentKey;
+    for (index = 0; index < length; index++) {
+      currentKey = keys ? keys[index] : index;
+      if (predicate(obj[currentKey], currentKey, obj)) return true;
+    }
+    return false;
+  };
+
+  // Determine if the array or object contains a given value (using `===`).
+  // Aliased as `include`.
+  _.contains = _.include = function(obj, target) {
+    if (obj == null) return false;
+    if (obj.length !== +obj.length) obj = _.values(obj);
+    return _.indexOf(obj, target) >= 0;
+  };
+
+  // Invoke a method (with arguments) on every item in a collection.
+  _.invoke = function(obj, method) {
+    var args = slice.call(arguments, 2);
+    var isFunc = _.isFunction(method);
+    return _.map(obj, function(value) {
+      return (isFunc ? method : value[method]).apply(value, args);
+    });
+  };
+
+  // Convenience version of a common use case of `map`: fetching a property.
+  _.pluck = function(obj, key) {
+    return _.map(obj, _.property(key));
+  };
+
+  // Convenience version of a common use case of `filter`: selecting only objects
+  // containing specific `key:value` pairs.
+  _.where = function(obj, attrs) {
+    return _.filter(obj, _.matches(attrs));
+  };
+
+  // Convenience version of a common use case of `find`: getting the first object
+  // containing specific `key:value` pairs.
+  _.findWhere = function(obj, attrs) {
+    return _.find(obj, _.matches(attrs));
+  };
+
+  // Return the maximum element (or element-based computation).
+  _.max = function(obj, iteratee, context) {
+    var result = -Infinity, lastComputed = -Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = obj.length === +obj.length ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value > result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = _.iteratee(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Return the minimum element (or element-based computation).
+  _.min = function(obj, iteratee, context) {
+    var result = Infinity, lastComputed = Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = obj.length === +obj.length ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value < result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = _.iteratee(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed < lastComputed || computed === Infinity && result === Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Shuffle a collection, using the modern version of the
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+  _.shuffle = function(obj) {
+    var set = obj && obj.length === +obj.length ? obj : _.values(obj);
+    var length = set.length;
+    var shuffled = Array(length);
+    for (var index = 0, rand; index < length; index++) {
+      rand = _.random(0, index);
+      if (rand !== index) shuffled[index] = shuffled[rand];
+      shuffled[rand] = set[index];
+    }
+    return shuffled;
+  };
+
+  // Sample **n** random values from a collection.
+  // If **n** is not specified, returns a single random element.
+  // The internal `guard` argument allows it to work with `map`.
+  _.sample = function(obj, n, guard) {
+    if (n == null || guard) {
+      if (obj.length !== +obj.length) obj = _.values(obj);
+      return obj[_.random(obj.length - 1)];
+    }
+    return _.shuffle(obj).slice(0, Math.max(0, n));
+  };
+
+  // Sort the object's values by a criterion produced by an iteratee.
+  _.sortBy = function(obj, iteratee, context) {
+    iteratee = _.iteratee(iteratee, context);
+    return _.pluck(_.map(obj, function(value, index, list) {
+      return {
+        value: value,
+        index: index,
+        criteria: iteratee(value, index, list)
+      };
+    }).sort(function(left, right) {
+      var a = left.criteria;
+      var b = right.criteria;
+      if (a !== b) {
+        if (a > b || a === void 0) return 1;
+        if (a < b || b === void 0) return -1;
+      }
+      return left.index - right.index;
+    }), 'value');
+  };
+
+  // An internal function used for aggregate "group by" operations.
+  var group = function(behavior) {
+    return function(obj, iteratee, context) {
+      var result = {};
+      iteratee = _.iteratee(iteratee, context);
+      _.each(obj, function(value, index) {
+        var key = iteratee(value, index, obj);
+        behavior(result, value, key);
+      });
+      return result;
+    };
+  };
+
+  // Groups the object's values by a criterion. Pass either a string attribute
+  // to group by, or a function that returns the criterion.
+  _.groupBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+  });
+
+  // Indexes the object's values by a criterion, similar to `groupBy`, but for
+  // when you know that your index values will be unique.
+  _.indexBy = group(function(result, value, key) {
+    result[key] = value;
+  });
+
+  // Counts instances of an object that group by a certain criterion. Pass
+  // either a string attribute to count by, or a function that returns the
+  // criterion.
+  _.countBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key]++; else result[key] = 1;
+  });
+
+  // Use a comparator function to figure out the smallest index at which
+  // an object should be inserted so as to maintain order. Uses binary search.
+  _.sortedIndex = function(array, obj, iteratee, context) {
+    iteratee = _.iteratee(iteratee, context, 1);
+    var value = iteratee(obj);
+    var low = 0, high = array.length;
+    while (low < high) {
+      var mid = low + high >>> 1;
+      if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
+    }
+    return low;
+  };
+
+  // Safely create a real, live array from anything iterable.
+  _.toArray = function(obj) {
+    if (!obj) return [];
+    if (_.isArray(obj)) return slice.call(obj);
+    if (obj.length === +obj.length) return _.map(obj, _.identity);
+    return _.values(obj);
+  };
+
+  // Return the number of elements in an object.
+  _.size = function(obj) {
+    if (obj == null) return 0;
+    return obj.length === +obj.length ? obj.length : _.keys(obj).length;
+  };
+
+  // Split a collection into two arrays: one whose elements all satisfy the given
+  // predicate, and one whose elements all do not satisfy the predicate.
+  _.partition = function(obj, predicate, context) {
+    predicate = _.iteratee(predicate, context);
+    var pass = [], fail = [];
+    _.each(obj, function(value, key, obj) {
+      (predicate(value, key, obj) ? pass : fail).push(value);
+    });
+    return [pass, fail];
+  };
+
+  // Array Functions
+  // ---------------
+
+  // Get the first element of an array. Passing **n** will return the first N
+  // values in the array. Aliased as `head` and `take`. The **guard** check
+  // allows it to work with `_.map`.
+  _.first = _.head = _.take = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[0];
+    if (n < 0) return [];
+    return slice.call(array, 0, n);
+  };
+
+  // Returns everything but the last entry of the array. Especially useful on
+  // the arguments object. Passing **n** will return all the values in
+  // the array, excluding the last N. The **guard** check allows it to work with
+  // `_.map`.
+  _.initial = function(array, n, guard) {
+    return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
+  };
+
+  // Get the last element of an array. Passing **n** will return the last N
+  // values in the array. The **guard** check allows it to work with `_.map`.
+  _.last = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[array.length - 1];
+    return slice.call(array, Math.max(array.length - n, 0));
+  };
+
+  // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
+  // Especially useful on the arguments object. Passing an **n** will return
+  // the rest N values in the array. The **guard**
+  // check allows it to work with `_.map`.
+  _.rest = _.tail = _.drop = function(array, n, guard) {
+    return slice.call(array, n == null || guard ? 1 : n);
+  };
+
+  // Trim out all falsy values from an array.
+  _.compact = function(array) {
+    return _.filter(array, _.identity);
+  };
+
+  // Internal implementation of a recursive `flatten` function.
+  var flatten = function(input, shallow, strict, output) {
+    if (shallow && _.every(input, _.isArray)) {
+      return concat.apply(output, input);
+    }
+    for (var i = 0, length = input.length; i < length; i++) {
+      var value = input[i];
+      if (!_.isArray(value) && !_.isArguments(value)) {
+        if (!strict) output.push(value);
+      } else if (shallow) {
+        push.apply(output, value);
+      } else {
+        flatten(value, shallow, strict, output);
+      }
+    }
+    return output;
+  };
+
+  // Flatten out an array, either recursively (by default), or just one level.
+  _.flatten = function(array, shallow) {
+    return flatten(array, shallow, false, []);
+  };
+
+  // Return a version of the array that does not contain the specified value(s).
+  _.without = function(array) {
+    return _.difference(array, slice.call(arguments, 1));
+  };
+
+  // Produce a duplicate-free version of the array. If the array has already
+  // been sorted, you have the option of using a faster algorithm.
+  // Aliased as `unique`.
+  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
+    if (array == null) return [];
+    if (!_.isBoolean(isSorted)) {
+      context = iteratee;
+      iteratee = isSorted;
+      isSorted = false;
+    }
+    if (iteratee != null) iteratee = _.iteratee(iteratee, context);
+    var result = [];
+    var seen = [];
+    for (var i = 0, length = array.length; i < length; i++) {
+      var value = array[i];
+      if (isSorted) {
+        if (!i || seen !== value) result.push(value);
+        seen = value;
+      } else if (iteratee) {
+        var computed = iteratee(value, i, array);
+        if (_.indexOf(seen, computed) < 0) {
+          seen.push(computed);
+          result.push(value);
+        }
+      } else if (_.indexOf(result, value) < 0) {
+        result.push(value);
+      }
+    }
+    return result;
+  };
+
+  // Produce an array that contains the union: each distinct element from all of
+  // the passed-in arrays.
+  _.union = function() {
+    return _.uniq(flatten(arguments, true, true, []));
+  };
+
+  // Produce an array that contains every item shared between all the
+  // passed-in arrays.
+  _.intersection = function(array) {
+    if (array == null) return [];
+    var result = [];
+    var argsLength = arguments.length;
+    for (var i = 0, length = array.length; i < length; i++) {
+      var item = array[i];
+      if (_.contains(result, item)) continue;
+      for (var j = 1; j < argsLength; j++) {
+        if (!_.contains(arguments[j], item)) break;
+      }
+      if (j === argsLength) result.push(item);
+    }
+    return result;
+  };
+
+  // Take the difference between one array and a number of other arrays.
+  // Only the elements present in just the first array will remain.
+  _.difference = function(array) {
+    var rest = flatten(slice.call(arguments, 1), true, true, []);
+    return _.filter(array, function(value){
+      return !_.contains(rest, value);
+    });
+  };
+
+  // Zip together multiple lists into a single array -- elements that share
+  // an index go together.
+  _.zip = function(array) {
+    if (array == null) return [];
+    var length = _.max(arguments, 'length').length;
+    var results = Array(length);
+    for (var i = 0; i < length; i++) {
+      results[i] = _.pluck(arguments, i);
+    }
+    return results;
+  };
+
+  // Converts lists into objects. Pass either a single array of `[key, value]`
+  // pairs, or two parallel arrays of the same length -- one of keys, and one of
+  // the corresponding values.
+  _.object = function(list, values) {
+    if (list == null) return {};
+    var result = {};
+    for (var i = 0, length = list.length; i < length; i++) {
+      if (values) {
+        result[list[i]] = values[i];
+      } else {
+        result[list[i][0]] = list[i][1];
+      }
+    }
+    return result;
+  };
+
+  // Return the position of the first occurrence of an item in an array,
+  // or -1 if the item is not included in the array.
+  // If the array is large and already in sort order, pass `true`
+  // for **isSorted** to use binary search.
+  _.indexOf = function(array, item, isSorted) {
+    if (array == null) return -1;
+    var i = 0, length = array.length;
+    if (isSorted) {
+      if (typeof isSorted == 'number') {
+        i = isSorted < 0 ? Math.max(0, length + isSorted) : isSorted;
+      } else {
+        i = _.sortedIndex(array, item);
+        return array[i] === item ? i : -1;
+      }
+    }
+    for (; i < length; i++) if (array[i] === item) return i;
+    return -1;
+  };
+
+  _.lastIndexOf = function(array, item, from) {
+    if (array == null) return -1;
+    var idx = array.length;
+    if (typeof from == 'number') {
+      idx = from < 0 ? idx + from + 1 : Math.min(idx, from + 1);
+    }
+    while (--idx >= 0) if (array[idx] === item) return idx;
+    return -1;
+  };
+
+  // Generate an integer Array containing an arithmetic progression. A port of
+  // the native Python `range()` function. See
+  // [the Python documentation](http://docs.python.org/library/functions.html#range).
+  _.range = function(start, stop, step) {
+    if (arguments.length <= 1) {
+      stop = start || 0;
+      start = 0;
+    }
+    step = step || 1;
+
+    var length = Math.max(Math.ceil((stop - start) / step), 0);
+    var range = Array(length);
+
+    for (var idx = 0; idx < length; idx++, start += step) {
+      range[idx] = start;
+    }
+
+    return range;
+  };
+
+  // Function (ahem) Functions
+  // ------------------
+
+  // Reusable constructor function for prototype setting.
+  var Ctor = function(){};
+
+  // Create a function bound to a given object (assigning `this`, and arguments,
+  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
+  // available.
+  _.bind = function(func, context) {
+    var args, bound;
+    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
+    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
+    args = slice.call(arguments, 2);
+    bound = function() {
+      if (!(this instanceof bound)) return func.apply(context, args.concat(slice.call(arguments)));
+      Ctor.prototype = func.prototype;
+      var self = new Ctor;
+      Ctor.prototype = null;
+      var result = func.apply(self, args.concat(slice.call(arguments)));
+      if (_.isObject(result)) return result;
+      return self;
+    };
+    return bound;
+  };
+
+  // Partially apply a function by creating a version that has had some of its
+  // arguments pre-filled, without changing its dynamic `this` context. _ acts
+  // as a placeholder, allowing any combination of arguments to be pre-filled.
+  _.partial = function(func) {
+    var boundArgs = slice.call(arguments, 1);
+    return function() {
+      var position = 0;
+      var args = boundArgs.slice();
+      for (var i = 0, length = args.length; i < length; i++) {
+        if (args[i] === _) args[i] = arguments[position++];
+      }
+      while (position < arguments.length) args.push(arguments[position++]);
+      return func.apply(this, args);
+    };
+  };
+
+  // Bind a number of an object's methods to that object. Remaining arguments
+  // are the method names to be bound. Useful for ensuring that all callbacks
+  // defined on an object belong to it.
+  _.bindAll = function(obj) {
+    var i, length = arguments.length, key;
+    if (length <= 1) throw new Error('bindAll must be passed function names');
+    for (i = 1; i < length; i++) {
+      key = arguments[i];
+      obj[key] = _.bind(obj[key], obj);
+    }
+    return obj;
+  };
+
+  // Memoize an expensive function by storing its results.
+  _.memoize = function(func, hasher) {
+    var memoize = function(key) {
+      var cache = memoize.cache;
+      var address = hasher ? hasher.apply(this, arguments) : key;
+      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+      return cache[address];
+    };
+    memoize.cache = {};
+    return memoize;
+  };
+
+  // Delays a function for the given number of milliseconds, and then calls
+  // it with the arguments supplied.
+  _.delay = function(func, wait) {
+    var args = slice.call(arguments, 2);
+    return setTimeout(function(){
+      return func.apply(null, args);
+    }, wait);
+  };
+
+  // Defers a function, scheduling it to run after the current call stack has
+  // cleared.
+  _.defer = function(func) {
+    return _.delay.apply(_, [func, 1].concat(slice.call(arguments, 1)));
+  };
+
+  // Returns a function, that, when invoked, will only be triggered at most once
+  // during a given window of time. Normally, the throttled function will run
+  // as much as it can, without ever going more than once per `wait` duration;
+  // but if you'd like to disable the execution on the leading edge, pass
+  // `{leading: false}`. To disable execution on the trailing edge, ditto.
+  _.throttle = function(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = _.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        clearTimeout(timeout);
+        timeout = null;
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+
+  // Returns a function, that, as long as it continues to be invoked, will not
+  // be triggered. The function will be called after it stops being called for
+  // N milliseconds. If `immediate` is passed, trigger the function on the
+  // leading edge, instead of the trailing.
+  _.debounce = function(func, wait, immediate) {
+    var timeout, args, context, timestamp, result;
+
+    var later = function() {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last > 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    };
+
+    return function() {
+      context = this;
+      args = arguments;
+      timestamp = _.now();
+      var callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+
+      return result;
+    };
+  };
+
+  // Returns the first function passed as an argument to the second,
+  // allowing you to adjust arguments, run code before and after, and
+  // conditionally execute the original function.
+  _.wrap = function(func, wrapper) {
+    return _.partial(wrapper, func);
+  };
+
+  // Returns a negated version of the passed-in predicate.
+  _.negate = function(predicate) {
+    return function() {
+      return !predicate.apply(this, arguments);
+    };
+  };
+
+  // Returns a function that is the composition of a list of functions, each
+  // consuming the return value of the function that follows.
+  _.compose = function() {
+    var args = arguments;
+    var start = args.length - 1;
+    return function() {
+      var i = start;
+      var result = args[start].apply(this, arguments);
+      while (i--) result = args[i].call(this, result);
+      return result;
+    };
+  };
+
+  // Returns a function that will only be executed after being called N times.
+  _.after = function(times, func) {
+    return function() {
+      if (--times < 1) {
+        return func.apply(this, arguments);
+      }
+    };
+  };
+
+  // Returns a function that will only be executed before being called N times.
+  _.before = function(times, func) {
+    var memo;
+    return function() {
+      if (--times > 0) {
+        memo = func.apply(this, arguments);
+      } else {
+        func = null;
+      }
+      return memo;
+    };
+  };
+
+  // Returns a function that will be executed at most one time, no matter how
+  // often you call it. Useful for lazy initialization.
+  _.once = _.partial(_.before, 2);
+
+  // Object Functions
+  // ----------------
+
+  // Retrieve the names of an object's properties.
+  // Delegates to **ECMAScript 5**'s native `Object.keys`
+  _.keys = function(obj) {
+    if (!_.isObject(obj)) return [];
+    if (nativeKeys) return nativeKeys(obj);
+    var keys = [];
+    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+    return keys;
+  };
+
+  // Retrieve the values of an object's properties.
+  _.values = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var values = Array(length);
+    for (var i = 0; i < length; i++) {
+      values[i] = obj[keys[i]];
+    }
+    return values;
+  };
+
+  // Convert an object into a list of `[key, value]` pairs.
+  _.pairs = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var pairs = Array(length);
+    for (var i = 0; i < length; i++) {
+      pairs[i] = [keys[i], obj[keys[i]]];
+    }
+    return pairs;
+  };
+
+  // Invert the keys and values of an object. The values must be serializable.
+  _.invert = function(obj) {
+    var result = {};
+    var keys = _.keys(obj);
+    for (var i = 0, length = keys.length; i < length; i++) {
+      result[obj[keys[i]]] = keys[i];
+    }
+    return result;
+  };
+
+  // Return a sorted list of the function names available on the object.
+  // Aliased as `methods`
+  _.functions = _.methods = function(obj) {
+    var names = [];
+    for (var key in obj) {
+      if (_.isFunction(obj[key])) names.push(key);
+    }
+    return names.sort();
+  };
+
+  // Extend a given object with all the properties in passed-in object(s).
+  _.extend = function(obj) {
+    if (!_.isObject(obj)) return obj;
+    var source, prop;
+    for (var i = 1, length = arguments.length; i < length; i++) {
+      source = arguments[i];
+      for (prop in source) {
+        if (hasOwnProperty.call(source, prop)) {
+            obj[prop] = source[prop];
+        }
+      }
+    }
+    return obj;
+  };
+
+  // Return a copy of the object only containing the whitelisted properties.
+  _.pick = function(obj, iteratee, context) {
+    var result = {}, key;
+    if (obj == null) return result;
+    if (_.isFunction(iteratee)) {
+      iteratee = createCallback(iteratee, context);
+      for (key in obj) {
+        var value = obj[key];
+        if (iteratee(value, key, obj)) result[key] = value;
+      }
+    } else {
+      var keys = concat.apply([], slice.call(arguments, 1));
+      obj = new Object(obj);
+      for (var i = 0, length = keys.length; i < length; i++) {
+        key = keys[i];
+        if (key in obj) result[key] = obj[key];
+      }
+    }
+    return result;
+  };
+
+   // Return a copy of the object without the blacklisted properties.
+  _.omit = function(obj, iteratee, context) {
+    if (_.isFunction(iteratee)) {
+      iteratee = _.negate(iteratee);
+    } else {
+      var keys = _.map(concat.apply([], slice.call(arguments, 1)), String);
+      iteratee = function(value, key) {
+        return !_.contains(keys, key);
+      };
+    }
+    return _.pick(obj, iteratee, context);
+  };
+
+  // Fill in a given object with default properties.
+  _.defaults = function(obj) {
+    if (!_.isObject(obj)) return obj;
+    for (var i = 1, length = arguments.length; i < length; i++) {
+      var source = arguments[i];
+      for (var prop in source) {
+        if (obj[prop] === void 0) obj[prop] = source[prop];
+      }
+    }
+    return obj;
+  };
+
+  // Create a (shallow-cloned) duplicate of an object.
+  _.clone = function(obj) {
+    if (!_.isObject(obj)) return obj;
+    return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
+  };
+
+  // Invokes interceptor with the obj, and then returns obj.
+  // The primary purpose of this method is to "tap into" a method chain, in
+  // order to perform operations on intermediate results within the chain.
+  _.tap = function(obj, interceptor) {
+    interceptor(obj);
+    return obj;
+  };
+
+  // Internal recursive comparison function for `isEqual`.
+  var eq = function(a, b, aStack, bStack) {
+    // Identical objects are equal. `0 === -0`, but they aren't identical.
+    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
+    if (a === b) return a !== 0 || 1 / a === 1 / b;
+    // A strict comparison is necessary because `null == undefined`.
+    if (a == null || b == null) return a === b;
+    // Unwrap any wrapped objects.
+    if (a instanceof _) a = a._wrapped;
+    if (b instanceof _) b = b._wrapped;
+    // Compare `[[Class]]` names.
+    var className = toString.call(a);
+    if (className !== toString.call(b)) return false;
+    switch (className) {
+      // Strings, numbers, regular expressions, dates, and booleans are compared by value.
+      case '[object RegExp]':
+      // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
+      case '[object String]':
+        // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
+        // equivalent to `new String("5")`.
+        return '' + a === '' + b;
+      case '[object Number]':
+        // `NaN`s are equivalent, but non-reflexive.
+        // Object(NaN) is equivalent to NaN
+        if (+a !== +a) return +b !== +b;
+        // An `egal` comparison is performed for other numeric values.
+        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+      case '[object Date]':
+      case '[object Boolean]':
+        // Coerce dates and booleans to numeric primitive values. Dates are compared by their
+        // millisecond representations. Note that invalid dates with millisecond representations
+        // of `NaN` are not equivalent.
+        return +a === +b;
+    }
+    if (typeof a != 'object' || typeof b != 'object') return false;
+    // Assume equality for cyclic structures. The algorithm for detecting cyclic
+    // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
+    var length = aStack.length;
+    while (length--) {
+      // Linear search. Performance is inversely proportional to the number of
+      // unique nested structures.
+      if (aStack[length] === a) return bStack[length] === b;
+    }
+    // Objects with different constructors are not equivalent, but `Object`s
+    // from different frames are.
+    var aCtor = a.constructor, bCtor = b.constructor;
+    if (
+      aCtor !== bCtor &&
+      // Handle Object.create(x) cases
+      'constructor' in a && 'constructor' in b &&
+      !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
+        _.isFunction(bCtor) && bCtor instanceof bCtor)
+    ) {
+      return false;
+    }
+    // Add the first object to the stack of traversed objects.
+    aStack.push(a);
+    bStack.push(b);
+    var size, result;
+    // Recursively compare objects and arrays.
+    if (className === '[object Array]') {
+      // Compare array lengths to determine if a deep comparison is necessary.
+      size = a.length;
+      result = size === b.length;
+      if (result) {
+        // Deep compare the contents, ignoring non-numeric properties.
+        while (size--) {
+          if (!(result = eq(a[size], b[size], aStack, bStack))) break;
+        }
+      }
+    } else {
+      // Deep compare objects.
+      var keys = _.keys(a), key;
+      size = keys.length;
+      // Ensure that both objects contain the same number of properties before comparing deep equality.
+      result = _.keys(b).length === size;
+      if (result) {
+        while (size--) {
+          // Deep compare each member
+          key = keys[size];
+          if (!(result = _.has(b, key) && eq(a[key], b[key], aStack, bStack))) break;
+        }
+      }
+    }
+    // Remove the first object from the stack of traversed objects.
+    aStack.pop();
+    bStack.pop();
+    return result;
+  };
+
+  // Perform a deep comparison to check if two objects are equal.
+  _.isEqual = function(a, b) {
+    return eq(a, b, [], []);
+  };
+
+  // Is a given array, string, or object empty?
+  // An "empty" object has no enumerable own-properties.
+  _.isEmpty = function(obj) {
+    if (obj == null) return true;
+    if (_.isArray(obj) || _.isString(obj) || _.isArguments(obj)) return obj.length === 0;
+    for (var key in obj) if (_.has(obj, key)) return false;
+    return true;
+  };
+
+  // Is a given value a DOM element?
+  _.isElement = function(obj) {
+    return !!(obj && obj.nodeType === 1);
+  };
+
+  // Is a given value an array?
+  // Delegates to ECMA5's native Array.isArray
+  _.isArray = nativeIsArray || function(obj) {
+    return toString.call(obj) === '[object Array]';
+  };
+
+  // Is a given variable an object?
+  _.isObject = function(obj) {
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  };
+
+  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp.
+  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp'], function(name) {
+    _['is' + name] = function(obj) {
+      return toString.call(obj) === '[object ' + name + ']';
+    };
+  });
+
+  // Define a fallback version of the method in browsers (ahem, IE), where
+  // there isn't any inspectable "Arguments" type.
+  if (!_.isArguments(arguments)) {
+    _.isArguments = function(obj) {
+      return _.has(obj, 'callee');
+    };
+  }
+
+  // Optimize `isFunction` if appropriate. Work around an IE 11 bug.
+  if (typeof /./ !== 'function') {
+    _.isFunction = function(obj) {
+      return typeof obj == 'function' || false;
+    };
+  }
+
+  // Is a given object a finite number?
+  _.isFinite = function(obj) {
+    return isFinite(obj) && !isNaN(parseFloat(obj));
+  };
+
+  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
+  _.isNaN = function(obj) {
+    return _.isNumber(obj) && obj !== +obj;
+  };
+
+  // Is a given value a boolean?
+  _.isBoolean = function(obj) {
+    return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
+  };
+
+  // Is a given value equal to null?
+  _.isNull = function(obj) {
+    return obj === null;
+  };
+
+  // Is a given variable undefined?
+  _.isUndefined = function(obj) {
+    return obj === void 0;
+  };
+
+  // Shortcut function for checking if an object has a given property directly
+  // on itself (in other words, not on a prototype).
+  _.has = function(obj, key) {
+    return obj != null && hasOwnProperty.call(obj, key);
+  };
+
+  // Utility Functions
+  // -----------------
+
+  // Run Underscore.js in *noConflict* mode, returning the `_` variable to its
+  // previous owner. Returns a reference to the Underscore object.
+  _.noConflict = function() {
+    root._ = previousUnderscore;
+    return this;
+  };
+
+  // Keep the identity function around for default iteratees.
+  _.identity = function(value) {
+    return value;
+  };
+
+  // Predicate-generating functions. Often useful outside of Underscore.
+  _.constant = function(value) {
+    return function() {
+      return value;
+    };
+  };
+
+  _.noop = function(){};
+
+  _.property = function(key) {
+    return function(obj) {
+      return obj[key];
+    };
+  };
+
+  // Returns a predicate for checking whether an object has a given set of `key:value` pairs.
+  _.matches = function(attrs) {
+    var pairs = _.pairs(attrs), length = pairs.length;
+    return function(obj) {
+      if (obj == null) return !length;
+      obj = new Object(obj);
+      for (var i = 0; i < length; i++) {
+        var pair = pairs[i], key = pair[0];
+        if (pair[1] !== obj[key] || !(key in obj)) return false;
+      }
+      return true;
+    };
+  };
+
+  // Run a function **n** times.
+  _.times = function(n, iteratee, context) {
+    var accum = Array(Math.max(0, n));
+    iteratee = createCallback(iteratee, context, 1);
+    for (var i = 0; i < n; i++) accum[i] = iteratee(i);
+    return accum;
+  };
+
+  // Return a random integer between min and max (inclusive).
+  _.random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
+  };
+
+  // A (possibly faster) way to get the current timestamp as an integer.
+  _.now = Date.now || function() {
+    return new Date().getTime();
+  };
+
+   // List of HTML entities for escaping.
+  var escapeMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '`': '&#x60;'
+  };
+  var unescapeMap = _.invert(escapeMap);
+
+  // Functions for escaping and unescaping strings to/from HTML interpolation.
+  var createEscaper = function(map) {
+    var escaper = function(match) {
+      return map[match];
+    };
+    // Regexes for identifying a key that needs to be escaped
+    var source = '(?:' + _.keys(map).join('|') + ')';
+    var testRegexp = RegExp(source);
+    var replaceRegexp = RegExp(source, 'g');
+    return function(string) {
+      string = string == null ? '' : '' + string;
+      return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
+    };
+  };
+  _.escape = createEscaper(escapeMap);
+  _.unescape = createEscaper(unescapeMap);
+
+  // If the value of the named `property` is a function then invoke it with the
+  // `object` as context; otherwise, return it.
+  _.result = function(object, property) {
+    if (object == null) return void 0;
+    var value = object[property];
+    return _.isFunction(value) ? object[property]() : value;
+  };
+
+  // Generate a unique integer id (unique within the entire client session).
+  // Useful for temporary DOM ids.
+  var idCounter = 0;
+  _.uniqueId = function(prefix) {
+    var id = ++idCounter + '';
+    return prefix ? prefix + id : id;
+  };
+
+  // By default, Underscore uses ERB-style template delimiters, change the
+  // following template settings to use alternative delimiters.
+  _.templateSettings = {
+    evaluate    : /<%([\s\S]+?)%>/g,
+    interpolate : /<%=([\s\S]+?)%>/g,
+    escape      : /<%-([\s\S]+?)%>/g
+  };
+
+  // When customizing `templateSettings`, if you don't want to define an
+  // interpolation, evaluation or escaping regex, we need one that is
+  // guaranteed not to match.
+  var noMatch = /(.)^/;
+
+  // Certain characters need to be escaped so that they can be put into a
+  // string literal.
+  var escapes = {
+    "'":      "'",
+    '\\':     '\\',
+    '\r':     'r',
+    '\n':     'n',
+    '\u2028': 'u2028',
+    '\u2029': 'u2029'
+  };
+
+  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+
+  var escapeChar = function(match) {
+    return '\\' + escapes[match];
+  };
+
+  // JavaScript micro-templating, similar to John Resig's implementation.
+  // Underscore templating handles arbitrary delimiters, preserves whitespace,
+  // and correctly escapes quotes within interpolated code.
+  // NB: `oldSettings` only exists for backwards compatibility.
+  _.template = function(text, settings, oldSettings) {
+    if (!settings && oldSettings) settings = oldSettings;
+    settings = _.defaults({}, settings, _.templateSettings);
+
+    // Combine delimiters into one regular expression via alternation.
+    var matcher = RegExp([
+      (settings.escape || noMatch).source,
+      (settings.interpolate || noMatch).source,
+      (settings.evaluate || noMatch).source
+    ].join('|') + '|$', 'g');
+
+    // Compile the template source, escaping string literals appropriately.
+    var index = 0;
+    var source = "__p+='";
+    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
+      source += text.slice(index, offset).replace(escaper, escapeChar);
+      index = offset + match.length;
+
+      if (escape) {
+        source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
+      } else if (interpolate) {
+        source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
+      } else if (evaluate) {
+        source += "';\n" + evaluate + "\n__p+='";
+      }
+
+      // Adobe VMs need the match returned to produce the correct offest.
+      return match;
+    });
+    source += "';\n";
+
+    // If a variable is not specified, place data values in local scope.
+    if (!settings.variable) source = 'with(obj||{}){\n' + source + '}\n';
+
+    source = "var __t,__p='',__j=Array.prototype.join," +
+      "print=function(){__p+=__j.call(arguments,'');};\n" +
+      source + 'return __p;\n';
+
+    try {
+      var render = new Function(settings.variable || 'obj', '_', source);
+    } catch (e) {
+      e.source = source;
+      throw e;
+    }
+
+    var template = function(data) {
+      return render.call(this, data, _);
+    };
+
+    // Provide the compiled source as a convenience for precompilation.
+    var argument = settings.variable || 'obj';
+    template.source = 'function(' + argument + '){\n' + source + '}';
+
+    return template;
+  };
+
+  // Add a "chain" function. Start chaining a wrapped Underscore object.
+  _.chain = function(obj) {
+    var instance = _(obj);
+    instance._chain = true;
+    return instance;
+  };
+
+  // OOP
+  // ---------------
+  // If Underscore is called as a function, it returns a wrapped object that
+  // can be used OO-style. This wrapper holds altered versions of all the
+  // underscore functions. Wrapped objects may be chained.
+
+  // Helper function to continue chaining intermediate results.
+  var result = function(obj) {
+    return this._chain ? _(obj).chain() : obj;
+  };
+
+  // Add your own custom functions to the Underscore object.
+  _.mixin = function(obj) {
+    _.each(_.functions(obj), function(name) {
+      var func = _[name] = obj[name];
+      _.prototype[name] = function() {
+        var args = [this._wrapped];
+        push.apply(args, arguments);
+        return result.call(this, func.apply(_, args));
+      };
+    });
+  };
+
+  // Add all of the Underscore functions to the wrapper object.
+  _.mixin(_);
+
+  // Add all mutator Array functions to the wrapper.
+  _.each(['pop', 'push', 'reverse', 'shift', 'sort', 'splice', 'unshift'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      var obj = this._wrapped;
+      method.apply(obj, arguments);
+      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
+      return result.call(this, obj);
+    };
+  });
+
+  // Add all accessor Array functions to the wrapper.
+  _.each(['concat', 'join', 'slice'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      return result.call(this, method.apply(this._wrapped, arguments));
+    };
+  });
+
+  // Extracts the result from a wrapped and chained object.
+  _.prototype.value = function() {
+    return this._wrapped;
+  };
+
+  // AMD registration happens at the end for compatibility with AMD loaders
+  // that may not enforce next-turn semantics on modules. Even though general
+  // practice for AMD registration is to be anonymous, underscore registers
+  // as a named module because, like jQuery, it is a base library that is
+  // popular enough to be bundled in a third party lib, but not be part of
+  // an AMD load request. Those cases could generate an error when an
+  // anonymous define() is called outside of a loader request.
+  if (typeof define === 'function' && define.amd) {
+    define('underscore', [], function() {
+      return _;
+    });
+  }
+}.call(this));
+(function() {
+  this.Gmaps = {
+    build: function(type, options) {
+      var model;
+      if (options == null) {
+        options = {};
+      }
+      model = _.isFunction(options.handler) ? options.handler : Gmaps.Objects.Handler;
+      return new model(type, options);
+    },
+    Builders: {},
+    Objects: {},
+    Google: {
+      Objects: {},
+      Builders: {}
+    }
+  };
+
+}).call(this);
+(function() {
+  var moduleKeywords,
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+  moduleKeywords = ['extended', 'included'];
+
+  this.Gmaps.Base = (function() {
+    function Base() {}
+
+    Base.extend = function(obj) {
+      var key, value, _ref;
+      for (key in obj) {
+        value = obj[key];
+        if (__indexOf.call(moduleKeywords, key) < 0) {
+          this[key] = value;
+        }
+      }
+      if ((_ref = obj.extended) != null) {
+        _ref.apply(this);
+      }
+      return this;
+    };
+
+    Base.include = function(obj) {
+      var key, value, _ref;
+      for (key in obj) {
+        value = obj[key];
+        if (__indexOf.call(moduleKeywords, key) < 0) {
+          this.prototype[key] = value;
+        }
+      }
+      if ((_ref = obj.included) != null) {
+        _ref.apply(this);
+      }
+      return this;
+    };
+
+    return Base;
+
+  })();
+
+}).call(this);
+(function() {
+  this.Gmaps.Objects.BaseBuilder = (function() {
+    function BaseBuilder() {}
+
+    BaseBuilder.prototype.build = function() {
+      return new (this.model_class())(this.serviceObject);
+    };
+
+    BaseBuilder.prototype.before_init = function() {};
+
+    BaseBuilder.prototype.after_init = function() {};
+
+    BaseBuilder.prototype.addListener = function(action, fn) {
+      return this.primitives().addListener(this.getServiceObject(), action, fn);
+    };
+
+    BaseBuilder.prototype.getServiceObject = function() {
+      return this.serviceObject;
+    };
+
+    BaseBuilder.prototype.primitives = function() {
+      return this.constructor.PRIMITIVES;
+    };
+
+    BaseBuilder.prototype.model_class = function() {
+      return this.constructor.OBJECT;
+    };
+
+    return BaseBuilder;
+
+  })();
+
+}).call(this);
+(function() {
+  this.Gmaps.Objects.Builders = function(builderClass, objectClass, primitivesProvider) {
+    return {
+      build: function(args, provider_options, internal_options) {
+        var builder;
+        objectClass.PRIMITIVES = primitivesProvider;
+        builderClass.OBJECT = objectClass;
+        builderClass.PRIMITIVES = primitivesProvider;
+        builder = new builderClass(args, provider_options, internal_options);
+        return builder.build();
+      }
+    };
+  };
+
+}).call(this);
+(function() {
+  this.Gmaps.Objects.Handler = (function() {
+    function Handler(type, options) {
+      this.type = type;
+      if (options == null) {
+        options = {};
+      }
+      this.setPrimitives(options);
+      this.setOptions(options);
+      this._cacheAllBuilders();
+      this.resetBounds();
+    }
+
+    Handler.prototype.buildMap = function(options, onMapLoad) {
+      if (onMapLoad == null) {
+        onMapLoad = function() {};
+      }
+      return this.map = this._builder('Map').build(options, (function(_this) {
+        return function() {
+          _this._createClusterer();
+          return onMapLoad();
+        };
+      })(this));
+    };
+
+    Handler.prototype.addMarkers = function(markers_data, provider_options) {
+      return _.map(markers_data, (function(_this) {
+        return function(marker_data) {
+          return _this.addMarker(marker_data, provider_options);
+        };
+      })(this));
+    };
+
+    Handler.prototype.addMarker = function(marker_data, provider_options) {
+      var marker;
+      marker = this._builder('Marker').build(marker_data, provider_options, this.marker_options);
+      marker.setMap(this.getMap());
+      this.clusterer.addMarker(marker);
+      return marker;
+    };
+
+    Handler.prototype.addCircles = function(circles_data, provider_options) {
+      return _.map(circles_data, (function(_this) {
+        return function(circle_data) {
+          return _this.addCircle(circle_data, provider_options);
+        };
+      })(this));
+    };
+
+    Handler.prototype.addCircle = function(circle_data, provider_options) {
+      return this._addResource('circle', circle_data, provider_options);
+    };
+
+    Handler.prototype.addPolylines = function(polylines_data, provider_options) {
+      return _.map(polylines_data, (function(_this) {
+        return function(polyline_data) {
+          return _this.addPolyline(polyline_data, provider_options);
+        };
+      })(this));
+    };
+
+    Handler.prototype.addPolyline = function(polyline_data, provider_options) {
+      return this._addResource('polyline', polyline_data, provider_options);
+    };
+
+    Handler.prototype.addPolygons = function(polygons_data, provider_options) {
+      return _.map(polygons_data, (function(_this) {
+        return function(polygon_data) {
+          return _this.addPolygon(polygon_data, provider_options);
+        };
+      })(this));
+    };
+
+    Handler.prototype.addPolygon = function(polygon_data, provider_options) {
+      return this._addResource('polygon', polygon_data, provider_options);
+    };
+
+    Handler.prototype.addKmls = function(kmls_data, provider_options) {
+      return _.map(kmls_data, (function(_this) {
+        return function(kml_data) {
+          return _this.addKml(kml_data, provider_options);
+        };
+      })(this));
+    };
+
+    Handler.prototype.addKml = function(kml_data, provider_options) {
+      return this._addResource('kml', kml_data, provider_options);
+    };
+
+    Handler.prototype.removeMarkers = function(gem_markers) {
+      return _.map(gem_markers, (function(_this) {
+        return function(gem_marker) {
+          return _this.removeMarker(gem_marker);
+        };
+      })(this));
+    };
+
+    Handler.prototype.removeMarker = function(gem_marker) {
+      gem_marker.clear();
+      return this.clusterer.removeMarker(gem_marker);
+    };
+
+    Handler.prototype.fitMapToBounds = function() {
+      return this.map.fitToBounds(this.bounds.getServiceObject());
+    };
+
+    Handler.prototype.getMap = function() {
+      return this.map.getServiceObject();
+    };
+
+    Handler.prototype.setOptions = function(options) {
+      this.marker_options = _.extend(this._default_marker_options(), options.markers);
+      this.builders = _.extend(this._default_builders(), options.builders);
+      return this.models = _.extend(this._default_models(), options.models);
+    };
+
+    Handler.prototype.resetBounds = function() {
+      return this.bounds = this._builder('Bound').build();
+    };
+
+    Handler.prototype.setPrimitives = function(options) {
+      return this.primitives = options.primitives === void 0 ? this._rootModule().Primitives() : _.isFunction(options.primitives) ? options.primitives() : options.primitives;
+    };
+
+    Handler.prototype.currentInfowindow = function() {
+      return this.builders.Marker.CURRENT_INFOWINDOW;
+    };
+
+    Handler.prototype._addResource = function(resource_name, resource_data, provider_options) {
+      var resource;
+      resource = this._builder(resource_name).build(resource_data, provider_options);
+      resource.setMap(this.getMap());
+      return resource;
+    };
+
+    Handler.prototype._cacheAllBuilders = function() {
+      var that;
+      that = this;
+      return _.each(['Bound', 'Circle', 'Clusterer', 'Kml', 'Map', 'Marker', 'Polygon', 'Polyline'], function(kind) {
+        return that._builder(kind);
+      });
+    };
+
+    Handler.prototype._clusterize = function() {
+      return _.isObject(this.marker_options.clusterer);
+    };
+
+    Handler.prototype._createClusterer = function() {
+      return this.clusterer = this._builder('Clusterer').build({
+        map: this.getMap()
+      }, this.marker_options.clusterer);
+    };
+
+    Handler.prototype._default_marker_options = function() {
+      return _.clone({
+        singleInfowindow: true,
+        maxRandomDistance: 0,
+        clusterer: {
+          maxZoom: 5,
+          gridSize: 50
+        }
+      });
+    };
+
+    Handler.prototype._builder = function(name) {
+      var _name;
+      name = this._capitalize(name);
+      if (this[_name = "__builder" + name] == null) {
+        this[_name] = Gmaps.Objects.Builders(this.builders[name], this.models[name], this.primitives);
+      }
+      return this["__builder" + name];
+    };
+
+    Handler.prototype._default_models = function() {
+      var models;
+      models = _.clone(this._rootModule().Objects);
+      if (this._clusterize()) {
+        return models;
+      } else {
+        models.Clusterer = Gmaps.Objects.NullClusterer;
+        return models;
+      }
+    };
+
+    Handler.prototype._capitalize = function(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    Handler.prototype._default_builders = function() {
+      return _.clone(this._rootModule().Builders);
+    };
+
+    Handler.prototype._rootModule = function() {
+      if (this.__rootModule == null) {
+        this.__rootModule = Gmaps[this.type];
+      }
+      return this.__rootModule;
+    };
+
+    return Handler;
+
+  })();
+
+}).call(this);
+(function() {
+  this.Gmaps.Objects.NullClusterer = (function() {
+    function NullClusterer() {}
+
+    NullClusterer.prototype.addMarkers = function() {};
+
+    NullClusterer.prototype.addMarker = function() {};
+
+    NullClusterer.prototype.clear = function() {};
+
+    NullClusterer.prototype.removeMarker = function() {};
+
+    return NullClusterer;
+
+  })();
+
+}).call(this);
+(function() {
+  this.Gmaps.Google.Objects.Common = {
+    getServiceObject: function() {
+      return this.serviceObject;
+    },
+    setMap: function(map) {
+      return this.getServiceObject().setMap(map);
+    },
+    clear: function() {
+      return this.getServiceObject().setMap(null);
+    },
+    show: function() {
+      return this.getServiceObject().setVisible(true);
+    },
+    hide: function() {
+      return this.getServiceObject().setVisible(false);
+    },
+    isVisible: function() {
+      return this.getServiceObject().getVisible();
+    },
+    primitives: function() {
+      return this.constructor.PRIMITIVES;
+    }
+  };
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Bound = (function(_super) {
+    __extends(Bound, _super);
+
+    function Bound(options) {
+      this.before_init();
+      this.serviceObject = new (this.primitives().latLngBounds);
+      this.after_init();
+    }
+
+    return Bound;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Circle = (function(_super) {
+    __extends(Circle, _super);
+
+    function Circle(args, provider_options) {
+      this.args = args;
+      this.provider_options = provider_options != null ? provider_options : {};
+      this.before_init();
+      this.serviceObject = this.create_circle();
+      this.after_init();
+    }
+
+    Circle.prototype.create_circle = function() {
+      return new (this.primitives().circle)(this.circle_options());
+    };
+
+    Circle.prototype.circle_options = function() {
+      var base_options;
+      base_options = {
+        center: new (this.primitives().latLng)(this.args.lat, this.args.lng),
+        radius: this.args.radius
+      };
+      return _.defaults(base_options, this.provider_options);
+    };
+
+    return Circle;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Clusterer = (function(_super) {
+    __extends(Clusterer, _super);
+
+    function Clusterer(args, options) {
+      this.args = args;
+      this.options = options;
+      this.before_init();
+      this.serviceObject = new (this.primitives().clusterer)(this.args.map, [], this.options);
+      this.after_init();
+    }
+
+    return Clusterer;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Kml = (function(_super) {
+    __extends(Kml, _super);
+
+    function Kml(args, provider_options) {
+      this.args = args;
+      this.provider_options = provider_options != null ? provider_options : {};
+      this.before_init();
+      this.serviceObject = this.create_kml();
+      this.after_init();
+    }
+
+    Kml.prototype.create_kml = function() {
+      return new (this.primitives().kml)(this.args.url, this.kml_options());
+    };
+
+    Kml.prototype.kml_options = function() {
+      var base_options;
+      base_options = {};
+      return _.defaults(base_options, this.provider_options);
+    };
+
+    return Kml;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Map = (function(_super) {
+    __extends(Map, _super);
+
+    function Map(options, onMapLoad) {
+      var provider_options;
+      this.before_init();
+      provider_options = _.extend(this.default_options(), options.provider);
+      this.internal_options = options.internal;
+      this.serviceObject = new (this.primitives().map)(document.getElementById(this.internal_options.id), provider_options);
+      this.on_map_load(onMapLoad);
+      this.after_init();
+    }
+
+    Map.prototype.build = function() {
+      return new (this.model_class())(this.serviceObject, this.primitives());
+    };
+
+    Map.prototype.on_map_load = function(onMapLoad) {
+      return this.primitives().addListenerOnce(this.serviceObject, 'idle', onMapLoad);
+    };
+
+    Map.prototype.default_options = function() {
+      return {
+        mapTypeId: this.primitives().mapTypes('ROADMAP'),
+        center: new (this.primitives().latLng)(0, 0),
+        zoom: 8
+      };
+    };
+
+    return Map;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Marker = (function(_super) {
+    __extends(Marker, _super);
+
+    Marker.CURRENT_INFOWINDOW = void 0;
+
+    Marker.CACHE_STORE = {};
+
+    function Marker(args, provider_options, internal_options) {
+      this.args = args;
+      this.provider_options = provider_options != null ? provider_options : {};
+      this.internal_options = internal_options != null ? internal_options : {};
+      this.infowindow_binding = __bind(this.infowindow_binding, this);
+      this.before_init();
+      this.create_marker();
+      this.create_infowindow_on_click();
+      this.after_init();
+    }
+
+    Marker.prototype.build = function() {
+      return this.marker = new (this.model_class())(this.serviceObject);
+    };
+
+    Marker.prototype.create_marker = function() {
+      return this.serviceObject = new (this.primitives().marker)(this.marker_options());
+    };
+
+    Marker.prototype.create_infowindow = function() {
+      if (!_.isString(this.args.infowindow)) {
+        return null;
+      }
+      return new (this.primitives().infowindow)({
+        content: this.args.infowindow
+      });
+    };
+
+    Marker.prototype.marker_options = function() {
+      var base_options, coords;
+      coords = this._randomized_coordinates();
+      base_options = {
+        title: this.args.marker_title,
+        position: new (this.primitives().latLng)(coords[0], coords[1]),
+        icon: this._get_picture('picture'),
+        shadow: this._get_picture('shadow')
+      };
+      return _.extend(this.provider_options, base_options);
+    };
+
+    Marker.prototype.create_infowindow_on_click = function() {
+      return this.addListener('click', this.infowindow_binding);
+    };
+
+    Marker.prototype.infowindow_binding = function() {
+      var _base;
+      if (this._should_close_infowindow()) {
+        this.constructor.CURRENT_INFOWINDOW.close();
+      }
+      this.marker.panTo();
+      if (this.infowindow == null) {
+        this.infowindow = this.create_infowindow();
+      }
+      if (this.infowindow == null) {
+        return;
+      }
+      this.infowindow.open(this.getServiceObject().getMap(), this.getServiceObject());
+      if ((_base = this.marker).infowindow == null) {
+        _base.infowindow = this.infowindow;
+      }
+      return this.constructor.CURRENT_INFOWINDOW = this.infowindow;
+    };
+
+    Marker.prototype._get_picture = function(picture_name) {
+      if (!_.isObject(this.args[picture_name]) || !_.isString(this.args[picture_name].url)) {
+        return null;
+      }
+      return this._create_or_retrieve_image(this._picture_args(picture_name));
+    };
+
+    Marker.prototype._create_or_retrieve_image = function(picture_args) {
+      if (this.constructor.CACHE_STORE[picture_args.url] === void 0) {
+        this.constructor.CACHE_STORE[picture_args.url] = new (this.primitives().markerImage)(picture_args.url, picture_args.size, picture_args.origin, picture_args.anchor, picture_args.scaledSize);
+      }
+      return this.constructor.CACHE_STORE[picture_args.url];
+    };
+
+    Marker.prototype._picture_args = function(picture_name) {
+      return {
+        url: this.args[picture_name].url,
+        anchor: this._createImageAnchorPosition(this.args[picture_name].anchor),
+        size: new (this.primitives().size)(this.args[picture_name].width, this.args[picture_name].height),
+        scaledSize: null,
+        origin: null
+      };
+    };
+
+    Marker.prototype._createImageAnchorPosition = function(anchorLocation) {
+      if (!_.isArray(anchorLocation)) {
+        return null;
+      }
+      return new (this.primitives().point)(anchorLocation[0], anchorLocation[1]);
+    };
+
+    Marker.prototype._should_close_infowindow = function() {
+      return this.internal_options.singleInfowindow && (this.constructor.CURRENT_INFOWINDOW != null);
+    };
+
+    Marker.prototype._randomized_coordinates = function() {
+      var Lat, Lng, dx, dy, random;
+      if (!_.isNumber(this.internal_options.maxRandomDistance)) {
+        return [this.args.lat, this.args.lng];
+      }
+      random = function() {
+        return Math.random() * 2 - 1;
+      };
+      dx = this.internal_options.maxRandomDistance * random();
+      dy = this.internal_options.maxRandomDistance * random();
+      Lat = parseFloat(this.args.lat) + (180 / Math.PI) * (dy / 6378137);
+      Lng = parseFloat(this.args.lng) + (90 / Math.PI) * (dx / 6378137) / Math.cos(this.args.lat);
+      return [Lat, Lng];
+    };
+
+    return Marker;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Polygon = (function(_super) {
+    __extends(Polygon, _super);
+
+    function Polygon(args, provider_options) {
+      this.args = args;
+      this.provider_options = provider_options != null ? provider_options : {};
+      this.before_init();
+      this.serviceObject = this.create_polygon();
+      this.after_init();
+    }
+
+    Polygon.prototype.create_polygon = function() {
+      return new (this.primitives().polygon)(this.polygon_options());
+    };
+
+    Polygon.prototype.polygon_options = function() {
+      var base_options;
+      base_options = {
+        path: this._build_path()
+      };
+      return _.defaults(base_options, this.provider_options);
+    };
+
+    Polygon.prototype._build_path = function() {
+      return _.map(this.args, (function(_this) {
+        return function(arg) {
+          return new (_this.primitives().latLng)(arg.lat, arg.lng);
+        };
+      })(this));
+    };
+
+    return Polygon;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Builders.Polyline = (function(_super) {
+    __extends(Polyline, _super);
+
+    function Polyline(args, provider_options) {
+      this.args = args;
+      this.provider_options = provider_options != null ? provider_options : {};
+      this.before_init();
+      this.serviceObject = this.create_polyline();
+      this.after_init();
+    }
+
+    Polyline.prototype.create_polyline = function() {
+      return new (this.primitives().polyline)(this.polyline_options());
+    };
+
+    Polyline.prototype.polyline_options = function() {
+      var base_options;
+      base_options = {
+        path: this._build_path()
+      };
+      return _.defaults(base_options, this.provider_options);
+    };
+
+    Polyline.prototype._build_path = function() {
+      return _.map(this.args, (function(_this) {
+        return function(arg) {
+          return new (_this.primitives().latLng)(arg.lat, arg.lng);
+        };
+      })(this));
+    };
+
+    return Polyline;
+
+  })(Gmaps.Objects.BaseBuilder);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Bound = (function(_super) {
+    __extends(Bound, _super);
+
+    Bound.include(Gmaps.Google.Objects.Common);
+
+    function Bound(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Bound.prototype.extendWith = function(array_or_object) {
+      var collection;
+      collection = _.isArray(array_or_object) ? array_or_object : [array_or_object];
+      return _.each(collection, (function(_this) {
+        return function(object) {
+          return object.updateBounds(_this);
+        };
+      })(this));
+    };
+
+    Bound.prototype.extend = function(value) {
+      return this.getServiceObject().extend(this.primitives().latLngFromPosition(value));
+    };
+
+    return Bound;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Circle = (function(_super) {
+    __extends(Circle, _super);
+
+    Circle.include(Gmaps.Google.Objects.Common);
+
+    function Circle(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Circle.prototype.updateBounds = function(bounds) {
+      bounds.extend(this.getServiceObject().getBounds().getNorthEast());
+      return bounds.extend(this.getServiceObject().getBounds().getSouthWest());
+    };
+
+    return Circle;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  this.Gmaps.Google.Objects.Clusterer = (function() {
+    function Clusterer(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Clusterer.prototype.addMarkers = function(markers) {
+      return _.each(markers, (function(_this) {
+        return function(marker) {
+          return _this.addMarker(marker);
+        };
+      })(this));
+    };
+
+    Clusterer.prototype.addMarker = function(marker) {
+      return this.getServiceObject().addMarker(marker.getServiceObject());
+    };
+
+    Clusterer.prototype.clear = function() {
+      return this.getServiceObject().clearMarkers();
+    };
+
+    Clusterer.prototype.removeMarker = function(marker) {
+      return this.getServiceObject().removeMarker(marker.getServiceObject());
+    };
+
+    Clusterer.prototype.getServiceObject = function() {
+      return this.serviceObject;
+    };
+
+    return Clusterer;
+
+  })();
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Kml = (function(_super) {
+    __extends(Kml, _super);
+
+    function Kml(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Kml.prototype.updateBounds = function(bounds) {};
+
+    Kml.prototype.setMap = function(map) {
+      return this.getServiceObject().setMap(map);
+    };
+
+    Kml.prototype.getServiceObject = function() {
+      return this.serviceObject;
+    };
+
+    Kml.prototype.primitives = function() {
+      return this.constructor.PRIMITIVES;
+    };
+
+    return Kml;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Map = (function(_super) {
+    __extends(Map, _super);
+
+    function Map(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Map.prototype.getServiceObject = function() {
+      return this.serviceObject;
+    };
+
+    Map.prototype.centerOn = function(position) {
+      return this.getServiceObject().setCenter(this.primitives().latLngFromPosition(position));
+    };
+
+    Map.prototype.fitToBounds = function(boundsObject) {
+      if (!boundsObject.isEmpty()) {
+        return this.getServiceObject().fitBounds(boundsObject);
+      }
+    };
+
+    Map.prototype.primitives = function() {
+      return this.constructor.PRIMITIVES;
+    };
+
+    return Map;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Marker = (function(_super) {
+    __extends(Marker, _super);
+
+    Marker.include(Gmaps.Google.Objects.Common);
+
+    function Marker(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Marker.prototype.updateBounds = function(bounds) {
+      return bounds.extend(this.getServiceObject().position);
+    };
+
+    Marker.prototype.panTo = function() {
+      return this.getServiceObject().getMap().panTo(this.getServiceObject().getPosition());
+    };
+
+    return Marker;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Polygon = (function(_super) {
+    __extends(Polygon, _super);
+
+    Polygon.include(Gmaps.Google.Objects.Common);
+
+    function Polygon(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Polygon.prototype.updateBounds = function(bounds) {
+      var ll, _i, _len, _ref, _results;
+      _ref = this.serviceObject.getPath().getArray();
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        ll = _ref[_i];
+        _results.push(bounds.extend(ll));
+      }
+      return _results;
+    };
+
+    return Polygon;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  this.Gmaps.Google.Objects.Polyline = (function(_super) {
+    __extends(Polyline, _super);
+
+    Polyline.include(Gmaps.Google.Objects.Common);
+
+    function Polyline(serviceObject) {
+      this.serviceObject = serviceObject;
+    }
+
+    Polyline.prototype.updateBounds = function(bounds) {
+      var ll, _i, _len, _ref, _results;
+      _ref = this.serviceObject.getPath().getArray();
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        ll = _ref[_i];
+        _results.push(bounds.extend(ll));
+      }
+      return _results;
+    };
+
+    return Polyline;
+
+  })(Gmaps.Base);
+
+}).call(this);
+(function() {
+  this.Gmaps.Google.Primitives = function() {
+    var factory;
+    factory = {
+      point: google.maps.Point,
+      size: google.maps.Size,
+      circle: google.maps.Circle,
+      latLng: google.maps.LatLng,
+      latLngBounds: google.maps.LatLngBounds,
+      map: google.maps.Map,
+      mapTypez: google.maps.MapTypeId,
+      markerImage: google.maps.MarkerImage,
+      marker: google.maps.Marker,
+      infowindow: google.maps.InfoWindow,
+      listener: google.maps.event.addListener,
+      clusterer: MarkerClusterer,
+      listenerOnce: google.maps.event.addListenerOnce,
+      polyline: google.maps.Polyline,
+      polygon: google.maps.Polygon,
+      kml: google.maps.KmlLayer,
+      addListener: function(object, event_name, fn) {
+        return factory.listener(object, event_name, fn);
+      },
+      addListenerOnce: function(object, event_name, fn) {
+        return factory.listenerOnce(object, event_name, fn);
+      },
+      mapTypes: function(type) {
+        return factory.mapTypez[type];
+      },
+      latLngFromPosition: function(position) {
+        if (_.isArray(position)) {
+          return new factory.latLng(position[0], position[1]);
+        } else {
+          if (_.isNumber(position.lat) && _.isNumber(position.lng)) {
+            return new factory.latLng(position.lat, position.lng);
+          } else {
+            if (_.isFunction(position.getServiceObject)) {
+              return position.getServiceObject().getPosition();
+            } else {
+              return position;
+            }
+          }
+        }
+      }
+    };
+    return factory;
+  };
+
+}).call(this);
 (function() {
 
 
@@ -12717,112 +15125,109 @@ return jQuery;
 
 
 $(document).ready(function(){
-	animationClick('#sign_in', '#sign_in_btn', 'fadeInDownBig')
+  animationClick('#sign_in', '#sign_in_btn', 'fadeInDownBig')
 
-	function animationClick(element, element2, animation){
-	  $element = $(element);
-	  $element2 = $(element2);
-	  $element2.click(
-	    function() {
-	      $element.addClass('animated ' + animation);
-	      $element.css({
-	      	"position":"absolute", 
-	      	"display":"block", 
-	      	"margin-top":"160px", 
-	      	"margin-left":"auto", 
-	      	"margin-right":"auto", 
-	      	"left":"0", 
-	      	"right":"0"
-	      });
-	      //wait for animation to finish before removing classes
-	      window.setTimeout( function(){
-	          $element.removeClass('animated ' + animation);
-	      }, 1000);
-	    }
-	  );
-	};
+  function animationClick(element, element2, animation){
+    $element = $(element);
+    $element2 = $(element2);
+    $element2.click(
+      function() {
+        $element.addClass('animated ' + animation);
+        $element.css({
+          "position":"absolute", 
+          "display":"block", 
+          "margin-top":"100px", 
+          "margin-left":"auto", 
+          "margin-right":"auto", 
+          "left":"0", 
+          "right":"0"
+        });
+        //wait for animation to finish before removing classes
+        window.setTimeout( function(){
+            $element.removeClass('animated ' + animation);
+        }, 1000);
+      }
+    );
+  };
 })
 
 $(document).ready(function(){
-	animationClick('#sign_in', '#close', 'fadeOutUp')
+  animationClick('#sign_in', '#close', 'fadeOutUp')
 
-	function animationClick(element, element2, animation){
-	  $element = $(element);
-	  $element2 = $(element2);
-	  $element2.click(
-	    function() {
-	      $element.addClass('animated ' + animation);
-	      $element.css({
-	      	"position":"absolute", 
-	      	"display":"block",  
-	      	"margin-left":"auto", 
-	      	"margin-right":"auto", 
-	      	"left":"0", 
-	      	"right":"0",
-	      });
-	      //wait for animation to finish before removing classes
-	      window.setTimeout( function(){
-	          $element.removeClass('animated ' + animation);
-	          $element.hide();
-	      }, 1000);
-	    }
-	  );
-	};
+  function animationClick(element, element2, animation){
+    $element = $(element);
+    $element2 = $(element2);
+    $element2.click(
+      function() {
+        $element.addClass('animated ' + animation);
+        $element.css({
+          "position":"absolute", 
+          "display":"block",  
+          "margin-left":"auto", 
+          "margin-right":"auto", 
+          "left":"0", 
+          "right":"0",
+        });
+        //wait for animation to finish before removing classes
+        window.setTimeout( function(){
+            $element.removeClass('animated ' + animation);
+            $element.hide();
+        }, 1000);
+      }
+    );
+  };
 })
 
 $(document).ready(function(){
-	if (location.href == "http://localhost:3000/sessions/user"){
-		$('#sign_in').css({
-	      	"position":"absolute", 
-	      	"display":"block", 
-	      	"margin-top":"150px", 
-	      	"margin-left":"auto", 
-	      	"margin-right":"auto", 
-	      	"left":"0", 
-	      	"right":"0"
-	      });
-	}
+  if (location.href == "http://localhost:3000/sessions/user"){
+    $('#sign_in').css({
+          "position":"absolute", 
+          "display":"block", 
+          "margin-top":"100px", 
+          "margin-left":"auto", 
+          "margin-right":"auto", 
+          "left":"0", 
+          "right":"0"
+        });
+  }
 })
 
 /* Sign_in button*/
 
 $(document).ready(function(){
-	if (location.href == "http://localhost:3000/" 
-		|| location.href == "http://localhost:3000/sessions/user"
-		|| location.href == "http://localhost:3000/#"
-		|| location.href == "http://localhost:3000/users/sign_in"){
-		$('#sign_in_btn').show();
-	}
-	else{
-		$('#sign_in_btn').hide();
-	}
+  if (location.href == "http://localhost:3000/" 
+    || location.href == "http://localhost:3000/sessions/user"
+    || location.href == "http://localhost:3000/#"
+    || location.href == "http://localhost:3000/users/sign_in"){
+    $('#sign_in_btn').show();
+  }
+  else{
+    $('#sign_in_btn').hide();
+  }
 })
 
 $(document).ready(function(){
-
-	$('#sign_in_btn').addClass('animated zoomIn');
-	window.setTimeout( function(){
-		   $('#sign_in_btn').removeClass('animated zoomIn');
-	}, 1000);
-		
-	$('#sign_in_btn').fadeIn();
-	//Check to see if the window is top if not then display button
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 300) {
-			$('#sign_in_btn').fadeOut();
-		} else {
-			$('#sign_in_btn').fadeIn();
-		}
-	});
+    
+  $('#sign_in_btn').fadeIn();
+  //Check to see if the window is top if not then display button
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 10) {
+      $('#sign_in_btn').fadeOut();
+    } else {
+      $('#sign_in_btn').fadeIn();
+    }
+  });
 })
 
 $(document).ready(function(){
-	$('.navbar-collapse').on('shown.bs.collapse', function(){
-		$('#sign_in_btn').fadeOut();
-	})
+  $('.navbar-collapse').on('shown.bs.collapse', function(){
+    $('#sign_in_btn').fadeOut();
+  })
 })
 
 ;
+/* Carrousel conf */
+
 $(document).ready(function(){
   $("#myCarousel").carousel({
     interval : 7000,
@@ -12830,67 +15235,68 @@ $(document).ready(function(){
   });
 });
 
+/* Day tabs conf */
 $(document).ready(function(){
 
   var date = new Date();
-	var day = date.getDay();
+  var day = date.getDay();
 
-	if (day == 0) {
+  if (day == 0) {
     $('#sunday').addClass("active");
     $('#sunday-mark').addClass("active");
-	} 
-	else {
-		if (day == 1){
-			$('#monday').addClass("active");
-    	$('#monday-mark').addClass("active");
-		}
-		else{
-			if (day == 2){
-				$('#tuesday').addClass("active");
-    		$('#tuesday-mark').addClass("active");
-			}
-			else{
-				if (day == 3){
-					$('#wednesday').addClass("active");
-	    		$('#wednesday-mark').addClass("active");
-    		}
-    		else{
-    			if (day == 4) {
-    				$('#thursday').addClass("active");
-    				$('#thursday-mark').addClass("active");
-    			}
-    			else{
-    				if (day == 5) {
-    					$('#friday').addClass("active");
-    					$('#friday-mark').addClass("active");
-    				}
-    				else{
-    					$('#saturday').addClass("active");
-    					$('#saturday-mark').addClass("active");
-    				}
-    			}
-    		}
-			}
-		}
-	}
+  } 
+  else {
+    if (day == 1){
+      $('#monday').addClass("active");
+      $('#monday-mark').addClass("active");
+    }
+    else{
+      if (day == 2){
+        $('#tuesday').addClass("active");
+        $('#tuesday-mark').addClass("active");
+      }
+      else{
+        if (day == 3){
+          $('#wednesday').addClass("active");
+          $('#wednesday-mark').addClass("active");
+        }
+        else{
+          if (day == 4) {
+            $('#thursday').addClass("active");
+            $('#thursday-mark').addClass("active");
+          }
+          else{
+            if (day == 5) {
+              $('#friday').addClass("active");
+              $('#friday-mark').addClass("active");
+            }
+            else{
+              $('#saturday').addClass("active");
+              $('#saturday-mark').addClass("active");
+            }
+          }
+        }
+      }
+    }
+  }
 
 });
 
 $(document).ready(function(){
-  $('#example').tooltip()
+  $('#modal-banner').tooltip()
 })
-;
-$(document).ready(function(){
-	$('#discover').click(function(){
-		$('html, body').animate({scrollTop : 650},1000);
-		return false;
-	});
-})
-;
-(function() {
 
 
-}).call(this);
+$(document).ready(function() {
+  $("#events_search input").keyup(function() {
+    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
+    $('#events-partial').addClass('animated fadeIn');
+    window.setTimeout( function(){
+      $('#events-partial').removeClass('animated fadeIn');
+    }, 600);
+    return false;
+  });
+});
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12903,6 +15309,8 @@ $(document).ready(function(){
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 
 
 

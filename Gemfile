@@ -35,6 +35,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'ruby'
 # Users login
 gem 'devise'
 gem 'omniauth-facebook', '1.4.0'
