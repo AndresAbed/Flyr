@@ -48,9 +48,7 @@ $(document).ready(function(){
 		return setCount($(".twCount"), json.count);
 	});
 
-	$.getJSON("https://graph.facebook.com/" + url, function(json) {
-		return setCount($(".fbCount"), json.shares);
-	});
+	
 
 	countUp = function($item) {
 		return setTimeout(function() {

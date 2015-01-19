@@ -1,5 +1,15 @@
 <head>
   <title><% @title = @event.name %></title>
+  <meta name="description" content="<%= @event.description %>">
+  <meta property="og:title" content="<%= @event.name %>">
+  <meta property="og:image" content="<%= @event.image.url %>">
+  <meta property="og:url" content="<%= request.url%>">
+  <meta property="og:description" content="<%= @event.description %>">
+  <meta property="og:site_name" content="QSH">
+  <meta name="twitter:title" content="<%= @event.name %>">
+  <meta name="twitter:description" content="<%= @event.description %>">
+  <meta name="twitter:image:src" content="<%= @event.image.url %>">
+  <meta name="twitter:site" content="@qsh">
 </head>
 <body class="events">
   <div class="headerbg">
