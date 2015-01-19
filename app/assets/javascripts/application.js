@@ -44,16 +44,12 @@ $(document).ready(function(){
 
 	url = window.location.href;
 
-	$.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
+	$.getJSON("https://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
 		return setCount($(".twCount"), json.count);
 	});
 
-	$.getJSON("http://graph.facebook.com/" + url, function(json) {
+	$.getJSON("https://graph.facebook.com/" + url, function(json) {
 		return setCount($(".fbCount"), json.shares);
-	});
-
-	$.getJSON("https://plusone.google.com/_/+1/fastbutton?url=http://google.com", function(json) {
-		return setCount($(".gplusCount"), json.shares);
 	});
 
 	countUp = function($item) {
@@ -87,11 +83,7 @@ $(document).ready(function(){
     },function(){
     $(".fbCount").fadeOut();
   });
-  $(".google-share").hover(function(){
-    $(".gplusCount").fadeIn();
-    },function(){
-    $(".gplusCount").fadeOut();
-  });
+  
   $(".twitter-share").hover(function(){
     $(".twCount").fadeIn();
     },function(){
