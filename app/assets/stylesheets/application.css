@@ -49,7 +49,7 @@ a:hover, a:focus {
   border-left: none;
   border-right: none;
   font-size: 13px;
-  background: url('navbg.jpg');
+  background: url('http://s17.postimg.org/fsu3bv9z3/navbg.jpg');
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -306,4 +306,41 @@ ul.social li a {
   border-radius: 0;
   padding: 5px 11px;
   font-size: 20px;
+}
+
+.arrow_box {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 11px;
+  height: 16px;
+  line-height: 17px;
+  color: #666;
+  padding: 5px;
+  display: none;
+}
+.arrow_box:after, .arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(255,255,255,0);
+  border-right-color: #fff;
+  border-width: 4px;
+  margin-top: -4px;
+}
+.arrow_box:before {
+  border-color: rgba(192,192,192,0);
+  border-right-color: #ccc;
+  border-width: 5px;
+  margin-top: -5px;
+}
 }

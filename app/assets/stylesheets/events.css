@@ -1,10 +1,10 @@
 .events{
-  background: url('graybg.jpg');
+  background: url('http://s28.postimg.org/9a69904ot/graybg.jpg');
 }
 
 .headerbg{
   width: 100%;
-  background: url('bluesquare.jpg');
+  background: url('http://s2.postimg.org/l1vos4x21/bluesquare.jpg');
 }
 
 .header-content{
@@ -171,7 +171,7 @@ max-width: none;
   width: 80px;
   height: 78px;
   padding: 10px 0px 0px 0px;
-  background: url('events-info.jpg') repeat left top;
+  background: url('http://s22.postimg.org/xloikoejx/events_info.jpg') repeat left top;
   line-height: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -198,7 +198,7 @@ color: #FFFFFF;
   width: 90px;
   height: 78px;
   padding: 10px 0px 0px 0px;
-  background: url('events-info.jpg') repeat left top;
+  background: url('http://s22.postimg.org/xloikoejx/events_info.jpg') repeat left top;
   line-height: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
