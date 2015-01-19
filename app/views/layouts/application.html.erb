@@ -4,6 +4,9 @@
     <title><%= @title %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% end %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
@@ -122,7 +125,7 @@
       </li>
       <li>
         <!-- Twitter -->
-        <a href="http://twitter.com/home?status=<%= request.url%>" 
+        <a href="https://twitter.com/home?status=<%= request.url%>" 
         onclick="javascript:void window.open('http://twitter.com/home?status=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
         title="Tweet" class="btn btn-twitter twitter-share">
         <i class="fa fa-twitter"></i></a>
