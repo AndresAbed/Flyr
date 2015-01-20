@@ -41,7 +41,7 @@
             Cerrar</span></button>
             <h4 class="modal-title" id="myModalLabel">Editar</h4>
           </div>
-          <%= form_for :events, url: event_path(@event), method: :patch do |e| %>
+          <%= form_for :event, url: event_path(@event), method: :patch do |e| %>
             <div class="modal-body">
               <div class="row">
                 <%= e.text_field :name, :placeholder => 'Nombre del evento',

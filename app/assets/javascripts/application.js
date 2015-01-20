@@ -78,15 +78,15 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-  $(".facebook-share").hover(function(){
-    $(".fbCount").fadeIn();
-    },function(){
-    $(".fbCount").fadeOut();
-  });
-  
-  $(".twitter-share").hover(function(){
-    $(".twCount").fadeIn();
-    },function(){
-    $(".twCount").fadeOut();
-  });
+	$(".facebook-share").hover(function(){
+		$(".fbCount").fadeIn();
+		},function(){
+		$(".fbCount").fadeOut();
+	});
+	
+	$(".twitter-share").hover(function(){
+		$(".twCount").fadeIn();
+		},function(){
+		$(".twCount").fadeOut();
+	});
 });
