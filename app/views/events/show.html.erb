@@ -140,6 +140,35 @@
     </div>
   </div>
 
+  <!-- Share buttons -->
+  <div class="sharer">
+    <ul>
+      <li>
+        <!-- Facebook -->
+         <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>" 
+         onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;"
+         title="Compartir en Facebook" class="btn btn-facebook facebook-share" type="box_count">
+         <i class="fa fa-facebook"></i></a>
+         <span class="arrow_box fbCount">0</span>
+      </li>
+      <li>
+        <!-- Twitter -->
+        <a href="https://twitter.com/home?status=<%= request.url%>" 
+        onclick="javascript:void window.open('http://twitter.com/home?status=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
+        title="Tweet" class="btn btn-twitter twitter-share">
+        <i class="fa fa-twitter"></i></a>
+        <span class="arrow_box twCount">0</span>
+      </li>
+      <li>
+        <!-- Google+ -->
+        <a href="https://plus.google.com/share?url=<%= request.url%>" 
+        onclick="javascript:void window.open('https://plus.google.com/share?url=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
+        title="Compartir en Google+" class="btn btn-google-plus google-share">
+        <i class="fa fa-google-plus"></i></a>
+      </li>
+    </ul>
+  </div>
+
   <!-- Goole maps -->
   <script type="text/javascript">
     $(document).ready(function(){

@@ -15128,11 +15128,10 @@ $(document).ready(function(){
   animationClick('#sign_in', '#sign_in_btn', 'fadeInDownBig')
 
   function animationClick(element, element2, animation){
-    $element = $(element);
-    $element2 = $(element2);
-    $element2.click(
-      function() {
-        $element.addClass('animated ' + animation);
+    $element = $(element)
+    $element2 = $(element2)
+    $element2.click(function() {
+        $element.addClass('animated ' + animation)
         $element.css({
           "position":"absolute", 
           "display":"block", 
@@ -15141,25 +15140,23 @@ $(document).ready(function(){
           "margin-right":"auto", 
           "left":"0", 
           "right":"0"
-        });
+        })
         //wait for animation to finish before removing classes
         window.setTimeout( function(){
-            $element.removeClass('animated ' + animation);
-        }, 1000);
-      }
-    );
-  };
+            $element.removeClass('animated ' + animation)
+        }, 1000)
+    })
+  }
 })
 
 $(document).ready(function(){
   animationClick('#sign_in', '#close', 'fadeOutUp')
 
   function animationClick(element, element2, animation){
-    $element = $(element);
-    $element2 = $(element2);
-    $element2.click(
-      function() {
-        $element.addClass('animated ' + animation);
+    $element = $(element)
+    $element2 = $(element2)
+    $element2.click(function() {
+        $element.addClass('animated ' + animation)
         $element.css({
           "position":"absolute", 
           "display":"block",  
@@ -15167,15 +15164,14 @@ $(document).ready(function(){
           "margin-right":"auto", 
           "left":"0", 
           "right":"0",
-        });
+        })
         //wait for animation to finish before removing classes
         window.setTimeout( function(){
-            $element.removeClass('animated ' + animation);
-            $element.hide();
-        }, 1000);
-      }
-    );
-  };
+            $element.removeClass('animated ' + animation)
+            $element.hide()
+        }, 1000)
+    })
+  }
 })
 
 $(document).ready(function(){
@@ -15188,7 +15184,7 @@ $(document).ready(function(){
           "margin-right":"auto", 
           "left":"0", 
           "right":"0"
-        });
+        })
   }
 })
 
@@ -15199,29 +15195,29 @@ $(document).ready(function(){
     || location.href == "http://localhost:3000/sessions/user"
     || location.href == "http://localhost:3000/#"
     || location.href == "http://localhost:3000/users/sign_in"){
-    $('#sign_in_btn').show();
+    $('#sign_in_btn').show()
   }
   else{
-    $('#sign_in_btn').hide();
+    $('#sign_in_btn').hide()
   }
 })
 
 $(document).ready(function(){
     
-  $('#sign_in_btn').fadeIn();
+  $('#sign_in_btn').fadeIn()
   //Check to see if the window is top if not then display button
   $(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
-      $('#sign_in_btn').fadeOut();
+      $('#sign_in_btn').fadeOut()
     } else {
-      $('#sign_in_btn').fadeIn();
+      $('#sign_in_btn').fadeIn()
     }
-  });
+  })
 })
 
 $(document).ready(function(){
   $('.navbar-collapse').on('shown.bs.collapse', function(){
-    $('#sign_in_btn').fadeOut();
+    $('#sign_in_btn').fadeOut()
   })
 })
 
@@ -15232,47 +15228,47 @@ $(document).ready(function(){
   $("#myCarousel").carousel({
     interval : 7000,
     pause:true
-  });
-});
+  })
+})
 
 /* Day tabs conf */
 $(document).ready(function(){
 
-  var date = new Date();
-  var day = date.getDay();
+  var date = new Date()
+  var day = date.getDay()
 
   if (day == 0) {
-    $('#sunday').addClass("active");
-    $('#sunday-mark').addClass("active");
+    $('#sunday').addClass("active")
+    $('#sunday-mark').addClass("active")
   } 
   else {
     if (day == 1){
-      $('#monday').addClass("active");
-      $('#monday-mark').addClass("active");
+      $('#monday').addClass("active")
+      $('#monday-mark').addClass("active")
     }
     else{
       if (day == 2){
-        $('#tuesday').addClass("active");
-        $('#tuesday-mark').addClass("active");
+        $('#tuesday').addClass("active")
+        $('#tuesday-mark').addClass("active")
       }
       else{
         if (day == 3){
-          $('#wednesday').addClass("active");
-          $('#wednesday-mark').addClass("active");
+          $('#wednesday').addClass("active")
+          $('#wednesday-mark').addClass("active")
         }
         else{
           if (day == 4) {
-            $('#thursday').addClass("active");
-            $('#thursday-mark').addClass("active");
+            $('#thursday').addClass("active")
+            $('#thursday-mark').addClass("active")
           }
           else{
             if (day == 5) {
-              $('#friday').addClass("active");
-              $('#friday-mark').addClass("active");
+              $('#friday').addClass("active")
+              $('#friday-mark').addClass("active")
             }
             else{
-              $('#saturday').addClass("active");
-              $('#saturday-mark').addClass("active");
+              $('#saturday').addClass("active")
+              $('#saturday-mark').addClass("active")
             }
           }
         }
@@ -15280,23 +15276,25 @@ $(document).ready(function(){
     }
   }
 
-});
+})
 
+/* Banner button tooltip */
 $(document).ready(function(){
   $('#modal-banner').tooltip()
 })
 
-
+/* Events ajax search and render animation */
 $(document).ready(function() {
   $("#events_search input").keyup(function() {
-    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
-    $('#events-partial').addClass('animated fadeIn');
+    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script")
+    $('#events-partial').addClass('animated fadeIn')
     window.setTimeout( function(){
-      $('#events-partial').removeClass('animated fadeIn');
-    }, 600);
-    return false;
-  });
-});
+      $('#events-partial').removeClass('animated fadeIn')
+    }, 600)
+    return false
+  })
+})
+;
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -15323,70 +15321,254 @@ $(document).ready(function(){
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 300) {
-			$('#scrollToTop').fadeIn();
+			$('#scrollToTop').fadeIn()
 		} else {
-			$('#scrollToTop').fadeOut();
+			$('#scrollToTop').fadeOut()
 		}
-	});
+	})
 	
 	//Click event to scroll to top
 	$('#scrollToTop').click(function(){
-		$('html, body').animate({scrollTop : 0},700);
-		return false;
-	});
+		$('html, body').animate({scrollTop : 0},700)
+		return false
+	})
 	
-});
+})
 
 /* Share counters */
 
 $(document).ready(function(){
-	var countUp, setCount, url;
+	var countUp, setCount, url
 
-	url = window.location.href;
+	url = window.location.href
 
 	$.getJSON("https://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
-		return setCount($(".twCount"), json.count);
-	});
+		return setCount($(".twCount"), json.count)
+	})
 
 	$.getJSON("https://graph.facebook.com/" + url, function(json) {
-		return setCount($(".fbCount"), json.shares);
-	});
+		return setCount($(".fbCount"), json.shares)
+	})
 
 	countUp = function($item) {
 		return setTimeout(function() {
-			var current, newCount, target;
-			current = $item.attr("data-current-count") * 1;
-			target = $item.attr("data-target-count") * 1;
-			newCount = current + Math.ceil((target - current) / 2);
-			$item.attr("data-current-count", newCount);
-			$item.html(newCount);
+			var current, newCount, target
+			current = $item.attr("data-current-count") * 1
+			target = $item.attr("data-target-count") * 1
+			newCount = current + Math.ceil((target - current) / 2)
+			$item.attr("data-current-count", newCount)
+			$item.html(newCount)
 			if (newCount < target) {
-				return countUp($item);
+				return countUp($item)
 			}
-		}, 100);
-	};
+		}, 100)
+	}
 
 	setCount = function($item, count) {
 		if (count === null) {
-			count = null;
+			count = null
 		}
-		$item.attr("data-target-count", count);
-		$item.attr("data-current-count", 0);
-		return countUp($item);
-	};
+		$item.attr("data-target-count", count)
+		$item.attr("data-current-count", 0)
+		return countUp($item)
+	}
 
 })
 
+/* Footer colors */
+
 $(document).ready(function(){
-  $(".facebook-share").hover(function(){
-    $(".fbCount").fadeIn();
-    },function(){
-    $(".fbCount").fadeOut();
-  });
-  
-  $(".twitter-share").hover(function(){
-    $(".twCount").fadeIn();
-    },function(){
-    $(".twCount").fadeOut();
-  });
-});
+
+  /* Facebook */
+  $(".social i.fa-facebook").mouseover(function(){
+    $("#footer").css({
+      "background-color":"rgb(59,89,152)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgb(59,89,152)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en Facebook')
+    $(".social-text").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+  $(".social i.fa-facebook").mouseout(function(){
+    $("#footer").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en nuestras redes sociales')
+    $(".social-text").css({
+      "color":"#333",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+
+  /* Google plus */
+  $(".social i.fa-google-plus").mouseover(function(){
+    $("#footer").css({
+      "background-color":"rgb(211, 72, 54)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgb(211, 72, 54)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en Google+')
+    $(".social-text").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+  $(".social i.fa-google-plus").mouseout(function(){
+    $("#footer").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en nuestras redes sociales')
+    $(".social-text").css({
+      "color":"#333",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+
+  /* Instagram */
+  $(".social i.fa-instagram").mouseover(function(){
+    $("#footer").css({
+      "background-color":"#3f729b", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"#3f729b", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Mirá nuestras fotos en Instagram')
+    $(".social-text").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+  $(".social i.fa-instagram").mouseout(function(){
+    $("#footer").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en nuestras redes sociales')
+    $(".social-text").css({
+      "color":"#333",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+
+  /* Twitter */
+  $(".social i.fa-twitter").mouseover(function(){
+    $("#footer").css({
+      "background-color":"rgb(64,153,255)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgb(64,153,255)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en Twitter')
+    $(".social-text").css({
+      "color":"white",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+  $(".social i.fa-twitter").mouseout(function(){
+    $("#footer").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(this).css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright .container").css({
+      "color":"#777",
+      "transition":"color .5s ease-in-out",
+    })
+    $(".copyright").css({
+      "background-color":"rgba(20,20,20,1)", 
+      "transition":"background-color .5s ease-in-out"
+    })
+    $(".social-text").text('Seguinos en nuestras redes sociales')
+    $(".social-text").css({
+      "color":"#333",
+      "transition":"color .5s ease-in-out",
+    })
+  })
+})
+;

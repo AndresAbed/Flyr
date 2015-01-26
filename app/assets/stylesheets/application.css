@@ -195,12 +195,7 @@ footer{
   padding: 6em;
 }
 
-header h2{
-  color: white; 
-  font-size: 3em;
-}
-
-header span{
+.social-text{
   font-size: 1.7em;
 }
 
@@ -212,7 +207,7 @@ ul.social {
 
 ul.social li {
   display: inline-block;
-  margin: 0 1em;
+  margin: 0 1.5em;
 }
 
 @media (max-width: 445px){
@@ -220,12 +215,8 @@ ul.social li {
     display: block;
     margin: 0 1em;
   }
-  header h2{
-    color: white; 
-    font-size: 1.80em;
-  }
 
-  header span{
+  .social-text{
     font-size: 1.25em;
   }
 }
@@ -238,27 +229,6 @@ ul.social li a {
 
 .social i{
   color: #777;
-  transition: color 0.35s ease-in-out;
-}
-
-.social i.fa-facebook:hover{
-  color: rgb(59,89,152);
-  transition: color 0.35s ease-in-out;
-}
-
-.social i.fa-google-plus:hover{
-  color: rgb(211, 72, 54);
-  transition: color 0.35s ease-in-out;
-}
-
-.social i.fa-twitter:hover{
-  color: rgb(64,153,255);
-  transition: color 0.35s ease-in-out;
-}
-
-.social i.fa-instagram:hover{
-  color: rgb(81, 127, 164);
-  transition: color 0.35s ease-in-out;
 }
 
 .copyright{
@@ -272,4 +242,64 @@ ul.social li a {
   border-top: 1px solid;
   border-color: rgba(255,255,255,0.2);
   color: #777;
+}
+
+/* Share buttons */
+
+.sharer{
+  position: fixed;
+  display: block;
+  top: 30%;
+  left: 0;
+  z-index: 10;
+}
+
+.sharer ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.facebook-share{
+  border-radius: 0;
+  padding: 5px 14px;
+  font-size: 20px;
+}
+
+.google-share{
+  border-radius: 0;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.twitter-share{
+  border-radius: 0;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.arrow_box {
+  position: relative;
+  right: 3px;
+  top: 0px;
+  display: inline-block;
+  padding: 8px 5px 8px;
+  border: 1px solid #ddd;
+  border-left-width: 0;
+  vertical-align: 0;
+  font-size: 11px;
+  color: #999;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.arrow_box:before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  margin-top: -5px;
+  border-right: 6px solid #FFF;
+  border-bottom: 6px solid transparent;
+  border-top: 6px solid transparent;
 }

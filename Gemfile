@@ -56,5 +56,3 @@ gem "letter_opener", :group => :development
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
-#Social share
-gem 'shareable'
