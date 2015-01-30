@@ -147,7 +147,8 @@
         <!-- Facebook -->
          <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>" 
          onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;"
-         title="Compartir en Facebook" class="btn btn-facebook facebook-share" type="box_count">
+         title="Compartir en Facebook" class="btn btn-facebook facebook-share" 
+         type="box_count" data-url="<%= request.url%>" data-text="<%= @event.name %>">
          <i class="fa fa-facebook"></i></a>
          <span class="arrow_box fbCount">0</span>
       </li>
@@ -155,7 +156,8 @@
         <!-- Twitter -->
         <a href="https://twitter.com/home?status=<%= request.url%>" 
         onclick="javascript:void window.open('http://twitter.com/home?status=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
-        title="Tweet" class="btn btn-twitter twitter-share">
+        title="Tweet" class="btn btn-twitter twitter-share"
+        data-url="<%= request.url%>" data-text="<%= @event.name %>" data-via="qsh">
         <i class="fa fa-twitter"></i></a>
         <span class="arrow_box twCount">0</span>
       </li>
@@ -163,7 +165,8 @@
         <!-- Google+ -->
         <a href="https://plus.google.com/share?url=<%= request.url%>" 
         onclick="javascript:void window.open('https://plus.google.com/share?url=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
-        title="Compartir en Google+" class="btn btn-google-plus google-share">
+        title="Compartir en Google+" class="btn btn-google-plus google-share"
+        data-url="<%= request.url%>" data-text="<%= @event.name %>">
         <i class="fa fa-google-plus"></i></a>
       </li>
     </ul>
