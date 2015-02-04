@@ -94,7 +94,7 @@
       <div class="event-list">
         <% @list.each do |l| %>
           <div class="list-content">
-            Lista de <%= l.name %> 
+            Lista de <%= l.name %>
             <span class="btn btn-default btn-xs user-list-btn">Anotarme</span>
           </div>
         <% end %>
@@ -156,11 +156,12 @@
     <ul>
       <li>
         <!-- Facebook -->
-         <a href="http://www.facebook.com/sharer/sharer.php?s=100&;p[url]=<%= request.url%>&;p[images][0]=<%= @event.image.url %>&;p[title]=<%= @event.name %>&;p[summary]=<%= @event.description %>" target="popup"
+         <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= request.url%>&p[images][0]=<%= @event.image.url %>&p[title]=<%= @event.name %>&p[summary]=<%= @event.description %>" target="popup"
          onClick="window.open(this.href, this.target, 'width=600,height=400, top=200, left=300'); return false;"
          title="Compartir en Facebook" class="btn btn-facebook facebook-share">
          <i class="fa fa-facebook"></i></a>
          <span class="arrow_box fbCount">0</span>
+         <a href="http://www.facebook.com/sharer.php?s=100&p[title]=<%= @event.name %>&p[url]=<%= request.url%>&p[summary]=<%= @event.description %>&p[images][0]=<%= @event.image.url %>">Fb</a>
       </li>
       <li>
         <!-- Twitter -->

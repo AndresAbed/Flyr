@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def create
-    @list = List.new :name => current_user.username
+    @list = List.new :name => current_user.username || current_user.name
     if @list.save
       redirect_to :back
     end
