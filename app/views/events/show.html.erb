@@ -91,6 +91,14 @@
       <p class="description-name"><%= @event.name %></p>
       <p><%= @event.description %></p>
       <hr class="featurette-divider">
+      <div class="event-list">
+        <% @list.each do |l| %>
+          <div class="list-content">
+            Lista de <%= l.name %> 
+            <span class="btn btn-default btn-xs user-list-btn">Anotarme</span>
+          </div>
+        <% end %>
+      </div>
       <div class="map">
         <div id="map" data-latitude="<%= @event.latitude %>" 
         data-longitude="<%= @event.longitude %>" 
@@ -113,6 +121,9 @@
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
+        <%= form_for :list, url: lists_path do |f| %>
+          <%= f.submit %>
+        <% end %>
       </div>
     </div>
     <div id="info-col" class="col-lg-4">
@@ -145,26 +156,27 @@
     <ul>
       <li>
         <!-- Facebook -->
-         <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>" 
-         onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;"
-         title="Compartir en Facebook" class="btn btn-facebook facebook-share" 
-         type="box_count" data-url="<%= request.url%>" data-text="<%= @event.name %>">
+         <a href="http://www.facebook.com/sharer/sharer.php?s=100&;p[url]=<%= request.url%>&;p[images][0]=<%= @event.image.url %>&;p[title]=<%= @event.name %>&;p[summary]=<%= @event.description %>" target="popup"
+         onClick="window.open(this.href, this.target, 'width=600,height=400, top=200, left=300'); return false;"
+         title="Compartir en Facebook" class="btn btn-facebook facebook-share">
          <i class="fa fa-facebook"></i></a>
          <span class="arrow_box fbCount">0</span>
       </li>
       <li>
         <!-- Twitter -->
-        <a href="https://twitter.com/home?status=<%= request.url%>" 
-        onclick="javascript:void window.open('http://twitter.com/home?status=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
+        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @event.name %>&via=qsh&hashtags=qshLove"
+        target="popup" onClick="window.open(this.href, this.target, 
+        'width=600,height=400, top=200, left=300'); return false;" 
         title="Tweet" class="btn btn-twitter twitter-share"
         data-url="<%= request.url%>" data-text="<%= @event.name %>" data-via="qsh">
-        <i class="fa fa-twitter"></i></a>
+          <i class="fa fa-twitter"></i></a>
         <span class="arrow_box twCount">0</span>
       </li>
       <li>
         <!-- Google+ -->
         <a href="https://plus.google.com/share?url=<%= request.url%>" 
-        onclick="javascript:void window.open('https://plus.google.com/share?url=<%= request.url%>','1421417558767','width=600,height=500,left=150,top=150');return false;" 
+        target="popup" onClick="window.open(this.href, this.target, 
+        'width=600,height=400, top=200, left=300'); return false;" 
         title="Compartir en Google+" class="btn btn-google-plus google-share"
         data-url="<%= request.url%>" data-text="<%= @event.name %>">
         <i class="fa fa-google-plus"></i></a>

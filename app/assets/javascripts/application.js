@@ -228,7 +228,7 @@ $(document).ready(function(){
   /* Twitter */
   $(".social i.fa-twitter").mouseover(function(){
     $("#footer").css({
-      "background-color":"#1ab2e8", 
+      "background-color":"#4099ff", 
       "transition":"background-color .5s ease-in-out"
     })
     $(this).css({
@@ -240,7 +240,7 @@ $(document).ready(function(){
       "transition":"color .5s ease-in-out",
     })
     $(".copyright").css({
-      "background-color":"#1ab2e8", 
+      "background-color":"#4099ff", 
       "transition":"background-color .5s ease-in-out"
     })
     $(".social-text").text('Seguinos en Twitter')

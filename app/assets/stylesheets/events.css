@@ -64,7 +64,7 @@
   margin-top: 10px;
 }
 
-/* /Edit Modal */
+/* Edit Modal */
 
 .event-image{
   border: 10px #fff solid;
@@ -88,6 +88,16 @@
   margin: 10px 0px 20px 0px;
   display: inline-block;
   border-bottom: 2px #000 solid;
+}
+
+.list-content{
+  padding: 25px 25px;
+  background-color: black;
+  color: white;
+}
+
+.user-list-btn{
+  float: right;
 }
 
 .map{

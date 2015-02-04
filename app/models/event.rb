@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-  #has_many :assistances
 
   # Paperclip config
   has_attached_file :image, :styles => { :medium => "600x600>", 

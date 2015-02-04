@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
  
 
   helper_method :current_user, :log_in_using_OAuth?
-  alias_method :devise_current_user, :current_user
 
+  alias_method :devise_current_user, :current_user
   def current_user
     @current_user ||= if session[:user_id]
       User.find(session[:user_id]) 

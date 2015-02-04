@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
   def show
   	@event = Event.friendly.find(params[:id])
+    @list = List.all
 	end
 
   def update

@@ -5,8 +5,9 @@ class BannersController < ApplicationController
 	def create
 		@banner = Banner.new(banner_params)
  
-		@banner.save
-		redirect_to home_path
+		if @banner.save
+		  redirect_to home_path
+    end
 	end
 
 	def update

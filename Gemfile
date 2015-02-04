@@ -56,3 +56,7 @@ gem "letter_opener", :group => :development
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
+# Guard Rails
+group :development do
+  gem 'guard-livereload', require: false
+end

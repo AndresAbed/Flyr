@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :events
   get 'user/profile'
 
+  #Lists
+  resources :lists
+
   #Home
   get 'home/index', as: :home
 
