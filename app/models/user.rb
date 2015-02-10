@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, 
   :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:username]
 
-  #has_many :assistances
+  has_many :lists
   #has_many :events, through: :assistances
 
   has_attached_file :profile_img, :styles => { :medium => "600x600>", 

@@ -1,13 +1,14 @@
 class Event < ActiveRecord::Base
 
+  has_many :lists
+  
   # Paperclip config
-  has_attached_file :image, :styles => { :medium => "600x600>", 
-    :small => "32x32>" }, 
+  has_attached_file :image, 
   :url  => "/assets/events/:id/:style/:basename.:extension"
   validates_attachment :image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-  has_attached_file :club_logo, :styles => { :medium => "300x300>"}, 
+  has_attached_file :club_logo, 
   :url  => "/assets/events/:id/:style/:basename.:extension"
   validates_attachment :club_logo, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }

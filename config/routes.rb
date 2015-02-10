@@ -15,11 +15,14 @@ Rails.application.routes.draw do
 
   #Events
   get 'events/index'
-  resources :events
-  get 'user/profile'
+  resources :events do
+    resources :lists, only: [:create, :destroy]
+  end
 
   #Lists
-  resources :lists
+  resources :lists, only: [:create, :destroy]
+
+  get 'user/profile'
 
   #Home
   get 'home/index', as: :home

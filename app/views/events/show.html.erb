@@ -7,10 +7,6 @@
     <meta property="og:url" content="<%= request.url%>">
     <meta property="og:description" content="<%= @event.description %>">
     <meta property="og:site_name" content="QSH">
-    <meta name="twitter:title" content="<%= @event.name %>">
-    <meta name="twitter:description" content="<%= @event.description %>">
-    <meta name="twitter:image:src" content="<%= @event.image.url %>">
-    <meta name="twitter:site" content="@qsh">
   <% end %>
 </head>
 <body class="events">
@@ -91,14 +87,26 @@
       <p class="description-name"><%= @event.name %></p>
       <p><%= @event.description %></p>
       <hr class="featurette-divider">
-      <div class="event-list">
+      <ul class="event-lists">
         <% @list.each do |l| %>
-          <div class="list-content">
-            Lista de <%= l.name %>
-            <span class="btn btn-default btn-xs user-list-btn">Anotarme</span>
-          </div>
+          <li>
+            <div class="list-content">
+              <div class="col-lg-2 list-container-img">
+                <img class="list-img" src="<%= l.list_image.url %>">
+              </div>
+              <div class="col-lg-4 list-text">
+                <p>Lista de <%= l.name %></p>
+              </div>
+              <div class="col-lg-4 list-btns">
+                <button class="btn btn-default btn-xs">Anotarme</button>
+                <%= link_to 'Borrar lista', event_list_path(@event, l),
+                method: :delete, data: { confirm: 'Eliminar?' },
+                class: 'btn btn-danger btn-xs' %>
+              </div>  
+            </div>
+          </li>  
         <% end %>
-      </div>
+      </ul>
       <div class="map">
         <div id="map" data-latitude="<%= @event.latitude %>" 
         data-longitude="<%= @event.longitude %>" 
@@ -121,7 +129,7 @@
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for :list, url: lists_path do |f| %>
+        <%= form_for :list, url: event_lists_path(@event) do |f| %>
           <%= f.submit %>
         <% end %>
       </div>
@@ -156,12 +164,11 @@
     <ul>
       <li>
         <!-- Facebook -->
-         <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= request.url%>&p[images][0]=<%= @event.image.url %>&p[title]=<%= @event.name %>&p[summary]=<%= @event.description %>" target="popup"
+         <a href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>" target="popup"
          onClick="window.open(this.href, this.target, 'width=600,height=400, top=200, left=300'); return false;"
          title="Compartir en Facebook" class="btn btn-facebook facebook-share">
          <i class="fa fa-facebook"></i></a>
          <span class="arrow_box fbCount">0</span>
-         <a href="http://www.facebook.com/sharer.php?s=100&p[title]=<%= @event.name %>&p[url]=<%= request.url%>&p[summary]=<%= @event.description %>&p[images][0]=<%= @event.image.url %>">Fb</a>
       </li>
       <li>
         <!-- Twitter -->

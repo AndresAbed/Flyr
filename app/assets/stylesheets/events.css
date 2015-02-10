@@ -90,14 +90,64 @@
   border-bottom: 2px #000 solid;
 }
 
+.event-lists{
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0px;
+}
+
+.event-lists li{
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.event-lists li:last-child{
+  border-bottom: none;
+}
+
 .list-content{
-  padding: 25px 25px;
-  background-color: black;
+  height: 100px;
+  background-color: transparent;
   color: white;
 }
 
-.user-list-btn{
+.list-container-img{
+  margin-top: 15px;
+}
+
+.list-img{
+  width: 70px;
+  height: 70px;
+}
+
+.list-text{
+  margin-top: 40px;
+  color: #000;
+}
+
+.list-btns{
+  text-align: right;
+  margin-top: 25px;
   float: right;
+}
+
+.list-btns button{
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #47a3da;
+  border: none;
+  color: white;
+  transition: background-color .35s ease-in-out;
+}
+
+.list-btns button:hover{
+  background-color: #02639d;
+}
+
+.list-btns a{
+  width: 100%;
+  transition: background-color .35s ease-in-out;
 }
 
 .map{
