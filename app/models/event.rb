@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
   # Search config
   def self.search(search)
     if search
-      where('name LIKE ? OR age LIKE ? OR address LIKE ?', 
+      where('name ILIKE ? OR age ILIKE ? OR address ILIKE ?', 
         "%#{search}%", "%#{search}%", "%#{search}%")
     else
       Event.all
