@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to @event
     else
-      render 'edit'
+      redirect_to :back
     end
   end
 

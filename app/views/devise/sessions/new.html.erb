@@ -69,7 +69,7 @@
 
       <div class="Oauth-btns">
         <% if current_user %>
-          Signed in as <strong><%= current_user.name %></strong>!
+          Signed in as <strong><%= current_user.username %></strong>!
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
           <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">

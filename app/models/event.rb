@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  has_many :lists
+  has_many :lists, dependent: :destroy
   
   # Paperclip config
   has_attached_file :image, 

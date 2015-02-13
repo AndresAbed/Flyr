@@ -1,13 +1,20 @@
 class ListsController < ApplicationController
   def create
     @event = Event.friendly.find(params[:event_id])
-    @list = List.new :name => current_user.username || current_user.name,
+    @list = List.new :list_name => current_user.username,
     :list_image => current_user.profile_img,
     :event_id => @event.id, :user_id => current_user.id
 
     if @list.save
       redirect_to :back
+    else
+      redirect_to :back  
     end
+  end
+
+  def show
+    @list = List.find(params[:id])
+    @listuser = Listuser.all
   end
 
   def destroy

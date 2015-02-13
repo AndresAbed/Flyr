@@ -87,26 +87,30 @@
       <p class="description-name"><%= @event.name %></p>
       <p><%= @event.description %></p>
       <hr class="featurette-divider">
-      <ul class="event-lists">
-        <% @list.each do |l| %>
-          <li>
-            <div class="list-content">
-              <div class="col-lg-2 list-container-img">
-                <img class="list-img" src="<%= l.list_image.url %>">
+      <% if @list.present? %>
+        <ul class="event-lists">
+          <% @list.each do |l| %>
+            <li>
+              <div class="list-content">
+                <div class="col-lg-2 list-container-img">
+                  <img class="list-img" src="<%= l.list_image.url %>">
+                </div>
+                <div class="col-lg-4 list-text">
+                  <p>Lista de <%= l.list_name %></p>
+                </div>
+                <div class="col-lg-4 list-btns">
+                  <%= form_for :list_user, url: list_listusers_path(l) do |f| %>
+                    <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
+                  <% end %>
+                  <%= link_to 'Borrar lista', event_list_path(@event, l),
+                  method: :delete, data: { confirm: 'Eliminar?' },
+                  class: 'btn btn-danger btn-xs' %>
+                </div>  
               </div>
-              <div class="col-lg-4 list-text">
-                <p>Lista de <%= l.name %></p>
-              </div>
-              <div class="col-lg-4 list-btns">
-                <button class="btn btn-default btn-xs">Anotarme</button>
-                <%= link_to 'Borrar lista', event_list_path(@event, l),
-                method: :delete, data: { confirm: 'Eliminar?' },
-                class: 'btn btn-danger btn-xs' %>
-              </div>  
-            </div>
-          </li>  
-        <% end %>
-      </ul>
+            </li>  
+          <% end %>
+        </ul>
+      <% end %>  
       <div class="map">
         <div id="map" data-latitude="<%= @event.latitude %>" 
         data-longitude="<%= @event.longitude %>" 

@@ -1,5 +1,6 @@
 class List < ActiveRecord::Base
-
+  has_many :listusers, dependent: :destroy
+  validates :list_name, :uniqueness => {:scope => :event_id}
   belongs_to :event
   belongs_to :user
 

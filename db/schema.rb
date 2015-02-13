@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208080417) do
+ActiveRecord::Schema.define(version: 20150213020223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150208080417) do
   add_index "events", ["slug"], name: "index_events_on_slug", using: :btree
 
   create_table "lists", force: true do |t|
-    t.string   "name"
+    t.string   "list_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "list_image_file_name"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 20150208080417) do
     t.datetime "list_image_updated_at"
     t.integer  "event_id"
     t.integer  "user_id"
+  end
+
+  create_table "listusers", force: true do |t|
+    t.string   "username"
+    t.integer  "list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -89,7 +96,6 @@ ActiveRecord::Schema.define(version: 20150208080417) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
     t.string   "oauth_token"
     t.string   "image"
     t.string   "username"

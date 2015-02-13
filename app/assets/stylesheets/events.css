@@ -132,22 +132,24 @@
   float: right;
 }
 
-.list-btns button{
+.addName{
   width: 100%;
   margin-bottom: 10px;
   background-color: #47a3da;
   border: none;
   color: white;
   transition: background-color .35s ease-in-out;
+  padding: 5px;
 }
 
-.list-btns button:hover{
+.addName:hover{
   background-color: #02639d;
 }
 
 .list-btns a{
   width: 100%;
   transition: background-color .35s ease-in-out;
+  padding: 5px;
 }
 
 .map{
