@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def show
   	@event = Event.friendly.find(params[:id])
     @list = @event.lists
+    @listuser = @event.listusers
 	end
 
   def update

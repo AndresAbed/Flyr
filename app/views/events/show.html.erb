@@ -99,12 +99,19 @@
                   <p>Lista de <%= l.list_name %></p>
                 </div>
                 <div class="col-lg-4 list-btns">
-                  <%= form_for :list_user, url: list_listusers_path(l) do |f| %>
+                  <%= form_for :list_user, url: event_list_listusers_path(@event, l) do |f| %>
                     <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
                   <% end %>
                   <%= link_to 'Borrar lista', event_list_path(@event, l),
                   method: :delete, data: { confirm: 'Eliminar?' },
                   class: 'btn btn-danger btn-xs' %>
+                  <% @listuser.each do |lu| %>
+                    <% if lu.username == current_user.username %>
+                      <%= link_to 'Salir de lista', event_list_listuser_path(@event, l, lu),
+                      method: :delete, data: { confirm: 'Eliminar?' },
+                      class: 'btn btn-danger btn-xs' %>
+                    <% end %>
+                  <% end %>
                 </div>  
               </div>
             </li>  

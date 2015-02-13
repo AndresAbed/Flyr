@@ -14,7 +14,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @listuser = Listuser.all
+    @listuser = @lists.listusers
   end
 
   def destroy

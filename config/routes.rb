@@ -16,14 +16,11 @@ Rails.application.routes.draw do
   #Events
   get 'events/index'
   resources :events do
-    resources :lists, only: [:create, :show, :destroy]
+    resources :lists, only: [:create, :show, :destroy] do
+      resources :listusers, only: [:create, :destroy]
+    end
   end
-
-  #Lists
-  resources :lists, only: [:create, :show, :destroy] do
-    resources :listusers, only: [:create]
-  end
-
+  
   get 'user/profile'
 
   #Home

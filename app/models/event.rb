@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-
+  has_many :listusers
   has_many :lists, dependent: :destroy
   
   # Paperclip config
