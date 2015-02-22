@@ -100,7 +100,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="all">
 				<%= form_tag home_path, :method => 'get', :id => "events_search" do %>  
 					<div class="input-group search">
-						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+						<span class="input-group-addon"><i class="fa fa-search"></i></span>
 						<%= text_field_tag :search, params[:search], 
 						:placeholder => "Buscar por nombre, dirección o edad", 
 						class: 'form-control' %>
@@ -112,7 +112,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="monday">
 				<% @monday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -124,7 +124,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="tuesday">
 				<% @tuesday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -136,7 +136,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="wednesday">
 				<% @wednesday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -148,7 +148,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="thursday">
 				<% @thursday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -160,7 +160,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="friday">
 				<% @friday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -172,7 +172,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="saturday">
 				<% @saturday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -184,7 +184,7 @@ data-placement="right" title="Cambiar banner"></button>
 			<div class="tab-pane" id="sunday">
 				<% @sunday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
 						<span id="pic-caption-events" class="pic-caption open-down">
 							<h1 class="pic-title"><%= e.name %></h1>
 							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -200,41 +200,15 @@ data-placement="right" title="Cambiar banner"></button>
 <!-- Grid -->
 <div class="grid">
 	<div class="container grids-container">
+    <% @clubs.each do |c| %>
 			<div class="pic">
-					<img src="http://s29.postimg.org/44rfw60k7/week.jpg" class="pic-image" alt="Pic">
+					<img src="<%= c.logo.url %>" class="pic-image" alt="Pic">
 					<span class="pic-caption left-to-right">
-							<h1 class="pic-title">Week</h1>
+							<h1 class="pic-title"><%= c.name %></h1>
 							<p class="pic-subtitle">Subtitle</p>
-							<a href="#" class="btn-default btn-sm">Ver boliche</a>
+							<%= link_to 'Ver boliche', club_path(c), class: 'btn btn-default btn-sm' %>
 					</span>
 			</div>
-
-			<div class="pic">
-					<img src="http://3.bp.blogspot.com/-bYlwVdMJCxE/UzTgRZ_07iI/AAAAAAAAE_E/7Jya-StymwE/s1600/jet+club+divino+(2).jpg" class="pic-image" alt="Pic">
-					<span class="pic-caption left-to-right">
-							<h1 class="pic-title">Jet</h1>
-							<p class="pic-subtitle">Subtitle</p>
-							<a href="#" class="btn-default btn-sm">Ver boliche</a>
-					</span>
-			</div>
-
-			<div class="pic">
-					<img src="http://s29.postimg.org/40kau27vb/eldivino.jpg" class="pic-image" alt="Pic">
-					<span class="pic-caption left-to-right">
-							<h1 class="pic-title">El Divino</h1>
-							<p class="pic-subtitle">Subtitle</p>
-							<a href="#" class="btn-default btn-sm">Ver boliche</a>
-					</span>
-			</div>
-
-			<div class="pic">
-					<img src="http://s29.postimg.org/6ebfck11z/laboite.jpg" class="pic-image" alt="Pic">
-					<span class="pic-caption left-to-right">
-							<h1 class="pic-title">La Boite</h1>
-							<p class="pic-subtitle">Subtitle</p>
-							<a href="#" class="btn-default btn-sm">Ver boliche</a>
-					</span>
-			</div>
-
+    <% end %>  
 	</div>
 </div>

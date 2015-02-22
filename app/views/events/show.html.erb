@@ -21,13 +21,13 @@
   <div class="container">
     <div class="event-buttons">
       <button type="button" class="btn btn-info btn-sm" 
-      data-toggle="modal" data-target="#myModal">Editar evento</button>
+      data-toggle="modal" data-target="#editEvent">Editar evento</button>
       <%= link_to 'Borrar evento', event_path(@event),
       method: :delete, data: { confirm: 'Eliminar?' },
       class: 'btn btn-danger btn-sm' %>
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+    <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" 
     aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -66,7 +66,7 @@
                 <%= e.file_field :image %>
 
                 <%= e.label "Logo", class: 'image-title' %>
-                <%= e.file_field :club_logo %>
+                <%= e.file_field :event_logo %>
               </div>
             </div>
             <div class="modal-footer">
@@ -99,7 +99,7 @@
                   <p>Lista de <%= l.list_name %></p>
                 </div>
                 <div class="col-lg-4 list-btns">
-                  <%= form_for :list_user, url: event_list_listusers_path(@event, l) do |f| %>
+                  <%= form_for :clublist_user, url: event_list_listusers_path(@event, l) do |f| %>
                     <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
                   <% end %>
                   <%= link_to 'Borrar lista', event_list_path(@event, l),
@@ -128,7 +128,7 @@
       <% for e in @event.nearbys(2) %>
         <% if e.date == @event.date %>
           <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+            <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
             <span id="pic-caption-events" class="pic-caption open-down">
               <h1 class="pic-title"><%= e.name %></h1>
               <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
@@ -147,7 +147,7 @@
     </div>
     <div id="info-col" class="col-lg-4">
       <div class="container event-logo" 
-        style="background-image: url(<%= @event.club_logo.url %>);">
+        style="background-image: url(<%= @event.event_logo.url %>);">
       </div>
       <ul class="info-list">
         <li class="address-item">
@@ -186,8 +186,7 @@
         <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @event.name %>&via=qsh&hashtags=qshLove"
         target="popup" onClick="window.open(this.href, this.target, 
         'width=600,height=400, top=200, left=300'); return false;" 
-        title="Tweet" class="btn btn-twitter twitter-share"
-        data-url="<%= request.url%>" data-text="<%= @event.name %>" data-via="qsh">
+        title="Tweet" class="btn btn-twitter twitter-share">
           <i class="fa fa-twitter"></i></a>
         <span class="arrow_box twCount">0</span>
       </li>
@@ -196,8 +195,7 @@
         <a href="https://plus.google.com/share?url=<%= request.url%>" 
         target="popup" onClick="window.open(this.href, this.target, 
         'width=600,height=400, top=200, left=300'); return false;" 
-        title="Compartir en Google+" class="btn btn-google-plus google-share"
-        data-url="<%= request.url%>" data-text="<%= @event.name %>">
+        title="Compartir en Google+" class="btn btn-google-plus google-share">
         <i class="fa fa-google-plus"></i></a>
       </li>
     </ul>

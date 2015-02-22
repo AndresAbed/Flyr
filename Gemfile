@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,6 +41,8 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-twitter'
 #DB
 gem 'pg'
+# Pry
+gem 'pry', :group => :development
 # Bootstrap
 gem "therubyracer"
 gem "less-rails"
@@ -48,9 +50,11 @@ gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 # Rails Internationalization 
 gem 'rails-i18n', '~> 4.0.0'
-# Image attachment
+# Paperclip
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+#FriendlyId
 gem "friendly_id"
+#Mail testing
 gem "letter_opener", :group => :development
 # Google maps
 gem 'gmaps4rails'

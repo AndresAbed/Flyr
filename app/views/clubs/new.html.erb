@@ -1,0 +1,47 @@
+<%= form_for :club, url: clubs_path do |c| %>
+  <div class="container events">
+    <div class="row">
+      <%= c.label "Nombre" %><br>
+      <%= c.text_field :name %>
+    </div>
+    <div class="row">
+      <%= c.label "Dirección" %><br>
+      <%= c.text_field :address %>
+    </div>
+    <div class="row">
+      <%= c.label "Facebook URL" %><br>
+      <%= c.text_field :facebook %>
+    </div>
+    <div class="row">
+      <%= c.label "Twitter URL" %><br>
+      <%= c.text_field :twitter %>
+    </div>
+    <div class="row">
+      <%= c.label "Google+ URL" %><br>
+      <%= c.text_field :googleplus %>
+    </div>
+    <div class="row">
+      <%= c.label "Instagram URL" %><br>
+      <%= c.text_field :instagram %>
+    </div>
+    <div class="row">
+      <%= c.label "Youtube URL" %><br>
+      <%= c.text_field :youtube %>
+    </div>
+    <div class="row">
+      <%= c.label "Descripción" %><br>
+      <%= c.text_area :description %>
+    </div>
+    <div class="row">
+      <%= c.label "Portada" %><br>
+      <%= c.file_field :cover_image %>
+    </div>
+    <div class="row">
+      <%= c.label "Logo" %><br>
+      <%= c.file_field :logo %>
+    </div>
+    <div class="row">
+      <%= c.submit "Crear boliche"%>
+    </div>
+  </div>
+<% end %>

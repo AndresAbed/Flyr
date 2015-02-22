@@ -9,7 +9,8 @@ class HomeController < ApplicationController
   	@friday = Event.where("extract(dow from date) = ?", 5)
   	@saturday = Event.where("extract(dow from date) = ?", 6)
   	@sunday = Event.where("extract(dow from date) = ?", 0)
-
     @event = Event.search(params[:search])
+
+    @clubs = Club.all
   end
 end

@@ -8,9 +8,9 @@ class Event < ActiveRecord::Base
   validates_attachment :image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-  has_attached_file :club_logo, 
+  has_attached_file :event_logo, 
   :url  => "/assets/events/:id/:style/:basename.:extension"
-  validates_attachment :club_logo, content_type: { content_type: 
+  validates_attachment :event_logo, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
 

@@ -1,6 +1,4 @@
 class BannersController < ApplicationController
-	def new
-	end
 
 	def create
 		@banner = Banner.new(banner_params)

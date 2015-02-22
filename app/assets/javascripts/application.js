@@ -107,7 +107,7 @@ $(document).ready(function(){
   })
   $(".social i.fa-facebook").mouseout(function(){
     $("#footer").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(this).css({
@@ -119,7 +119,7 @@ $(document).ready(function(){
       "transition":"color .5s ease-in-out",
     })
     $(".copyright").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
@@ -155,7 +155,7 @@ $(document).ready(function(){
   })
   $(".social i.fa-google-plus").mouseout(function(){
     $("#footer").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(this).css({
@@ -167,7 +167,7 @@ $(document).ready(function(){
       "transition":"color .5s ease-in-out",
     })
     $(".copyright").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
@@ -203,7 +203,7 @@ $(document).ready(function(){
   })
   $(".social i.fa-instagram").mouseout(function(){
     $("#footer").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(this).css({
@@ -215,7 +215,7 @@ $(document).ready(function(){
       "transition":"color .5s ease-in-out",
     })
     $(".copyright").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
@@ -251,7 +251,7 @@ $(document).ready(function(){
   })
   $(".social i.fa-twitter").mouseout(function(){
     $("#footer").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(this).css({
@@ -263,7 +263,7 @@ $(document).ready(function(){
       "transition":"color .5s ease-in-out",
     })
     $(".copyright").css({
-      "background-color":"rgba(20,20,20,1)", 
+      "background-color":"rgba(255,255,255,1)", 
       "transition":"background-color .5s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
