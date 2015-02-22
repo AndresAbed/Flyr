@@ -41,6 +41,34 @@ a:hover, a:focus {
   padding-bottom: 5px;
 }
 
+/* Custom buttons */
+
+.blue-btn{
+  color: #fff;
+  background-color: #47a3da;
+  border: 1px solid transparent;
+  font-weight: normal;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.blue-btn:hover{
+  background-color: #02639d;
+}
+
+.red-btn{
+  color: #fff;
+  background-color: #D33C37;
+  border: 1px solid transparent;
+  font-weight: normal;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.red-btn:hover{
+  background-color: #AE2521;
+}
+
 /* Navbar styles */
 
 .navbar-fixed-top{
@@ -190,7 +218,7 @@ a:hover, a:focus {
 /* Footer */
 
 footer{
-  background-color: rgba(20,20,20,1);
+  background-color: rgba(255,255,255,1);
   text-align: center;
   padding: 6em;
 }
@@ -232,7 +260,7 @@ ul.social li a {
 }
 
 .copyright{
-  background-color: rgba(20,20,20,1);
+  background-color: rgba(255,255,255,1);
   margin-bottom: -10px;
   text-align: center;
 }
@@ -266,13 +294,13 @@ ul.social li a {
   font-size: 20px;
 }
 
-.google-share{
+.twitter-share{
   border-radius: 0;
   padding: 5px 10px;
   font-size: 20px;
 }
 
-.twitter-share{
+.google-share{
   border-radius: 0;
   padding: 5px 10px;
   font-size: 20px;
@@ -280,7 +308,7 @@ ul.social li a {
 
 .arrow_box {
   position: relative;
-  right: 3px;
+  right: -2px;
   top: 0px;
   display: inline-block;
   padding: 8px 5px 8px;
@@ -296,10 +324,10 @@ ul.social li a {
 .arrow_box:before {
   content: "";
   position: absolute;
-  left: -5px;
+  left: -6px;
   top: 50%;
   margin-top: -5px;
-  border-right: 6px solid #FFF;
+  border-right: 6px solid #fff;
   border-bottom: 6px solid transparent;
   border-top: 6px solid transparent;
 }

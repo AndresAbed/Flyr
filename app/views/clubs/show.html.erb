@@ -1,0 +1,165 @@
+<head>
+  <title><% @title = @club.name %></title>
+  <% content_for :head do %>
+    <meta name="description" content="<%= @club.description %>">
+    <meta property="og:title" content="<%= @club.name %>">
+    <meta property="og:image" content="<%= @club.cover_image.url %>">
+    <meta property="og:url" content="<%= request.url%>">
+    <meta property="og:description" content="<%= @club.description %>">
+    <meta property="og:site_name" content="QSH">
+  <% end %>
+</head>
+<body class="club-show">
+  <div class="container profile-header">
+    <a class="cover-container" href="<%= @club.cover_image.url %>">
+      <img class="cover" src="<%= @club.cover_image.url %>">
+    </a>
+    <div class="club-profile-content">
+      <a class="col-lg-3 logo-container" href="<%= @club.logo.url %>">
+        <img class="club-logo" src="<%= @club.logo.url %>">
+      </a>
+      <div class="col-lg-4 club-profile-info">
+        <span class="club-show-name"><%= @club.name %></span>
+        <br>
+        <hr class="featurette-divider club-profile-hr">
+        <span class="events-lists-info">
+          <b class="details-numbers">3</b> Eventos <b class="details-numbers">6</b> Listas
+        </span>
+      </div>
+      <div class="col-lg-5 club-profile-info-2">
+        <p class="club-address"><i class="fa fa-map-marker"></i><span><%= @club.address %></span></p>
+        <div class="club-profile-btns">
+          <button type="button" class="btn blue-btn btn-sm" 
+          data-toggle="modal" data-target="#CreateEvent">
+          <i class="fa fa-plus" style="font-size: 15px; margin-right: 5px;"></i><b>Crear Evento</b></button>
+          <div class="modal fade" id="CreateEvent">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">
+                    Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for :clubevent, url: club_clubevents_path(@club) do |e| %>
+                      <div class="container events">
+                        <div class="row">
+                          <%= e.label "Nombre" %><br>
+                          <%= e.text_field :name %>
+                        </div>
+                        <div class="row">
+                          <%= e.label "Fecha" %><br>
+                          <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
+                        </div>
+                        <div class="row">
+                          <%= e.label "Hora" %><br>
+                          <%= e.time_select :hour, :ignore_date => true %>
+                        </div>
+                        <div class="row">
+                          <%= e.label "Edad" %><br>
+                          <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+                        </div>
+                        <div class="row">
+                          <%= e.label "Información" %><br>
+                          <%= e.text_area :description %>
+                        </div>
+                        <div class="row">
+                        <%= e.label "Imagen del evento" %><br>
+                          <%= e.file_field :image %>
+                          <% e.file_field :club_logo => @club.logo %>
+                        </div>
+                        <div class="row">
+                          <%= e.submit "Crear evento"%>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <button type="button" class="btn blue-btn btn-sm" 
+          data-toggle="modal" data-target="#editProfile" style="margin-left: 10px;">
+          <i class="fa fa-pencil" style="font-size: 15px; margin-right: 5px;"></i><b>Editar Perfil</b></button>
+          <div class="modal fade" id="editProfile">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">
+                    Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for :club, url: club_path(@club), method: :patch do |c| %>
+                      <%= c.text_field :name, :placeholder => 'Nombre del boliche' %>
+                      <%= c.text_field :address, :placeholder => 'Dirección' %>
+                      <%= c.text_field :facebook, :placeholder => 'Facebook url' %>
+                      <%= c.label "Descripción del boliche"%>
+                      <%= c.text_area :description %>
+                      <%= c.label "Portada" %>
+                      <%= c.file_field :cover_image %>
+                      <%= c.label "Logo" %>
+                      <%= c.file_field :logo %>
+                      <%= c.submit "Guardar", class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <%= link_to club_path(@club), method: :delete, data: { confirm: '¿Eliminar perfil?' },
+          class: 'btn red-btn btn-sm', style: "margin-left: 10px;" do %>
+            <i class="fa fa-trash-o" style="font-size: 15px; margin-right: 5px;"></i>
+            <b>Eliminar</b>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+  </div>
+      <div class="container">
+        <div class="social-links-container">
+          <a href="<%= @club.facebook %>" target="_blank" title="<%= @club.name %> en Facebook"
+           class="club-social-links"><i class="fa fa-facebook fb-icon"></i></a>
+           <a href="<%= @club.googleplus %>" target="_blank" title="<%= @club.name %> en Google+"
+           class="club-social-links"><i class="fa fa-google-plus google-plus-icon"></i></a>
+          <a href="<%= @club.twitter %>" target="_blank" title="<%= @club.name %> en Twitter"
+           class="club-social-links"><i class="fa fa-twitter twitter-icon"></i></a>
+          <a href="<%= @club.instagram %>" target="_blank" title="<%= @club.name %> en Instagram"
+           class="club-social-links"><i class="fa fa-instagram instagram-icon"></i></a>
+          <a href="<%= @club.youtube %>" target="_blank" title="<%= @club.name %> en Youtube"
+           class="club-social-links"><i class="fa fa-youtube youtube-icon"></i></a>
+        </div>
+      </div>  
+  </div>
+
+  <!-- Share buttons -->
+  <div class="sharer">
+    <ul>
+      <li>
+        <!-- Facebook -->
+         <a href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>" target="popup"
+         onClick="window.open(this.href, this.target, 'width=600,height=400, top=200, left=300'); return false;"
+         title="Compartir en Facebook" class="btn btn-facebook facebook-share">
+         <i class="fa fa-facebook"></i></a>
+         <span class="arrow_box fbCount">0</span>
+      </li>
+      <li>
+        <!-- Twitter -->
+        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @club.name %>&via=qsh&hashtags=qshLove"
+        target="popup" onClick="window.open(this.href, this.target, 
+        'width=600,height=400, top=200, left=300'); return false;" 
+        title="Tweet" class="btn btn-twitter twitter-share">
+          <i class="fa fa-twitter"></i></a>
+        <span class="arrow_box twCount">0</span>
+      </li>
+      <li>
+        <!-- Google+ -->
+        <a href="https://plus.google.com/share?url=<%= request.url%>" 
+        target="popup" onClick="window.open(this.href, this.target, 
+        'width=600,height=400, top=200, left=300'); return false;" 
+        title="Compartir en Google+" class="btn btn-google-plus google-share">
+        <i class="fa fa-google-plus"></i></a>
+      </li>
+    </ul>
+  </div>
+</body>

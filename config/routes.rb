@@ -21,6 +21,15 @@ Rails.application.routes.draw do
     end
   end
   
+  # Clubs
+  resources :clubs do
+    resources :clubevents do
+      resources :clublists, only: [:create, :show, :destroy] do
+        resources :clublistusers, only: [:create, :destroy]
+      end
+    end
+  end
+
   get 'user/profile'
 
   #Home
