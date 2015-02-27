@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   #has_many :events, through: :assistances
 
   has_attached_file :profile_img, :styles => { :medium => "600x600>", 
-    :small => "50x50>" }, :url  => "/assets/users/:id/:style/:basename.:extension"
+  :small => "50x50>" }, :url  => "/assets/users/:id/:style/:basename.:extension"
+  validates_attachment_presence :profile_img  
   validates_attachment :profile_img, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 

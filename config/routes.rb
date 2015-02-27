@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   
   # Clubs
   resources :clubs do
+    resources :musics
+    resources :features, only: [:create, :update]
     resources :clubevents do
       resources :clublists, only: [:create, :show, :destroy] do
         resources :clublistusers, only: [:create, :destroy]

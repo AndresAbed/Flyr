@@ -23,3 +23,12 @@ $(document).ready(function(){
     }
   });
 })
+
+$(document).ready(function(){
+  $(".features-list").mouseenter(function(){
+    $('.feature-delete').fadeIn();
+  });
+  $(".features-list").mouseleave(function(){
+    $('.feature-delete').fadeOut();
+  });
+})

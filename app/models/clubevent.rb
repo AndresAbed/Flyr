@@ -2,10 +2,12 @@ class Clubevent < ActiveRecord::Base
   belongs_to :club
   has_many :clublistusers
   has_many :clublists, dependent: :destroy
+  validates :name, :uniqueness => {:scope => :club_id}
 
   # Paperclip config
   has_attached_file :image, 
   :url  => "/assets/clubevents/:id/:style/:basename.:extension"
+  validates_attachment_presence :image
   validates_attachment :image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 

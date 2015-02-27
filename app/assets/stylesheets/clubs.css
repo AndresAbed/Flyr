@@ -1,5 +1,5 @@
 .club-show{
-  background-color: #ebebeb;
+  background-color: #e9eaed;
 }
 
 .profile-header{
@@ -69,11 +69,11 @@
 
 .social-links-container{
   background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   text-align: center;
   padding: 10px;
   margin-top: 16px;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 .club-social-links{
@@ -135,4 +135,122 @@
 .google-plus-icon:hover{
   color: #c23321;
   transition: color 0.35s ease-in-out;
+}
+
+.club-main-container{
+  padding: 0px;
+}
+
+.club-features-music{
+  width: 29%;
+  float: left;
+  padding-right: 0px;
+}
+
+.features{
+  background-color: #fff;
+  padding: 0px;
+  margin-bottom: 10px
+}
+
+.features-top-container{
+  background-color: #f6f7f8;
+  height: 40px;
+  padding: 10px;
+}
+
+.features-title{
+  float: left;
+}
+
+.features-add-btn{
+  float: right;
+}
+
+.features-list ul li{
+  padding: 5px
+}
+
+.music{
+  background-color: #fff;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+
+.music-top-container{
+  background-color: #f6f7f8;
+  height: 40px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.music-title{
+  float: left;
+}
+
+.music-add-btn{
+  float: right;
+}
+
+.music-list ul{
+  list-style: none;
+  margin-top: 15px;
+}
+
+.music-list ul li{
+  padding: 5px
+}
+
+.fb-like-box{
+  margin-bottom: 10px;
+  background-color: #fff; 
+  width: 100%; 
+  text-align: center; 
+  padding: 5px 0px 5px 0px;
+}
+
+.club-desc-events{
+  margin-bottom: 10px;
+  float: right;
+  width: 70%;
+  padding-left: 0px;
+}
+
+.club-description{
+  background-color: #fff;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.description-top-container{
+  background-color: #f6f7f8;
+  height: 40px;
+  padding: 10px;
+}
+
+.club-description-title{
+  text-align: center;
+}
+
+.club-desc-content{
+  background-color: #fff;
+}
+
+.club-events{
+  background-color: #fff;
+  padding: 0;
+}
+
+.events-top-container{
+  background-color: #f6f7f8;
+  height: 40px;
+  padding: 10px;
+}
+
+.club-events-title{
+  text-align: center;
+}
+
+.club-events-content{
+  background-color: #fff;
 }

@@ -1,0 +1,111 @@
+<div class="features-list" style="margin-top: 300px">
+          <% if @feature.wifi == true %>
+            <i class="fa fa-plus-circle"></i>
+          <% end %>
+          <% if @feature.smoking_area == true %>
+            <i class="fa fa-fire"></i>
+          <% end %>
+          <% if @feature.security == true %>
+            <i class="fa fa-shield"></i>
+          <% end %>
+          <% if @feature.photos == true %>
+            <i class="fa fa-camera"></i>
+          <% end %>
+          <% if @feature.birthdays == true %>
+            <i class="fa fa-birthday-cake"></i>
+          <% end %>
+          <% if @feature.credit_cards == true %>
+            <i class="fa fa-credit-card"></i>
+          <% end %>
+          <% if @feature.food == true %>
+            <i class="fa fa-cutlery"></i>
+          <% end %>
+          <% if @feature.drinks == true %>
+            <i class="fa fa-glass"></i>
+          <% end %>
+          <% if @feature.gifts == true %>
+            <i class="fa fa-gift"></i>
+          <% end %>
+          <% if @feature.first_aid == true %>
+            <i class="fa fa-plus-circle"></i>
+          <% end %>
+          <% if @feature.parking == true %>
+            <i class="fa fa-car"></i>
+          <% end %>
+</div>
+
+<button type="button" class="btn blue-btn btn-xs" 
+              data-toggle="modal" data-target="#AddFeature">
+              <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
+              <b>Editar</b>
+            </button>
+            <div class="modal fade" id="AddFeature">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">&times;</span><span class="sr-only">
+                      Cerrar</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                    </div>
+                    <div class="modal-body">
+                      
+                        <%= form_for :feature, url: club_feature_path(@club, @feature), method: :patch do |f| %>
+                          <div class="container events">
+                            <div class="row">
+                              <%= f.label "texto" %><br>
+                              <%= f.text_field :text %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Wifi" %><br>
+                              <%= f.check_box :wifi %>
+                            </div>
+                             <div class="row">
+                              <%= f.label "Zona fumadores" %><br>
+                              <%= f.check_box :smoking_area %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Seguridad" %><br>
+                              <%= f.check_box :security %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Fotografos" %><br>
+                              <%= f.check_box :photos %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Cumpleaños" %><br>
+                              <%= f.check_box :birthdays %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Pagos con tarjeta de credito" %><br>
+                              <%= f.check_box :credit_cards %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Comida" %><br>
+                              <%= f.check_box :food %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Bebidas" %><br>
+                              <%= f.check_box :drinks %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Regalos" %><br>
+                              <%= f.check_box :gifts %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Primeros auxilios" %><br>
+                              <%= f.check_box :first_aid %>
+                            </div>
+                            <div class="row">
+                              <%= f.label "Estacionamiento" %><br>
+                              <%= f.check_box :parking %>
+                            </div>
+                            <div class="row">
+                              <%= f.submit "Aceptar"%>
+                            </div>
+                          </div>
+                        <% end %> 
+                    </div>
+                  </div>
+                </div>
+            </div>  

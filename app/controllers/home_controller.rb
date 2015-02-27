@@ -1,16 +1,28 @@
 class HomeController < ApplicationController
   def index
+    
   	@banner = Banner.all
-
-  	@monday = Event.where("extract(dow from date) = ?", 1)
-  	@tuesday = Event.where("extract(dow from date) = ?", 2)
-  	@wednesday = Event.where("extract(dow from date) = ?", 3)
-  	@thursday = Event.where("extract(dow from date) = ?", 4)
-  	@friday = Event.where("extract(dow from date) = ?", 5)
-  	@saturday = Event.where("extract(dow from date) = ?", 6)
-  	@sunday = Event.where("extract(dow from date) = ?", 0)
-    @event = Event.search(params[:search])
-
     @clubs = Club.all
+
+    # Events and Clubevents by day
+  	@eventmonday = Event.where("extract(dow from date) = ?", 1)
+    @eventtuesday = Event.where("extract(dow from date) = ?", 2)
+    @eventwednesday = Event.where("extract(dow from date) = ?", 3)
+    @eventthursday = Event.where("extract(dow from date) = ?", 4)
+    @eventfriday = Event.where("extract(dow from date) = ?", 5)
+    @eventsaturday = Event.where("extract(dow from date) = ?", 6)
+    @eventsunday = Event.where("extract(dow from date) = ?", 0)
+    
+    @clubeventmonday = Clubevent.where("extract(dow from date) = ?", 1)
+    @clubeventtuesday = Clubevent.where("extract(dow from date) = ?", 2)
+    @clubeventwednesday = Clubevent.where("extract(dow from date) = ?", 3)
+    @clubeventthursday = Clubevent.where("extract(dow from date) = ?", 4)
+    @clubeventfriday = Clubevent.where("extract(dow from date) = ?", 5)
+    @clubeventsaturday = Clubevent.where("extract(dow from date) = ?", 6)
+    @clubeventsunday = Clubevent.where("extract(dow from date) = ?", 0)
+
+    # Events and Clubevents search
+    @event = Event.search(params[:search])
+    @clubevent = Clubevent.search(params[:search])
   end
 end

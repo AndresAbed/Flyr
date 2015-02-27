@@ -10,12 +10,15 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.friendly.find(params[:id])
-    @eventsNumber = Club.count
+    @eventsNumber = @club.clubevents.count
+    @listsNumber = @club.clublists.count
+    @features = @club.features
+    @musics = @club.musics
   end
 
   def update
     @club = Club.friendly.find(params[:id])
-   
+    
     if @club.update(club_params)
       redirect_to @club
     else

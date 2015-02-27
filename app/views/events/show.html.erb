@@ -14,7 +14,6 @@
     <div class="container header-content">
       <div class="row">
         <p class="event-name"><%= @event.name %></p>
-        <p class="club-name">Nombre boliche</p>
       </div>
     </div>
   </div>
@@ -79,7 +78,7 @@
       </div>
     </div>
     <div class="row event-image">
-      <img src="<%= @event.image.url %>" style="width: 100%;">
+      <img src="<%= @event.image.url %>" style="width: 100%; max-height: 1000px;">
     </div>
   </div>  
   <div class="container event-content">
