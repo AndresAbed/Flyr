@@ -144,9 +144,7 @@
   </div>
 
   <div class="container club-main-container">
-
     <!-- Features and Music -->
-
     <div class="container club-features-music">
       <div class="features">
         <div class="features-top-container">
@@ -170,7 +168,7 @@
                         <h4 class="modal-title" id="myModalLabel">Editar</h4>
                       </div>
                       <div class="modal-body">
-                        <%= form_for :feature, url: club_features_path(@club) do |f| %>
+                        <%= form_for :feature, url: club_features_path(@club, :remote => true) do |f| %>
                           <div class="container events">
                             <div class="row">
                               <%= f.label "texto" %><br>
@@ -312,7 +310,7 @@
         <div class="features-list">
           <% @features.each do |f| %>
             <% if f.wifi == true %>
-              <i class="fa fa-plus-circle"></i>
+              <i class="icon ion-wifi"></i>
             <% end %>
             <% if f.smoking_area == true %>
               <i class="fa fa-fire"></i>
@@ -368,7 +366,7 @@
                     <h4 class="modal-title" id="myModalLabel">Editar</h4>
                   </div>
                   <div class="modal-body">
-                    <%= form_for :music, url: club_musics_path(@club) do |f| %>
+                    <%= form_for :music, url: club_musics_path(@club, remote: true) do |f| %>
                       <div class="container events">
                         <div class="row">
                           <%= f.label "tipo de musica" %><br>
@@ -395,13 +393,12 @@
           </ul>  
         </div> 
       </div>
+      <!--
       <div class="fb-like-box" data-href="<%= @club.facebook %>" 
       data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" 
-      data-show-border="false"></div>
+      data-show-border="false"></div> -->
     </div>
-
     <!-- Description and Events -->
-
     <div class="container club-desc-events">
       <div class="club-description">
         <div class="description-top-container">
@@ -425,12 +422,7 @@
             </p>
           </div>
       </div>
-      <div style="background-color: white;">
-        <div class="fb-comments" data-href="<%= @club.facebook %>" data-width="100%" 
-        data-numposts="5" data-colorscheme="light"></div>
-      </div>
     </div>
-
   </div>
 
   <div id="fb-root"></div>

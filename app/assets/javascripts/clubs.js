@@ -22,7 +22,7 @@ $(document).ready(function(){
       }
     }
   });
-})
+});
 
 $(document).ready(function(){
   $(".features-list").mouseenter(function(){
@@ -31,4 +31,4 @@ $(document).ready(function(){
   $(".features-list").mouseleave(function(){
     $('.feature-delete').fadeOut();
   });
-})
+});

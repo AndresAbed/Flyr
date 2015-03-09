@@ -15382,15 +15382,14 @@ $(document).ready(function(){
 /* Events ajax search and render animation */
 $(document).ready(function() {
   $("#events_search input").keyup(function() {
-    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script")
-    $('#events-partial').addClass('animated fadeIn')
+    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
+    $('#events-partial').addClass('animated fadeIn');
     window.setTimeout( function(){
-      $('#events-partial').removeClass('animated fadeIn')
-    }, 600)
-    return false
-  })
-})
-;
+      $('#events-partial').removeClass('animated fadeIn');
+    }, 600);
+    return false;
+  });
+});
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 
 (function(r,G,f,v){var J=f("html"),n=f(r),p=f(G),b=f.fancybox=function(){b.open.apply(this,arguments)},I=navigator.userAgent.match(/msie/i),B=null,s=G.createTouch!==v,t=function(a){return a&&a.hasOwnProperty&&a instanceof f},q=function(a){return a&&"string"===f.type(a)},E=function(a){return q(a)&&0<a.indexOf("%")},l=function(a,d){var e=parseInt(a,10)||0;d&&E(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},w=function(a,b){return l(a,b)+"px"};f.extend(b,{version:"2.1.5",defaults:{padding:15,margin:20,
@@ -15544,47 +15543,47 @@ $(document).ready(function(){
   $(".social i.fa-facebook").mouseover(function(){
     $("#footer").css({
       "background-color":"rgb(59,89,152)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgb(59,89,152)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en Facebook')
     $(".social-text").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
   $(".social i.fa-facebook").mouseout(function(){
     $("#footer").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
     $(".social-text").css({
       "color":"#333",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
 
@@ -15592,47 +15591,47 @@ $(document).ready(function(){
   $(".social i.fa-google-plus").mouseover(function(){
     $("#footer").css({
       "background-color":"rgb(211, 72, 54)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgb(211, 72, 54)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en Google+')
     $(".social-text").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
   $(".social i.fa-google-plus").mouseout(function(){
     $("#footer").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
     $(".social-text").css({
       "color":"#333",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
 
@@ -15640,47 +15639,47 @@ $(document).ready(function(){
   $(".social i.fa-instagram").mouseover(function(){
     $("#footer").css({
       "background-color":"#3f729b", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"#3f729b", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Mirá nuestras fotos en Instagram')
     $(".social-text").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
   $(".social i.fa-instagram").mouseout(function(){
     $("#footer").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
     $(".social-text").css({
       "color":"#333",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
 
@@ -15688,47 +15687,47 @@ $(document).ready(function(){
   $(".social i.fa-twitter").mouseover(function(){
     $("#footer").css({
       "background-color":"#4099ff", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"#4099ff", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en Twitter')
     $(".social-text").css({
       "color":"white",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
   $(".social i.fa-twitter").mouseout(function(){
     $("#footer").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(this).css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright .container").css({
       "color":"#777",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
     $(".copyright").css({
       "background-color":"rgba(255,255,255,1)", 
-      "transition":"background-color .5s ease-in-out"
+      "transition":"background-color .3s ease-in-out"
     })
     $(".social-text").text('Seguinos en nuestras redes sociales')
     $(".social-text").css({
       "color":"#333",
-      "transition":"color .5s ease-in-out",
+      "transition":"color .3s ease-in-out",
     })
   })
 })
