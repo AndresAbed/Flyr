@@ -12,8 +12,6 @@ class ClubsController < ApplicationController
     @club = Club.friendly.find(params[:id])
     @eventsNumber = @club.clubevents.count
     @listsNumber = @club.clublists.count
-    @features = @club.features
-    @musics = @club.musics
   end
 
   def update

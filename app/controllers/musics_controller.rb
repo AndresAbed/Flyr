@@ -3,28 +3,25 @@ class MusicsController < ApplicationController
     @club = Club.friendly.find(params[:club_id])
     @music = Music.new(music_params)
     @music.club_id = @club.id
-
-    if @music.save
-      redirect_to club_path(@club)
-    end
-  end
-  
-  def update
-    @club = Club.friendly.find(params[:club_id])
-    @music = Music.find(params[:id])
-
-    if @music.update(music_params)
-      redirect_to club_path(@club)
-    else
-      redirect_to :back
+    
+    if @music.save 
+      respond_to do |format|
+        format.html { redirect_to club_path(@club) }
+        format.js
+      end
     end
   end
 
   def destroy
+    @club = Club.friendly.find(params[:club_id])
     @music = Music.find(params[:id])
-    @music.destroy
-   
-    redirect_to home_path
+    
+    if @music.destroy 
+      respond_to do |format|
+        format.html { redirect_to club_path(@club) }
+        format.js
+      end
+    end
   end
 
   def music_params
