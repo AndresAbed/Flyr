@@ -15206,28 +15206,40 @@ $(document).ready(function(){
       }
     }
   });
-})
+});
+
+/* Musics */
 
 $(document).ready(function(){
-  $(".features-list").mouseenter(function(){
-    $('.feature-delete').fadeIn();
+  $("#music-edit").on("click", function() {
+    var text = $(this).text();
+    if (text == "Editar"){
+      $(this).text("Terminar");
+      $("#music-pencil").removeClass('fa fa-pencil');
+      $("#music-pencil").addClass('fa fa-check');
+      $("#music-add").fadeIn();
+      $(".fa-times").fadeIn();
+    }
+    else{
+      $(this).text("Editar");
+      $("#music-pencil").removeClass('fa fa-check');
+      $("#music-pencil").addClass('fa fa-pencil');
+      $("#music-add").fadeOut();
+      $(".fa-times").fadeOut();
+    };
   });
-  $(".features-list").mouseleave(function(){
-    $('.feature-delete').fadeOut();
-  });
-})
-;
+});
 /* Sign_in form */
 
 
 $(document).ready(function(){
-  animationClick('#sign_in', '#sign_in_btn', 'fadeInDownBig')
+  animationClick('#sign_in', '#sign_in_btn', 'fadeInDownBig');
 
   function animationClick(element, element2, animation){
-    $element = $(element)
-    $element2 = $(element2)
+    $element = $(element);
+    $element2 = $(element2);
     $element2.click(function() {
-        $element.addClass('animated ' + animation)
+        $element.addClass('animated ' + animation);
         $element.css({
           "position":"absolute", 
           "display":"block", 
@@ -15236,23 +15248,23 @@ $(document).ready(function(){
           "margin-right":"auto", 
           "left":"0", 
           "right":"0"
-        })
+        });
         //wait for animation to finish before removing classes
         window.setTimeout( function(){
-            $element.removeClass('animated ' + animation)
-        }, 1000)
-    })
-  }
-})
+            $element.removeClass('animated ' + animation);
+        }, 1000);
+    });
+  };
+});
 
 $(document).ready(function(){
-  animationClick('#sign_in', '#close', 'fadeOutUp')
+  animationClick('#sign_in', '#close', 'fadeOutUp');
 
   function animationClick(element, element2, animation){
-    $element = $(element)
-    $element2 = $(element2)
+    $element = $(element);
+    $element2 = $(element2);
     $element2.click(function() {
-        $element.addClass('animated ' + animation)
+        $element.addClass('animated ' + animation);
         $element.css({
           "position":"absolute", 
           "display":"block",  
@@ -15260,29 +15272,29 @@ $(document).ready(function(){
           "margin-right":"auto", 
           "left":"0", 
           "right":"0",
-        })
+        });
         //wait for animation to finish before removing classes
         window.setTimeout( function(){
-            $element.removeClass('animated ' + animation)
-            $element.hide()
-        }, 1000)
-    })
-  }
-})
+            $element.removeClass('animated ' + animation);
+            $element.hide();
+        }, 1000);
+    });
+  };
+});
 
 $(document).ready(function(){
   if (location.href == "http://localhost:3000/sessions/user"){
     $('#sign_in').css({
-          "position":"absolute", 
-          "display":"block", 
-          "margin-top":"100px", 
-          "margin-left":"auto", 
-          "margin-right":"auto", 
-          "left":"0", 
-          "right":"0"
-        })
+      "position":"absolute", 
+      "display":"block", 
+      "margin-top":"100px", 
+      "margin-left":"auto", 
+      "margin-right":"auto", 
+      "left":"0", 
+      "right":"0"
+    });
   }
-})
+});
 
 /* Sign_in button*/
 
@@ -15304,75 +15316,73 @@ $(document).ready(function(){
   //Check to see if the window is top if not then display button
   $(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
-      $('#sign_in_btn').fadeOut()
+      $('#sign_in_btn').fadeOut();
     } else {
-      $('#sign_in_btn').fadeIn()
-    }
-  })
-})
+      $('#sign_in_btn').fadeIn();
+    };
+  });
+});
 
 $(document).ready(function(){
   $('.navbar-collapse').on('shown.bs.collapse', function(){
-    $('#sign_in_btn').fadeOut()
-  })
-})
+    $('#sign_in_btn').fadeOut();
+  });
+});
 
-;
 /* Carrousel conf */
 
 $(document).ready(function(){
   $("#myCarousel").carousel({
     interval : 7000,
     pause:true
-  })
-})
+  });
+});
 
 /* Day tabs conf */
 $(document).ready(function(){
 
-  var date = new Date()
-  var day = date.getDay()
+  var date = new Date();
+  var day = date.getDay();
 
   if (day == 0) {
-    $('#sunday').addClass("active")
-    $('#sunday-mark').addClass("active")
+    $('#sunday').addClass("active");
+    $('#sunday-mark').addClass("active");
   } 
   else {
     if (day == 1){
-      $('#monday').addClass("active")
-      $('#monday-mark').addClass("active")
+      $('#monday').addClass("active");
+      $('#monday-mark').addClass("active");
     }
     else{
       if (day == 2){
-        $('#tuesday').addClass("active")
-        $('#tuesday-mark').addClass("active")
+        $('#tuesday').addClass("active");
+        $('#tuesday-mark').addClass("active");
       }
       else{
         if (day == 3){
-          $('#wednesday').addClass("active")
-          $('#wednesday-mark').addClass("active")
+          $('#wednesday').addClass("active");
+          $('#wednesday-mark').addClass("active");
         }
         else{
           if (day == 4) {
-            $('#thursday').addClass("active")
-            $('#thursday-mark').addClass("active")
+            $('#thursday').addClass("active");
+            $('#thursday-mark').addClass("active");
           }
           else{
             if (day == 5) {
-              $('#friday').addClass("active")
-              $('#friday-mark').addClass("active")
+              $('#friday').addClass("active");
+              $('#friday-mark').addClass("active");
             }
             else{
-              $('#saturday').addClass("active")
-              $('#saturday-mark').addClass("active")
-            }
-          }
-        }
-      }
-    }
-  }
-
-})
+              $('#saturday').addClass("active");
+              $('#saturday-mark').addClass("active");
+            };
+          };
+        };
+      };
+    };
+  };
+});
 
 /* Banner button tooltip */
 $(document).ready(function(){
@@ -15381,13 +15391,17 @@ $(document).ready(function(){
 
 /* Events ajax search and render animation */
 $(document).ready(function() {
+  var timer;
   $("#events_search input").keyup(function() {
-    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
-    $('#events-partial').addClass('animated fadeIn');
-    window.setTimeout( function(){
-      $('#events-partial').removeClass('animated fadeIn');
-    }, 600);
-    return false;
+    if(timer){clearTimeout(timer)};
+    timer = setTimeout(function() { 
+      $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
+      $('#events-partial').addClass('animated fadeIn');
+      window.setTimeout( function(){
+        $('#events-partial').removeClass('animated fadeIn');
+      }, 600);
+      return false;
+    }, 1000);
   });
 });
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
@@ -15451,10 +15465,6 @@ d[0].offsetTop||15===d[0].offsetTop;d.remove();a.fixedPosition=e}f.extend(b.defa
 
 (function(d){function e(a){var b=a||window.event,c=[].slice.call(arguments,1),f=0,e=0,g=0,a=d.event.fix(b);a.type="mousewheel";b.wheelDelta&&(f=b.wheelDelta/120);b.detail&&(f=-b.detail/3);g=f;b.axis!==void 0&&b.axis===b.HORIZONTAL_AXIS&&(g=0,e=-1*f);b.wheelDeltaY!==void 0&&(g=b.wheelDeltaY/120);b.wheelDeltaX!==void 0&&(e=-1*b.wheelDeltaX/120);c.unshift(a,f,e,g);return(d.event.dispatch||d.event.handle).apply(this,c)}var c=["DOMMouseScroll","mousewheel"];if(d.event.fixHooks)for(var h=c.length;h;)d.event.fixHooks[c[--h]]=
 d.event.mouseHooks;d.event.special.mousewheel={setup:function(){if(this.addEventListener)for(var a=c.length;a;)this.addEventListener(c[--a],e,false);else this.onmousewheel=e},teardown:function(){if(this.removeEventListener)for(var a=c.length;a;)this.removeEventListener(c[--a],e,false);else this.onmousewheel=null}};d.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})})(jQuery);
-(function() {
-
-
-}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -15481,59 +15491,56 @@ $(document).ready(function(){
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 300) {
-			$('#scrollToTop').fadeIn()
+			$('#scrollToTop').fadeIn();
 		} else {
-			$('#scrollToTop').fadeOut()
+			$('#scrollToTop').fadeOut();
 		}
-	})
-	
+	});
 	//Click event to scroll to top
 	$('#scrollToTop').click(function(){
-		$('html, body').animate({scrollTop : 0},700)
-		return false
-	})
-	
-})
+		$('html, body').animate({scrollTop : 0},700);
+		return false;
+	});
+});
 
 /* Share counters */
 
 $(document).ready(function(){
-	var countUp, setCount, url
+	var countUp, setCount, url;
 
-	url = window.location.href
+	url = window.location.href;
 
 	$.getJSON("https://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
-		return setCount($(".twCount"), json.count)
-	})
+		return setCount($(".twCount"), json.count);
+	});
 
 	$.getJSON("https://graph.facebook.com/" + url, function(json) {
-		return setCount($(".fbCount"), json.shares)
-	})
+		return setCount($(".fbCount"), json.shares);
+	});
 
 	countUp = function($item) {
 		return setTimeout(function() {
-			var current, newCount, target
-			current = $item.attr("data-current-count") * 1
-			target = $item.attr("data-target-count") * 1
-			newCount = current + Math.ceil((target - current) / 2)
-			$item.attr("data-current-count", newCount)
-			$item.html(newCount)
+			var current, newCount, target;
+			current = $item.attr("data-current-count") * 1;
+			target = $item.attr("data-target-count") * 1;
+			newCount = current + Math.ceil((target - current) / 2);
+			$item.attr("data-current-count", newCount);
+			$item.html(newCount);
 			if (newCount < target) {
-				return countUp($item)
+				return countUp($item);
 			}
-		}, 100)
-	}
+		}, 100);
+	};
 
 	setCount = function($item, count) {
 		if (count === null) {
-			count = null
+			count = null;
 		}
-		$item.attr("data-target-count", count)
-		$item.attr("data-current-count", 0)
-		return countUp($item)
-	}
-
-})
+		$item.attr("data-target-count", count);
+		$item.attr("data-current-count", 0);
+		return countUp($item);
+	};
+});
 
 /* Footer colors */
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225235626) do
+ActiveRecord::Schema.define(version: 20150317175803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20150225235626) do
   create_table "clublistusers", force: :cascade do |t|
     t.string   "username"
     t.integer  "clublist_id"
-    t.integer  "club_id"
     t.integer  "clubevent_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20150225235626) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "user_id"
   end
 
   create_table "musics", force: :cascade do |t|

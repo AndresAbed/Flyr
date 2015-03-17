@@ -5,8 +5,11 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
     @feature.club_id = @club.id
 
-    if @feature.save
-      redirect_to club_path(@club)
+    if @feature.save 
+      respond_to do |format|
+        format.html { redirect_to club_path(@club) }
+        format.js
+      end
     end
   end
 
@@ -15,9 +18,10 @@ class FeaturesController < ApplicationController
     @feature = Feature.find(params[:id])
 
     if @feature.update(feature_params)
-      redirect_to club_path(@club)
-    else
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to club_path(@club) }
+        format.js
+      end
     end
   end
 

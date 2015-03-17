@@ -8056,7 +8056,7 @@ button.close {
   float: left;
 }
 
-.features-add-btn{
+.features-btns{
   float: right;
 }
 
@@ -8080,7 +8080,7 @@ button.close {
   float: left;
 }
 
-.music-add-btn{
+.music-btns{
   float: right;
 }
 
@@ -8091,6 +8091,10 @@ button.close {
 
 .music-list ul li{
   padding: 5px
+}
+
+.music-list ul li p {
+  display: inline-flex;
 }
 
 .fb-like-box{
@@ -8392,19 +8396,19 @@ button.close {
   border-bottom: 2px #000 solid;
 }
 
-.event-lists{
+#lists-partial{
   list-style: none;
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 0px;
 }
 
-.event-lists li{
+#lists-partial li{
   border-bottom: 1px solid #ccc;
   text-align: center;
 }
 
-.event-lists li:last-child{
+#lists-partial li:last-child{
   border-bottom: none;
 }
 

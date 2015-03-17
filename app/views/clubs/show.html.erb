@@ -6,7 +6,7 @@
     <meta property="og:image" content="<%= @club.cover_image.url %>">
     <meta property="og:url" content="<%= request.url%>">
     <meta property="og:description" content="<%= @club.description %>">
-    <meta property="og:site_name" content="QSH">
+    <meta property="og:site_name" content="Flyr">
   <% end %>
 </head>
 <body class="club-show">
@@ -151,198 +151,12 @@
           <div class="features-title">
             <span><b>Comodidades</b></span>
           </div>
-          <div class="features-add-btn">
-            <% if @club.features.blank? %>
-              <button type="button" class="btn blue-btn btn-xs" 
-                data-toggle="modal" data-target="#AddFeature">
-                <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
-                <b>Añadir</b>
-              </button>
-              <div class="modal fade" id="AddFeature">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">
-                        Cerrar</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Añadir</h4>
-                      </div>
-                      <div class="modal-body">
-                        <%= form_for :feature, url: club_features_path(@club, @club.features, :remote => true) do |f| %>
-                          <div class="container events">
-                            <div class="row">
-                              <%= f.label "texto" %><br>
-                              <%= f.text_field :text %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Wifi" %><br>
-                              <%= f.check_box :wifi %>
-                            </div>
-                             <div class="row">
-                              <%= f.label "Zona fumadores" %><br>
-                              <%= f.check_box :smoking_area %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Seguridad" %><br>
-                              <%= f.check_box :security %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Fotografos" %><br>
-                              <%= f.check_box :photos %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Cumpleaños" %><br>
-                              <%= f.check_box :birthdays %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Pagos con tarjeta de credito" %><br>
-                              <%= f.check_box :credit_cards %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Comida" %><br>
-                              <%= f.check_box :food %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Bebidas" %><br>
-                              <%= f.check_box :drinks %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Regalos" %><br>
-                              <%= f.check_box :gifts %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Primeros auxilios" %><br>
-                              <%= f.check_box :first_aid %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Estacionamiento" %><br>
-                              <%= f.check_box :parking %>
-                            </div>
-                            <div class="row">
-                              <%= f.submit "Aceptar"%>
-                            </div>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            <% else %>
-              <button type="button" class="btn blue-btn btn-xs" 
-                data-toggle="modal" data-target="#AddFeature">
-                <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
-                <b>Editar</b>
-              </button>
-              <div class="modal fade" id="AddFeature">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">
-                        Cerrar</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Editar</h4>
-                      </div>
-                      <div class="modal-body">
-                        <% @club.features.each do |e| %>
-                          <%= form_for :feature, url: club_feature_path(@club, e), method: :patch do |f| %>
-                            <div class="container events">
-                              <div class="row">
-                                <%= f.label "texto" %><br>
-                                <%= f.text_field :text %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Wifi" %><br>
-                                <%= f.check_box :wifi %>
-                              </div>
-                               <div class="row">
-                                <%= f.label "Zona fumadores" %><br>
-                                <%= f.check_box :smoking_area %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Seguridad" %><br>
-                                <%= f.check_box :security %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Fotografos" %><br>
-                                <%= f.check_box :photos %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Cumpleaños" %><br>
-                                <%= f.check_box :birthdays %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Pagos con tarjeta de credito" %><br>
-                                <%= f.check_box :credit_cards %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Comida" %><br>
-                                <%= f.check_box :food %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Bebidas" %><br>
-                                <%= f.check_box :drinks %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Regalos" %><br>
-                                <%= f.check_box :gifts %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Primeros auxilios" %><br>
-                                <%= f.check_box :first_aid %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Estacionamiento" %><br>
-                                <%= f.check_box :parking %>
-                              </div>
-                              <div class="row">
-                                <%= f.submit "Aceptar"%>
-                              </div>
-                            </div>
-                          <% end %>
-                        <% end %>  
-                      </div>
-                    </div>
-                  </div>
-              </div>  
-            <% end %>  
+          <div class="features-btns">
+            <%= render 'featuresForms' %>
           </div>
         </div>
         <div class="features-list">
-          <% @club.features.each do |f| %>
-            <% if f.wifi == true %>
-              <i class="icon ion-wifi"></i>
-            <% end %>
-            <% if f.smoking_area == true %>
-              <i class="fa fa-fire"></i>
-            <% end %>
-            <% if f.security == true %>
-              <i class="fa fa-shield"></i>
-            <% end %>
-            <% if f.photos == true %>
-              <i class="fa fa-camera"></i>
-            <% end %>
-            <% if f.birthdays == true %>
-              <i class="fa fa-birthday-cake"></i>
-            <% end %>
-            <% if f.credit_cards == true %>
-              <i class="fa fa-credit-card"></i>
-            <% end %>
-            <% if f.food == true %>
-              <i class="fa fa-cutlery"></i>
-            <% end %>
-            <% if f.drinks == true %>
-              <i class="fa fa-glass"></i>
-            <% end %>
-            <% if f.gifts == true %>
-              <i class="fa fa-gift"></i>
-            <% end %>
-            <% if f.first_aid == true %>
-              <i class="fa fa-plus-circle"></i>
-            <% end %>
-            <% if f.parking == true %>
-              <i class="fa fa-car"></i>
-            <% end %>
-          <% end %>
+          <%= render 'features' %>
         </div> 
       </div>
       <div class="music">
@@ -351,42 +165,7 @@
             <span><b>Música</b></span>
           </div>
           <div class="music-btns">
-            <button type="button" class="btn blue-btn btn-xs" 
-              data-toggle="modal" data-target="#AddMusic" id="music-add"
-              style="display: none;">
-              <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
-              <b>Añadir</b>
-            </button>
-            <div class="modal fade" id="AddMusic">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">
-                    Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Añadir</h4>
-                  </div>
-                  <div class="modal-body">
-                    <%= form_for :music, url: club_musics_path(@club), 
-                    remote: true, html:{id: :new_music} do |f| %>
-                      <div class="container events">
-                        <div class="row">
-                          <%= f.label "tipo de musica" %><br>
-                          <%= f.text_field :name %>
-                        </div>
-                        <div class="row">
-                          <%= f.submit "Aceptar"%>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="btn blue-btn btn-xs">
-              <i class="fa fa-pencil" id="music-pencil" style="font-size: 12px; margin-right: 2px;"></i>
-              <b id="music-edit">Editar</b>
-            </button>
+            <%= render 'musicsForms' %>
           </div>
         </div>
         <div class="music-list">
@@ -419,10 +198,12 @@
           </div>
         </div>
         <div class="club-events-content">
+          <% @club.clubevents.each do |c| %>
             <p>
-             asdasdadad
+              <%= link_to c.name, club_clubevent_path(@club, c) %>
             </p>
-          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -450,7 +231,7 @@
       </li>
       <li>
         <!-- Twitter -->
-        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @club.name %>&via=qsh&hashtags=qshLove"
+        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @club.name %>&via=Flyr&hashtags=FlyrLove"
         target="popup" onClick="window.open(this.href, this.target, 
         'width=600,height=400, top=200, left=300'); return false;" 
         title="Tweet" class="btn btn-twitter twitter-share">

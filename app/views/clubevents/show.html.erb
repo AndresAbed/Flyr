@@ -6,7 +6,7 @@
     <meta property="og:image" content="<%= @clubevent.image.url %>">
     <meta property="og:url" content="<%= request.url%>">
     <meta property="og:description" content="<%= @clubevent.description %>">
-    <meta property="og:site_name" content="QSH">
+    <meta property="og:site_name" content="Flyr">
   <% end %>
 </head>
 <body class="events">
@@ -86,39 +86,9 @@
       <p class="description-name"><%= @clubevent.name %></p>
       <p><%= @clubevent.description %></p>
       <hr class="featurette-divider">
-      <% if @clublist.present? %>
-        <ul class="event-lists">
-          <% @clublist.each do |l| %>
-            <li>
-              <div class="list-content">
-                <div class="col-lg-2 list-container-img">
-                  <img class="list-img" src="<%= l.list_image.url %>">
-                </div>
-                <div class="col-lg-4 list-text">
-                  <p>Lista de <%= l.list_name %></p>
-                </div>
-                <div class="col-lg-4 list-btns">
-                  <%= form_for :clublist_user, 
-                  url: club_clubevent_clublist_clublistusers_path(@club, @clubevent, l) do |f| %>
-                    <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
-                  <% end %>
-                  <%= link_to 'Borrar lista', club_clubevent_clublist_path(@club, @clubevent, l),
-                  method: :delete, data: { confirm: 'Eliminar?' },
-                  class: 'btn btn-danger btn-xs' %>
-                  <% @clublistusers.each do |lu| %>
-                    <% if lu.username == current_user.username %>
-                      <%= link_to 'Salir de lista', 
-                      club_clubevent_clublist_clublistuser_path(@club, @clubevent, l, lu),
-                      method: :delete, data: { confirm: 'Eliminar?' },
-                      class: 'btn btn-danger btn-xs' %>
-                    <% end %>
-                  <% end %>
-                </div>  
-              </div>
-            </li>  
-          <% end %>
-        </ul>
-      <% end %>  
+      <ul class="event-lists" id="lists-partial">
+        <%= render 'lists' %>
+      </ul>
       <div class="map">
         <div id="map" data-latitude="<%= @clubevent.latitude %>" 
         data-longitude="<%= @clubevent.longitude %>" 
@@ -141,7 +111,9 @@
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for :clublist, url: club_clubevent_clublists_path(@club, @clubevent) do |f| %>
+        <%= form_for :clublist, 
+        url: club_clubevent_clublists_path(@club, @clubevent), 
+        remote: true do |f| %>
           <%= f.submit %>
         <% end %>
       </div>
@@ -184,7 +156,7 @@
       </li>
       <li>
         <!-- Twitter -->
-        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @clubevent.name %>&via=qsh&hashtags=qshLove"
+        <a href="http://twitter.com/share?url=<%=request.url%>&text=<%= @clubevent.name %>&via=Flyr&hashtags=FlyrLove"
         target="popup" onClick="window.open(this.href, this.target, 
         'width=600,height=400, top=200, left=300'); return false;" 
         title="Tweet" class="btn btn-twitter twitter-share">

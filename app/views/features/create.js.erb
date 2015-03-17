@@ -1,0 +1,4 @@
+$(".features-list").html("<%= escape_javascript(render("/clubs/features")) %>");
+$(".features-btns").append("<%= escape_javascript(render("/clubs/featuresForms")) %>");
+$('#AddFeature').modal('hide');
+$('#features-add').hide();

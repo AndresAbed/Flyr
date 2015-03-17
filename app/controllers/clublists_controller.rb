@@ -8,10 +8,11 @@ class ClublistsController < ApplicationController
     :user_id => current_user.id,
     :club_id => @club.id
 
-    if @clublist.save
-      redirect_to :back
-    else
-      redirect_to :back  
+    if @clublist.save 
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
@@ -20,10 +21,16 @@ class ClublistsController < ApplicationController
   end
 
   def destroy
+    @club = Club.friendly.find(params[:club_id])
+    @clubevent = Clubevent.friendly.find(params[:clubevent_id])
     @clublist = Clublist.find(params[:id])
-    @clublist.destroy
-   
-    redirect_to :back
+
+    if @clublist.destroy 
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
   end
 
   private

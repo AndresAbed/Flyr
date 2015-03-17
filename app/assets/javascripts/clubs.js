@@ -24,20 +24,13 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function(){
-  $(".features-list").mouseenter(function(){
-    $('.feature-delete').fadeIn();
-  });
-  $(".features-list").mouseleave(function(){
-    $('.feature-delete').fadeOut();
-  });
-});
+/* Musics */
 
 $(document).ready(function(){
   $("#music-edit").on("click", function() {
     var text = $(this).text();
     if (text == "Editar"){
-      $(this).text("Aceptar");
+      $(this).text("Terminar");
       $("#music-pencil").removeClass('fa fa-pencil');
       $("#music-pencil").addClass('fa fa-check');
       $("#music-add").fadeIn();
