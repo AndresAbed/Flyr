@@ -5,10 +5,11 @@ class ListsController < ApplicationController
     :list_image => current_user.profile_img,
     :event_id => @event.id, :user_id => current_user.id
 
-    if @list.save
-      redirect_to :back
-    else
-      redirect_to :back  
+    if @list.save 
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
@@ -18,10 +19,15 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @event = Event.friendly.find(params[:event_id])
     @list = List.find(params[:id])
-    @list.destroy
    
-    redirect_to :back
+    if @list.destroy
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
   end
 
   private

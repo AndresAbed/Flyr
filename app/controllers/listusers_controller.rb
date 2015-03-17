@@ -7,18 +7,25 @@ class ListusersController < ApplicationController
     :event_id => @event.id,
     :user_id => current_user.id
 
-    if @listuser.save
-      redirect_to :back
-    else
-      redirect_to :back
+    if @listuser.save 
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
   def destroy
+    @event = Event.friendly.find(params[:event_id])
     @listuser = Listuser.find(params[:id])
     @listuser.destroy
    
-    redirect_to :back
+    if @listuser.destroy
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
   end
 
   private
