@@ -2,7 +2,7 @@ class ListusersController < ApplicationController
   def create
     @event = Event.friendly.find(params[:event_id])
     @list = List.find(params[:list_id])
-    @listuser = Listuser.new :username => current_user.username,
+    @listuser = Listuser.new :username => current_user.name,
     :list_id => @list.id,
     :event_id => @event.id,
     :user_id => current_user.id

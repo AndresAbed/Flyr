@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   has_many :listusers, dependent: :destroy
   belongs_to :event
   belongs_to :user
-  validates :list_name, :uniqueness => {:scope => :event_id}
+  validates :user_id, :uniqueness => {:scope => :event_id}
 
   # Paperclip config
   has_attached_file :list_image, 

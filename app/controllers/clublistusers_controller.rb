@@ -3,7 +3,7 @@ class ClublistusersController < ApplicationController
     @club = Club.friendly.find(params[:club_id])
     @clubevent = Clubevent.friendly.find(params[:clubevent_id])
     @clublist = Clublist.find(params[:clublist_id])
-    @clublistuser = Clublistuser.new :username => current_user.username,
+    @clublistuser = Clublistuser.new :username => current_user.name,
     :clublist_id => @clublist.id,
     :clubevent_id => @clubevent.id,
     :user_id => current_user.id

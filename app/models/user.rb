@@ -4,6 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, 
   :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:username]
 
+  validates :username, format: { with: /\A[a-zA-Z]+\z/, message: "no puede incluir números ni espacios" },
+   uniqueness: { message: "no disponible" }, 
+   presence: { message: "no puede estar en blanco" },
+   length: { minimum: 5, message: "debe tener un mínimo de 5 caracteres" }
+  validates :name, format: { without: /[0-9]/, message: "no puede incluir números" },
+   presence: { message: "no puede estar en blanco" },
+   length: { minimum: 5, message: "debe tener un mínimo de 5 caracteres" }
+  validates :email, confirmation: { message: "Los emails no coinciden"}
+  validates :email_confirmation, presence: { message: "Confirmar email no puede estar en blanco"}
+
+
   has_many :lists
   has_many :clublists
   has_many :clublistusers
@@ -20,7 +31,7 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.username = auth.info.name
+      user.name = auth.info.name
       user.email = auth.info.email
       user.image = auth.info.image
       user.oauth_token = auth.credentials.token

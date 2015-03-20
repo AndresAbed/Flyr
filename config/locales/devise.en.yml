@@ -16,6 +16,10 @@ es:
         password: Contraseña
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
+        username: Usuario
+        name: Nombre
+        email_confirmation: ""
+        profile_img: La foto de perfil
   devise:
     failure:
       not_found_in_database: "Usuario o contraseña inválidos."

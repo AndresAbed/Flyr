@@ -32,6 +32,13 @@
             </div>
           </div>
           <div class="ue-elements">
+            <%= f.label 'Nombre', class: 'ue-labels' %>
+            <div>
+              <%= f.text_field :name, autofocus: true, 
+              class: 'form-control' %>
+            </div>
+          </div>
+          <div class="ue-elements">
             <%= f.label 'Email', class: 'ue-labels' %>
             <div>
               <%= f.email_field :email, class: 'form-control' %>

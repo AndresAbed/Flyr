@@ -3,7 +3,9 @@
       <% if resource.errors.empty? %>
       <% else %>  
         <div id="devise_error" class="alert alert-danger">
-          <%= devise_error_messages! %>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>  
         </div>
       <% end %>
       <div class="other-forms">
@@ -12,16 +14,23 @@
           <h2>Crear cuenta</h2>
 
           <div class="elements">
-          <%= f.text_field :username, autofocus: true, :placeholder => "Nombre de usuario", class: "form-control" %></div>
+          <%= f.text_field :username, autofocus: true, :placeholder => "Usuario", class: "form-control" %></div>
+
+          <div class="elements">
+          <%= f.text_field :name, autofocus: true, :placeholder => "Nombre", class: "form-control" %></div>
 
           <div class="elements">
           <%= f.email_field :email, :placeholder => "Email", class: "form-control" %></div>
+
+          <div class="elements">
+          <%= f.email_field :email_confirmation, autocomplete: "off", 
+          :placeholder => "Confirmar email", class: "form-control" %></div>
 
           <div class="elements"><% if @validatable %>(<%= @minimum_password_length %> caracteres mínimo)<% end %>
           <%= f.password_field :password, autocomplete: "off", :placeholder => "Contraseña", class: "form-control" %></div>
 
           <div class="elements">
-          <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirmar", class: "form-control" %></div>
+          <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => " Repetir contraseña", class: "form-control" %></div>
 
           <div class="elements">
           <%= f.label :profile_img %> <br>

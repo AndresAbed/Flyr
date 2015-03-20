@@ -3,7 +3,7 @@ class Clublist < ActiveRecord::Base
   belongs_to :clubevent
   belongs_to :user
   belongs_to :club
-  validates :list_name, :uniqueness => {:scope => :clubevent_id}
+  validates :user_id, :uniqueness => {:scope => :clubevent_id}
 
    # Paperclip config
   has_attached_file :list_image, 
