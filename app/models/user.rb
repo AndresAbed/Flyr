@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   validates :email, confirmation: { message: "Los emails no coinciden"}
   validates :email_confirmation, presence: { message: "Confirmar email no puede estar en blanco"}
 
-
   has_many :lists
   has_many :clublists
   has_many :clublistusers

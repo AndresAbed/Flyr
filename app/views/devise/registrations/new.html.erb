@@ -14,10 +14,12 @@
           <h2>Crear cuenta</h2>
 
           <div class="elements">
-          <%= f.text_field :username, autofocus: true, :placeholder => "Usuario", class: "form-control" %></div>
+          <%= f.text_field :username, autofocus: true, autocomplete: "off",
+           :placeholder => "Usuario", class: "form-control" %></div>
 
           <div class="elements">
-          <%= f.text_field :name, autofocus: true, :placeholder => "Nombre", class: "form-control" %></div>
+          <%= f.text_field :name, autofocus: true, autocomplete: "off",
+           :placeholder => "Nombre", class: "form-control" %></div>
 
           <div class="elements">
           <%= f.email_field :email, :placeholder => "Email", class: "form-control" %></div>

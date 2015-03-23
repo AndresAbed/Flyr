@@ -8,7 +8,9 @@
     <% if resource.errors.empty? %>
     <% else %>
       <div class="alert alert-danger ue-errors">
-        <%= devise_error_messages! %>
+        <% @user.errors.full_feilure.each do |message| %>
+            <li><%= message %></li>
+          <% end %>  
       </div>  
     <% end %>  
     <div class="col-lg-3 ue-img-col">

@@ -17,7 +17,7 @@
                     method: :delete, data: { confirm: 'Eliminar?' }, 
                     remote: true, class: 'btn btn-danger btn-xs' %>
                   <% end %>  
-                  <% @event.listusers.each do |lu| %>
+                  <% l.listusers.each do |lu| %>
                     <% if lu.user_id == current_user.id %>
                       <%= link_to 'Salir de lista', event_list_listuser_path(@event, l, lu),
                       method: :delete, data: { confirm: 'Eliminar?' }, 

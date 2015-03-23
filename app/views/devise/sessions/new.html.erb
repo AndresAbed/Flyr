@@ -40,21 +40,22 @@
 <div class="banner">
   <!-- Sign in form -->
   <div class="container">
+    <div class="row" style="margin-top: 81px; position: absolute;">
+      <% if alert %>
+        <h2 class="alert alert-danger" style="font-size: 15pt;"><%= alert %></h2>
+      <% end %>
+    </div>
     <div id="sign_in">
       <div class="sign_in">
         <div id="sign_in_form"> 
           <span id="close" class="glyphicon glyphicon-chevron-up"></span>
-          <div class="row">
-            <% if alert %>
-              <h2 class="label label-danger"><%= alert %></h2>
-            <% end %>
-          </div>
           <h2>Iniciar sesión</h2>
           <h5 class="label label-info">Solo para públicas</h5>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="elements">
-            <%= f.text_field :username, autofocus: true, :placeholder => "Nombre de usuario", 
-            class: "form-control" %></div>
+            <%= f.text_field :username, autofocus: true, autocomplete: "off",
+             :placeholder => "Usuario", 
+             class: "form-control" %></div>
 
             <div class="elements">
             <%= f.password_field :password, :placeholder => "Contraseña",
@@ -84,7 +85,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <div id="steps" class="container steps">
