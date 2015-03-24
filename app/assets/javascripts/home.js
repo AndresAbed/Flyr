@@ -1,6 +1,6 @@
 /* Carrousel conf */
 $(document).ready(function(){
-  $("#myCarousel").carousel({
+  $("#BannerCarousel").carousel({
     interval : 7000,
     pause:true
   });

@@ -7,7 +7,7 @@
   data-target="#EditBanner" data-toggle="tooltip" 
   data-placement="right" title="Cambiar banner"></button>
 
-  <div class="modal fade" id="EditBanner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="EditBanner">
   	<div class="modal-dialog">
   		<div class="modal-content">
   			<div class="modal-header">
@@ -42,12 +42,12 @@
   	</div>
   </div>
 
-  <div class="carousel slide" id="myCarousel">
+  <div class="carousel slide" id="BannerCarousel">
   	<ol class="carousel-indicators">
-  		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-  		<li data-target="#myCarousel" data-slide-to="1"></li>
-  		<li data-target="#myCarousel" data-slide-to="2"></li>
-  		<li data-target="#myCarousel" data-slide-to="3"></li>
+  		<li data-target="#BannerCarousel" data-slide-to="0" class="active"></li>
+  		<li data-target="#BannerCarousel" data-slide-to="1"></li>
+  		<li data-target="#BannerCarousel" data-slide-to="2"></li>
+  		<li data-target="#BannerCarousel" data-slide-to="3"></li>
   	</ol>   
   	<div class="carousel-inner">
   		<div class="item active">
@@ -63,21 +63,20 @@
   			<img alt="Image4" src="<%= @banner.first.image4.url %>">
   		</div>
   	</div>
-  	<a class="left carousel-control" data-slide="prev" href="#myCarousel">‹</a>
-  	<a class="right carousel-control" data-slide="next" href="#myCarousel">›</a>
+  	<a class="left carousel-control" data-slide="prev" href="#BannerCarousel">‹</a>
+  	<a class="right carousel-control" data-slide="next" href="#BannerCarousel">›</a>
   </div>
 <% else %>
-  <button id="modal-banner" type="button" class="banner-btn" data-toggle="modal" 
-  data-target=".bs-example-modal-sm"></button>
-
-  <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="NewBanner">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Actualizar banner</h4>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Crear banner</h4>
         </div>
-        <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
+        <%= form_for :banner, url: banners_path(@banner) do |b| %>
           <div class="modal-body">
             <div class="row images-fields">
               <%= b.label "Imagen 1", class: "label label-success image-label" %>
@@ -98,10 +97,21 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <%= b.submit 'Actualizar', class: "btn btn-primary" %>
+            <%= b.submit 'Crear', class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+
+  <div class="carousel slide" id="NewBannerCarousel">  
+    <div class="carousel-inner">
+      <div class="item active">
+        <img alt="Image1" src="http://www.solidbackgrounds.com/images/2880x1800/2880x1800-tiffany-blue-solid-color-background.jpg">
+      </div>
+      <button class="new-banner-btn btn red-btn btn-lg" type="button" data-toggle="modal" data-target="#NewBanner">
+        Crear Banner
+      </button>
     </div>
   </div>
 <% end %>

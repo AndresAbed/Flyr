@@ -1,5 +1,12 @@
 /* Carousel*/
 
+.new-banner-btn{
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .banner-btn{
 	background-image: url('http://s18.postimg.org/43too9139/Puy_R8_Oy6_W1_C.png');
 	position: absolute;
