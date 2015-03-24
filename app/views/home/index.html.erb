@@ -162,23 +162,22 @@
 			<div class="tab-pane" id="monday">
 				<% @eventmonday.each do |e| %>
 					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+            <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+            <span id="pic-caption-events" class="pic-caption open-down">
+              <h1 class="pic-title"><%= e.name %></h1>
+              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+            </span>
+          </div>
 				<% end %>
         <% @clubeventmonday.each do |e| %>
           <div id="events-pic" class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <%= link_to club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' do %>
             <span id="pic-caption-events" class="pic-caption open-down">
               <h1 class="pic-title"><%= e.name %></h1>
               <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
-            <% end %>
           </div>
         <% end %>
 			</div>
