@@ -1,5 +1,8 @@
 class Club < ActiveRecord::Base
-  validates :name, :uniqueness => true
+  validates :name, uniqueness: true, presence: true
+  validates :address, presence: true
+  validates :description, presence: true, length: {minimum: 140}
+
   has_many :musics, dependent: :destroy
   has_many :features, dependent: :destroy
   has_many :clubevents, dependent: :destroy
@@ -17,19 +20,6 @@ class Club < ActiveRecord::Base
   validates_attachment_presence :cover_image
   validates_attachment :cover_image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  validate :check_dimensions
- 
-  def check_dimensions
-    if :cover_image.blank?
-      dimensions = Paperclip::Geometry.from_file(cover_image.queued_for_write[:original].path)
-      width = dimensions.width
-      height = dimensions.height
-        
-      if height > width || height < 500
-        self.errors.add(:cover_image, "Please type in the correct email address.")
-      end
-    end  
-  end  
 
   #Geocoder
   geocoded_by :address

@@ -1,7 +1,10 @@
 class Event < ActiveRecord::Base
+  validates :name, uniqueness: true, presence: true
+  validates :address, presence:true
+  validates :description, presence: true, length: {minimum: 140}
+
   has_many :listusers
   has_many :lists, dependent: :destroy
-  validates :name, :uniqueness => true
   
   # Paperclip config
   has_attached_file :image, 
