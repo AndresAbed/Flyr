@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     @clubeventsunday = Clubevent.where("extract(dow from date) = ?", 0)
 
     # Events and Clubevents search
-    @event = Event.search(params[:search])
+    @eventsearch = Event.search(params[:search])
     @clubevent = Clubevent.search(params[:search])
   end
 end

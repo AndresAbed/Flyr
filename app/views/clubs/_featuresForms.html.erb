@@ -1,154 +1,157 @@
 <% if @club.features.blank? %>
-              <button type="button" class="btn blue-btn btn-xs" 
-                data-toggle="modal" data-target="#AddFeature" id="features-add">
-                <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
-                <b>Añadir</b>
-              </button>
-              <div class="modal fade" id="AddFeature">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">
-                        Cerrar</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Añadir</h4>
-                      </div>
-                      <div class="modal-body">
-                        <%= form_for :feature, url: club_features_path(@club), remote: true do |f| %>
-                          <div class="container events">
-                            <div class="row">
-                              <%= f.label "texto" %><br>
-                              <%= f.text_field :text %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Wifi" %><br>
-                              <%= f.check_box :wifi %>
-                            </div>
-                             <div class="row">
-                              <%= f.label "Zona fumadores" %><br>
-                              <%= f.check_box :smoking_area %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Seguridad" %><br>
-                              <%= f.check_box :security %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Fotografos" %><br>
-                              <%= f.check_box :photos %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Cumpleaños" %><br>
-                              <%= f.check_box :birthdays %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Pagos con tarjeta de credito" %><br>
-                              <%= f.check_box :credit_cards %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Comida" %><br>
-                              <%= f.check_box :food %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Bebidas" %><br>
-                              <%= f.check_box :drinks %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Regalos" %><br>
-                              <%= f.check_box :gifts %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Primeros auxilios" %><br>
-                              <%= f.check_box :first_aid %>
-                            </div>
-                            <div class="row">
-                              <%= f.label "Estacionamiento" %><br>
-                              <%= f.check_box :parking %>
-                            </div>
-                            <div class="row">
-                              <%= f.submit "Aceptar"%>
-                            </div>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
+  <button type="button" class="btn blue-btn btn-xs" 
+  data-toggle="modal" data-target="#AddFeature" id="features-add">
+    <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
+    <b>Añadir</b>
+  </button>
+  <div class="modal fade" id="AddFeature">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">
+            Cerrar</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Añadir</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for :feature, url: club_features_path(@club), remote: true do |f| %>
+            <div class="container events">
+              <div class="row">
+                <%= f.label "texto" %><br>
+                <%= f.text_field :text %>
               </div>
-            <% else %>
-              <button type="button" class="btn blue-btn btn-xs" 
-                data-toggle="modal" data-target="#EditFeature">
-                <i class="fa fa-plus" style="font-size: 12px; margin-right: 2px;"></i>
-                <b>Editar</b>
-              </button>
-              <div class="modal fade" id="EditFeature">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">
-                        Cerrar</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Editar</h4>
-                      </div>
-                      <div class="modal-body">
-                        <% @club.features.each do |f| %>
-                          <%= form_for :feature, url: club_feature_path(@club, f),
-                           method: :patch, remote: true do |f| %>
-                            <div class="container events">
-                              <div class="row">
-                                <%= f.label "texto" %><br>
-                                <%= f.text_field :text %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Wifi" %><br>
-                                <%= f.check_box :wifi %>
-                              </div>
-                               <div class="row">
-                                <%= f.label "Zona fumadores" %><br>
-                                <%= f.check_box :smoking_area %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Seguridad" %><br>
-                                <%= f.check_box :security %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Fotografos" %><br>
-                                <%= f.check_box :photos %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Cumpleaños" %><br>
-                                <%= f.check_box :birthdays %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Pagos con tarjeta de credito" %><br>
-                                <%= f.check_box :credit_cards %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Comida" %><br>
-                                <%= f.check_box :food %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Bebidas" %><br>
-                                <%= f.check_box :drinks %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Regalos" %><br>
-                                <%= f.check_box :gifts %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Primeros auxilios" %><br>
-                                <%= f.check_box :first_aid %>
-                              </div>
-                              <div class="row">
-                                <%= f.label "Estacionamiento" %><br>
-                                <%= f.check_box :parking %>
-                              </div>
-                              <div class="row">
-                                <%= f.submit "Aceptar"%>
-                              </div>
-                            </div>
-                          <% end %>
-                        <% end %>  
-                      </div>
-                    </div>
-                  </div>
-              </div>  
-            <% end %>  
+              <div class="row">
+                <%= f.label "Wifi" %><br>
+                <%= f.check_box :wifi %>
+              </div>
+              <div class="row">
+                <%= f.label "Zona fumadores" %><br>
+                <%= f.check_box :smoking_area %>
+              </div>
+              <div class="row">
+                <%= f.label "Seguridad" %><br>
+                <%= f.check_box :security %>
+              </div>
+              <div class="row">
+                <%= f.label "Fotografos" %><br>
+                <%= f.check_box :photos %>
+              </div>
+              <div class="row">
+                <%= f.label "Cumpleaños" %><br>
+                <%= f.check_box :birthdays %>
+              </div>
+              <div class="row">
+                <%= f.label "Pagos con tarjeta de credito" %><br>
+                <%= f.check_box :credit_cards %>
+              </div>
+              <div class="row">
+                <%= f.label "Comida" %><br>
+                <%= f.check_box :food %>
+              </div>
+              <div class="row">
+                <%= f.label "Bebidas" %><br>
+                <%= f.check_box :drinks %>
+              </div>
+              <div class="row">
+                <%= f.label "Regalos" %><br>
+                <%= f.check_box :gifts %>
+              </div>
+              <div class="row">
+                <%= f.label "Primeros auxilios" %><br>
+                <%= f.check_box :first_aid %>
+              </div>
+              <div class="row">
+                <%= f.label "Estacionamiento" %><br>
+                <%= f.check_box :parking %>
+              </div>
+              <div class="row">
+                <%= f.submit "Aceptar"%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <button type="button" class="btn blue-btn btn-xs" 
+  data-toggle="modal" data-target="#EditFeature">
+    <i class="fa fa-pencil" style="font-size: 12px; margin-right: 2px;"></i>
+    <b>Editar</b>
+  </button>
+  <div class="modal fade" id="EditFeature">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">
+              Cerrar</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Editar</h4>
+        </div>
+        <div class="modal-body">
+          <% @club.features.each do |f| %>
+            <%= form_for :feature, url: club_feature_path(@club, f),
+            method: :patch, remote: true do |f| %>
+              <div class="container events">
+                <div class="row">
+                  <%= f.label "texto" %><br>
+                  <%= f.text_field :text %>
+                </div>
+                <div class="row">
+                  <%= f.label "Wifi" %><br>
+                  <%= f.check_box :wifi %>
+                </div>
+                <div class="row">
+                  <%= f.label "Zona fumadores" %><br>
+                  <%= f.check_box :smoking_area %>
+                </div>
+                <div class="row">
+                  <%= f.label "Seguridad" %><br>
+                  <%= f.check_box :security %>
+                </div>
+                <div class="row">
+                  <%= f.label "Fotografos" %><br>
+                  <%= f.check_box :photos %>
+                </div>
+                <div class="row">
+                  <%= f.label "Cumpleaños" %><br>
+                  <%= f.check_box :birthdays %>
+                </div>
+                <div class="row">
+                  <%= f.label "Pagos con tarjeta de credito" %><br>
+                  <%= f.check_box :credit_cards %>
+                </div>
+                <div class="row">
+                  <%= f.label "Comida" %><br>
+                  <%= f.check_box :food %>
+                </div>
+                <div class="row">
+                  <%= f.label "Bebidas" %><br>
+                  <%= f.check_box :drinks %>
+                </div>
+                <div class="row">
+                  <%= f.label "Regalos" %><br>
+                  <%= f.check_box :gifts %>
+                </div>
+                <div class="row">
+                  <%= f.label "Primeros auxilios" %><br>
+                  <%= f.check_box :first_aid %>
+                </div>
+                <div class="row">
+                  <%= f.label "Estacionamiento" %><br>
+                  <%= f.check_box :parking %>
+                </div>
+                <div class="row">
+                  <%= f.submit "Aceptar"%>
+                </div>
+              </div>
+            <% end %>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>  
+<% end %>  

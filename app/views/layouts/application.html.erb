@@ -59,26 +59,23 @@
                 </li>
               <% else %>
                 <li class="dropdown">
-                  <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boliches<span class="caret"></span>
-                  </a>
-                  <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li><%= link_to 'Crear', new_club_path %></li>
-                    <li class="divider"></li>
-                  </ul>
+                  <button type="button" 
+                  data-toggle="modal" data-target="#NewClub">
+                    Crear boliche
+                  </button>
+                </li> 
+                <li>
+                  <button type="button" 
+                  data-toggle="modal" data-target="#NewEvent">
+                    Crear evento
+                  </button>
                 </li> 
                 <li class="dropdown">
-                  <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-                  </a>
-                  <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li><%= link_to 'Crear', new_event_path %></li>
-                    <li class="divider"></li>
-                  </ul>
-                </li> 
-                <li class="dropdown">
-                  <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a id="user-nav" href="#" class="dropdown-toggle" 
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="profile-image" src="" style="background-image: 
                     url(<%= current_user.profile_img(:small) %>);">
-                    Hola <%= current_user.name %>!<span class="caret"></span>
+                    <%= current_user.name %>!<span class="caret"></span>
                   </a>
                   <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
                     <li><a href="/users/edit">Editar cuenta</a></li>
