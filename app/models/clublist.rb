@@ -1,9 +1,10 @@
 class Clublist < ActiveRecord::Base
+  validates :user_id, :uniqueness => {:scope => :clubevent_id}
+  
   has_many :clublistusers, dependent: :destroy
   belongs_to :clubevent
   belongs_to :user
   belongs_to :club
-  validates :user_id, :uniqueness => {:scope => :clubevent_id}
 
    # Paperclip config
   has_attached_file :list_image, 

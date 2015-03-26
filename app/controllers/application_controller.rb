@@ -8,12 +8,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up){|u| 
       u.permit(:username, :name, :email, :email_confirmation, :password, :password_confirmation, :profile_img)}
     devise_parameter_sanitizer.for(:sign_in){|u| 
-      u.permit(:username, :name, :password)}
+      u.permit(:username, :password)}
     devise_parameter_sanitizer.for(:account_update){|u| 
-      u.permit(:username, :name, :email, :email_confirmation, :password, :password_confirmation, :current_password, :profile_img)}
+      u.permit(:username, :name, :email, :password, :password_confirmation, :current_password, :profile_img)}
   end
  
-
   helper_method :current_user, :log_in_using_OAuth?
 
   alias_method :devise_current_user, :current_user

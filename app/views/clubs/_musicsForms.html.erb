@@ -16,21 +16,19 @@
       <div class="modal-body">
         <%= form_for :music, url: club_musics_path(@club), 
         remote: true, html:{id: :new_music} do |f| %>
-          <div class="container events">
-            <div class="row">
-              <%= f.label "tipo de musica" %><br>
-              <%= f.text_field :name %>
-            </div>
-            <div class="row">
-              <%= f.submit "Aceptar"%>
-            </div>
+          <div class="row">
+            <%= f.label "tipo de musica" %><br>
+            <%= f.text_field :name %>
+          </div>
+          <div class="row">
+            <%= f.submit "Aceptar"%>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<button class="btn blue-btn btn-xs">
+<button class="btn blue-btn btn-xs" id="music-edit">
   <i class="fa fa-pencil" id="music-pencil" style="font-size: 12px; margin-right: 2px;"></i>
-  <b id="music-edit">Editar</b>
+  <b id="music-edit-text">Editar</b>
 </button>

@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
    presence: { message: "no puede estar en blanco" },
    length: { minimum: 5, message: "debe tener un mínimo de 5 caracteres" }
   validates :email, confirmation: { message: "Los emails no coinciden"}
-  validates :email_confirmation, presence: { message: "Confirmar email no puede estar en blanco"}
 
   has_many :lists
   has_many :clublists

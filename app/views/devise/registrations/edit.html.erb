@@ -8,9 +8,9 @@
     <% if resource.errors.empty? %>
     <% else %>
       <div class="alert alert-danger ue-errors">
-        <% @user.errors.full_feilure.each do |message| %>
+        <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
-          <% end %>  
+          <% end %>
       </div>  
     <% end %>  
     <div class="col-lg-3 ue-img-col">

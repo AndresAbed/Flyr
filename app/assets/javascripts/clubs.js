@@ -28,16 +28,16 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#music-edit").on("click", function() {
-    var text = $(this).text();
+    var text = $("#music-edit-text").text();
     if (text == "Editar"){
-      $(this).text("Terminar");
+      $("#music-edit-text").text("Terminar");
       $("#music-pencil").removeClass('fa fa-pencil');
       $("#music-pencil").addClass('fa fa-check');
       $("#music-add").fadeIn();
       $(".fa-times").fadeIn();
     }
     else{
-      $(this).text("Editar");
+      $("#music-edit-text").text("Editar");
       $("#music-pencil").removeClass('fa fa-check');
       $("#music-pencil").addClass('fa fa-pencil');
       $("#music-add").fadeOut();

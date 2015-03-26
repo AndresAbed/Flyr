@@ -44,44 +44,42 @@
           <b>Crear Evento</b>
           </button>
           <div class="modal fade" id="CreateEvent">
-              <div class="modal-dialog">
+              <div class="modal-dialog" style="color: black;">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span><span class="sr-only">
                     Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                    <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
                   </div>
                   <div class="modal-body">
                     <%= form_for :clubevent, url: club_clubevents_path(@club) do |e| %>
-                      <div class="container events">
-                        <div class="row">
-                          <%= e.label "Nombre" %><br>
-                          <%= e.text_field :name %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Fecha" %><br>
-                          <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Hora" %><br>
-                          <%= e.time_select :hour, :ignore_date => true %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Edad" %><br>
-                          <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Información" %><br>
-                          <%= e.text_area :description %>
-                        </div>
-                        <div class="row">
-                        <%= e.label "Imagen del evento" %><br>
-                          <%= e.file_field :image %>
-                        </div>
-                        <div class="row">
-                          <%= e.submit "Crear evento"%>
-                        </div>
+                      <div class="row">
+                        <%= e.label "Nombre" %><br>
+                        <%= e.text_field :name %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Fecha" %><br>
+                        <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Hora" %><br>
+                        <%= e.time_select :hour, :ignore_date => true %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Edad" %><br>
+                        <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Información" %><br>
+                        <%= e.text_area :description %>
+                      </div>
+                      <div class="row">
+                      <%= e.label "Imagen del evento" %><br>
+                        <%= e.file_field :image %>
+                      </div>
+                      <div class="row">
+                        <%= e.submit "Crear evento", class: "btn blue-btn" %>
                       </div>
                     <% end %>
                   </div>
@@ -89,12 +87,12 @@
               </div>
           </div>
           <button type="button" class="btn blue-btn btn-sm" 
-          data-toggle="modal" data-target="#editProfile" style="margin-left: 10px;">
+          data-toggle="modal" data-target="#EditProfile" style="margin-left: 10px;">
           <i class="fa fa-pencil" style="font-size: 15px; margin-right: 5px;"></i>
           <b>Editar Perfil</b>
           </button>
-          <div class="modal fade" id="editProfile">
-              <div class="modal-dialog">
+          <div class="modal fade" id="EditProfile">
+              <div class="modal-dialog" style="color: black;">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
@@ -104,16 +102,33 @@
                   </div>
                   <div class="modal-body">
                     <%= form_for :club, url: club_path(@club), method: :patch do |c| %>
-                      <%= c.text_field :name, :placeholder => 'Nombre del boliche' %>
-                      <%= c.text_field :address, :placeholder => 'Dirección' %>
-                      <%= c.text_field :facebook, :placeholder => 'Facebook url' %>
-                      <%= c.label "Descripción del boliche"%>
-                      <%= c.text_area :description %>
-                      <%= c.label "Portada" %>
-                      <%= c.file_field :cover_image %>
-                      <%= c.label "Logo" %>
-                      <%= c.file_field :logo %>
-                      <%= c.submit "Guardar", class: "btn btn-primary" %>
+                      <div class="row">
+                        <%= c.label "Nombre"%><br>
+                        <%= c.text_field :name, :placeholder => 'Nombre del boliche' %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Dirección"%><br>
+                        <%= c.text_field :address, :placeholder => 'Dirección' %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Facebook"%><br>
+                        <%= c.text_field :facebook, :placeholder => 'Facebook url' %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Descripción del boliche"%><br>
+                        <%= c.text_area :description %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Portada" %><br>
+                        <%= c.file_field :cover_image %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Logo" %><br>
+                        <%= c.file_field :logo %>
+                      </div>
+                      <div class="row">
+                        <%= c.submit "Guardar", class: "btn blue-btn" %>
+                      </div>
                     <% end %>
                   </div>
                 </div>
@@ -187,8 +202,8 @@
             <span><b>Descripción</b></span>
           </div>
         </div>
-        <div class="club-desc-content">
-          <%= @club.description %>
+        <div class="club-desc-content" style="padding: 10px;">
+          <p style="word-wrap: break-word;"><%= @club.description %></p>
         </div>
       </div>
       <div class="club-events">
