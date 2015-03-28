@@ -97,7 +97,7 @@
       </div>
       <h1>Eventos cercanos</h1>
       <% for e in @clubevent.nearbys(2) %>
-        <% if e.date == @clubevent.date %>
+        <% if e.date == @clubevent.date && e.approved == true && e.ended == false %>
           <div id="events-pic" class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
             <span id="pic-caption-events" class="pic-caption open-down">
@@ -111,7 +111,7 @@
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for :clublist, 
+        <%= form_for 'clublist', 
         url: club_clubevent_clublists_path(@club, @clubevent), 
         remote: true do |f| %>
           <%= f.submit %>

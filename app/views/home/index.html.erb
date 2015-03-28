@@ -3,117 +3,117 @@
 </head>
 <!-- New clubs and events -->
 <div class="modal fade" id="NewClub">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel">Crear boliche</h4>
-        </div>
-        <%= form_for :club, url: clubs_path(@club) do |c| %>
-          <div class="modal-body">
-           <div class="row">
-              <%= c.label "Nombre" %><br>
-              <%= c.text_field :name %>
-            </div>
-            <div class="row">
-              <%= c.label "Dirección" %><br>
-              <%= c.text_field :address %>
-            </div>
-            <div class="row">
-              <%= c.label "Facebook URL" %><br>
-              <%= c.text_field :facebook %>
-            </div>
-            <div class="row">
-              <%= c.label "Twitter URL" %><br>
-              <%= c.text_field :twitter %>
-            </div>
-            <div class="row">
-              <%= c.label "Google+ URL" %><br>
-              <%= c.text_field :googleplus %>
-            </div>
-            <div class="row">
-              <%= c.label "Instagram URL" %><br>
-              <%= c.text_field :instagram %>
-            </div>
-            <div class="row">
-              <%= c.label "Youtube URL" %><br>
-              <%= c.text_field :youtube %>
-            </div>
-            <div class="row">
-              <%= c.label "Descripción" %><br>
-              <%= c.text_area :description %>
-            </div>
-            <div class="row">
-              <%= c.label "Portada" %><br>
-              <%= c.file_field :cover_image %>
-            </div>
-            <div class="row">
-              <%= c.label "Logo" %><br>
-              <%= c.file_field :logo %>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <%= c.submit 'Crear', class: "btn btn-primary" %>
-          </div>
-        <% end %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Crear boliche</h4>
       </div>
+      <%= form_for :club, url: clubs_path(@club) do |c| %>
+        <div class="modal-body">
+         <div class="row">
+            <%= c.label "Nombre" %><br>
+            <%= c.text_field :name %>
+          </div>
+          <div class="row">
+            <%= c.label "Dirección" %><br>
+            <%= c.text_field :address %>
+          </div>
+          <div class="row">
+            <%= c.label "Facebook URL" %><br>
+            <%= c.text_field :facebook %>
+          </div>
+          <div class="row">
+            <%= c.label "Twitter URL" %><br>
+            <%= c.text_field :twitter %>
+          </div>
+          <div class="row">
+            <%= c.label "Google+ URL" %><br>
+            <%= c.text_field :googleplus %>
+          </div>
+          <div class="row">
+            <%= c.label "Instagram URL" %><br>
+            <%= c.text_field :instagram %>
+          </div>
+          <div class="row">
+            <%= c.label "Youtube URL" %><br>
+            <%= c.text_field :youtube %>
+          </div>
+          <div class="row">
+            <%= c.label "Descripción" %><br>
+            <%= c.text_area :description %>
+          </div>
+          <div class="row">
+            <%= c.label "Portada" %><br>
+            <%= c.file_field :cover_image %>
+          </div>
+          <div class="row">
+            <%= c.label "Logo" %><br>
+            <%= c.file_field :logo %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= c.submit 'Crear', class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 <div class="modal fade" id="NewEvent">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
-        </div>
-        <%= form_for :event, url: events_path(@event) do |e| %>
-          <div class="modal-body">
-            <div class="row">
-              <%= e.label "Nombre" %><br>
-              <%= e.text_field :name %>
-            </div>
-            <div class="row">
-              <%= e.label "Dirección" %><br>
-              <%= e.text_field :address %>
-            </div>
-            <div class="row">
-              <%= e.label "Fecha" %><br>
-              <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
-            </div>
-            <div class="row">
-              <%= e.label "Hora" %><br>
-              <%= e.time_select :hour, :ignore_date => true %>
-            </div>
-            <div class="row">
-              <%= e.label "Edad" %><br>
-              <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
-            </div>
-            <div class="row">
-              <%= e.label "Información" %><br>
-              <%= e.text_area :description %>
-            </div>
-            <div class="row">
-            <%= e.label "Imagen del evento" %><br>
-              <%= e.file_field :image %>
-            </div>
-            <div class="row">
-            <%= e.label "Logo del evento" %><br>
-              <%= e.file_field :event_logo %>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <%= e.submit 'Crear', class: "btn btn-primary" %>
-          </div>
-        <% end %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
       </div>
+      <%= form_for :event, url: events_path(@event) do |e| %>
+        <div class="modal-body">
+          <div class="row">
+            <%= e.label "Nombre" %><br>
+            <%= e.text_field :name %>
+          </div>
+          <div class="row">
+            <%= e.label "Dirección" %><br>
+            <%= e.text_field :address %>
+          </div>
+          <div class="row">
+            <%= e.label "Fecha" %><br>
+            <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
+          </div>
+          <div class="row">
+            <%= e.label "Hora" %><br>
+            <%= e.time_select :hour, :ignore_date => true %>
+          </div>
+          <div class="row">
+            <%= e.label "Edad" %><br>
+            <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+          </div>
+          <div class="row">
+            <%= e.label "Información" %><br>
+            <%= e.text_area :description %>
+          </div>
+          <div class="row">
+          <%= e.label "Imagen del evento" %><br>
+            <%= e.file_field :image %>
+          </div>
+          <div class="row">
+          <%= e.label "Logo del evento" %><br>
+            <%= e.file_field :event_logo %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= e.submit 'Crear', class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 <!-- Carousel -->
 <% if @banner.present? %>
   <button id="modal-banner" type="button" class="banner-btn" data-toggle="modal" 
@@ -274,156 +274,184 @@
 			</div>
 			<div class="tab-pane" id="monday">
 				<% @eventmonday.each do |e| %>
-					<div id="events-pic" class="pic">
-            <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+              <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
 				<% end %>
         <% @clubeventmonday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %> 
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="tuesday">
 				<% @eventtuesday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>  
 				<% end %>
         <% @clubeventtuesday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="wednesday">
 				<% @eventwednesday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>
 				<% end %>
         <% @clubeventwednesday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="thursday">
 				<% @eventthursday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>  
 				<% end %>
         <% @clubeventthursday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="friday">
 				<% @eventfriday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>  
 				<% end %>
         <% @clubeventfriday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="saturday">
 				<% @eventsaturday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>  
 				<% end %>
         <% @clubeventsaturday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 			<div class="tab-pane" id="sunday">
 				<% @eventsunday.each do |e| %>
-					<div id="events-pic" class="pic">
-						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
-							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
-						</span>
-					</div>
+          <% if e.approved == true && e.ended == false %>
+  					<div id="events-pic" class="pic">
+  						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
+  						<span id="pic-caption-events" class="pic-caption open-down">
+  							<h1 class="pic-title"><%= e.name %></h1>
+  							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+  							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
+  						</span>
+  					</div>
+          <% end %>  
 				<% end %>
         <% @clubeventsunday.each do |e| %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
+          <% if e.approved == true && e.ended == false %>
+            <div id="events-pic" class="pic">
+              <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
+              <span id="pic-caption-events" class="pic-caption open-down">
+                <h1 class="pic-title"><%= e.name %></h1>
+                <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+                <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+          <% end %>  
         <% end %>
 			</div>
 		</div>

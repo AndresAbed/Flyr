@@ -1,5 +1,5 @@
 class Clubevent < ActiveRecord::Base
-  validates :name, :uniqueness => {:scope => :club_id}, presence: true
+  validates :name, presence: true
   validates :description, presence: true
 
   belongs_to :club

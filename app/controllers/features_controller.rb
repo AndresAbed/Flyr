@@ -26,7 +26,7 @@ class FeaturesController < ApplicationController
   end
 
   def feature_params
-    params.require(:feature).permit(:text, :club_id, :wifi, :smoking_area, :security, 
+    params.require(:feature).permit(:text, :wifi, :smoking_area, :security, 
       :photos, :birthdays, :credit_cards, :food, :drinks, :gifts, :first_aid, 
       :parking)
   end

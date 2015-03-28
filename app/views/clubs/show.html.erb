@@ -115,6 +115,22 @@
                         <%= c.text_field :facebook, :placeholder => 'Facebook url' %>
                       </div>
                       <div class="row">
+                        <%= c.label "Twitter URL" %><br>
+                        <%= c.text_field :twitter %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Google+ URL" %><br>
+                        <%= c.text_field :googleplus %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Instagram URL" %><br>
+                        <%= c.text_field :instagram %>
+                      </div>
+                      <div class="row">
+                        <%= c.label "Youtube URL" %><br>
+                        <%= c.text_field :youtube %>
+                      </div>
+                      <div class="row">
                         <%= c.label "Descripción del boliche"%><br>
                         <%= c.text_area :description %>
                       </div>
@@ -214,9 +230,11 @@
         </div>
         <div class="club-events-content">
           <% @club.clubevents.each do |c| %>
-            <p>
-              <%= link_to c.name, club_clubevent_path(@club, c) %>
-            </p>
+            <% if c.approved == true && c.ended == false %>
+              <p>
+                <%= link_to c.name, club_clubevent_path(@club, c) %>
+              </p>
+            <% end %>  
           <% end %>
         </div>
       </div>

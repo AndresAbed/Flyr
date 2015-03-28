@@ -2,10 +2,12 @@ class ClubeventsController < ApplicationController
 
   def create
     @club = Club.friendly.find(params[:club_id])
-    @clubevent = Clubevent.new(event_params)
+    @clubevent = Clubevent.new(clubevent_params)
     @clubevent.club_id = @club.id
     @clubevent.address = @club.address
     @clubevent.club_logo = @club.logo
+    @clubevent.approved = false
+    @clubevent.ended = false
 
     if @clubevent.save
       redirect_to club_clubevent_path(@club, @clubevent)
@@ -23,7 +25,7 @@ class ClubeventsController < ApplicationController
     @club = Club.friendly.find(params[:club_id])
     @clubevent = Clubevent.friendly.find(params[:id])
    
-    if @clubevent.update(event_params)
+    if @clubevent.update(clubevent_params)
       redirect_to club_clubevent_path(@club, @clubevent)
     else
       redirect_to :back
@@ -39,7 +41,7 @@ class ClubeventsController < ApplicationController
   end
 
   private
-  def event_params
-    params.require(:clubevent).permit(:name, :date, :hour, :age, :description, :image, :club_id, :address, :club_logo)
+  def clubevent_params
+    params.require(:clubevent).permit(:name, :date, :hour, :age, :description, :image)
   end
 end

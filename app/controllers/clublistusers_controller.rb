@@ -3,10 +3,11 @@ class ClublistusersController < ApplicationController
     @club = Club.friendly.find(params[:club_id])
     @clubevent = Clubevent.friendly.find(params[:clubevent_id])
     @clublist = Clublist.find(params[:clublist_id])
-    @clublistuser = Clublistuser.new :username => current_user.name,
-    :clublist_id => @clublist.id,
-    :clubevent_id => @clubevent.id,
-    :user_id => current_user.id
+    @clublistuser = Clublistuser.new ({
+      username: current_user.name,
+      clublist_id: @clublist.id,
+      clubevent_id: @clubevent.id,
+      user_id: current_user.id})
 
     if @clublistuser.save 
       respond_to do |format|
@@ -28,10 +29,5 @@ class ClublistusersController < ApplicationController
         format.js
       end
     end
-  end
-
-  private
-  def list_user_params
-    params.require(:clublist_user).permit(:username, :clublist_id, :clubevent_id)
   end
 end

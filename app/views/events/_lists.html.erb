@@ -1,30 +1,30 @@
 <% @event.lists.each do |l| %>
-            <li>
-              <div class="list-content">
-                <div class="col-lg-2 list-container-img">
-                  <img class="list-img" src="<%= l.list_image.url %>">
-                </div>
-                <div class="col-lg-4 list-text">
-                  <p>Lista de <%= l.list_name %></p>
-                </div>
-                <div class="col-lg-4 list-btns">
-                  <%= form_for :clublist_user, url: event_list_listusers_path(@event, l), 
-                  remote: true do |f| %>
-                    <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
-                  <% end %>
-                  <% if l.user_id == current_user.id %>
-                    <%= link_to 'Borrar lista', event_list_path(@event, l),
-                    method: :delete, data: { confirm: 'Eliminar?' }, 
-                    remote: true, class: 'btn btn-danger btn-xs' %>
-                  <% end %>  
-                  <% l.listusers.each do |lu| %>
-                    <% if lu.user_id == current_user.id %>
-                      <%= link_to 'Salir de lista', event_list_listuser_path(@event, l, lu),
-                      method: :delete, data: { confirm: 'Eliminar?' }, 
-                      remote: true, class: 'btn btn-danger btn-xs' %>
-                    <% end %>
-                  <% end %>
-                </div>  
-              </div>
-            </li>  
+  <li>
+    <div class="list-content">
+      <div class="col-lg-2 list-container-img">
+        <img class="list-img" src="<%= l.list_image.url %>">
+      </div>
+      <div class="col-lg-4 list-text">
+        <p>Lista de <%= l.list_name %></p>
+      </div>
+      <div class="col-lg-4 list-btns">
+        <%= form_for :list_user, url: event_list_listusers_path(@event, l), 
+        remote: true do |f| %>
+          <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
+        <% end %>
+        <% if l.user_id == current_user.id %>
+          <%= link_to 'Borrar lista', event_list_path(@event, l),
+          method: :delete, data: { confirm: 'Eliminar?' }, 
+          remote: true, class: 'btn btn-danger btn-xs' %>
+        <% end %>  
+        <% l.listusers.each do |lu| %>
+          <% if lu.user_id == current_user.id %>
+            <%= link_to 'Salir de lista', event_list_listuser_path(@event, l, lu),
+            method: :delete, data: { confirm: 'Eliminar?' }, 
+            remote: true, class: 'btn btn-danger btn-xs' %>
           <% end %>
+        <% end %>
+      </div>  
+    </div>
+  </li>  
+<% end %>

@@ -111,7 +111,7 @@
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for :list, url: event_lists_path(@event), 
+        <%= form_for 'lista', url: event_lists_path(@event), 
         remote: true do |f| %>
           <%= f.submit %>
         <% end %>

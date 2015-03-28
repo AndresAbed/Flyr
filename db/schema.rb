@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326145019) do
+ActiveRecord::Schema.define(version: 20150327220840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150326145019) do
     t.string   "club_logo_content_type"
     t.integer  "club_logo_file_size"
     t.datetime "club_logo_updated_at"
+    t.boolean  "approved"
+    t.boolean  "ended"
   end
 
   add_index "clubevents", ["slug"], name: "index_clubevents_on_slug", using: :btree
@@ -130,6 +132,8 @@ ActiveRecord::Schema.define(version: 20150326145019) do
     t.string   "slug",                    limit: 255
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "approved"
+    t.boolean  "ended"
   end
 
   add_index "events", ["slug"], name: "index_events_on_slug", using: :btree

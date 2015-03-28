@@ -34,18 +34,9 @@
             </button>
             <a class="navbar-brand" href="/home/index">Logotipo</a>
           </div>
-         
           <div class="collapse navbar-collapse navbar-collapse"> 
             <ul class="nav navbar-nav navbar-right">
               <% if log_in_using_OAuth? %>
-                <li class="dropdown">
-                  <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span>
-                  </a>
-                  <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li><%= link_to 'Crear', new_event_path %></li>
-                    <li class="divider"></li>
-                  </ul>
-                </li> 
                 <li class="dropdown">
                   <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
@@ -82,7 +73,7 @@
                     <li class="divider"></li>
                     <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
                   </ul>
-                </li> 
+                </li>
               <% end %>  
             </ul>
           </div>

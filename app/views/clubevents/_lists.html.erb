@@ -1,32 +1,32 @@
 <% @clubevent.clublists.each do |l| %>
-            <li>
-              <div class="list-content">
-                <div class="col-lg-2 list-container-img">
-                  <img class="list-img" src="<%= l.list_image.url %>">
-                </div>
-                <div class="col-lg-4 list-text">
-                  <p>Lista de <%= l.list_name %></p>
-                </div>
-                <div class="col-lg-4 list-btns">
-                  <%= form_for :clublist_user, 
-                  url: club_clubevent_clublist_clublistusers_path(@club, @clubevent, l),
-                  remote: true do |f| %>
-                    <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
-                  <% end %>
-                  <% if l.user_id == current_user.id %>
-                    <%= link_to 'Borrar lista', club_clubevent_clublist_path(@club, @clubevent, l),
-                    method: :delete, data: { confirm: 'Eliminar?' }, 
-                    remote: true, class: 'btn btn-danger btn-xs' %>
-                  <% end %>
-                  <% l.clublistusers.each do |lu| %>
-                    <% if lu.user_id == current_user.id %>
-                      <%= link_to 'Salir de lista', 
-                      club_clubevent_clublist_clublistuser_path(@club, @clubevent, l, lu),
-                      method: :delete, data: { confirm: 'Estás seguro?' }, 
-                      remote: true, class: 'btn btn-danger btn-xs' %>
-                    <% end %>
-                  <% end %>
-                </div>  
-              </div>
-            </li>  
+  <li>
+    <div class="list-content">
+      <div class="col-lg-2 list-container-img">
+        <img class="list-img" src="<%= l.list_image.url %>">
+      </div>
+      <div class="col-lg-4 list-text">
+        <p>Lista de <%= l.list_name %></p>
+      </div>
+      <div class="col-lg-4 list-btns">
+        <%= form_for :clublist_user, 
+        url: club_clubevent_clublist_clublistusers_path(@club, @clubevent, l),
+        remote: true do |f| %>
+          <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
+        <% end %>
+        <% if l.user_id == current_user.id %>
+          <%= link_to 'Borrar lista', club_clubevent_clublist_path(@club, @clubevent, l),
+          method: :delete, data: { confirm: 'Eliminar?' }, 
+          remote: true, class: 'btn btn-danger btn-xs' %>
+        <% end %>
+        <% l.clublistusers.each do |lu| %>
+          <% if lu.user_id == current_user.id %>
+            <%= link_to 'Salir de lista', 
+            club_clubevent_clublist_clublistuser_path(@club, @clubevent, l, lu),
+            method: :delete, data: { confirm: 'Estás seguro?' }, 
+            remote: true, class: 'btn btn-danger btn-xs' %>
           <% end %>
+        <% end %>
+      </div>  
+    </div>
+  </li>  
+<% end %>

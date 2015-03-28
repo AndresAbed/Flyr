@@ -1,9 +1,11 @@
 class ListsController < ApplicationController
   def create
     @event = Event.friendly.find(params[:event_id])
-    @list = List.new :list_name => current_user.name,
-    :list_image => current_user.profile_img,
-    :event_id => @event.id, :user_id => current_user.id
+    @list = List.new ({
+      list_name: current_user.name,
+      list_image: current_user.profile_img,
+      event_id: @event.id, 
+      user_id: current_user.id})
 
     if @list.save 
       respond_to do |format|
@@ -28,10 +30,5 @@ class ListsController < ApplicationController
         format.js
       end
     end
-  end
-
-  private
-  def list_params
-    params.require(:list).permit(:name, :list_image, :event_id, :user_id)
   end
 end

@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  validates :name, uniqueness: true, presence: true
+  validates :name, presence: true
   validates :address, presence:true
   validates :description, presence: true, length: {minimum: 140}
 
