@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       u.permit(:username, :name, :email, :password, :password_confirmation, :current_password, :profile_img)}
   end
  
-  helper_method :current_user, :log_in_using_OAuth?
+  helper_method :current_user, :log_in_using_OAuth?, :events_to_approve
 
   alias_method :devise_current_user, :current_user
   def current_user
@@ -35,4 +35,9 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || home_path
     request.env['omniauth.origin'] || stored_location_for(resource) || home_path
 	end
+
+  # Not approved events
+  def events_to_approve
+    Clubevent.where(approved: false, ended: false).order("created_at ASC")
+  end
 end

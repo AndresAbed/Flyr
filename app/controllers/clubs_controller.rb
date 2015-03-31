@@ -12,7 +12,7 @@ class ClubsController < ApplicationController
     @club = Club.friendly.find(params[:id])
     @eventsNumber = @club.clubevents.count
     @listsNumber = @club.clublists.count
-    @events = @club.clubevents.where(approved: true, ended: false)
+    @events = @club.clubevents.where(ended: false, approved: true)
   end
 
   def update

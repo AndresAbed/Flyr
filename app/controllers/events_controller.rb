@@ -2,7 +2,6 @@ class EventsController < ApplicationController
 
   def create
   	@event = Event.new(event_params)
-    @event.approved = false
     @event.ended = false
     
 	  if @event.save

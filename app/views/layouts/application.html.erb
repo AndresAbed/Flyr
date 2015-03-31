@@ -49,7 +49,7 @@
                   </ul>
                 </li>
               <% else %>
-                <li class="dropdown">
+                <li>
                   <button type="button" 
                   data-toggle="modal" data-target="#NewClub">
                     Crear boliche
@@ -60,15 +60,36 @@
                   data-toggle="modal" data-target="#NewEvent">
                     Crear evento
                   </button>
-                </li> 
+                </li>
                 <li class="dropdown">
-                  <a id="user-nav" href="#" class="dropdown-toggle" 
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a id="user-nav" href="#" class="dropdown-toggle"
+                  data-toggle="dropdown">
+                    <i class="fa fa-flag" style="font-size: 15pt;"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <% @var = events_to_approve %>
+                    <% if @var.present? %>
+                      <% @var.each do |e| %>
+                        <li>
+                          <%= link_to e.name, club_clubevent_path(e.club_id, e) %>
+                          <li class="divider"></li>
+                        </li>
+                      <% end %>
+                    <% else %>
+                      <span>
+                        No hay eventos para aprobar
+                      </span>  
+                    <% end %>  
+                  </ul>
+                </li>
+                <li>
+                  <a id="user-nav" href="#" class="dropdown-toggle"
+                  data-toggle="dropdown">
                     <img class="profile-image" src="" style="background-image: 
                     url(<%= current_user.profile_img(:small) %>);">
-                    <%= current_user.name %>!<span class="caret"></span>
+                    <%= current_user.name %><span class="caret"></span>
                   </a>
-                  <ul  class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <ul class="dropdown-menu">
                     <li><a href="/users/edit">Editar cuenta</a></li>
                     <li class="divider"></li>
                     <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>

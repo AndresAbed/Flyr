@@ -237,6 +237,7 @@
 
 .club-desc-content{
   background-color: #fff;
+  word-wrap: break-word;
 }
 
 .club-events{

@@ -24,6 +24,14 @@
   </div>
   <div class="container">
     <div class="event-buttons">
+      <% if @clubevent.approved == false %>
+        <div style="display: inline-block;">
+          <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
+            <%= f.hidden_field :approved, value: true %>
+            <%= f.submit "Aprobar evento", class: "btn btn-info btn-sm" %>
+          <% end %>
+        </div>
+      <% end %>  
       <button type="button" class="btn btn-info btn-sm" 
       data-toggle="modal" data-target="#editEvent">Editar evento</button>
       <%= link_to 'Borrar evento', club_clubevent_path(@club, @clubevent),
@@ -84,7 +92,7 @@
   <div class="container event-content">
     <div class="col-lg-8">
       <p class="description-name"><%= @clubevent.name %></p>
-      <p><%= @clubevent.description %></p>
+      <p style="word-wrap: break-word;"><%= @clubevent.description %></p>
       <hr class="featurette-divider">
       <ul class="event-lists" id="lists-partial">
         <%= render 'lists' %>
