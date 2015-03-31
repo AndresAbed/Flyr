@@ -229,12 +229,10 @@
           </div>
         </div>
         <div class="club-events-content">
-          <% @club.clubevents.each do |c| %>
-            <% if c.approved == true && c.ended == false %>
-              <p>
-                <%= link_to c.name, club_clubevent_path(@club, c) %>
-              </p>
-            <% end %>  
+          <% @events.each do |c| %>
+            <p>
+              <%= link_to c.name, club_clubevent_path(@club, c) %>
+            </p> 
           <% end %>
         </div>
       </div>

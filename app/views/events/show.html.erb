@@ -95,19 +95,6 @@
         data-markerName="<%= @event.name %>"
         style='height: 300px;'></div>
       </div>
-      <h1>Eventos cercanos</h1>
-      <% for e in @event.nearbys(2) %>
-        <% if e.date == @event.date %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', e, class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
-        <% end %>  
-      <% end %>
       <div class="row" style="margin-left: 0px;">
         <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
         <%= link_to 'Volver', :back, class: 'btn btn-primary' %>

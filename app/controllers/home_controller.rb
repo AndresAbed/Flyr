@@ -5,24 +5,24 @@ class HomeController < ApplicationController
     @clubs = Club.all
 
     # Events and Clubevents by day
-  	@eventmonday = Event.where("extract(dow from date) = ?", 1)
-    @eventtuesday = Event.where("extract(dow from date) = ?", 2)
-    @eventwednesday = Event.where("extract(dow from date) = ?", 3)
-    @eventthursday = Event.where("extract(dow from date) = ?", 4)
-    @eventfriday = Event.where("extract(dow from date) = ?", 5)
-    @eventsaturday = Event.where("extract(dow from date) = ?", 6)
-    @eventsunday = Event.where("extract(dow from date) = ?", 0)
+  	@eventmonday = Event.where("extract(dow from date) = ?", 1).where(approved: true, ended: false)
+    @eventtuesday = Event.where("extract(dow from date) = ?", 2).where(approved: true, ended: false)
+    @eventwednesday = Event.where("extract(dow from date) = ?", 3).where(approved: true, ended: false)
+    @eventthursday = Event.where("extract(dow from date) = ?", 4).where(approved: true, ended: false)
+    @eventfriday = Event.where("extract(dow from date) = ?", 5).where(approved: true, ended: false)
+    @eventsaturday = Event.where("extract(dow from date) = ?", 6).where(approved: true, ended: false)
+    @eventsunday = Event.where("extract(dow from date) = ?", 0).where(approved: true, ended: false)
     
-    @clubeventmonday = Clubevent.where("extract(dow from date) = ?", 1)
-    @clubeventtuesday = Clubevent.where("extract(dow from date) = ?", 2)
-    @clubeventwednesday = Clubevent.where("extract(dow from date) = ?", 3)
-    @clubeventthursday = Clubevent.where("extract(dow from date) = ?", 4)
-    @clubeventfriday = Clubevent.where("extract(dow from date) = ?", 5)
-    @clubeventsaturday = Clubevent.where("extract(dow from date) = ?", 6)
-    @clubeventsunday = Clubevent.where("extract(dow from date) = ?", 0)
+    @clubeventmonday = Clubevent.where("extract(dow from date) = ?", 1).where(approved: true, ended: false)
+    @clubeventtuesday = Clubevent.where("extract(dow from date) = ?", 2).where(approved: true, ended: false)
+    @clubeventwednesday = Clubevent.where("extract(dow from date) = ?", 3).where(approved: true, ended: false)
+    @clubeventthursday = Clubevent.where("extract(dow from date) = ?", 4).where(approved: true, ended: false)
+    @clubeventfriday = Clubevent.where("extract(dow from date) = ?", 5).where(approved: true, ended: false)
+    @clubeventsaturday = Clubevent.where("extract(dow from date) = ?", 6).where(approved: true, ended: false)
+    @clubeventsunday = Clubevent.where("extract(dow from date) = ?", 0).where(approved: true, ended: false)
 
     # Events and Clubevents search
-    @eventsearch = Event.search(params[:search])
-    @clubevent = Clubevent.search(params[:search])
+    @eventsearch = Event.search(params[:search]).where(approved: true, ended: false)
+    @clubevent = Clubevent.search(params[:search]).where(approved: true, ended: false)
   end
 end
