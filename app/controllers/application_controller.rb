@@ -38,6 +38,8 @@ class ApplicationController < ActionController::Base
 
   # Not approved events
   def events_to_approve
-    Clubevent.where(approved: false, ended: false).order("created_at ASC")
+    Clubevent.select("id, name, club_id")
+              .where(approved: false, ended: false)
+              .order("created_at ASC")
   end
 end

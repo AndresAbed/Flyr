@@ -1,5 +1,7 @@
 class ClubeventsController < ApplicationController
 
+  respond_to :json, :html
+
   def create
     @club = Club.friendly.find(params[:club_id])
     @clubevent = Clubevent.new(clubevent_params)
@@ -38,6 +40,14 @@ class ClubeventsController < ApplicationController
     @clubevent.destroy
    
     redirect_to club_path(@club)
+  end
+
+  def pending
+    events = events_to_approve.map { |e| 
+      {name: e.name, url: e.url}
+    }
+
+    respond_with({clubevents: events})
   end
 
   private

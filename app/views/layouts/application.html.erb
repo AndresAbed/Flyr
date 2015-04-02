@@ -67,19 +67,17 @@
                     <i class="fa fa-flag" style="font-size: 15pt;"></i>
                   </a>
                   <ul class="dropdown-menu">
-                    <% @var = events_to_approve %>
-                    <% if @var.present? %>
-                      <% @var.each do |e| %>
-                        <li>
-                          <%= link_to e.name, club_clubevent_path(e.club_id, e) %>
-                          <li class="divider"></li>
-                        </li>
-                      <% end %>
-                    <% else %>
+                    <% events_to_approve.each do |e| %>
+                      <li>
+                        
+                        <li class="divider"></li>
+                      </li>
+                    <% end %>
+                    <% if events_to_approve.empty? %>
                       <span>
                         No hay eventos para aprobar
                       </span>  
-                    <% end %>  
+                    <% end %>
                   </ul>
                 </li>
                 <li>

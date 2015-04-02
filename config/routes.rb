@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
 
   #Events
-  get 'events/index'
   resources :events do
     resources :lists, only: [:create, :show, :destroy] do
       resources :listusers, only: [:create, :destroy]
@@ -31,6 +30,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'clubevents/pending'
 
   get 'user/profile'
 

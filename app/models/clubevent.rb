@@ -27,6 +27,10 @@ class Clubevent < ActiveRecord::Base
     name_changed?
   end
 
+  def url
+    Rails.application.routes.url_helpers.club_clubevent_path(club_id, id)
+  end
+
   # Search config
   def self.search(search)
     if search
