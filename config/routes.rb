@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #Devise
   devise_for :users
   devise_scope :user do
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # Pending Events
   get 'clubevents/pending'
 
   get 'user/profile'

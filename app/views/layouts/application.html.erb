@@ -65,19 +65,10 @@
                   <a id="user-nav" href="#" class="dropdown-toggle"
                   data-toggle="dropdown">
                     <i class="fa fa-flag" style="font-size: 15pt;"></i>
+                    <span id="pendingCount"><%= events_to_approve.length %></span>
                   </a>
-                  <ul class="dropdown-menu">
-                    <% events_to_approve.each do |e| %>
-                      <li>
-                        
-                        <li class="divider"></li>
-                      </li>
-                    <% end %>
-                    <% if events_to_approve.empty? %>
-                      <span>
-                        No hay eventos para aprobar
-                      </span>  
-                    <% end %>
+                  <ul class="dropdown-menu" id="pendingEvents">
+                    
                   </ul>
                 </li>
                 <li>

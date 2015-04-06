@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :log_in_using_OAuth?, :events_to_approve
 
   alias_method :devise_current_user, :current_user
+  
   def current_user
     @current_user ||= if session[:user_id]
       User.find(session[:user_id]) 
@@ -38,8 +39,8 @@ class ApplicationController < ActionController::Base
 
   # Not approved events
   def events_to_approve
-    Clubevent.select("id, name, club_id")
-              .where(approved: false, ended: false)
+    Clubevent.select("slug, id, name, club_id")
+              .where(ended: false, approved: false)
               .order("created_at ASC")
   end
 end

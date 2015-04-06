@@ -27,8 +27,11 @@ class Clubevent < ActiveRecord::Base
     name_changed?
   end
 
+  #Geocoder
+  geocoded_by :address
+
   def url
-    Rails.application.routes.url_helpers.club_clubevent_path(club_id, id)
+    Rails.application.routes.url_helpers.club_clubevent_path(club_id, slug)
   end
 
   # Search config
@@ -40,8 +43,4 @@ class Clubevent < ActiveRecord::Base
       Clubevent.all
     end
   end
-
-  # Geocoder
-  geocoded_by :address
-  after_validation :geocode, :if => :address_changed?
 end
