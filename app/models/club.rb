@@ -32,4 +32,17 @@ class Club < ActiveRecord::Base
   def should_generate_new_friendly_id?
     name_changed?
   end
+
+  after_save :update_events_addresses
+
+  def update_events_addresses
+    if address_changed?
+      clubevents.where(ended: false)
+                .update_all({
+                  address: address,
+                  latitude: latitude,
+                  longitude: longitude
+                  })
+    end
+  end
 end
