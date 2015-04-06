@@ -64,3 +64,5 @@ gem 'geocoder'
 group :development do
   gem 'guard-livereload', require: false
 end
+#Rails admin 
+gem 'rails_admin'
