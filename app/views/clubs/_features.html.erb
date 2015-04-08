@@ -1,35 +1,35 @@
 <% @club.features.each do |f| %>
-            <% if f.wifi == true %>
-              <i class="icon ion-wifi"></i>
-            <% end %>
-            <% if f.smoking_area == true %>
-              <i class="fa fa-fire"></i>
-            <% end %>
-            <% if f.security == true %>
-              <i class="fa fa-shield"></i>
-            <% end %>
-            <% if f.photos == true %>
-              <i class="fa fa-camera"></i>
-            <% end %>
-            <% if f.birthdays == true %>
-              <i class="fa fa-birthday-cake"></i>
-            <% end %>
-            <% if f.credit_cards == true %>
-              <i class="fa fa-credit-card"></i>
-            <% end %>
-            <% if f.food == true %>
-              <i class="fa fa-cutlery"></i>
-            <% end %>
-            <% if f.drinks == true %>
-              <i class="fa fa-glass"></i>
-            <% end %>
-            <% if f.gifts == true %>
-              <i class="fa fa-gift"></i>
-            <% end %>
-            <% if f.first_aid == true %>
-              <i class="fa fa-plus-circle"></i>
-            <% end %>
-            <% if f.parking == true %>
-              <i class="fa fa-car"></i>
-            <% end %>
-          <% end %>
+  <% if f.wifi %>
+    <i class="icon ion-wifi"></i>
+  <% end %>
+  <% if f.smoking_area %>
+    <i class="fa fa-fire"></i>
+  <% end %>
+  <% if f.security %>
+    <i class="fa fa-shield"></i>
+  <% end %>
+  <% if f.photos %>
+    <i class="fa fa-camera"></i>
+  <% end %>
+  <% if f.birthdays %>
+    <i class="fa fa-birthday-cake"></i>
+  <% end %>
+  <% if f.credit_cards %>
+    <i class="fa fa-credit-card"></i>
+  <% end %>
+  <% if f.food %>
+    <i class="fa fa-cutlery"></i>
+  <% end %>
+  <% if f.drinks %>
+    <i class="fa fa-glass"></i>
+  <% end %>
+  <% if f.gifts %>
+    <i class="fa fa-gift"></i>
+  <% end %>
+  <% if f.first_aid %>
+    <i class="fa fa-plus-circle"></i>
+  <% end %>
+  <% if f.parking %>
+    <i class="fa fa-car"></i>
+  <% end %>
+<% end %>
