@@ -13,7 +13,7 @@
         remote: true do |f| %>
           <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
         <% end %>
-        <% if l.user_id == current_user.id %>
+        <% if l.user_id == current_user.id || current_user.is_admin? %>
           <%= link_to 'Borrar lista', club_clubevent_clublist_path(@club, @clubevent, l),
           method: :delete, data: { confirm: 'Eliminar?' }, 
           remote: true, class: 'btn btn-danger btn-xs' %>

@@ -3,6 +3,7 @@ class Club < ActiveRecord::Base
   validates :address, presence: true
   validates :description, presence: true, length: {minimum: 140}
 
+  has_many :users
   has_many :musics, dependent: :destroy
   has_many :features, dependent: :destroy
   has_many :clubevents, dependent: :destroy

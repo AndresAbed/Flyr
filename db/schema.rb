@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331220938) do
+ActiveRecord::Schema.define(version: 20150408034159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,6 +209,9 @@ ActiveRecord::Schema.define(version: 20150331220938) do
     t.integer  "profile_img_file_size"
     t.datetime "profile_img_updated_at"
     t.string   "name",                     limit: 50
+    t.boolean  "admin"
+    t.boolean  "pr"
+    t.integer  "club_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -24,19 +24,21 @@
   </div>
   <div class="container">
     <div class="event-buttons">
-      <% if @clubevent.approved == false %>
-        <div style="display: inline-block;">
-          <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
-            <%= f.hidden_field :approved, value: true %>
-            <%= f.submit "Aprobar evento", class: "btn btn-info btn-sm" %>
-          <% end %>
-        </div>
-      <% end %>  
-      <button type="button" class="btn btn-info btn-sm" 
-      data-toggle="modal" data-target="#editEvent">Editar evento</button>
-      <%= link_to 'Borrar evento', club_clubevent_path(@club, @clubevent),
-      method: :delete, data: { confirm: 'Eliminar?' },
-      class: 'btn btn-danger btn-sm' %>
+      <% if current_user.is_admin? %>
+        <% if @clubevent.approved == false %>
+          <div style="display: inline-block;">
+            <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
+              <%= f.hidden_field :approved, value: true %>
+              <%= f.submit "Aprobar evento", class: "btn btn-info btn-sm" %>
+            <% end %>
+          </div>
+        <% end %>  
+        <button type="button" class="btn btn-info btn-sm" 
+        data-toggle="modal" data-target="#editEvent">Editar evento</button>
+        <%= link_to 'Borrar evento', club_clubevent_path(@club, @clubevent),
+        method: :delete, data: { confirm: 'Eliminar?' },
+        class: 'btn btn-danger btn-sm' %>
+      <% end %>
     </div>
 
     <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" 

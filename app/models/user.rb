@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :clublists
   has_many :clublistusers
   has_many :listusers
-  #has_many :events, through: :assistances
-
+  belongs_to :club
+  
   has_attached_file :profile_img, :styles => { :medium => "600x600>", 
   :small => "50x50>" }, :url  => "/assets/users/:id/:style/:basename.:extension"
   validates_attachment_presence :profile_img  
@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
       user.skip_confirmation!
       user.save(:validate => false)
     end
+  end
+
+  def is_admin?
+    admin == true
+  end
+
+  def is_pr?
+    pr == true
   end
 
   before_save :set_dummy_email

@@ -6,14 +6,17 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up){|u| 
-      u.permit(:username, :name, :email, :email_confirmation, :password, :password_confirmation, :profile_img)}
+      u.permit(:username, :name, :email, :email_confirmation, 
+                :password, :password_confirmation, :profile_img, 
+                :admin, :pr, :club_id)}
     devise_parameter_sanitizer.for(:sign_in){|u| 
       u.permit(:username, :password)}
     devise_parameter_sanitizer.for(:account_update){|u| 
       u.permit(:username, :name, :email, :password, :password_confirmation, :current_password, :profile_img)}
   end
  
-  helper_method :current_user, :log_in_using_OAuth?, :events_to_approve
+  helper_method :current_user, :log_in_using_OAuth?, 
+                :events_to_approve, :pr_clubs
 
   alias_method :devise_current_user, :current_user
   
@@ -25,7 +28,6 @@ class ApplicationController < ActionController::Base
     end 
   end
 
-  # Check if user is loged in with facebook
   def log_in_using_OAuth?
     if session[:user_id]
       User.find(session[:user_id]) 
@@ -37,10 +39,14 @@ class ApplicationController < ActionController::Base
     request.env['omniauth.origin'] || stored_location_for(resource) || home_path
 	end
 
-  # Not approved events
   def events_to_approve
     Clubevent.select("slug, id, name, club_id")
               .where(ended: false, approved: false)
               .order("created_at ASC")
   end
+
+  def pr_clubs
+    Club.all.select("id, name").order("name ASC")
+  end
+
 end

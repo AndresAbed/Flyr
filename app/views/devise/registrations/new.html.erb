@@ -1,4 +1,4 @@
-<body class="unique">
+  <body class="unique">
     <div class="container">
       <% if resource.errors.empty? %>
       <% else %>  
@@ -37,6 +37,26 @@
           <div class="elements">
           <%= f.label :profile_img %> <br>
           <%= f.file_field :profile_img %></div>
+
+          <div class="elements">
+            <%= f.label :admin %><br />
+            <%= f.label :admin, "Si" %>
+            <%= f.radio_button :admin, true %>
+            <%= f.label :admin, "No" %>
+            <%= f.radio_button :admin, false, :checked => true %>
+          </div>
+
+          <div class="elements">
+            <%= f.label :pr %><br />
+            <%= f.label :pr, "Si" %>
+            <%= f.radio_button :pr, true %>
+            <%= f.label :pr, "No" %>
+            <%= f.radio_button :pr, false, :checked => true %>
+          </div>
+
+          <div class="elements">
+            <%= f.select(:club_id, pr_clubs.map{|e| ["#{e.name}", e.id]}, { prompt: "Seleccionar" }) %>
+          </div>
 
           <div class="elements"><%= f.submit "Crear", class: "btn btn-warning" %></div>
 
