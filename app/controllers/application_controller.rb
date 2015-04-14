@@ -48,5 +48,4 @@ class ApplicationController < ActionController::Base
   def pr_clubs
     Club.all.select("id, name").order("name ASC")
   end
-
 end

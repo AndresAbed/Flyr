@@ -41,4 +41,19 @@ class Event < ActiveRecord::Base
   # Geocoder
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
+
+  # Worker methods
+  def is_time?
+    Date.today - 1.day == self.date
+  end
+
+  def end_event
+    events = Event.where(ended: false)
+
+    events.each do |e|
+      if e.is_time?
+        e.update_attribute(:ended, true)
+      end
+    end
+  end
 end

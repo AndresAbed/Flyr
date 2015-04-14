@@ -30,8 +30,24 @@ class Clubevent < ActiveRecord::Base
   #Geocoder
   geocoded_by :address
 
+  # Url for pending events
   def url
     Rails.application.routes.url_helpers.club_clubevent_path(club_id, slug)
+  end
+
+  # Worker methods
+  def is_time?
+    Date.today - 1.day == self.date
+  end
+
+  def end_event
+    events = Clubevent.where(ended: false, approved: true)
+
+    events.each do |e|
+      if e.is_time?
+        e.update_attribute(:ended, true)
+      end
+    end
   end
 
   # Search config
