@@ -38,10 +38,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-  # Geocoder
-  geocoded_by :address
-  after_validation :geocode, :if => :address_changed?
-
   # Worker methods
   def is_time?
     Date.today - 1.day == self.date

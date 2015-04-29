@@ -29,6 +29,7 @@ class Clubevent < ActiveRecord::Base
 
   #Geocoder
   geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
 
   # Url for pending events
   def url
