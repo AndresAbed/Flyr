@@ -14,11 +14,6 @@
  *= require_self
  */
 
-@font-face{
-  font-family: Medula One;
-  src: url(MedulaOne-Regular.ttf);
-}
-
 *{
   font-family: Helvetica, sans-serif;
 }

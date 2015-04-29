@@ -2,17 +2,18 @@
   list-style: none;
   position: absolute;
   display: block;
-  margin-top: 20px;
+  margin-top: 45px;
   margin-left: auto;
   margin-right: auto;
   left: 0px;
   right: 0px;
   width: 100px;
   height: 100px;
+  z-index: 2;
 }
 
 .round {
-  color: #47a3da;
+  color: white;
   display: block;
   position: absolute;
   left: 0;
@@ -45,12 +46,12 @@
 }
 
 a.white {
-  background-color: white;
-  box-shadow: 0 1px 10px 0 #ccc;
+  background-color: #1b354c;
+  box-shadow: 0 1px 10px 0 #1b354c;
 }
 
 a.white:hover, a.white:focus {
-  color: #47a3da;
+  color: white;
   text-decoration: none;
 }
 
@@ -60,15 +61,15 @@ a.white:hover, a.white:focus {
   transition: all .5s ease-in-out;
   font-size: 1px;
   padding: 40% 20% 0 20%;
-  color: #47a3da;
+  color: white;
 }
 
 .round span:hover {
-  opacity: .85;
+  opacity: 1;
   font-size: 18px;
   text-shadow: 0 1px 1px rgba(255,255,255,.5);  
 }
 
 .white span {
-  background: white;    
+  background: #1b354c;    
 }
