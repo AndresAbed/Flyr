@@ -42,7 +42,10 @@
       <div class="container">
         <div class="row" style="margin-top: 81px; position: absolute;">
           <% if alert %>
-            <h2 class="alert alert-danger" style="font-size: 15pt;"><%= alert %></h2>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <p><%= alert %></p>
+            </div>
           <% end %>
         </div>
         <div class="sign_in_container">
@@ -87,86 +90,85 @@
         </div>
       </div>
       <p class="logo">Flyr</p>
-      <p class="slogan">Eslogan</p>
+      <p class="slogan">Salir nunca fue tan facil</p>
       <div class="arrow-down bounce"></div>
     </div>  
   </div>
-  <div id="steps" class="container steps">
-    <div class="row">
-      <div id="numbers" class="col-lg-3">
-        <img class="img-circle" src="http://s18.postimg.org/x9usn9hw9/image.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
-        <h2>Paso 1</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-          Mas detalles
-        </button>
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                </div>
-              </div>
+  <div id="steps" class="steps">
+    <p class="title">Facil <i class="ion-happy"></i></p>
+    <div class="numbers">
+      <img class="img-circle" src="http://s18.postimg.org/x9usn9hw9/image.png" alt="Generic placeholder image">
+      <h3>Inicias sesión</h3>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button id="details-button" type="button" class="btn btn-default"
+       data-toggle="modal" data-target="#myModal">
+        <i class="ion-information-circled"></i>
+        <span>Mas detalles</span>
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
-          </div>
-      </div>
-
-      <div class="separator separator-first"></div>
-
-      <div id="numbers" class="col-lg-3">
-        <img class="img-circle" src="http://s18.postimg.org/58gr9kcm1/image.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
-        <h2>Paso 2</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-          Mas detalles
-        </button>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-              </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="separator separator-second"></div>
-
-      <div id="numbers" class="col-lg-3">
-        <img class="img-circle" src="http://s18.postimg.org/avd471f4p/image.png" alt="Generic placeholder image" style="width: 150px; height: 150px;">
-        <h2>Paso 3</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <button id="details-button" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-          Mas detalles
-        </button>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-              </div>
+    </div>
+    <div class="numbers">
+      <img class="img-circle" src="http://s18.postimg.org/58gr9kcm1/image.png" alt="Generic placeholder image">
+      <h3>Elegís un evento</h3>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button id="details-button" type="button" class="btn btn-default"
+       data-toggle="modal" data-target="#myModal">
+        <i class="ion-information-circled"></i>
+        <span>Mas detalles</span>
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="numbers">
+      <img class="img-circle" src="http://s18.postimg.org/avd471f4p/image.png" alt="Generic placeholder image">
+      <h3>Pones tu nombre en lista</h3>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <button id="details-button" type="button" class="btn btn-default"
+       data-toggle="modal" data-target="#myModal">
+        <i class="ion-information-circled"></i>
+        <span>Mas detalles</span>
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
             </div>
           </div>
         </div>

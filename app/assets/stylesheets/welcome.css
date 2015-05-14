@@ -5,15 +5,17 @@
 /* Banner */
 
 .banner{
-  border-bottom: 1px solid #dededa;
-  background: url('http://s11.postimg.org/q91pa9zyb/banner.png') no-repeat center 20%;
+  background: url('http://s11.postimg.org/q91pa9zyb/banner.png');
   background-size: cover;
+  background-attachment: local;
+  background-position: center 20%;
+  background-repeat: no-repeat;
   height: 101vh !important;
   height: 100%;
 }
 
 .banner > .layout{
-  background-color: rgba(27,53,76,0.8);
+  background-color: rgba(27,53,76,.7);
   width: 100%;
   height: 100%;
   text-align: center;
@@ -77,21 +79,19 @@
 }
 
 .nav-info{
-  margin: 7px auto;
+  margin: 0px auto;
   display: table;
   table-layout: fixed;
   float:none;
 }
 
 .nav-info > li{
-  margin: 10px;
+  margin: 0 15px;
 }
 
 .nav-info > li > a{
   color: white;
   font-size: 12px;
-  padding: 0px;
-  margin-right: 20px;
 }
 
 .nav-info > li:hover,
@@ -105,72 +105,67 @@
   color: #42c6f3;
 }
 
-.affix{
-  bottom: auto;
-  position: fixed;
-  background-color: #1b354c;
-  z-index: 2;
-  height: 66px;
-  padding-top: 5px;
-}
-
 /* Steps*/
 
 .steps{
   text-align: center;
-  width: 100%;
   padding-top: 30px;
-  width: 100%;
   border-bottom: 1px solid #d1d1cf;
-  background: rgb(255,255,255);
+  background: linear-gradient(180deg,#267AA3 0%,#1D406C 100%);
 }
 
-.separator-first {
-  left: 33.333%;
+.steps .title{
+  font-family: 'Lobster';
+  color: #fff;
+  font-size: 60pt;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
 }
 
-.separator-second {
-  left: 66.667%;
+.numbers{
+  text-align: center;
+  width: 500px;
+  display: inline-block;
+  margin: 50px;
+  padding: 0px 40px;
+  color: #fff;
 }
 
-.separator {
-  position: static;
-  width: 1px;
-  top: 0px;
-  bottom: 28px;
-  background: #d1d1cf;
-  float: left;
-  height: 320px;
+.numbers img{
+  width: 170px; 
+  height: 170px;
 }
 
-#numbers{
-  padding-bottom: 40px;
-  padding-top: 30px;
+.numbers h3{
+  font-weight: bold;
 }
 
-#details-button{
-  background-color: #c50000;
-  border-color: #c50000;
-  color: white;
+.numbers #details-button{
+  width: 300px;
+  font-size: 12pt;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  transition: all .3s ease-in-out;
 }
 
-@media (max-width: 1199px){
-  #numbers{
-    padding-bottom: 40px;
-    margin-top: 0px;
-  }
-  #numbers:first-child{
-    margin-top: 0px;
-  }
-  .separator{
-    width: 90%;
-    height: 1px;
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: 5%;
-    margin-top: 0px;
-  }
+.numbers #details-button:hover{
+  color: #42c6f3;
+  border: 2px solid #42c6f3;
+  transition: all .3s ease-in-out;
+}
+
+.numbers i{
+  font-size: 16pt;
+  padding: 0px;
+  margin-right: 5px;
+}
+
+.numbers #details-button span{
+  position: relative;
+  top: -1px;
 }
 
 /*photos*/

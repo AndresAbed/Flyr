@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    
   $('#sign_in_btn').fadeIn()
   $(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
