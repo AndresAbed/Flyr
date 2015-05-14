@@ -4,7 +4,7 @@
 $(document).ready(function(){
 
   var makeTransition = function (isBackground) {
-    return "color .3s ease-in-out";
+    return "color .4s ease-in-out";
   };
 
   var makeBackgroundTransition = function() {
@@ -13,25 +13,27 @@ $(document).ready(function(){
 
   var resetFooter = function(){
     $("#footer").css({
-      "background-color":"rgba(255,255,255,1)", 
+      "background-color":"#1b354c", 
       "transition":makeBackgroundTransition()
     })
-    $(this).css({
-      "color":"#777",
-      "transition":makeTransition(),
-    })
-    $(".copyright .container").css({
-      "color":"#777",
-      "transition":makeTransition(),
-    })
-    $(".copyright").css({
-      "background-color":"rgba(255,255,255,1)", 
-      "transition":makeBackgroundTransition()
-    })
+    $(".social i").css({
+        "color": "rgb(118, 134, 148)",
+        "transition": makeTransition(),
+      })
     $(".social-text").text('Seguinos en nuestras redes sociales')
     $(".social-text").css({
-      "color":"#333",
+      "color":"rgb(118, 134, 148)",
       "transition":makeTransition(),
+    })
+    var $copy = $(".copyright");
+    $copy.css({
+      "background-color":"#1b354c", 
+      "transition":makeBackgroundTransition()
+    })
+    $copy.find(".container").css({
+      "color":"rgb(118, 134, 148)",
+      "border-color": "rgb(118, 134, 148)",
+      "transition":makeTransition()
     })
   };
 
@@ -41,25 +43,30 @@ $(document).ready(function(){
         "background-color": network.color, 
         "transition": makeBackgroundTransition()
       })
+      $(".social i").css({
+        "color": "rgb(169, 168, 168)",
+        "transition": makeTransition()
+      })
       $(".social i.fa-"+network.name).css({
-        "color": "white",
-        "transition": makeTransition(),
-      })
-      var $copy = $(".copyright");
-      $copy.find(".container").css({
-        "color": "white",
-        "transition":makeTransition(),
-      })
-      $copy.css({
-        "background-color": network.color, 
-        "transition":makeBackgroundTransition()
+        "color": "#fff",
+        "transition": makeTransition()
       })
       $(".social-text")
         .text(network.text)
         .css({
-          "color": "white",
-          "transition":makeTransition(),
+          "color": "#fff",
+          "transition":makeTransition()
         });
+      var $copy = $(".copyright");
+      $copy.css({
+        "background-color": network.color, 
+        "transition":makeBackgroundTransition()
+      })
+      $copy.find(".container").css({
+        "color": "#fff",
+        "border-color": "rgba(255,255,255,.6)",
+        "transition":makeTransition()
+      })
     };
   };
 

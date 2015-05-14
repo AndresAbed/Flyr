@@ -227,13 +227,9 @@ a:hover, a:focus {
 /* Footer */
 
 footer{
-  background-color: rgba(255,255,255,1);
+  background-color: #1b354c;
   text-align: center;
   padding: 6em;
-}
-
-.social-text{
-  font-size: 1.7em;
 }
 
 ul.social {
@@ -265,11 +261,16 @@ ul.social li a {
 }
 
 .social i{
-  color: #777;
+  color: rgb(118, 134, 148);
+}
+
+.social-text{
+  font-size: 1.7em;
+  color: rgb(118, 134, 148);
 }
 
 .copyright{
-  background-color: rgba(255,255,255,1);
+  background-color: #1b354c;
   margin-bottom: -10px;
   text-align: center;
 }
@@ -277,8 +278,8 @@ ul.social li a {
 .copyright .container{
   padding: 3em;
   border-top: 1px solid;
-  border-color: rgba(255,255,255,0.2);
-  color: #777;
+  border-color: rgb(118, 134, 148);
+  color: rgb(118, 134, 148);
 }
 
 /* Share buttons */
