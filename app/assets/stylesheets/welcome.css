@@ -21,6 +21,23 @@
   text-align: center;
 }
 
+.welcome-alert{
+  position: absolute;
+  width: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-size: 12pt;
+}
+
+.welcome-alert .alert{
+  padding: 10px;
+}
+
+.welcome-alert span{
+  margin-right: 20px;
+}
+
 .logo{
   font-family: 'Lobster', cursive;
   position: relative;
@@ -78,6 +95,14 @@
   padding-top: 0px;
 }
 
+.welcomeNav .navbar-toggle{
+  border: 2px solid #fff;
+}
+
+.welcomeNav .navbar-toggle .icon-bar{
+  background-color: #fff;
+}
+
 .nav-info{
   margin: 0px auto;
   display: table;
@@ -118,7 +143,6 @@
   font-family: 'Lobster';
   color: #fff;
   font-size: 60pt;
-  width: 600px;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 10px;
@@ -126,11 +150,12 @@
 
 .numbers{
   text-align: center;
-  width: 500px;
+  width: 400px;
   display: inline-block;
-  margin: 50px;
-  padding: 0px 40px;
+  margin: 50px 5%;
+  padding: 60px 0px 20px 0px;
   color: #fff;
+  border: 3px solid #fff;
 }
 
 .numbers img{
@@ -142,18 +167,25 @@
   font-weight: bold;
 }
 
+.numbers p{
+  padding: 0 50px;
+}
+
 .numbers #details-button{
   width: 300px;
+  margin-top: 40px;
   font-size: 12pt;
   background-color: transparent;
   color: #fff;
-  border: 2px solid #fff;
+  border-radius: 0;
+  border-width: 2px;
+  border-color: #fff;
   transition: all .3s ease-in-out;
 }
 
 .numbers #details-button:hover{
-  color: #42c6f3;
-  border: 2px solid #42c6f3;
+  background-color: #42c6f3;
+  font-size: 14pt;
   transition: all .3s ease-in-out;
 }
 
@@ -177,4 +209,58 @@
 
 .first{
   padding-top: 50px;
+}
+
+@media (min-width: 1500px) and (max-width: 1800px){
+  .numbers{
+    margin: 50px 3%;
+  }
+}
+
+@media (min-width: 1300px) and (max-width: 1500px){
+  .numbers{
+    margin: 50px 1%;
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1300px){
+  .numbers{
+    margin: 50px 10px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 1150px){
+  .numbers{
+    margin: 50px auto;
+    display: table;
+    padding: 60px 0px 40px 0px;
+    width: 80%;
+    border: none;
+    border-bottom: 3px solid #fff;
+  }
+}
+
+@media (max-width: 800px){
+  #habla_both_div{
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px){
+  .welcomeNav .navbar-collapse{
+    background-color: #1b354c;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slogan{
+    font-size: 40pt;
+  }
+}
+
+@media (max-width: 600px){
+  .welcome-alert{
+    width: 90%;
+  }
 }

@@ -30,12 +30,6 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-.alert{
-  padding: 0px;
-  margin-bottom: 20px;
-  padding-bottom: 5px;
-}
-
 /* Custom buttons */
 
 .blue-btn{
@@ -77,7 +71,7 @@ a:hover, a:focus {
 }
 
 .navbar-item:hover{
-  background-color: white;
+  background-color: #fff;
 }
 
 
@@ -93,7 +87,7 @@ a:hover, a:focus {
 }
 
 .navbar-fixed-top .navbar-brand{
-  color: white;
+  color: #fff;
 }
 
 .navbar-right{
@@ -126,7 +120,7 @@ a:hover, a:focus {
   padding-top: 15px;
   padding-left: 20px;
   padding-bottom: 10px;
-  color: white;
+  color: #fff;
   letter-spacing: 1px;
   font-size: 1em;
   text-transform: none;
@@ -143,7 +137,7 @@ a:hover, a:focus {
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-  color: white;
+  color: #fff;
   letter-spacing: 1px;
   font-size: 0.9em;
   text-transform: uppercase;
@@ -153,7 +147,7 @@ a:hover, a:focus {
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-  color: white;
+  color: #fff;
   letter-spacing: 1px;
   font-size: 0.9em;
   text-transform: uppercase;
@@ -166,7 +160,7 @@ a:hover, a:focus {
 .navbar-default .navbar-nav .open > a:hover, 
 .navbar-default .navbar-nav .open > a:focus {
   background-color: transparent;
-  color: white;
+  color: #fff;
 }
 
 @media (max-width: 770px){
@@ -185,7 +179,7 @@ a:hover, a:focus {
 }
 
 .navbar-default .navbar-toggle .icon-bar{
-  background-color: white;  
+  background-color: #fff;  
 }
 
 .navbar-default .navbar-toggle{
@@ -218,7 +212,7 @@ a:hover, a:focus {
   text-decoration:none;
 }
 
-@media (max-width: 550px){
+@media (max-width: 1000px){
   .arrow{
     display: none;
   }

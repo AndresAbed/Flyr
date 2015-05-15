@@ -8,9 +8,3 @@ $(document).ready(function(){
     };
   });
 });
-
-$(document).ready(function(){
-  $('.navbar-collapse').on('shown.bs.collapse', function(){
-    $('#sign_in_btn').fadeOut();
-  });
-});
