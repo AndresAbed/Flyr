@@ -135,6 +135,7 @@
 .steps{
   text-align: center;
   padding-top: 30px;
+  min-height: 776px;
   border-bottom: 1px solid #d1d1cf;
   background: linear-gradient(180deg,#267AA3 0%,#1D406C 100%);
 }
@@ -152,6 +153,7 @@
   text-align: center;
   width: 400px;
   display: inline-block;
+  opacity: 0;
   margin: 50px 5%;
   padding: 60px 0px 20px 0px;
   color: #fff;
