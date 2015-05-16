@@ -1,15 +1,19 @@
 $(document).ready(function(){
-	var offset = $(".steps").offset();
-	var $numbers = $(".numbers")
+  var $steps = $(".steps");
+	var offset = $steps.offset();
+	var $num = $(".numbers");
 	$(this).scroll(function(){
 		if ($(this).scrollTop() > (offset.top)-300) {
-			$numbers.each(function(index) {
-			  var that = this;
+			$num.each(function(i) {
+			  var $el = $(this);
 			  setTimeout(function() {
-			  	$(that).css({"opacity":"1"})
-			    $(that).addClass('animated fadeInUp');
-			  }, 100 * index);
+			  	$el.css({"opacity":"1"})
+			    $el.addClass('animated fadeInUp');
+			  }, 150 * i);
 			});
+      var $title = $steps.find(".title")
+      $title.css({"opacity":"1"});
+      $title.addClass("animated fadeInLeft");
 		};
 	});
 })
