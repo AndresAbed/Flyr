@@ -14,6 +14,8 @@ $(document).ready(function(){
       var $title = $steps.find(".title")
       $title.css({"opacity":"1"});
       $title.addClass("animated fadeInLeft");
+      $title.find("i").css({"opacity":"1"});
+      $title.find("i").addClass("animated fadeInLeft");
 		};
 	});
 })

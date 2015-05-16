@@ -151,6 +151,10 @@
     width: 300px;
 }
 
+.steps .title i{
+  opacity: 0;
+}
+
 .numbers{
   text-align: center;
   width: 400px;
