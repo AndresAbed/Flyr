@@ -25,7 +25,7 @@
   font-size: 25px;    
   text-shadow: 0 1px 0 rgba(255,255,255,.7);
   letter-spacing: -.065em;
-  font-family: "Hammersmith One", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   transition: all .25s ease-in-out;
   border-radius: 300px;
   z-index: 1;
@@ -45,12 +45,12 @@
   transform: rotate(-360deg);
 }
 
-a.white {
+a.round {
   background-color: #1b354c;
   box-shadow: 0 1px 10px 0 #1b354c;
 }
 
-a.white:hover, a.white:focus {
+a.round:hover, a.round:focus {
   color: white;
   text-decoration: none;
 }
@@ -64,12 +64,13 @@ a.white:hover, a.white:focus {
   color: white;
 }
 
-.round span:hover {
+.round span.round:hover {
   opacity: 1;
-  font-size: 18px;
+  font-size: 19px;
   text-shadow: 0 1px 1px rgba(255,255,255,.5);  
 }
 
-.white span {
-  background: #1b354c;    
+.round span {
+  background: #1b354c;
+  font-family: 'Titillium Web', sans-serif;
 }
