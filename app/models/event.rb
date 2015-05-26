@@ -48,7 +48,7 @@ class Event < ActiveRecord::Base
 
     events.each do |e|
       if e.is_time?
-        e.update_attribute(:ended, true)
+        e.update_attribute(ended: true)
       end
     end
   end

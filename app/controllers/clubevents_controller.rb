@@ -44,7 +44,7 @@ class ClubeventsController < ApplicationController
 
   def pending
     events = events_to_approve.map { |e| 
-      {name: e.name, url: e.url, id: e.id}
+      {name: e.name, url: e.eventUrl}
     }
 
     respond_with({clubevents: events})

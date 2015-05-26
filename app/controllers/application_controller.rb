@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 	end
 
   def events_to_approve
-    Clubevent.select("slug, id, name, club_id")
+    Clubevent.select("slug, id, name, club_id, club_logo_file_name")
               .where(ended: false, approved: false)
               .order("created_at ASC")
   end
