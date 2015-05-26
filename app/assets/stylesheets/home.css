@@ -8,24 +8,24 @@
 }
 
 .banner-btn{
-	background-image: url('http://s18.postimg.org/43too9139/Puy_R8_Oy6_W1_C.png');
-	position: absolute;
-	z-index: 1;
-	margin-left: 20px;
-	margin-top: 20px;
-	height: 30px;
-	width: 30px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	opacity: 0.5;
-	transition: opacity 0.35s ease-in-out;
+  color: #1b354c;
+  font-size: 25pt;
+  position: absolute;
+  z-index: 1;
+  width: 45px;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  background: white;
+  padding: 0;
+  left: 40px;
+  border-radius: 0px 0px 10px 10px;
+  transition: all .3s ease-in-out;
 }
 
 .banner-btn:hover{
-	opacity: 1;
-	transition: opacity 0.35s ease-in-out;
+	padding-top: 10px;
+	transition: all .3s ease-in-out;
 }
 
 .images-fields{
@@ -64,24 +64,44 @@ min-width: 100%;
 	background-color: transparent;
 	border: 0;
 	opacity: 0.7;
-	transition: opacity 0.35s ease-in-out;
+	transition: opacity .3s ease-in-out;
 }
 
 .carousel-control:hover, .carousel-control:focus {
 	outline: 0;
 	text-decoration: none;
 	opacity: 1;
-	transition: opacity 0.35s ease-in-out;
+	transition: opacity .3s ease-in-out;
 }
 
 .carousel-control.left {
 	top: 30%;
-	background-image: none;
+  font-size: 50pt;
+  background-image: none;
+  width: 50px;
+  height: 122px;
+  padding-top: 15px;
+  padding-right: 5px;
+  left: 25px;
+  transition: all .3s ease-in-out;
 }
 
 .carousel-control.right {
 	top: 30%;
-	background-image: none;
+  font-size: 50pt;
+  background-image: none;
+  width: 50px;
+  height: 122px;
+  padding-top: 15px;
+  padding-right: 5px;
+  right: 25px;
+  transition: all .3s ease-in-out;
+}
+
+.carousel-control.left:hover,
+.carousel-control.right:hover{
+  width: 80px;
+  transition: width .3s ease-in-out;
 }
 
 @media (max-width: 1300px){

@@ -1,7 +1,7 @@
 /* Carrousel conf */
 $(document).ready(function(){
   $("#BannerCarousel").carousel({
-    interval : 7000,
+    interval : 8000,
     pause:true
   });
 });

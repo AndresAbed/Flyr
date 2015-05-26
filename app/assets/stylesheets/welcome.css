@@ -39,7 +39,6 @@
 }
 
 .logo{
-  font-family: 'Titillium Web', sans-serif;
   position: relative;
   top: 30%;
   color: white;
@@ -48,7 +47,6 @@
 }
 
 .slogan{
-  font-family: 'Titillium Web', sans-serif;
   position: relative;
   top: 30%;
   color: white;
@@ -144,7 +142,6 @@
 }
 
 .steps .title{
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 700;
   color: #fff;
   font-size: 60pt;

@@ -39,7 +39,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home/index">Logotipo</a>
+            <a class="navbar-brand" href="/home/index">Flyr</a>
           </div>
           <div class="collapse navbar-collapse navbar-collapse"> 
             <ul class="nav navbar-nav navbar-right">
@@ -58,35 +58,45 @@
               <% else %>
                 <% if current_user.is_admin? %>
                   <li>
-                    <a href="/admin" style="color: white">Panel de administración</a>
-                  </li> 
-                  <li>
-                    <button type="button" 
-                    data-toggle="modal" data-target="#NewClub">
-                      Crear boliche
-                    </button>
-                  </li> 
-                  <li>
-                    <button type="button" 
-                    data-toggle="modal" data-target="#NewEvent">
-                      Crear evento
-                    </button>
+                    <a href="/admin">Administración</a>
                   </li>
                   <li class="dropdown">
                     <a id="user-nav" href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
-                      <i class="fa fa-flag" style="font-size: 15pt;"></i>
-                      <span id="pendingCount"><%= events_to_approve.length %></span>
+                      <span>Añadir</span>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <button type="button" 
+                        data-toggle="modal" data-target="#NewClub">
+                          Añadir boliche
+                        </button>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <button type="button" 
+                        data-toggle="modal" data-target="#NewEvent">
+                          Crear evento
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown notifications">
+                    <a id="user-nav" href="#" class="dropdown-toggle"
+                    data-toggle="dropdown">
+                      <i class="ion-ios-bell"></i>
+                      <span id="pendingsCount"></span>
                     </a>
                     <ul class="dropdown-menu" id="pendingEvents">
                     </ul>
                   </li>
-                  <li>
+                  <li class="dropdown">
                     <a id="user-nav" href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
                       <img class="profile-image" src="" style="background-image: 
                       url(<%= current_user.profile_img(:small) %>);">
-                      <%= current_user.name %><span class="caret"></span>
+                      <span><%= current_user.name %></span><span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                       <li><a href="/users/edit">Editar cuenta</a></li>
@@ -272,8 +282,15 @@
       </div>
     <% end %>
 
+    <audio id="notificationSound" preload="auto">
+      <source src="https://a.clyp.it/0knhbnzu.mp3" type="audio/mpeg">
+      <source src="https://a.clyp.it/0knhbnzu.ogg" type="audio/ogg">
+      Your browser does not support the audio tag.
+    </audio>
+
     <%= yield %>
 
+    <!-- Footer -->
     <footer id="footer">
       <div>
         <section style="margin-bottom: -10px;">
@@ -303,7 +320,7 @@
     <script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
     <!-- -->
 
-    <!-- begin olark code -->
+    <!-- Beginning olark code -->
     <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
     f[z]=function(){
     (a.s=a.s||[]).push(arguments)};var a=f[z]._={
@@ -322,6 +339,6 @@
     loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
     /* custom configuration goes here (www.olark.com/documentation) */
     olark.identify('3044-778-10-1415');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3044-778-10-1415/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
-    <!-- end olark code -->
+    <!-- Ending olark code -->
   </body>
 </html>

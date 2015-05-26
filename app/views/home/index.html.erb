@@ -6,7 +6,7 @@
   <% if current_user.is_admin? %>
     <button id="modal-banner" type="button" class="banner-btn" data-toggle="modal" 
     data-target="#EditBanner" data-toggle="tooltip" 
-    data-placement="right" title="Cambiar banner"></button>
+    data-placement="right" title="Cambiar banner"><i class="ion-camera"></i></button>
     <div class="modal fade" id="EditBanner">
     	<div class="modal-dialog">
     		<div class="modal-content">
@@ -63,8 +63,10 @@
   			<img alt="Image4" src="<%= @banner.first.image4.url %>">
   		</div>
   	</div>
-  	<a class="left carousel-control" data-slide="prev" href="#BannerCarousel">‹</a>
-  	<a class="right carousel-control" data-slide="next" href="#BannerCarousel">›</a>
+  	<a class="left carousel-control" data-slide="prev" 
+    href="#BannerCarousel"><i class="ion-chevron-left"></i></a>
+  	<a class="right carousel-control" data-slide="next" 
+    href="#BannerCarousel"><i class="ion-chevron-right"></i></a>
   </div>
 <% else %>
   <% if current_user.is_admin? %>
