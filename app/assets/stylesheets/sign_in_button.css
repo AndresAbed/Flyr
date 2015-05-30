@@ -46,8 +46,8 @@
 }
 
 a.round {
-  background-color: #1b354c;
-  box-shadow: 0 1px 10px 0 #1b354c;
+  background-color: #091e31;
+  box-shadow: 0 1px 10px 0 #091e31;
 }
 
 a.round:hover, a.round:focus {
@@ -71,6 +71,6 @@ a.round:hover, a.round:focus {
 }
 
 .round span {
-  background: #1b354c;
+  background: #091e31;
   font-family: 'Titillium Web', sans-serif;
 }

@@ -8841,7 +8841,7 @@ span.pic-caption a:hover{
 }
 
 .banner-btn{
-  color: #1b354c;
+  color: #091e31;
   font-size: 25pt;
   position: absolute;
   z-index: 1;
@@ -9389,8 +9389,8 @@ min-width: 100%;
 }
 
 a.round {
-  background-color: #1b354c;
-  box-shadow: 0 1px 10px 0 #1b354c;
+  background-color: #091e31;
+  box-shadow: 0 1px 10px 0 #091e31;
 }
 
 a.round:hover, a.round:focus {
@@ -9414,7 +9414,7 @@ a.round:hover, a.round:focus {
 }
 
 .round span {
-  background: #1b354c;
+  background: #091e31;
   font-family: 'Titillium Web', sans-serif;
 }
 .sign_in_container{
@@ -9425,13 +9425,13 @@ a.round:hover, a.round:focus {
 .sign_in_form{
   margin: auto;
   width: 400px;
-  background-color: #294864; 
+  background-color: #1b354c; 
 }
 
 .sign_in_form > .header{
   display: inline-block;
   width: 100%;
-  background-color: #1b354c;
+  background-color: #091e31;
   color: white;
 }
 
@@ -9939,7 +9939,7 @@ a:hover, a:focus {
   min-height: 60px;
   border-bottom: none;
   border-top: none;
-  background-color: #1b354c;
+  background-color: #091e31;
   border-left: none;
   border-right: none;
   font-size: 13px;
@@ -9959,7 +9959,7 @@ a:hover, a:focus {
 }
 
 .navbar-fixed-top .nav>li:hover{
-  border-top: 4px solid #00F5FF;
+  border-top: 4px solid #42c6f3;
   transition: all .3s ease-in-out;
 }
 
@@ -10017,7 +10017,7 @@ a:hover, a:focus {
 }
 
 .navbar-fixed-top .nav li.dropdown button:hover{
-  color: #00F5FF;
+  color: #42c6f3;
   transition: color .2s ease-in-out;
 }
 
@@ -10033,26 +10033,52 @@ a:hover, a:focus {
   width: 300px;
 }
 
+.navbar-fixed-top .nav>li.notifications ul{
+  margin-top: 10px;
+}
+
+.navbar-fixed-top .nav>li.notifications li{
+  color: #fff;
+  padding-bottom: 0;
+  background: transparent;
+  font-weight: bold;
+  transition: all .2s ease-in-out;
+}
+
+.navbar-fixed-top .nav li.notifications ul:before{
+  content: "";
+  position: absolute;
+  right: 30px;
+  margin-top: -8px;
+  border-bottom: 8px solid #1D6BB0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
 .navbar-fixed-top .nav li.dropdown ul h3{
-  background-color: #2dcc70;
+  background-color: #1D6BB0;
   font-weight: bold;
   text-align: center;
   font-size: 12pt;
   padding: 5px;
   color: #fff;
   margin: 0;
-  border-bottom: 2px solid #fff;
 }
 
 .navbar-fixed-top .nav li.dropdown li.divider{
   padding: 0;
   margin: 5px 0;
-  background: #00F5FF;
+  background: #42c6f3;
 }
 
 .navbar-fixed-top .nav li.dropdown i{
   font-size: 18pt;
   display: inline-block;
+}
+
+.navbar-fixed-top .nav li.dropdown>ul>li>a:hover{
+  color: #42c6f3;
+  transition: color .2s ease-in-out;  
 }
 
 .navbar-default .navbar-nav .open > a, 

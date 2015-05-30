@@ -6,13 +6,13 @@
 .sign_in_form{
   margin: auto;
   width: 400px;
-  background-color: #294864; 
+  background-color: #1b354c; 
 }
 
 .sign_in_form > .header{
   display: inline-block;
   width: 100%;
-  background-color: #1b354c;
+  background-color: #091e31;
   color: white;
 }
 
