@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable, :confirmable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, 
-  :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:username]
+  :rememberable, :trackable, :validatable, :authentication_keys => [:username]
 
   validates :username, format: { with: /\A[a-zA-Z]+\z/, message: "no puede incluir números ni espacios" },
    uniqueness: { message: "no disponible" }, 
