@@ -7,6 +7,7 @@ class ClubeventsController < ApplicationController
     @clubevent = Clubevent.new(clubevent_params)
     @clubevent.club_id = @club.id
     @clubevent.address = @club.address
+    @clubevent.club_name = @club.name
     @clubevent.club_logo = @club.logo
     @clubevent.approved = false
     @clubevent.ended = false
