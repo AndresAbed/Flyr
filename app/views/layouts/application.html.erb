@@ -45,7 +45,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if log_in_using_OAuth? %>
                 <li class="dropdown">
-                  <a id="user-nav" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="profile-image" src="" style="background-image: url(<%= current_user.image %>);">
                     Hola <%= current_user.name %>!<span class="caret"></span>
                   </a>
@@ -61,7 +61,7 @@
                     <a href="/admin">Administración</a>
                   </li>
                   <li class="dropdown">
-                    <a id="user-nav" href="#" class="dropdown-toggle"
+                    <a href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
                       <span>Añadir</span>
                       <span class="caret"></span>
@@ -83,7 +83,7 @@
                     </ul>
                   </li>
                   <li class="dropdown notifications">
-                    <a id="user-nav" href="#" class="dropdown-toggle"
+                    <a href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
                       <i class="ion-ios-bell"></i>
                       <span id="pendingsCount"></span>
@@ -92,7 +92,7 @@
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a id="user-nav" href="#" class="dropdown-toggle"
+                    <a href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
                       <img class="profile-image" src="" style="background-image: 
                       url(<%= current_user.profile_img(:small) %>);">
@@ -106,7 +106,7 @@
                   </li>
                 <% else %>
                   <li>
-                    <a id="user-nav" href="#" class="dropdown-toggle"
+                    <a href="#" class="dropdown-toggle"
                     data-toggle="dropdown">
                       <img class="profile-image" src="" style="background-image: 
                       url(<%= current_user.profile_img(:small) %>);">
