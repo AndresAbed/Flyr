@@ -1,7 +1,7 @@
 <% @eventsearch.each do |e| %>
-  <div id="events-pic" class="pic">
+  <div class="pic">
     <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-    <span id="pic-caption-events" class="pic-caption top-to-bottom">
+    <span class="pic-caption top-to-bottom">
       <h1 class="pic-title"><%= e.name %></h1>
       <p class="pic-subtitle">
         <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
@@ -12,9 +12,9 @@
   </div>
 <% end %>
 <% @clubevent.each do |e| %>
-  <div id="events-pic" class="pic">
+  <div class="pic">
     <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-    <span id="pic-caption-events" class="pic-caption top-to-bottom">
+    <span class="pic-caption top-to-bottom">
       <h1 class="pic-title"><%= e.name %></h1>
       <p class="pic-subtitle">
         <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>

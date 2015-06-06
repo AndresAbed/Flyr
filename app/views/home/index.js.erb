@@ -1,1 +1,5 @@
-$("#events-partial").html("<%= escape_javascript(render("events")) %>");
+<% if params[:search] %>
+  $("#events-partial").html("<%= escape_javascript(render("events")) %>");
+<% else %>
+  $("#clubs-partial").html("<%= escape_javascript(render("clubs")) %>");
+<% end %>

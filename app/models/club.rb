@@ -46,4 +46,13 @@ class Club < ActiveRecord::Base
                   })
     end
   end
+
+  # Search config
+  def self.search(search)
+    if search
+      where('name ILIKE ? OR address ILIKE ?', "%#{search}%", "%#{search}%")
+    else
+      Club.all
+    end
+  end
 end

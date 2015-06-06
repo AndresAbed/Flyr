@@ -1,0 +1,10 @@
+<% @clubs.each do |c| %>
+  <div class="pic">
+      <img src="<%= c.logo.url %>" class="pic-image" alt="Pic">
+      <span class="pic-caption left-to-right">
+          <h1 class="pic-title"><%= c.name %></h1>
+          <p class="pic-subtitle">Subtitle</p>
+          <%= link_to 'Ver boliche', club_path(c), class: 'btn btn-default btn-sm' %>
+      </span>
+  </div>
+<% end %>

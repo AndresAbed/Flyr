@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   def index
     
   	@banner = Banner.all
-    @clubs = Club.all
 
     # Events and Clubevents by day
   	@eventmonday = Event.where("extract(dow from date) = ?", 1)
@@ -35,11 +34,11 @@ class HomeController < ApplicationController
     @clubeventsunday = Clubevent.where("extract(dow from date) = ?", 0)
       .where(ended: false, approved: true).order("date DESC")
 
-    # Events and Clubevents search
+    # Events, Clubevents and Clubs search
     @eventsearch = Event.search(params[:search])
       .where(ended: false).order("date DESC")
     @clubevent = Clubevent.search(params[:search])
       .where(ended: false, approved: true).order("date DESC")
-    
+    @clubs = Club.search(params[:clubsearch]) 
   end
 end

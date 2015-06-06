@@ -52,12 +52,10 @@ $(document).ready(function(){
   };
 });
 
-/* Banner button tooltip */
 $(document).ready(function(){
   $('#modal-banner').tooltip()
 })
 
-/* Events ajax search and animation */
 $(document).ready(function() {
   var timer;
   $("#events_search input").keyup(function() {
@@ -67,6 +65,21 @@ $(document).ready(function() {
       $('#events-partial').addClass('animated fadeIn');
       window.setTimeout( function(){
         $('#events-partial').removeClass('animated fadeIn');
+      }, 600);
+      return false;
+    }, 1000);
+  });
+});
+
+$(document).ready(function() {
+  var timer;
+  $("#clubs_search input").keyup(function() {
+    if(timer){clearTimeout(timer)};
+    timer = setTimeout(function() { 
+      $.get($("#clubs_search").attr("action"), $("#clubs_search").serialize(), null, "script");
+      $('#clubs-partial').addClass('animated fadeIn');
+      window.setTimeout( function(){
+        $('#clubs-partial').removeClass('animated fadeIn');
       }, 600);
       return false;
     }, 1000);
