@@ -129,32 +129,67 @@
 
 <!-- Events -->
 <div class="tabbable-panel">
+  <div class="events-panel-header">
+    <i class="ion-thumbsup"></i>
+    <h1 class="title">Encontrá eventos <b>toda</b> la semana</h1>
+    <h3 class="subtitle">No te compliques, con Flyr elegir es más fácil</h3>
+  </div>
 	<div class="tabbable-line">
 		<ul class="nav nav-tabs ">
 			<li id="all-mark">
-				<a href="#all" data-toggle="tab"><i class="fa fa-search" 
-				style="font-size: 12pt; color: black;"></i></a>
+				<a href="#all" data-toggle="tab">
+          <i class="fa fa-search"></i>
+          <span class="large-name">Buscar</span>
+        </a>
 			</li>
 			<li id="monday-mark">
-				<a href="#monday" data-toggle="tab">Lunes</a>
+				<a href="#monday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Lunes</span>
+          <span class="short-name">L</span>
+        </a>
 			</li>
 			<li id="tuesday-mark">
-				<a href="#tuesday" data-toggle="tab">Martes</a>
+				<a href="#tuesday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Martes</span>
+          <span class="short-name">M</span>
+        </a>
 			</li>
 			<li id="wednesday-mark">
-				<a href="#wednesday" data-toggle="tab">Miercoles</a>
+				<a href="#wednesday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Miercoles</span>
+          <span class="short-name">M</span>
+        </a>
 			</li>
 			<li id="thursday-mark">
-				<a href="#thursday" data-toggle="tab">Jueves</a>
+				<a href="#thursday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Jueves</span>
+          <span class="short-name">J</span>
+        </a>
 			</li>
 			<li id="friday-mark">
-				<a href="#friday" data-toggle="tab">Viernes</a>
+				<a href="#friday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Viernes</span>
+          <span class="short-name">V</span>
+        </a>
 			</li>
 			<li id="saturday-mark">
-				<a href="#saturday" data-toggle="tab">Sabado</a>
+				<a href="#saturday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Sabado</span>
+          <span class="short-name">S</span>
+        </a>
 			</li>
 			<li id="sunday-mark">
-				<a href="#sunday" data-toggle="tab">Domingo</a>
+				<a href="#sunday" data-toggle="tab">
+          <i class="ion-calendar"></i>
+          <span class="large-name">Domingo</span>
+          <span class="short-name">D</span>
+        </a>
 			</li>
 		</ul>
 		<div class="tab-content">
@@ -172,156 +207,219 @@
 			</div>
 			<div class="tab-pane" id="monday">
 				<% @eventmonday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
             <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
 				<% end %>
         <% @clubeventmonday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
+              <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default' %>
             </span>
           </div>
+        <% end %>
+        <% if @eventmonday.empty? && @clubeventmonday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
         <% end %>
 			</div>
 			<div class="tab-pane" id="tuesday">
 				<% @eventtuesday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventtuesday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
         <% end %>
+        <% if @eventtuesday.empty? && @clubeventtuesday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
+        <% end %>
 			</div>
 			<div class="tab-pane" id="wednesday">
 				<% @eventwednesday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventwednesday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
         <% end %>
+        <% if @eventwednesday.empty? && @clubeventwednesday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
+        <% end %>
 			</div>
 			<div class="tab-pane" id="thursday">
 				<% @eventthursday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventthursday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
         <% end %>
+        <% if @eventthursday.empty? && @clubeventthursday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
+        <% end %>
 			</div>
 			<div class="tab-pane" id="friday">
 				<% @eventfriday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventfriday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
         <% end %>
+        <% if @eventfriday.empty? && @clubeventfriday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
+        <% end %>
 			</div>
 			<div class="tab-pane" id="saturday">
 				<% @eventsaturday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventsaturday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
         <% end %>
+        <% if @eventsaturday.empty? && @clubeventsaturday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
+        <% end %>
 			</div>
 			<div class="tab-pane" id="sunday">
 				<% @eventsunday.each do |e| %>
-					<div id="events-pic" class="pic">
+					<div class="pic">
 						<img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-						<span id="pic-caption-events" class="pic-caption open-down">
+						<span class="pic-caption top-to-bottom">
 							<h1 class="pic-title"><%= e.name %></h1>
-							<p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+							<p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
 							<%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
 						</span>
 					</div>
 				<% end %>
         <% @clubeventsunday.each do |e| %>
-          <div id="events-pic" class="pic">
+          <div class="pic">
             <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
+            <span class="pic-caption top-to-bottom">
               <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+              <p class="pic-subtitle">
+                <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+                <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+              </p>
               <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
             </span>
           </div>
+        <% end %>
+        <% if @eventsunday.empty? && @clubeventsunday.empty? %>
+          <p class="day-event-empty"><i class="ion-chatbox"></i>No hay eventos para este día</p>
         <% end %>
 			</div>
 		</div>

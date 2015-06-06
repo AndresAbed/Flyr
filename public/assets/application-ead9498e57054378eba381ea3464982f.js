@@ -15392,7 +15392,7 @@ $(document).ready(function(){
   $('#modal-banner').tooltip()
 })
 
-/* Events ajax search and render animation */
+/* Events ajax search and animation */
 $(document).ready(function() {
   var timer;
   $("#events_search input").keyup(function() {

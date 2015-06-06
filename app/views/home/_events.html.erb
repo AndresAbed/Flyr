@@ -1,20 +1,30 @@
 <% @eventsearch.each do |e| %>
   <div id="events-pic" class="pic">
     <img src="<%= e.event_logo.url %>" class="pic-image" alt="Pic">
-    <span id="pic-caption-events" class="pic-caption open-down">
+    <span id="pic-caption-events" class="pic-caption top-to-bottom">
       <h1 class="pic-title"><%= e.name %></h1>
-      <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
+      <p class="pic-subtitle">
+        <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+        <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+      </p>
       <%= link_to 'Ver evento', event_path(e), class: 'btn btn-default btn-sm' %>
     </span>
   </div>
 <% end %>
-
 <% @clubevent.each do |e| %>
   <div id="events-pic" class="pic">
     <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-    <span id="pic-caption-events" class="pic-caption open-down">
+    <span id="pic-caption-events" class="pic-caption top-to-bottom">
       <h1 class="pic-title"><%= e.name %></h1>
+      <p class="pic-subtitle">
+        <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
+        <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
+      </p>
       <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default btn-sm' %>
     </span>
   </div>
+<% end %>
+<% if @eventsearch.empty? && @clubevent.empty? %>
+  <p class="search-empty">No se encontraron eventos</p>
+  <i class="search-empty-icon ion-sad-outline"></i>
 <% end %>
