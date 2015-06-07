@@ -57,7 +57,7 @@ class Clubevent < ActiveRecord::Base
       where('name ILIKE ? OR age ILIKE ? OR address ILIKE ?', 
         "%#{search}%", "%#{search}%", "%#{search}%")
     else
-      Clubevent.all
+      all
     end
   end
 end

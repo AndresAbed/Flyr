@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
       where('name ILIKE ? OR age ILIKE ? OR address ILIKE ?', 
         "%#{search}%", "%#{search}%", "%#{search}%")
     else
-      Event.all
+      all
     end
   end
 
