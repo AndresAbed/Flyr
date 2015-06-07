@@ -263,8 +263,9 @@ min-width: 100%;
   border-radius: 5px 0 0 5px;
 }
 
-.search{
-  width: 45%;
+.tab-pane .search{
+  width: 700px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -313,8 +314,8 @@ min-width: 100%;
 }
 
 @media(max-width: 1200px){
-  .search{
-    width: 70%;
+  .tab-pane .search{
+    width: 500px;
   }
 }
 
@@ -334,18 +335,96 @@ min-width: 100%;
 }
 
 @media(max-width: 600px){
-  .search{
+  .tab-pane .search{
     width: 90%;
   }
 }
 
-/* Grid */
+/* Clubs */
 
-.grid{
+.clubs-grid-header{
+  text-align: center;
+  background-color: #42c6f3;
+  color: #fff;
+  padding: 30px 0 50px 0;
+}
+
+.clubs-grid-header i{
+  font-size: 50pt;
+}
+
+.clubs-grid-header > .title{
+  margin: 0 !important;
+  font-size: 34pt;
+}
+
+.clubs-grid-header > .subtitle{
+  margin-top: 15px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.clubs-grid-header .search{
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.clubs-grid-header .search > span{
+  background-color: #ffc63e;
+  border-radius: 5px 0 0 5px;
+  border-color: transparent;
+}
+
+.clubs-grid-header .search > span > i{
+  color: #fff;
+  font-size: 12pt;
+}
+
+.clubs-grid-header .search > input{
+  padding: 20px 0 20px 15px;
+  font-size: 12pt;
+}
+
+.clubs-grid-header .search > input:focus{
+  border-color: #42c6f3;
+  -webkit-box-shadow: 0 0 8px rgba(255, 198, 62, 0.6);
+  box-shadow: 0 0 8px rgba(255, 198, 62, 0.6);
+}
+
+.clubs-grid{
 	text-align: center;
-	margin-bottom: -10px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  min-height: 450px;
+  background-color: #42c6f3;
 }
 
-.grids-container{
-	width: 80%;
+.clubs-grid-container{
+	width: 100%;
 }
+
+#clubs-partial{
+  margin-top: 30px;
+}
+
+.clubs-search-empty{
+  font-size: 30pt;
+  color: #fff;
+}
+
+.search-empty-icon{
+  font-size: 40pt;
+  color: #fff;
+}
+
+@media(max-width: 1200px){
+  .clubs-grid-header .search{
+    width: 500px;
+  }
+}
+@media(max-width: 600px){
+  .clubs-grid-header .search{
+    width: 90%;
