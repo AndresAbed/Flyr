@@ -44,7 +44,6 @@ gem 'pg'
 # Pry
 gem 'pry', :group => :development
 # Bootstrap
-gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
