@@ -21,5 +21,6 @@ module Flyr class Application < Rails::Application
     config.time_zone = 'Buenos Aires' 
     config.active_record.default_timezone = :local
     config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
   end
 end
