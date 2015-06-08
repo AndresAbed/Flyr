@@ -20,5 +20,6 @@ module Flyr class Application < Rails::Application
     config.i18n.default_locale = :es
     config.time_zone = 'Buenos Aires' 
     config.active_record.default_timezone = :local
+    config.assets.enabled = true
   end
 end
