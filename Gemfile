@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -51,7 +51,7 @@ gem 'rails_12factor', group: :production
 # Rails Internationalization 
 gem 'rails-i18n', '~> 4.0.0'
 # Paperclip
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip"
 #FriendlyId
 gem "friendly_id"
 #Mail testing

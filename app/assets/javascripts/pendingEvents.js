@@ -5,6 +5,7 @@ $(document).ready(function(){
   var notificationsCount;
   var arrayLength;
   $.get( "/clubevents/pending", function(data){
+      $("#pendingEvents").html("<h3>Eventos pendientes</h3>");
       arrayLength = data.clubevents.length;
       var dividerFlag = 0;
       data.clubevents.forEach(function(data){
@@ -25,6 +26,7 @@ $(document).ready(function(){
     });
   setInterval(function(){
     $.get( "/clubevents/pending", function(data){
+      $("#pendingEvents").html("<h3>Eventos pendientes</h3>");
       arrayLength = data.clubevents.length;
       var dividerFlag = 0;
       data.clubevents.forEach(function(data){
