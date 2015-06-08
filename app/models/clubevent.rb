@@ -8,13 +8,13 @@ class Clubevent < ActiveRecord::Base
 
   # Paperclip config
   has_attached_file :image, 
-  :url  => "/assets/clubevents/:id/:style/:basename.:extension"
+  url:"/images/clubevents/:id/:style/:basename.:extension"
   validates_attachment_presence :image
   validates_attachment :image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   has_attached_file :club_logo, 
-  url: "/assets/clubevents/:id/:style/:basename.:extension"
+  url: "/images/clubevents/:id/:style/:basename.:extension"
   validates_attachment :club_logo, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }  
 

@@ -11,13 +11,13 @@ class Club < ActiveRecord::Base
 
   # Paperclip config
   has_attached_file :logo, 
-  url: "/assets/clubs/:id/:style/:basename.:extension"
+  url: "/images/clubs/:id/:style/:basename.:extension"
   validates_attachment_presence :logo
   validates_attachment :logo, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   has_attached_file :cover_image,
-  url: "/assets/clubs/:id/:style/:basename.:extension"
+  url: "/images/clubs/:id/:style/:basename.:extension"
   validates_attachment_presence :cover_image
   validates_attachment :cover_image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
