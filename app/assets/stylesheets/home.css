@@ -428,3 +428,5 @@ min-width: 100%;
 @media(max-width: 600px){
   .clubs-grid-header .search{
     width: 90%;
+  }
+}  
