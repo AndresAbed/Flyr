@@ -39,6 +39,6 @@ class HomeController < ApplicationController
       .where(ended: false).order("date DESC")
     @clubevent = Clubevent.search(params[:search])
       .where(ended: false, approved: true).order("date DESC")
-    @clubs = Club.search(params[:clubsearch]) 
+    @clubs_search = Club.search(params[:clubsearch]) 
   end
 end

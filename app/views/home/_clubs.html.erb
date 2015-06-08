@@ -1,4 +1,4 @@
-<% @clubs.each do |c| %>
+<% @clubs_search.each do |c| %>
   <div class="pic clubs-pic">
       <img src="<%= c.logo.url %>" class="pic-image" alt="Pic">
       <span class="pic-caption left-to-right">
@@ -8,7 +8,7 @@
       </span>
   </div>
 <% end %>
-<% if @clubs.empty? %>
-  <i class="search-empty-icon ion-sad"></i>
+<% if @clubs_search.empty? %>
+  <i class="clubs-search-empty-icon ion-sad"></i>
   <p class="clubs-search-empty">No hay resultados</p>
 <% end %>

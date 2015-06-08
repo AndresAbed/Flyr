@@ -68,7 +68,7 @@ a:hover, a:focus {
   min-height: 60px;
   border-bottom: none;
   border-top: none;
-  background: linear-gradient(90deg,#42c6f3 -70%,#091e31 100%);
+  background-color: #091e31;
   border-left: none;
   border-right: none;
   font-size: 13px;

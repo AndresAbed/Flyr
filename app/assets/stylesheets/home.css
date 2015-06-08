@@ -249,6 +249,7 @@ min-width: 100%;
   max-height: 600px;
   min-height: 400px;
   overflow-y: scroll;
+  padding-bottom: 50px;
 }
 
 .tab-pane{
@@ -290,13 +291,16 @@ min-width: 100%;
   margin-top: 30px;
 }
 
-.search-empty{
-  font-size: 24pt;
-  color: #626262;
+.events-empty-container{
   margin-top: 80px;
 }
 
-.search-empty-icon{
+.events-empty-container .search-empty{
+  font-size: 24pt;
+  color: #626262;
+}
+
+.events-empty-container .search-empty-icon{
   font-size: 40pt;
   color: #626262;
 }
@@ -304,11 +308,11 @@ min-width: 100%;
 .day-event-empty{
   font-size: 24pt;
   color: #626262;
-  margin-top: 110px;
+  margin-top: 130px;
 }
 
 .day-event-empty i{
-  font-size: 50pt;
+  font-size: 40pt;
   margin-right: 10px;
   color: #2CC185;
 }
@@ -415,7 +419,7 @@ min-width: 100%;
   color: #fff;
 }
 
-.search-empty-icon{
+.clubs-search-empty-icon{
   font-size: 40pt;
   color: #fff;
 }
@@ -425,6 +429,14 @@ min-width: 100%;
     width: 500px;
   }
 }
+
+@media(max-width: 767px){
+  .clubs-grid-container{
+    overflow-y: scroll;
+    max-height: 650px;
+  }
+}
+
 @media(max-width: 600px){
   .clubs-grid-header .search{
     width: 90%;

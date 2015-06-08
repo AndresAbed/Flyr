@@ -25,6 +25,8 @@
   </div>
 <% end %>
 <% if @eventsearch.empty? && @clubevent.empty? %>
-  <p class="search-empty">No se encontraron eventos</p>
-  <i class="search-empty-icon ion-sad-outline"></i>
+  <div class="events-empty-container">
+    <i class="search-empty-icon ion-sad-outline"></i>
+    <p class="search-empty">No se encontraron eventos</p>
+  </div>
 <% end %>
