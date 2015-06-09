@@ -1,91 +1,89 @@
 <head>
-  <title><% @title = "Editar cuenta" %></title>
+  <title><% @title = "#{current_user.name} | Editar cuenta" %></title>
 </head>
-<body class="body">
-  <div class="container ue-cont">
+<body class="account-edit-body">
+  <div class="container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
     html: { method: :put }) do |f| %>
-    <% if resource.errors.empty? %>
-    <% else %>
-      <div class="alert alert-danger ue-errors">
-        <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-      </div>  
-    <% end %>  
-    <div class="col-lg-3 ue-img-col">
-      <img src="<%= current_user.profile_img.url %>" 
-      style="height: 250px; width: 250px; 
-      border: 10px #fff solid;"> <br>
-      <%= f.file_field :profile_img, class: 'ue-file-btn' %>
-    </div>
-    <div class="col-lg-8">
+      <% if resource.errors.empty? %>
+      <% else %>
+        <div class="alert alert-danger errors">
+          <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+        </div>  
+      <% end %>  
+      <div class="col-lg-3 profile-img-edit">
+        <img src="<%= current_user.profile_img.url %>"> <br>
+        <%= f.file_field :profile_img, class: 'btn' %>
+      </div>
+    <div class="col-lg-8 edit-form">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2 class="ue-title">Editar Cuenta</h2>
+          <h2 class="ue-title">Editar cuenta</h2>
         </div>
         <div class="panel-body">
-          <h2 class="ue-information">Información personal</h2>
-          <div class="ue-elements">
-            <%= f.label 'Nombre de usuario', class: 'ue-labels' %>
+          <h2 class="title">Información personal</h2>
+          <div class="elements">
+            <%= f.label 'Nombre de usuario', class: 'labels' %>
             <div>
               <%= f.text_field :username, autofocus: true, 
               class: 'form-control' %>
             </div>
           </div>
-          <div class="ue-elements">
-            <%= f.label 'Nombre', class: 'ue-labels' %>
+          <div class="elements">
+            <%= f.label 'Nombre', class: 'labels' %>
             <div>
               <%= f.text_field :name, autofocus: true, 
               class: 'form-control' %>
             </div>
           </div>
-          <div class="ue-elements">
-            <%= f.label 'Email', class: 'ue-labels' %>
+          <div class="elements">
+            <%= f.label 'Email', class: 'labels' %>
             <div>
               <%= f.email_field :email, class: 'form-control' %>
             </div>
           </div>
-          <div class="ue-elements">
+          <div class="elements">
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div class="email-conf-msj">
-              <p class="label label-danger">Esperando confirmación de: <%= resource.unconfirmed_email %></p>
+              <div class="edit-mail-confirmation">
+              <span class="label label-danger">Esperando confirmación de: <%= resource.unconfirmed_email %></span>
               </div>
             <% end %>
           </div>  
-          <div class="ue-elements">
-            <%= f.label 'Contraseña', class: 'ue-labels' %>
+          <div class="elements">
+            <%= f.label 'Contraseña', class: 'labels' %>
             <div>
               <%= f.password_field :password, autocomplete: "off", 
-              class: 'form-control' %><br/>
+              class: 'form-control' %>
             </div>
             <i>(Dejar en blanco si no se desea cambiar)</i>
           </div>
-          <div class="ue-elements">
-            <%= f.label 'Confirmar contraseña', class: 'ue-labels' %>
+          <div class="elements">
+            <%= f.label 'Confirmar contraseña', class: 'labels' %>
             <div>
               <%= f.password_field :password_confirmation, autocomplete: "off",
               class: 'form-control' %>
             </div>  
           </div>
-          <div class="ue-elements">
-            <%= f.label 'Contraseña actual', class: 'ue-labels' %>
+          <div class="elements">
+            <%= f.label 'Contraseña actual', class: 'labels' %>
             <div>
               <%= f.password_field :current_password, autocomplete: "off",
               class: 'form-control' %>
             </div>
             <i>(Necesaria para guardar los cambios)</i> 
           </div>
-          <div class="ue-elements">
-            <%= f.submit "Guardar cambios", class: 'btn btn-primary' %>
+          <div class="elements">
+            <%= f.submit "Guardar cambios", class: 'btn blue-btn' %>
+            <%= link_to "Cancelar", home_path, class: 'btn blue-btn' %>
           </div>
           <hr>
     <% end %>        
-          <h3 class="ue-information">Borrar cuenta</h3>
-          <%= button_to "Cancelar cuenta", registration_path(resource_name), 
-          data: { confirm: "Estás seguro?" }, method: :delete,
-          class: 'btn btn-danger ue-elements' %>
-          <%= link_to "Inicio", home_path %>
+          <h3 class="delete-title">Borrar cuenta</h3>
+          <%= button_to "Eliminar", registration_path(resource_name), 
+          data: { confirm: "¿Eliminar cuenta?" }, method: :delete,
+          class: 'btn btn-danger' %>
         </div>
       </div>  
     </div>  

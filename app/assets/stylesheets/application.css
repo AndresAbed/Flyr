@@ -38,28 +38,18 @@ a:hover, a:focus {
 
 .blue-btn{
   color: #fff;
-  background-color: #47a3da;
+  background-color: #42c6f3;
   border: 1px solid transparent;
-  font-weight: normal;
+  font-weight: bold;
   text-align: center;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .blue-btn:hover{
-  background-color: #02639d;
-}
-
-.red-btn{
   color: #fff;
-  background-color: #D33C37;
-  border: 1px solid transparent;
-  font-weight: normal;
-  text-align: center;
-  transition: background-color 0.3s ease-in-out;
 }
 
-.red-btn:hover{
-  background-color: #AE2521;
+.blue-btn:focus{
+  color: #fff;
 }
 
 /* Navbar */

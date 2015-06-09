@@ -1,0 +1,101 @@
+.account-edit-body{
+  background-color: #e7ecea;
+  background-repeat: repeat;
+  margin-top: 100px;
+}
+
+.account-edit-body .errors{
+  text-align: center;
+  margin-top: -50px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.account-edit-body .errors{
+  list-style: none;
+}
+
+.account-edit-body > .container{
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+.profile-img-edit{
+  height: 250px;
+  width: 250px;
+}
+
+.profile-img-edit > .btn{
+  margin-top: 20px;
+}
+
+.edit-form .panel-heading{
+  background-color: #2CC185;
+}
+
+.edit-form .panel-heading > h2{
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.edit-form .title{
+  font-weight: bold;
+  color: #2CC185;
+}
+
+.edit-form .elements{
+  margin: 20px;
+}
+
+.edit-form .elements .form-control:focus{
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #2CC185;
+  border-color: #2CC185;
+}
+
+.edit-form .labels{
+  margin-right: 10px;
+  color: #565656;
+}
+
+.edit-mail-confirmation p{
+  font-size: 10pt;
+  padding: 10px;
+  display: block;
+}
+
+.delete-title{
+  font-weight: bold;
+  color: #2CC185;
+}
+
+@media (max-width: 1200px){
+  .account-edit-body .errors{
+    width: 80%;
+  }
+
+  .account-edit-body > .container{
+    width: 85%;
+  }
+
+  .profile-img-edit > .btn{
+    margin: 0px auto;
+    margin-top: 15px;
+  }
+  .profile-img-edit{
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 600px){
+  .account-edit-body > .container{
+    width: 95%;
+  }
+}
