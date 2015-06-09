@@ -38,17 +38,22 @@ a:hover, a:focus {
 
 .blue-btn{
   color: #fff;
-  background-color: #42c6f3;
+  background-color: #357DF4;
   border: 1px solid transparent;
   font-weight: bold;
   text-align: center;
 }
 
-.blue-btn:hover{
+.red-btn{
   color: #fff;
+  background-color: #c9302c;
+  border: 1px solid transparent;
+  font-weight: bold;
+  text-align: center;
 }
 
-.blue-btn:focus{
+.blue-btn:hover, .blue-btn:focus,
+.red-btn:hover, .red-btn:focus{
   color: #fff;
 }
 

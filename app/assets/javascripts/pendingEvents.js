@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
   var notificationsIcon = $(".ion-ios-bell");
   var $pending = $("#pendingEvents");
   var $pendingsCount = $("#pendingsCount");
@@ -60,4 +60,4 @@ $(document).ready(function(){
       };
     });
   }, 30000);
-})
+})*/

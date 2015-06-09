@@ -10,89 +10,88 @@
   <% end %>
 </head>
 <body class="club-show">
-  <div class="container profile-header">
+  <div class="profile-header">
     <a class="cover-container" href="<%= @club.cover_image.url %>">
       <img class="cover" src="<%= @club.cover_image.url %>">
     </a>
     <div class="club-profile-content">
-      <a class="col-lg-3 logo-container" href="<%= @club.logo.url %>">
+      <a class="club-logo-container" href="<%= @club.logo.url %>">
         <img class="club-logo" src="<%= @club.logo.url %>">
       </a>
-      <div class="col-lg-4 club-profile-info">
-        <span class="club-show-name"><%= @club.name %></span>
+      <div class="club-info">
+        <span class="name"><%= @club.name %></span>
         <br>
-        <hr class="featurette-divider club-profile-hr">
-        <span class="events-lists-info">
+        <hr class="featurette-divider">
+        <p class="club-events-info">
           <% if @eventsNumber == 1 %>
-            <b class="details-numbers"><%= @eventsNumber %></b> Evento
+            <b class="events-lists-count"><%= @eventsNumber %></b><span>Evento</span>
           <% else %>  
-            <b class="details-numbers"><%= @eventsNumber %></b> Eventos
+            <b class="events-lists-count"><%= @eventsNumber %></b><span>Eventos</span>
           <% end %>  
           <% if @listsNumber == 1 %>
-            <b class="details-numbers"><%= @listsNumber %></b> Lista
+            <b class="events-lists-count"><%= @listsNumber %></b><span>Lista</span>
           <% else %>  
-            <b class="details-numbers"><%= @listsNumber %></b> Listas
+            <b class="events-lists-count"><%= @listsNumber %></b><span>Listas</span>
           <% end %>  
-        </span>
+        </p>
       </div>
-      <div class="col-lg-5 club-profile-info-2">
-        <p class="club-address"><i class="fa fa-map-marker"></i><span><%= @club.address %></span></p>
-        <div class="club-profile-btns">
+      <div class="buttons">
+        <div>
           <% if current_user.is_admin? || 
             current_user.is_pr? && current_user.club_id == @club.id %>
             <button type="button" class="btn blue-btn btn-sm" 
             data-toggle="modal" data-target="#CreateEvent">
-            <i class="fa fa-plus" style="font-size: 15px; margin-right: 5px;"></i>
+            <i class="fa fa-plus"></i>
             <b>Crear Evento</b>
             </button>
             <div class="modal fade" id="CreateEvent">
-                <div class="modal-dialog" style="color: black;">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">
-                      <span aria-hidden="true">&times;</span><span class="sr-only">
-                      Cerrar</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= form_for :clubevent, url: club_clubevents_path(@club) do |e| %>
-                        <div class="row">
-                          <%= e.label "Nombre" %><br>
-                          <%= e.text_field :name %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Fecha" %><br>
-                          <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Hora" %><br>
-                          <%= e.time_select :hour, :ignore_date => true %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Edad" %><br>
-                          <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
-                        </div>
-                        <div class="row">
-                          <%= e.label "Información" %><br>
-                          <%= e.text_area :description %>
-                        </div>
-                        <div class="row">
-                        <%= e.label "Imagen del evento" %><br>
-                          <%= e.file_field :image %>
-                        </div>
-                        <div class="row">
-                          <%= e.submit "Crear evento", class: "btn blue-btn" %>
-                        </div>
-                      <% end %>
-                    </div>
+              <div class="modal-dialog" style="color: black;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">
+                    Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for :clubevent, url: club_clubevents_path(@club) do |e| %>
+                      <div class="row">
+                        <%= e.label "Nombre" %><br>
+                        <%= e.text_field :name %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Fecha" %><br>
+                        <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Hora" %><br>
+                        <%= e.time_select :hour, :ignore_date => true %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Edad" %><br>
+                        <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+                      </div>
+                      <div class="row">
+                        <%= e.label "Información" %><br>
+                        <%= e.text_area :description %>
+                      </div>
+                      <div class="row">
+                      <%= e.label "Imagen del evento" %><br>
+                        <%= e.file_field :image %>
+                      </div>
+                      <div class="row">
+                        <%= e.submit "Crear evento", class: "btn blue-btn" %>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
+              </div>
             </div>
           <% end %>  
           <% if current_user.is_admin? %>
             <button type="button" class="btn blue-btn btn-sm" 
-            data-toggle="modal" data-target="#EditProfile" style="margin-left: 10px;">
-            <i class="fa fa-pencil" style="font-size: 15px; margin-right: 5px;"></i>
+            data-toggle="modal" data-target="#EditProfile">
+            <i class="fa fa-pencil"></i>
             <b>Editar Perfil</b>
             </button>
             <div class="modal fade" id="EditProfile">
@@ -155,8 +154,8 @@
                 </div>
             </div>
             <%= link_to club_path(@club), method: :delete, data: { confirm: '¿Eliminar perfil?' },
-            class: 'btn red-btn btn-sm', style: "margin-left: 10px;" do %>
-              <i class="fa fa-trash-o" style="font-size: 15px; margin-right: 5px;"></i>
+            class: 'btn red-btn' do %>
+              <i class="fa fa-trash-o"></i>
               <b>Eliminar</b>
             <% end %>
           <% end %>  
@@ -178,8 +177,21 @@
         class="club-social-links"><i class="fa fa-youtube youtube-icon"></i></a>
     </div>
   </div>
-
   <div class="container club-main-container">
+    <div class="club-address-section">
+      <p>
+        <i class="fa fa-map-marker"></i>
+        <span>
+          <%= @club.address.split(',')[0] %> -
+          <%= @club.address.split(',')[1]%>
+        </span>
+      </p>
+      <div class="map">
+        <div id="map" data-latitude="<%= @club.latitude %>" 
+        data-longitude="<%= @club.longitude %>" 
+        data-markerName="<%= @club.name %>"></div>
+      </div>
+    </div>
     <!-- Features and Music -->
     <div class="container club-features-music">
       <div class="features">
@@ -252,6 +264,34 @@
       js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=1479381539007349&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <!-- Goole maps -->
+  <script type="text/javascript">
+    $(document).ready(function(){
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {
+          maxZoom: 17, 
+          minZoom: 15,
+          disableDefaultUI: true
+        }, 
+      internal: {id: "map"}}, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": $("#map").data('latitude'),
+            "lng": $("#map").data('longitude'),
+            "picture": {
+              "url": "http://uptownartsdistrict.org/wp-content/uploads/leaflet-maps-marker-icons/map-marker.png",
+              "width":  40,
+              "height": 40
+            }
+          }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(17);
+      });
+    })
   </script>
 
   <!-- Share buttons -->
