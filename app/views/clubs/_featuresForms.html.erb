@@ -18,48 +18,8 @@
           <div class="modal-body">
             <%= form_for :feature, url: club_features_path(@club), remote: true do |f| %>
               <div class="row">
-                <%= f.label "Wifi" %><br>
-                <%= f.check_box :wifi %>
-              </div>
-              <div class="row">
-                <%= f.label "Zona fumadores" %><br>
-                <%= f.check_box :smoking_area %>
-              </div>
-              <div class="row">
-                <%= f.label "Seguridad" %><br>
-                <%= f.check_box :security %>
-              </div>
-              <div class="row">
-                <%= f.label "Fotografos" %><br>
-                <%= f.check_box :photos %>
-              </div>
-              <div class="row">
-                <%= f.label "Cumpleaños" %><br>
-                <%= f.check_box :birthdays %>
-              </div>
-              <div class="row">
-                <%= f.label "Pagos con tarjeta de credito" %><br>
-                <%= f.check_box :credit_cards %>
-              </div>
-              <div class="row">
-                <%= f.label "Comida" %><br>
-                <%= f.check_box :food %>
-              </div>
-              <div class="row">
-                <%= f.label "Bebidas" %><br>
-                <%= f.check_box :drinks %>
-              </div>
-              <div class="row">
-                <%= f.label "Regalos" %><br>
-                <%= f.check_box :gifts %>
-              </div>
-              <div class="row">
-                <%= f.label "Primeros auxilios" %><br>
-                <%= f.check_box :first_aid %>
-              </div>
-              <div class="row">
-                <%= f.label "Estacionamiento" %><br>
-                <%= f.check_box :parking %>
+                <%= f.label "Tipo de servicio o comodidad" %><br>
+                <%= f.text_field :name %>
               </div>
               <div class="row">
                 <%= f.submit "Aceptar"%>
@@ -91,48 +51,8 @@
               <%= form_for :feature, url: club_feature_path(@club, f),
               method: :patch, remote: true do |f| %>
                 <div class="row">
-                  <%= f.label "Wifi" %><br>
-                  <%= f.check_box :wifi %>
-                </div>
-                <div class="row">
-                  <%= f.label "Zona fumadores" %><br>
-                  <%= f.check_box :smoking_area %>
-                </div>
-                <div class="row">
-                  <%= f.label "Seguridad" %><br>
-                  <%= f.check_box :security %>
-                </div>
-                <div class="row">
-                  <%= f.label "Fotografos" %><br>
-                  <%= f.check_box :photos %>
-                </div>
-                <div class="row">
-                  <%= f.label "Cumpleaños" %><br>
-                  <%= f.check_box :birthdays %>
-                </div>
-                <div class="row">
-                  <%= f.label "Pagos con tarjeta de credito" %><br>
-                  <%= f.check_box :credit_cards %>
-                </div>
-                <div class="row">
-                  <%= f.label "Comida" %><br>
-                  <%= f.check_box :food %>
-                </div>
-                <div class="row">
-                  <%= f.label "Bebidas" %><br>
-                  <%= f.check_box :drinks %>
-                </div>
-                <div class="row">
-                  <%= f.label "Regalos" %><br>
-                  <%= f.check_box :gifts %>
-                </div>
-                <div class="row">
-                  <%= f.label "Primeros auxilios" %><br>
-                  <%= f.check_box :first_aid %>
-                </div>
-                <div class="row">
-                  <%= f.label "Estacionamiento" %><br>
-                  <%= f.check_box :parking %>
+                  <%= f.label "Tipo de servicio o comodidad" %><br>
+                  <%= f.text_field :name %>
                 </div>
                 <div class="row">
                   <%= f.submit "Aceptar"%>
