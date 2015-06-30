@@ -1,7 +1,6 @@
 class Club < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
   validates :address, presence: true
-  validates :description, presence: true, length: {minimum: 140}
 
   has_many :users
   has_many :musics, dependent: :destroy
@@ -14,12 +13,6 @@ class Club < ActiveRecord::Base
   url: "/images/clubs/:id/:style/:basename.:extension"
   validates_attachment_presence :logo
   validates_attachment :logo, content_type: { content_type: 
-    ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-
-  has_attached_file :cover_image,
-  url: "/images/clubs/:id/:style/:basename.:extension"
-  validates_attachment_presence :cover_image
-  validates_attachment :cover_image, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   #Geocoder

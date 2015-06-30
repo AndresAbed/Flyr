@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612095954) do
+ActiveRecord::Schema.define(version: 20150628232942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,27 +88,22 @@ ActiveRecord::Schema.define(version: 20150612095954) do
   end
 
   create_table "clubs", force: :cascade do |t|
-    t.string   "name",                     limit: 255
-    t.string   "address",                  limit: 255
+    t.string   "name",              limit: 255
+    t.string   "address",           limit: 255
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
-    t.string   "slug",                     limit: 255
-    t.string   "logo_file_name",           limit: 255
-    t.string   "logo_content_type",        limit: 255
+    t.string   "slug",              limit: 255
+    t.string   "logo_file_name",    limit: 255
+    t.string   "logo_content_type", limit: 255
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "cover_image_file_name",    limit: 255
-    t.string   "cover_image_content_type", limit: 255
-    t.integer  "cover_image_file_size"
-    t.datetime "cover_image_updated_at"
-    t.string   "facebook",                 limit: 255
-    t.string   "twitter",                  limit: 255
-    t.string   "instagram",                limit: 255
-    t.string   "youtube",                  limit: 255
-    t.string   "googleplus",               limit: 255
+    t.string   "facebook",          limit: 255
+    t.string   "twitter",           limit: 255
+    t.string   "instagram",         limit: 255
+    t.string   "youtube",           limit: 255
+    t.string   "googleplus",        limit: 255
   end
 
   add_index "clubs", ["slug"], name: "index_clubs_on_slug", using: :btree

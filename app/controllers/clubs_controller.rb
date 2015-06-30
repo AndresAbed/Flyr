@@ -35,6 +35,6 @@ class ClubsController < ApplicationController
   private
   def club_params
     params.require(:club).permit(:name, :address, :description, :logo, 
-      :cover_image, :facebook, :twitter, :googleplus, :instagram, :youtube)
+      :facebook, :twitter, :googleplus, :instagram, :youtube)
   end
 end
