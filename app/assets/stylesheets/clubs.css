@@ -1,153 +1,313 @@
 .club-show{
-  background-color: #e7ecea;
-}
-
-.club-show .profile-header{
-  position: relative;
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profile-header{
-  min-width: 500px;
-}
-
-.profile-header .cover{
-  width: 95%;
-  max-height: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.club-profile-content{
-  background: rgba(0,0,0,0.8);
-  color: white;
-  height: 150px;
-  width: 95%;
-  position: relative;
-  margin-top: -165px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-}
-
-.club-profile-content > .club-logo-container{
-  margin-top: -7%;
-  margin-left: 70px;
-}
-
-.club-profile-content .club-logo{
-  border-radius: 5px;
-  height: 200px;
-  width: 200px;
-}
-
-.club-info{
-  margin-top: 25px;
-  margin-left: 30px;
-}
-
-.club-profile-content > .club-info > .name {
-  font-size: 28pt;
-  font-weight: bold;
-}
-
-.club-info hr{
-  margin: 5px 0 5px 0;
-}
-
-.club-events-info >.events-lists-count{
-  font-size: 20pt;
-}
-
-.club-events-info span{
-  font-size: 14pt;
-  padding: 5px;
-}
-
-.club-profile-content .buttons{
-  width: 150px;
-  padding-top: 15px;
-  display: inline-block;
-  text-align: center;
-  margin-left: auto;
-}
-
-.buttons > div > .btn{
-  margin: 5px 0;
-  font-size: 10pt;
-  width: 120px;
-}
-
-.social-links-container{
-  background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  text-align: center;
-  padding: 10px;
-  margin-top: 16px;
-  margin-bottom: 10px;
-}
-
-.social-links-container a{
-  font-size: 20px;
-  border-right: 1px solid rgba(0,0,0,0.2);
-  padding: 0 30px;
-}
-
-.club-social-links:last-child{
-  border-right: none;
-}
-
-.fb-icon{
-  color: #3b5998;
-  transition: color 0.35s ease-in-out;
-}
-
-.twitter-icon{
-  color: #55acee;
-  transition: color 0.35s ease-in-out;
-}
-
-.instagram-icon{
-  color: #3f729b;
-  transition: color 0.35s ease-in-out;
-}
-
-.youtube-icon{
-  color: #bb0000;
-  transition: color 0.35s ease-in-out;
-}
-
-.google-plus-icon{
-  color: #dd4b39;
-  transition: color 0.35s ease-in-out;
+  background-color: #1F253D;
 }
 
 .club-main-container{
-  padding: 0px;
+  background: #1F253D;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.club-address-section{
+.club-left-column{
+  width: 25%;
+  margin-top: 20px;
+}
+
+.features{
+  min-height: 135px;
+  background-color: #394263;
+  margin-bottom: 20px;
+  border-radius: 0 0 3px 3px;
+  position: relative;
+  z-index: 0
+}
+
+.features-title{
+  text-align: center;
+  font-size: 13pt;
+  color: #fff;
+  padding: 10px 0;
   width: 100%;
+  display: block;
+  background-color: #13C1C4;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+}
+
+.features-btns{
+  position: absolute;
+  width: 95px;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  transition: all .2s ease-in-out;
+}
+
+.features-btns-show{
+  left: -100px;
+  transition: all .2s ease-in-out;
+}
+
+.features-btns .mint-btn{
+  font-size: 10pt;
+  width: 90px;
+  padding: 5px;
+}
+
+.features-btns .mint-btn:first-child{
+  margin-bottom: 10px;
+}
+
+.features-btns #feature-add{
+  display: none;
+}
+
+.features-btns button i{
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+.features-list-items{
+  font-size: 11pt;
+  color: #fff;
+  text-align: center;
+  border-bottom: 2px solid #262F4E;
+  padding: 12px 0;
+}
+
+.features-list-items:last-child{
+  border-bottom: none;
+}
+
+.features-list-items #delete-feature{
+  color: red;
+  display: none;
+  margin-left: 5px;
+}
+
+.music{
+  min-height: 135px;
+  background-color: #394263;
+  border-radius: 0 0 3px 3px;
+  position: relative;
+  z-index: 0
+}
+
+.music-title{
+  text-align: center;
+  font-size: 13pt;
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+  display: block;
+  background-color: #13C1C4;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+}
+
+.music-btns{
+  position: absolute;
+  width: 95px;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  transition: all .2s ease-in-out;
+}
+
+.music-btns-show{
+  left: -100px;
+  transition: all .2s ease-in-out;
+}
+
+.music-btns .mint-btn{
+  font-size: 10pt;
+  width: 90px;
+  padding: 5px;
+}
+
+.music-btns .mint-btn:first-child{
+  margin-bottom: 10px;
+}
+
+.music-btns #music-add{
+  display: none;
+}
+
+.music-btns button i{
+  font-size: 12px; 
+  margin-right: 2px;
+}
+
+.music-list-items{
+  font-size: 11pt;
+  color: #fff;
+  text-align: center;
+  border-bottom: 2px solid #262F4E;
+  padding: 12px 0;
+}
+
+.music-list-items:last-child{
+  border-bottom: none;
+}
+
+.music-list #delete-music{
+  color: red; 
+  display: none;
+  margin-left: 5px;
+}
+
+.club-mid-column{
+  width: 45%;
+  margin: 20px;
+}
+
+.club-logo-info{
+  color: white;
+  text-align: center;
+  background-color: #394263;
+  padding: 20px 0 40px 0;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.club-logo{
+  border-radius: 150px;
+  height: 210px;
+  width: 210px;
+  border: 10px solid #51587A;
+}
+
+.club-logo:hover{
+  cursor: pointer;
+}
+
+.club-info{
+  padding: 15px 0;
+}
+
+.club-info .club-name {
+  font-size: 22pt;
+  font-weight: bold;
+  color: #fff;
+  text-transform: none;
+}
+
+.events-lists-count{
+  font-size: 16pt;
+}
+
+.club-events-info span{
+  font-size: 12pt;
+  padding: 5px;
+}
+
+.club-logo-info .buttons{
+  position: absolute;
+  width: 100%;
+  bottom: -35px;
+  transition: all .2s ease-in-out;
+}
+
+.club-buttons-show{
+  bottom: 10px !important;
+  transition: all .2s ease-in-out;
+}
+
+.social-links-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  background-color: #51587A;
+}
+
+.social-links-container a{
+  font-size: 18pt;
   padding: 0 15px;
+  color: #97A0C1;
+}
+
+.club-events{
+  border-radius: 0 0 3px 3px;
+  background-color: #394263;
+  min-height: 150px;
+}
+
+.club-events-title{
+  text-align: center;
+  font-size: 13pt;
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+  display: block;
+  background-color: #CC324C;
+  border-radius: 3px 3px 0 0;
+}
+
+.club-events-empty{
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+  font-size: 14pt;
+}
+
+.club-event-item{
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+  max-height: 240px;
+}
+
+.club-event-item:last-child{
+  border-radius: 0 0 3px 3px;
+}
+
+.club-event-item span{
+  position: absolute;
+  width: 100%;
+  bottom: -70px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  background-color: rgba(0, 0, 0, .8);
+  text-align: center;
+  color: #fff;
+  transition: bottom .2s ease-in-out;
+}
+
+.club-event-item span h1{
+  margin-bottom: 50px;
+}
+
+.club-event-item .hot-pink-btn{
+  padding: 5px 80px;
+  font-size: 10pt;
+}
+
+.club-event-span-up{
+  bottom: 0 !important;
+  transition: bottom .2s ease-in-out;
+}
+
+.club-right-column{
+  width: 25%;
+  margin-top: 20px;
 }
 
 .club-address-section p{
   text-align: center;
-  background-color: #357DF4;
-  border: 1px solid #357DF4;
-  border-bottom: 3px solid #357DF4;
+  background-color: #CC324C;
   color: #fff;
   font-size: 12pt;
-  font-weight: bold;
-  padding: 10px 0;
+  padding: 20px 10px;
   margin: 0;
+  border-radius: 3px 3px 0 0;
 }
 
 .club-address-section p i{
   margin-right: 3px;
+  font-size: 14pt;
 }
 
 .club-address-section .map{
@@ -155,195 +315,16 @@
   width: 100%;
   margin: 0;
   box-shadow: none;
-  border: 1px solid #d1d1d1;
-  border-top: none;
   border-radius: 0;
+  margin-bottom: 15px;
 }
 
 .club-address-section #map{
-  height: 150px;
+  height: 350px;
+  border-radius: 0 0 3px 3px;
 }
 
-.club-features-music{
-  width: 29%;
-  float: left;
-  padding-right: 0px;
-}
-
-.features{
-  background-color: #fff;
-  padding: 0px;
-  margin-bottom: 10px
-}
-
-.features-top-container{
-  background-color: #e7ecea;
-  border: 1px solid #ccc;
-  color: #fff;
-  height: 40px;
-  padding: 10px;
-}
-
-.features-title{
-  float: left;
-}
-
-.features-btns{
-  float: right;
-}
-
-.features-list ul li{
-  padding: 5px
-}
-
-.music{
-  background-color: #fff;
-  padding: 0px;
-  margin-bottom: 10px;
-}
-
-.music-top-container{
-  background-color: #e7ecea;
-  border: 1px solid #ccc;
-  color: #fff;
-  height: 40px;
-  padding: 10px;
-}
-
-.music-title{
-  float: left;
-}
-
-.music-btns{
-  float: right;
-}
-
-.music-list ul{
-  list-style: none;
-  margin-top: 15px;
-}
-
-.music-list ul li{
-  padding: 5px
-}
-
-.music-list ul li p {
-  display: inline-flex;
-}
-
-.fb-like-box{
-  margin-bottom: 10px;
-  background-color: #fff; 
-  width: 100%; 
-  text-align: center; 
-  padding: 5px 0px 5px 0px;
-}
-
-.club-desc-events{
-  margin-bottom: 10px;
-  float: right;
-  width: 70%;
-  padding-left: 0px;
-}
-
-.club-description{
-  background-color: #fff;
-  padding: 0;
-  margin-bottom: 10px;
-}
-
-.description-top-container{
-  background-color: #e7ecea;
-  border: 1px solid #ccc;
-  color: #fff;
-  height: 40px;
-  padding: 10px;
-}
-
-.club-description-title{
-  text-align: center;
-}
-
-.club-desc-content{
-  background-color: #fff;
-  word-wrap: break-word;
-}
-
-.club-events{
-  background-color: #fff;
-  padding: 0;
-}
-
-.events-top-container{
-  background-color: #e7ecea;
-  border: 1px solid #ccc;
-  color: #fff;
-  height: 40px;
-  padding: 10px;
-}
-
-.club-events-title{
-  text-align: center;
-}
-
-.club-events-content{
-  background-color: #fff;
-}
-
-@media (min-width: 800px) and (max-width: 1200px){
-  .club-show .profile-header{
-    width: 900px;
-  }
-}
-
-@media (max-width: 1200px){
-  .club-profile-content{
-    background: rgba(0,0,0,1);
-    margin-top: 0;
-  }
-
-  .club-profile-content > .club-logo-container{
-    margin-left: 50px;
-  }
-}
-
-@media (max-width: 900px){
-  .club-show .profile-header{
-    width: 90%;
-  }
-  .club-profile-content .club-logo-container{
-    margin-left: 20px;
-  }
-  .club-profile-content > .club-info > .name {
-    font-size: 25pt;
-  }
-  .club-profile-content .buttons{
-    width: 50px;
-  }
-  .buttons > div > .btn{
-    width: auto;
-  }
-  .buttons > div > .btn b{
-    display: none;
-  }
-
-  .club-show .sharer{
-    display: none;
-  }
-}
-
-@media (max-width: 776px){
-  .club-profile-content .club-logo-container{
-    margin-top: 0;
-  }
-  .club-profile-content .club-logo {
-    height: 150px;
-    width: 150px;
-  }
-  .club-profile-content > .club-info > .name {
-    font-size: 20pt;
-  }  
-  .club-profile-content .buttons{
-    display: none;
-  }
+.club-stuff-container{
+  position: relative;
+  display: -webkit-box;
 }

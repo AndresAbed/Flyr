@@ -1,0 +1,12 @@
+<% if current_user.is_admin? %>
+  <button type="button" class="mint-btn btn-xs" id="feature-edit" 
+  data-toggle="modal" data-target="#EditFeature">
+    <i class="fa fa-pencil" id="feature-pencil"></i>
+    <b id="feature-edit-text">Editar</b>
+  </button>
+  <button type="button" class="mint-btn btn-xs" 
+  data-toggle="modal" data-target="#AddFeature" id="feature-add">
+    <i class="fa fa-plus"></i>
+    <b>Añadir</b>
+  </button>
+<% end %>  

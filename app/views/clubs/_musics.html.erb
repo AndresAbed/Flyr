@@ -1,9 +1,9 @@
 <% @club.musics.each do |f| %>
-    <li>
-        <p><%= f.name %></p>
-        <%= link_to club_music_path(@club, f), method: :delete,
-         remote: true do %>
-          <i class="fa fa-times" style="color: red; display: none;"></i>
-         <% end %>
-    </li>
+  <div class="music-list-items">
+    <span><%= f.name %></span>
+    <%= link_to club_music_path(@club, f), method: :delete,
+    remote: true do %>
+      <i class="fa fa-times" id="delete-music"></i>
+    <% end %>
+  </div>
 <% end %>

@@ -1,0 +1,11 @@
+<% if current_user.is_admin? %>
+  <button class="mint-btn btn-xs" id="music-edit">
+    <i class="fa fa-pencil" id="music-pencil"></i>
+    <b id="music-edit-text">Editar</b>
+  </button>
+  <button type="button" class="mint-btn btn-xs" 
+    data-toggle="modal" data-target="#AddMusic" id="music-add">
+    <i class="fa fa-plus"></i>
+    <b>Añadir</b>
+  </button>
+<% end %>  

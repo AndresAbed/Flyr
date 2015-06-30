@@ -1,5 +1,9 @@
 <% @club.features.each do |f| %>
-  <div>
-    <p><%= f.name %></p>
+  <div class="features-list-items">
+    <span><%= f.name %></span>
+    <%= link_to club_feature_path(@club, f), method: :delete,
+    remote: true do %>
+      <i class="fa fa-times" id="delete-feature" title="Eliminar"></i>
+    <% end %>
   </div>
 <% end %>
