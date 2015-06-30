@@ -15,7 +15,7 @@
       <div class="row">
         <p class="event-name"><%= @clubevent.name %></p>
         <p class="club-name">
-          <%= link_to club_path(@club), class: 'club-name' do %>
+          <%= link_to club_path(@club) do %>
            <%= @clubevent.club_name %>
           <% end %> 
         </p>
