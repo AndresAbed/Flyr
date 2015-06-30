@@ -44,7 +44,6 @@
 .slide {
 	position: relative;
 	line-height: 1;
-	margin-top: 60px;
 }
 
 .item{
@@ -122,9 +121,6 @@ min-width: 100%;
 	.carousel-control.right {
 		top: 15%;
 	}
-	.slide{
-		margin-top: 55px;
-	}
 	.carousel-inner > .item > img{
 		height: 300px;
 	}
@@ -155,7 +151,7 @@ min-width: 100%;
 /* Events */
 .events-panel-header{
   text-align: center;
-  background-color: #2CC185;
+  background-color: #5FCF80;
   color: #fff;
   padding: 10px 0 30px 0;
 }
@@ -205,14 +201,14 @@ min-width: 100%;
 	border: 0;
   margin: 0;
   padding: 0;
-  color: #2CC185;
+  color: #5FCF80;
   line-height: 60px;
   font-size: 12pt;
   font-weight: bold;
   border-bottom: 4px solid transparent;
 }
 .tabbable-line > .nav-tabs > li > a > i {
-	color: #2CC185;
+	color: #5FCF80;
   margin-right: 6px;
 }
 .tabbable-line > .nav-tabs > li.open > a, 
@@ -235,14 +231,14 @@ min-width: 100%;
 .tabbable-line > .nav-tabs > li.active > a {
 	border: 0;
 	color: #565656;
-  border-bottom: 6px solid #2CC185;
+  border-bottom: 6px solid #5FCF80;
 }
 .tabbable-line > .nav-tabs > li.active > a > i {
 	color: #565656;
 }
 .tabbable-line > .tab-content {
 	margin-top: -3px;
-  background-color: #e7ecea;
+  background: #eee url(http://www.herewecom.fr/wp-content/themes/herewecom/img/contents/section_projets.png) repeat bottom center;
   border: 0;
   border-top: 1px solid #eee;
   padding: 15px 0;
@@ -260,7 +256,7 @@ min-width: 100%;
 }
 
 .tab-pane .search > span{
-  background-color: #2CC185;
+  background-color: #5FCF80;
   border-radius: 5px 0 0 5px;
 }
 
@@ -282,7 +278,7 @@ min-width: 100%;
 }
 
 .tab-pane .search > input:focus{
-  border-color: #2CC185;
+  border-color: #5FCF80;
   -webkit-box-shadow: 0 0 8px rgba(44, 193, 133, 0.6);
   box-shadow: 0 0 8px rgba(44, 193, 133, 0.6);
 }
@@ -314,7 +310,7 @@ min-width: 100%;
 .day-event-empty i{
   font-size: 40pt;
   margin-right: 10px;
-  color: #2CC185;
+  color: #5FCF80;
 }
 
 @media(max-width: 1200px){
