@@ -13,11 +13,11 @@ class FeaturesController < ApplicationController
     end
   end
 
-  def update
+  def destroy
     @club = Club.friendly.find(params[:club_id])
-    @feature = Feature.find(params[:id])
-
-    if @feature.update(feature_params)
+    @music = Feature.find(params[:id])
+    
+    if @music.destroy 
       respond_to do |format|
         format.html { redirect_to club_path(@club) }
         format.js
@@ -26,8 +26,6 @@ class FeaturesController < ApplicationController
   end
 
   def feature_params
-    params.require(:feature).permit(:text, :wifi, :smoking_area, :security, 
-      :photos, :birthdays, :credit_cards, :food, :drinks, :gifts, :first_aid, 
-      :parking)
+    params.require(:feature).permit(:name)
   end
 end
