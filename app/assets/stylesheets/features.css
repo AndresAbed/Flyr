@@ -70,7 +70,7 @@
   margin-left: 5px;
 }
 
-@media (max-width: 800px){
+@media (max-width: 950px){
   .features-btns{
     width: 200px;
     left: 50% !important;

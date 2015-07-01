@@ -186,7 +186,7 @@
   display: -webkit-box;
 }
 
-@media (max-width: 800px){
+@media (max-width: 950px){
   .club-main-container{
     display: block;
   }

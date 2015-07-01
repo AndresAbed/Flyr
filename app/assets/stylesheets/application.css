@@ -455,7 +455,7 @@ ul.social li a {
   border-top: 6px solid transparent;
 }
 
-@media (max-width: 900px){
+@media (max-width: 700px){
   .sharer{
     display: none !important;
   }
