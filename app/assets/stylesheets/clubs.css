@@ -186,6 +186,12 @@
   display: -webkit-box;
 }
 
+@media (min-width: 950px) and (max-width: 1400px){
+  .club-main-container{
+    width: 80%;
+  }
+}
+
 @media (max-width: 950px){
   .club-main-container{
     display: block;
