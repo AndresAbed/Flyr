@@ -14,149 +14,6 @@
   margin-top: 20px;
 }
 
-.features{
-  min-height: 135px;
-  background-color: #394263;
-  margin-bottom: 20px;
-  border-radius: 0 0 3px 3px;
-  position: relative;
-  z-index: 0
-}
-
-.features-title{
-  text-align: center;
-  font-size: 13pt;
-  color: #fff;
-  padding: 10px 0;
-  width: 100%;
-  display: block;
-  background-color: #13C1C4;
-  border-radius: 3px 3px 0 0;
-  position: relative;
-}
-
-.features-btns{
-  position: absolute;
-  width: 95px;
-  top: 0px;
-  left: 0px;
-  z-index: -1;
-  transition: all .2s ease-in-out;
-}
-
-.features-btns-show{
-  left: -100px;
-  transition: all .2s ease-in-out;
-}
-
-.features-btns .mint-btn{
-  font-size: 10pt;
-  width: 90px;
-  padding: 5px;
-}
-
-.features-btns .mint-btn:first-child{
-  margin-bottom: 10px;
-}
-
-.features-btns #feature-add{
-  display: none;
-}
-
-.features-btns button i{
-  font-size: 12px;
-  margin-right: 2px;
-}
-
-.features-list-items{
-  font-size: 11pt;
-  color: #fff;
-  text-align: center;
-  border-bottom: 2px solid #262F4E;
-  padding: 12px 0;
-}
-
-.features-list-items:last-child{
-  border-bottom: none;
-}
-
-.features-list-items #delete-feature{
-  color: red;
-  display: none;
-  margin-left: 5px;
-}
-
-.music{
-  min-height: 135px;
-  background-color: #394263;
-  border-radius: 0 0 3px 3px;
-  position: relative;
-  z-index: 0
-}
-
-.music-title{
-  text-align: center;
-  font-size: 13pt;
-  color: #fff;
-  padding: 10px 0;
-  width: 100%;
-  display: block;
-  background-color: #13C1C4;
-  border-radius: 3px 3px 0 0;
-  position: relative;
-}
-
-.music-btns{
-  position: absolute;
-  width: 95px;
-  top: 0px;
-  left: 0px;
-  z-index: -1;
-  transition: all .2s ease-in-out;
-}
-
-.music-btns-show{
-  left: -100px;
-  transition: all .2s ease-in-out;
-}
-
-.music-btns .mint-btn{
-  font-size: 10pt;
-  width: 90px;
-  padding: 5px;
-}
-
-.music-btns .mint-btn:first-child{
-  margin-bottom: 10px;
-}
-
-.music-btns #music-add{
-  display: none;
-}
-
-.music-btns button i{
-  font-size: 12px; 
-  margin-right: 2px;
-}
-
-.music-list-items{
-  font-size: 11pt;
-  color: #fff;
-  text-align: center;
-  border-bottom: 2px solid #262F4E;
-  padding: 12px 0;
-}
-
-.music-list-items:last-child{
-  border-bottom: none;
-}
-
-.music-list #delete-music{
-  color: red; 
-  display: none;
-  margin-left: 5px;
-}
-
 .club-mid-column{
   width: 45%;
   margin: 20px;
@@ -327,4 +184,39 @@
 .club-stuff-container{
   position: relative;
   display: -webkit-box;
+}
+
+@media (max-width: 800px){
+  .club-main-container{
+    display: block;
+  }
+  .club-left-column{
+    width: 80%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .club-mid-column{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+  .club-event-item .hot-pink-btn{
+    padding: 5px 50px;
+  }
+  .club-right-column{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 400px){
+  .club-logo-info .buttons b{
+    display: none;
+  }
 }
