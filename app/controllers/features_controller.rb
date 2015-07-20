@@ -15,9 +15,9 @@ class FeaturesController < ApplicationController
 
   def destroy
     @club = Club.friendly.find(params[:club_id])
-    @music = Feature.find(params[:id])
+    @feature = Feature.find(params[:id])
     
-    if @music.destroy 
+    if @feature.destroy 
       respond_to do |format|
         format.html { redirect_to club_path(@club) }
         format.js
