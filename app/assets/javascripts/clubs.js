@@ -5,21 +5,16 @@ $(document).ready(function(){
     openEffect: 'elastic',
     closeEffect: 'elastic',
     helpers:{
-      title:{
-        type: 'inside'
-      }
+      title:{type: 'inside'}
     }
   });
-
   $(".club-logo").fancybox({
     maxWidth: 1400,
     maxHeight: 1400,
     openEffect: 'elastic',
     closeEffect: 'elastic',
     helpers:{
-      title:{
-        type: 'inside'
-      }
+      title:{type: 'inside'}
     }
   });
 });

@@ -80,7 +80,8 @@
             <i class="fa fa-pencil"></i>
             <b>Editar Perfil</b>
             </button>
-            <%= link_to club_path(@club), method: :delete, data: { confirm: '¿Eliminar perfil?' },
+            <%= link_to club_path(@club), method: :delete, 
+            data: { confirm: '¿Eliminar perfil?' },
             class: 'red-btn btn-sm' do %>
               <i class="fa fa-trash-o"></i>
               <b>Eliminar</b>
@@ -134,7 +135,7 @@
     </div>
   </div>
   -->
-
+  <!-- Modals -->
   <% if current_user.is_admin? %>
     <div class="modal fade" id="AddFeature">
       <div class="modal-dialog">
@@ -308,7 +309,7 @@
         ]);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(17);
+        handler.getMap().setZoom(15);
       });
     })
   </script>

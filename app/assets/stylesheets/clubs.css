@@ -32,8 +32,8 @@
 
 .club-logo{
   border-radius: 150px;
-  height: 210px;
-  width: 210px;
+  height: 230px;
+  width: 230px;
   border: 10px solid #51587A;
 }
 
@@ -179,11 +179,6 @@
 .club-address-section #map{
   height: 350px;
   border-radius: 0 0 3px 3px;
-}
-
-.club-stuff-container{
-  position: relative;
-  display: -webkit-box;
 }
 
 @media (min-width: 950px) and (max-width: 1400px){

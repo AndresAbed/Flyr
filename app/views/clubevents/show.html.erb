@@ -9,40 +9,108 @@
     <meta property="og:site_name" content="Flyr">
   <% end %>
 </head>
-<body class="events">
-  <div class="headerbg">
+<body class="event">
+  <div class="header">
     <div class="container header-content">
-      <div class="row">
-        <p class="event-name"><%= @clubevent.name %></p>
-        <p class="club-name">
-          <%= link_to club_path(@club) do %>
-           <%= @clubevent.club_name %>
-          <% end %> 
-        </p>
-      </div>
+      <p class="event-name"><%= @clubevent.name %></p>
     </div>
   </div>
-  <div class="container">
-    <div class="event-buttons">
+  <div class="container event-main-container">
+    <div class="event-image-btns">
+      <img src="<%= @clubevent.image.url %>">
       <% if current_user.is_admin? %>
-        <% if @clubevent.approved == false %>
-          <div style="display: inline-block;">
-            <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
-              <%= f.hidden_field :approved, value: true %>
-              <%= f.submit "Aprobar evento", class: "btn btn-info btn-sm" %>
+        <div class="event-btns">
+            <% if @clubevent.approved == false %>
+              <div style="display: inline-block;">
+                <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
+                  <%= f.hidden_field :approved, value: true %>
+                  <%= f.submit "Aprobar evento", class: "mint-btn btn-sm" %>
+                <% end %>
+              </div>
+            <% end %>  
+            <button type="button" class="mint-btn btn-sm" 
+            data-toggle="modal" data-target="#editEvent">
+              <i class="fa fa-pencil"></i>
+              <b>Editar evento</b>
+            </button>
+            <%= link_to club_clubevent_path(@club, @clubevent),
+            method: :delete, data: { confirm: 'Eliminar evento?' },
+            class: 'red-btn btn-sm' do %>
+              <i class="fa fa-trash-o"></i>
+              <b>Eliminar evento</b>
             <% end %>
-          </div>
-        <% end %>  
-        <button type="button" class="btn btn-info btn-sm" 
-        data-toggle="modal" data-target="#editEvent">Editar evento</button>
-        <%= link_to 'Borrar evento', club_clubevent_path(@club, @clubevent),
-        method: :delete, data: { confirm: 'Eliminar?' },
-        class: 'btn btn-danger btn-sm' %>
+        </div>
       <% end %>
     </div>
+    <div class="event-columns">
+      <div class="event-left-column">
+        <div class="event-description">
+          <p class="description"><%= @clubevent.description %></p>
+        </div>
+        <div class="event-lists">
+          <%= render 'lists' %>
+        </div>
+        <div class="lists-index-btns">
+          <%= link_to 'Inicio', home_path, class: 'mint-btn btn-sm' %>
+          <% if current_user.is_admin? || 
+            current_user.is_pr? && current_user.club_id == @club.id %>
+            <%= form_for :clublist, url: club_clubevent_clublists_path(@club, @clubevent), 
+            remote: true do |f| %>
+              <%= f.submit "Crear lista", class: 'hot-pink-btn btn-sm event-create-list' %>
+            <% end %>
+          <% end %>  
+        </div>
+      </div>
+      <div class="event-right-column">
+        <div class="event-logo-info">
+          <img class="event-logo" src="<%= @clubevent.club_logo.url %>">
+          <p class="club-name">
+            <%= link_to club_path(@club) do %>
+             <%= @clubevent.club_name %>
+            <% end %> 
+          </p>
+          <div class="event-info">
+            <div class="event-date" data-toggle="tooltip" 
+            data-placement="top" title="Fecha">
+              <i class="fa fa-calendar"></i>
+              <span>
+                <%= l @clubevent.date, :format => '%B' %>
+                <%= @clubevent.date.strftime('%d').to_i %>
+              </span>
+            </div>
+            <div class="event-hour" data-toggle="tooltip" 
+            data-placement="top" title="Hora">
+              <i class="fa fa-clock-o"></i>
+              <span><%= @clubevent.hour.strftime("%H:%M") %></span>
+            </div>
+            <div class="event-age" data-toggle="tooltip" 
+            data-placement="top" title="Edad">
+              <i class="fa fa-thumbs-up"></i>
+              <span><%= @clubevent.age %></span>
+            </div>
+          </div>
+        </div>
+        <div class="event-address-section">
+          <p>
+            <i class="fa fa-map-marker"></i>
+            <span>
+              <%= @club.address.split(',')[0] %> -
+              <%= @club.address.split(',')[1]%>
+            </span>
+          </p>
+          <div class="map">
+            <div id="map" data-latitude="<%= @clubevent.latitude %>" 
+            data-longitude="<%= @clubevent.longitude %>" 
+            data-markerName="<%= @clubevent.name %>"></div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
 
-    <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" 
-    aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Modals -->
+  <% if current_user.is_admin? %>
+    <div class="modal fade" id="editEvent">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -87,71 +155,7 @@
         </div>
       </div>
     </div>
-    <div class="row event-image">
-      <img src="<%= @clubevent.image.url %>" style="width: 100%; max-height: 1000px;">
-    </div>
-  </div>  
-  <div class="container event-content">
-    <div class="col-lg-8">
-      <p class="description-name"><%= @clubevent.name %></p>
-      <p style="word-wrap: break-word;"><%= @clubevent.description %></p>
-      <hr class="featurette-divider">
-      <ul class="event-lists" id="lists-partial">
-        <%= render 'lists' %>
-      </ul>
-      <div class="map">
-        <div id="map" data-latitude="<%= @clubevent.latitude %>" 
-        data-longitude="<%= @clubevent.longitude %>" 
-        data-markerName="<%= @clubevent.name %>"
-        style='height: 300px;'></div>
-      </div>
-      <h1>Eventos cercanos</h1>
-      <% for e in @clubevent.nearbys(2) %>
-        <% if e.date == @clubevent.date && e.approved == true && e.ended == false %>
-          <div id="events-pic" class="pic">
-            <img src="<%= e.club_logo.url %>" class="pic-image" alt="Pic">
-            <span id="pic-caption-events" class="pic-caption open-down">
-              <h1 class="pic-title"><%= e.name %></h1>
-              <p class="pic-subtitle"><%= e.address.partition(',').first %></p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.slug, e), class: 'btn btn-default btn-sm' %>
-            </span>
-          </div>
-        <% end %>
-      <% end %>
-      <div class="row" style="margin-left: 0px;">
-        <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
-        <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for 'clublist', 
-        url: club_clubevent_clublists_path(@club, @clubevent), 
-        remote: true do |f| %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </div>
-    <div id="info-col" class="col-lg-4">
-      <div class="container event-logo" 
-        style="background-image: url(<%= @clubevent.club_logo.url %>);">
-      </div>
-      <ul class="info-list">
-        <li class="address-item">
-          <p class="address-title">Dirección:</p>
-        </li>
-        <li>
-          <p class="address"><%= @clubevent.address.partition(',').first %></p>
-        </li>
-        <li class="info-item">
-          <p class="date"><i class="fa fa-calendar fa-cal"></i>
-          <%= l @clubevent.date, :format => '%B' %>
-          <b><%= @clubevent.date.strftime('%d') %></b></p>
-          <p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
-          Hora<b><%= @clubevent.hour.strftime("%H:%M") %></b></p>
-          <p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
-          Edad<b><%= @clubevent.age %></b></p>
-        </li>
-      </ul>
-      <hr class="featurette-divider">
-    </div>
-  </div>
+  <% end %>
 
   <!-- Share buttons -->
   <div class="sharer">
@@ -190,10 +194,8 @@
       handler = Gmaps.build('Google');
       handler.buildMap({ provider: {
           maxZoom: 17, 
-          minZoom: 13,
-          mapTypeControl: false,
-          panControl: false,
-          noClear: true
+          minZoom: 14,
+          disableDefaultUI: true
         }, 
       internal: {id: "map"}}, function(){
         markers = handler.addMarkers([
@@ -209,7 +211,7 @@
         ]);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(17);
+        handler.getMap().setZoom(15);
       });
     })
   </script>

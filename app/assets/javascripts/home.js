@@ -53,8 +53,8 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $('#modal-banner').tooltip()
-})
+  $('#modal-banner').tooltip();
+});
 
 $(document).ready(function() {
   var timer;

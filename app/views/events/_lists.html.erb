@@ -1,30 +1,36 @@
-<% @event.lists.each do |l| %>
-  <li>
-    <div class="list-content">
-      <div class="col-lg-2 list-container-img">
-        <img class="list-img" src="<%= l.list_image.url %>">
-      </div>
-      <div class="col-lg-4 list-text">
-        <p>Lista de <%= l.list_name %></p>
-      </div>
-      <div class="col-lg-4 list-btns">
-        <%= form_for :list_user, url: event_list_listusers_path(@event, l), 
-        remote: true do |f| %>
-          <%= f.submit "Anotarme", class: "btn btn-default btn-xs addName" %>
-        <% end %>
-        <% if l.user_id == current_user.id %>
-          <%= link_to 'Borrar lista', event_list_path(@event, l),
-          method: :delete, data: { confirm: 'Eliminar?' }, 
-          remote: true, class: 'btn btn-danger btn-xs' %>
-        <% end %>  
-        <% l.listusers.each do |lu| %>
-          <% if lu.user_id == current_user.id %>
-            <%= link_to 'Salir de lista', event_list_listuser_path(@event, l, lu),
-            method: :delete, data: { confirm: 'Eliminar?' }, 
-            remote: true, class: 'btn btn-danger btn-xs' %>
+<p class="lists-title">Listas</p>
+<% if @event.lists.empty? %>
+  <p class="lists-empty">Aún no hay listas</p>
+<% else %>  
+  <% @event.lists.each do |l| %>
+    <div class="list-container">
+      <img src="<%= l.list_image.url %>">
+      <p>
+        <i class="ion-android-list"></i>
+        Lista <%= l.list_name %>
+      </p>
+      <div class="list-btns">
+        <% if l.user_id != current_user.id %>
+          <%= form_for :clublist_user, 
+          url: event_list_listusers_path(@event, l),
+          remote: true do |f| %>
+            <%= f.submit "Anotarme", class: "mint-btn btn-sm add-name"%>
           <% end %>
         <% end %>
+        <% l.listusers.each do |lu| %>
+          <% if lu.user_id == current_user.id %>
+            <%= link_to 'Salir de lista', 
+            event_list_listuser_path(@event, l, lu),
+            method: :delete, data: { confirm: 'Estás seguro?' }, 
+            remote: true, class: 'red-btn btn-sm remove-name' %>
+          <% end %>
+        <% end %>
+        <% if l.user_id == current_user.id || current_user.is_admin? %>
+          <%= link_to 'Borrar lista', event_list_path(@event, l),
+          method: :delete, data: { confirm: 'Eliminar?' }, 
+          remote: true, class: 'red-btn btn-sm remove-list' %>
+        <% end %>
       </div>  
-    </div>
-  </li>  
-<% end %>
+    </div> 
+  <% end %>
+<% end %>  

@@ -73,7 +73,7 @@
   .music-btns{
     width: 200px;
     left: 50% !important;
-    transform: translate(-50%, 0);
+    transform: translateX(-50%);
   }
   .music-btns-show{
     top: -35px;

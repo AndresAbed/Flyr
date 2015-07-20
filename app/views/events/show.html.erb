@@ -9,39 +9,108 @@
     <meta property="og:site_name" content="Flyr">
   <% end %>
 </head>
-<body class="events">
-  <div class="headerbg">
+<body class="event">
+  <div class="header">
     <div class="container header-content">
-      <div class="row">
-        <p class="event-name"><%= @event.name %></p>
-      </div>
+      <p class="event-name"><%= @event.name %></p>
     </div>
   </div>
-  <div class="container">
-    <div class="event-buttons">
-      <button type="button" class="btn btn-info btn-sm" 
-      data-toggle="modal" data-target="#editEvent">Editar evento</button>
-      <%= link_to 'Borrar evento', event_path(@event),
-      method: :delete, data: { confirm: 'Eliminar?' },
-      class: 'btn btn-danger btn-sm' %>
+  <div class="container event-main-container">
+    <div class="event-image-btns">
+      <img src="<%= @event.image.url %>">
+      <% if current_user.is_admin? %>
+        <div class="event-btns">
+            <button type="button" class="mint-btn btn-sm" 
+            data-toggle="modal" data-target="#editEvent">
+              <i class="fa fa-pencil"></i>
+              <b>Editar evento</b>
+            </button>
+            <%= link_to event_path(@event),
+            method: :delete, data: { confirm: 'Eliminar evento?' },
+            class: 'red-btn btn-sm' do %>
+              <i class="fa fa-trash-o"></i>
+              <b>Eliminar evento</b>
+            <% end %>
+        </div>
+      <% end %>
     </div>
+    <div class="event-columns">
+      <div class="event-left-column">
+        <div class="event-description">
+          <p class="description"><%= @event.description %></p>
+        </div>
+        <div class="event-lists">
+          <%= render 'lists' %>
+        </div>
+        <div class="lists-index-btns">
+          <%= link_to 'Inicio', home_path, class: 'mint-btn btn-sm' %>
+          <% if current_user.is_admin? || 
+            current_user.is_pr? && current_user.club_id == @club.id %>
+            <%= form_for :clublist, url: event_lists_path(@event), 
+            remote: true do |f| %>
+              <%= f.submit "Crear lista", class: 'hot-pink-btn btn-sm event-create-list' %>
+            <% end %>
+          <% end %>  
+        </div>
+      </div>
+      <div class="event-right-column">
+        <div class="event-logo-info">
+          <img class="event-logo" src="<%= @event.event_logo.url %>">
+          <p class="club-name">Flyr</p>
+          <div class="event-info">
+            <div class="event-date" data-toggle="tooltip" 
+            data-placement="top" title="Fecha">
+              <i class="fa fa-calendar"></i>
+              <span>
+                <%= l @event.date, :format => '%B' %>
+                <%= @event.date.strftime('%d').to_i %>
+              </span>
+            </div>
+            <div class="event-hour" data-toggle="tooltip" 
+            data-placement="top" title="Hora">
+              <i class="fa fa-clock-o"></i>
+              <span><%= @event.hour.strftime("%H:%M") %></span>
+            </div>
+            <div class="event-age" data-toggle="tooltip" 
+            data-placement="top" title="Edad">
+              <i class="fa fa-thumbs-up"></i>
+              <span><%= @event.age %></span>
+            </div>
+          </div>
+        </div>
+        <div class="event-address-section">
+          <p>
+            <i class="fa fa-map-marker"></i>
+            <span>
+              <%= @event.address.split(',')[0] %> -
+              <%= @event.address.split(',')[1]%>
+            </span>
+          </p>
+          <div class="map">
+            <div id="map" data-latitude="<%= @event.latitude %>" 
+            data-longitude="<%= @event.longitude %>" 
+            data-markerName="<%= @event.name %>"></div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
 
-    <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" 
-    aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Modals -->
+  <% if current_user.is_admin? %>
+    <div class="modal fade" id="editEvent">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span><span class="sr-only">
             Cerrar</span></button>
-            <h4 class="modal-title" id="myModalLabel">Editar</h4>
+            <h4 class="modal-title">Editar</h4>
           </div>
           <%= form_for :event, url: event_path(@event), method: :patch do |e| %>
             <div class="modal-body">
               <div class="row">
                 <%= e.text_field :name, :placeholder => 'Nombre del evento',
-                class: 'form-control name-address-field' %>
-                <%= e.text_field :address, :placeholder => 'Dirección',
                 class: 'form-control name-address-field' %>
               </div>
               <div class="row modal-row-2">
@@ -63,9 +132,6 @@
               <div class="row modal-row-4">
                 <%= e.label "Portada", class: 'image-title' %>
                 <%= e.file_field :image %>
-
-                <%= e.label "Logo", class: 'image-title' %>
-                <%= e.file_field :event_logo %>
               </div>
             </div>
             <div class="modal-footer">
@@ -77,57 +143,7 @@
         </div>
       </div>
     </div>
-    <div class="row event-image">
-      <img src="<%= @event.image.url %>" style="width: 100%; max-height: 1000px;">
-    </div>
-  </div>  
-  <div class="container event-content">
-    <div class="col-lg-8">
-      <p class="description-name"><%= @event.name %></p>
-      <p><%= @event.description %></p>
-      <hr class="featurette-divider">
-      <ul class="event-lists" id="lists-partial">
-        <%= render 'lists' %> 
-      </ul>
-      <div class="map">
-        <div id="map" data-latitude="<%= @event.latitude %>" 
-        data-longitude="<%= @event.longitude %>" 
-        data-markerName="<%= @event.name %>"
-        style='height: 300px;'></div>
-      </div>
-      <div class="row" style="margin-left: 0px;">
-        <%= link_to 'Inicio', home_path, class: 'btn btn-primary' %>
-        <%= link_to 'Volver', :back, class: 'btn btn-primary' %>
-        <%= form_for 'lista', url: event_lists_path(@event), 
-        remote: true do |f| %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </div>
-    <div id="info-col" class="col-lg-4">
-      <div class="container event-logo" 
-        style="background-image: url(<%= @event.event_logo.url %>);">
-      </div>
-      <ul class="info-list">
-        <li class="address-item">
-          <p class="address-title">Dirección:</p>
-        </li>
-        <li>
-          <p class="address"><%= @event.address.partition(',').first %></p>
-        </li>
-        <li class="info-item">
-          <p class="date"><i class="fa fa-calendar fa-cal"></i>
-          <%= l @event.date, :format => '%B' %>
-          <b><%= @event.date.strftime('%d') %></b></p>
-          <p class="hour-age"><i class="fa fa-clock-o fa-clo"></i>
-          Hora<b><%= @event.hour.strftime("%H:%M") %></b></p>
-          <p class="hour-age"><i class="fa fa-thumbs-up fa-thumbs"></i>
-          Edad<b><%= @event.age %></b></p>
-        </li>
-      </ul>
-      <hr class="featurette-divider">
-    </div>
-  </div>
+  <% end %>
 
   <!-- Share buttons -->
   <div class="sharer">
@@ -166,10 +182,8 @@
       handler = Gmaps.build('Google');
       handler.buildMap({ provider: {
           maxZoom: 17, 
-          minZoom: 13,
-          mapTypeControl: false,
-          panControl: false,
-          noClear: true
+          minZoom: 14,
+          disableDefaultUI: true
         }, 
       internal: {id: "map"}}, function(){
         markers = handler.addMarkers([
@@ -185,7 +199,7 @@
         ]);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(17);
+        handler.getMap().setZoom(15);
       });
     })
   </script>

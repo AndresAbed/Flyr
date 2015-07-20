@@ -9,7 +9,7 @@ class ClublistusersController < ApplicationController
       clubevent_id: @clubevent.id,
       user_id: current_user.id})
 
-    if @clublistuser.save 
+    if @clublistuser.save
       respond_to do |format|
         format.html { redirect_to :back }
         format.js

@@ -164,7 +164,6 @@ span.pic-caption a:hover{
 }
 @media screen and (max-width: 633px){
   .pic{
-    max-width:70%;
     max-height:300px;
     display:block;
     -webkit-animation:none;

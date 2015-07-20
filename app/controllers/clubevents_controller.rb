@@ -20,8 +20,6 @@ class ClubeventsController < ApplicationController
   def show
     @club = Club.friendly.find(params[:club_id])
     @clubevent = Clubevent.friendly.find(params[:id])
-    @clublist = @clubevent.clublists
-    @clublistusers = @clubevent.clublistusers
   end
 
   def update

@@ -228,7 +228,7 @@
                 <%= e.date.strftime('%e') %> de <%= l e.date, format: '%B' %>
                 <br><i class="ion-ios-location"></i><%= e.address.partition(',').first %>
               </p>
-              <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn btn-default' %>
+              <%= link_to 'Ver evento', club_clubevent_path(e.club_id, e), class: 'btn events-span-btn' %>
             </span>
           </div>
         <% end %>
