@@ -24,7 +24,10 @@
               <div style="display: inline-block;">
                 <%= form_for :clubevent, url: club_clubevent_path(@club, @clubevent), method: :patch do |f| %>
                   <%= f.hidden_field :approved, value: true %>
-                  <%= f.submit "Aprobar evento", class: "mint-btn btn-sm" %>
+                  <%= button_tag(type: 'submit', class: "mint-btn btn-sm") do %>
+                    <i class="ion-thumbsup"></i>
+                    <b>Aprobar evento</b>
+                  <% end %>
                 <% end %>
               </div>
             <% end %>  
