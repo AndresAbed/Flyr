@@ -54,6 +54,14 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('#modal-banner').tooltip();
+  $('#all-mark').tooltip();
+  $('#monday-mark').tooltip();
+  $('#tuesday-mark').tooltip();
+  $('#wednesday-mark').tooltip();
+  $('#thursday-mark').tooltip();
+  $('#friday-mark').tooltip();
+  $('#saturday-mark').tooltip();
+  $('#sunday-mark').tooltip();
 });
 
 $(document).ready(function() {

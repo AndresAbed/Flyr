@@ -57,7 +57,7 @@
   max-height: 700px;
 }
 
-.item>img {
+.item img {
 min-width: 100%;
 }
 
@@ -151,13 +151,25 @@ min-width: 100%;
   border-top: 1px solid #D8D6D6;
 }
 
-.tabbable-line > .nav-tabs {
+.tabbable-line .nav-tabs {
   border: none;
   text-align: center;
   max-width: 1400px;
   margin: auto;
 }
-.tabbable-line > .nav-tabs > li {
+
+.nav-tabs li + .tooltip .tooltip-inner{
+  background-color:#fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: #5FCF80
+}
+
+.nav-tabs li + .tooltip.top .tooltip-arrow {
+  border-top-color: #fff;
+}
+
+.tabbable-line .nav-tabs li {
   border-left: 1px solid #D8D6D6;
   float: none;
   display: inline-block;
@@ -165,10 +177,10 @@ min-width: 100%;
   margin-right: -3px;
   border-bottom: 4px solid transparent;
 }
-.tabbable-line > .nav-tabs > li:last-child{
+.tabbable-line .nav-tabs li:last-child{
   border-right: 1px solid #D8D6D6;
 }
-.tabbable-line > .nav-tabs > li > a {
+.tabbable-line .nav-tabs li a {
   border: 0;
   margin: 0;
   padding: 0;
@@ -178,36 +190,36 @@ min-width: 100%;
   font-weight: bold;
   border-bottom: 4px solid transparent;
 }
-.tabbable-line > .nav-tabs > li > a > i {
+.tabbable-line .nav-tabs li a i {
   color: #5FCF80;
   margin-right: 6px;
 }
-.tabbable-line > .nav-tabs > li.open > a, 
-.tabbable-line > .nav-tabs > li:hover > a {
+.tabbable-line .nav-tabs li.open a, 
+.tabbable-line .nav-tabs li:hover a {
   border: 0;
   background: none !important;
   color: #565656;
 }
-.tabbable-line > .nav-tabs > li.open > a > i, 
-.tabbable-line > .nav-tabs > li:hover > a > i {
+.tabbable-line .nav-tabs li.open a i, 
+.tabbable-line .nav-tabs li:hover a i {
   color: #565656;
 }
-.tabbable-line > .nav-tabs > li.open .dropdown-menu, 
-.tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+.tabbable-line .nav-tabs li.open .dropdown-menu, 
+.tabbable-line .nav-tabs li:hover .dropdown-menu {
   margin-top: 0px;
 }
-.tabbable-line > .nav-tabs > li.active {
+.tabbable-line .nav-tabs li.active {
   position: relative;
 }
-.tabbable-line > .nav-tabs > li.active > a {
+.tabbable-line .nav-tabs li.active a {
   border: 0;
   color: #565656;
   border-bottom: 6px solid #5FCF80;
 }
-.tabbable-line > .nav-tabs > li.active > a > i {
+.tabbable-line .nav-tabs li.active a i {
   color: #565656;
 }
-.tabbable-line > .tab-content {
+.tabbable-line .tab-content {
   margin-top: -3px;
   background: #eee url(http://www.herewecom.fr/wp-content/themes/herewecom/img/contents/section_projets.png) repeat bottom center;
   border: 0;
@@ -226,7 +238,7 @@ min-width: 100%;
   margin-top: 30px;
 }
 
-.tab-pane .search > span{
+.tab-pane .search span{
   background-color: #5FCF80;
   border-radius: 5px 0 0 5px;
 }
@@ -238,17 +250,17 @@ min-width: 100%;
   margin-right: auto;
 }
 
-.tab-pane .search > span > i{
+.tab-pane .search span i{
   color: #fff;
   font-size: 12pt;
 }
 
-.tab-pane .search > input{
+.tab-pane .search input{
   padding: 20px 0 20px 15px;
   font-size: 12pt;
 }
 
-.tab-pane .search > input:focus{
+.tab-pane .search input:focus{
   border-color: #5FCF80;
   -webkit-box-shadow: 0 0 8px rgba(44, 193, 133, 0.6);
   box-shadow: 0 0 8px rgba(44, 193, 133, 0.6);
@@ -371,23 +383,23 @@ min-width: 100%;
   margin-top: 30px;
 }
 
-.clubs-grid-header .search > span{
+.clubs-grid-header .search span{
   background-color: #ffc63e;
   border-radius: 5px 0 0 5px;
   border-color: transparent;
 }
 
-.clubs-grid-header .search > span > i{
+.clubs-grid-header .search span i{
   color: #fff;
   font-size: 12pt;
 }
 
-.clubs-grid-header .search > input{
+.clubs-grid-header .search input{
   padding: 20px 0 20px 15px;
   font-size: 12pt;
 }
 
-.clubs-grid-header .search > input:focus{
+.clubs-grid-header .search input:focus{
   border-color: #42c6f3;
   -webkit-box-shadow: 0 0 8px rgba(255, 198, 62, 0.6);
   box-shadow: 0 0 8px rgba(255, 198, 62, 0.6);
