@@ -181,6 +181,17 @@
   border-radius: 0 0 3px 3px;
 }
 
+.modal-body .modal-right-column #club_logo{
+  color: #fff;
+  margin-top: 10px;
+}
+
+.modal-body .modal-main-column #clubevent_image{
+  color: #fff;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
 @media (min-width: 950px) and (max-width: 1400px){
   .club-main-container{
     width: 80%;

@@ -463,16 +463,13 @@ ul.social li a {
 
 /* Modals */
 
-.modal-content{
-  border-radius: 3px;
-}
-
 .modal-header{
   text-align: center;
-  background-color: red;
+  background-color: #13C1C4;
   color: #fff;
   position: relative;
   border-radius: 3px 3px 0 0;
+  border-bottom: none;
 }
 
 .modal-header .close{
@@ -488,4 +485,87 @@ ul.social li a {
 .modal-header h4{
   font-weight: bold;
   font-size: 18pt;
+}
+
+.modal-body{
+  background-color: #394263;
+  padding: 0;
+  text-align: center;
+  border-radius: 0 0 3px 3px;
+}
+
+.modal-body label{
+  color: #fff;
+  font-size: 12pt;
+}
+
+.modal-body .modal-main-column{
+  width: 60%;
+  display: inline-block;
+}
+
+.modal-body .modal-main-column div{
+  margin-top: 10px;
+}
+
+.modal-body .modal-main-column textarea{
+  max-width: 360px;
+  min-height: 140px;
+}
+
+.modal-body .modal-main-column #event_image{
+  color: #fff;
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+.modal-body .modal-main-column #event_event_logo{
+  color: #fff;
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+
+.modal-body .modal-left-column{
+  width: 45%;
+  display: inline-block;
+  padding: 10px;
+}
+
+.modal-body .modal-left-column div{
+  margin-top: 10px;
+}
+
+.modal-body .modal-right-column{
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
+
+.modal-body .modal-right-column div{
+  margin-top: 10px;
+}
+
+.modal-body select{
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.modal-body .modal-btns{
+  border-top: 1px solid #262F4E;
+  padding: 10px 0;
+  margin-top: 15px;
+}
+
+.modal-body .modal-btns .btn{
+  padding: 5px 35px;
+  font-weight: bold;
 }

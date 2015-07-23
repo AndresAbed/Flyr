@@ -7,40 +7,6 @@
     <button id="modal-banner" type="button" class="banner-btn" data-toggle="modal" 
     data-target="#EditBanner" data-toggle="tooltip" 
     data-placement="right" title="Cambiar banner"><i class="ion-camera"></i></button>
-    <div class="modal fade" id="EditBanner">
-    	<div class="modal-dialog">
-    		<div class="modal-content">
-    			<div class="modal-header">
-    				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    				<h4 class="modal-title" id="myModalLabel">Actualizar banner</h4>
-    			</div>
-    			<%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
-    				<div class="modal-body">
-    					<div class="row images-fields">
-    						<%= b.label "Imagen 1", class: "label label-success image-label" %>
-    						<%= b.file_field :image1, class: "choose-btn" %>
-    					</div>
-    					<div class="row images-fields">
-    						<%= b.label "Imagen 2", class: "label label-success image-label" %>
-    						<%= b.file_field :image2, class: "choose-btn" %>
-    					</div>
-    					<div class="row images-fields">
-    						<%= b.label "Imagen 3", class: "label label-success image-label" %>
-    						<%= b.file_field :image3, class: "choose-btn" %>
-    					</div>
-    					<div class="row images-fields">
-    						<%= b.label "Imagen 4", class: "label label-success image-label" %>
-    						<%= b.file_field :image4, class: "choose-btn" %>
-    					</div>
-    				</div>
-    				<div class="modal-footer">
-    					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-    					<%= b.submit 'Actualizar', class: "btn btn-primary" %>
-    				</div>
-    			<% end %>
-    		</div>
-    	</div>
-    </div>
   <% end %>
   <div class="carousel slide" id="BannerCarousel">
   	<ol class="carousel-indicators">
@@ -70,50 +36,13 @@
   </div>
 <% else %>
   <% if current_user.is_admin? %>
-    <div class="modal fade" id="NewBanner">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Crear banner</h4>
-          </div>
-          <%= form_for :banner, url: banners_path(@banner) do |b| %>
-            <div class="modal-body">
-              <div class="row images-fields">
-                <%= b.label "Imagen 1", class: "label label-success image-label" %>
-                <%= b.file_field :image1, class: "choose-btn" %>
-              </div>
-              <div class="row images-fields">
-                <%= b.label "Imagen 2", class: "label label-success image-label" %>
-                <%= b.file_field :image2, class: "choose-btn" %>
-              </div>
-              <div class="row images-fields">
-                <%= b.label "Imagen 3", class: "label label-success image-label" %>
-                <%= b.file_field :image3, class: "choose-btn" %>
-              </div>
-              <div class="row images-fields">
-                <%= b.label "Imagen 4", class: "label label-success image-label" %>
-                <%= b.file_field :image4, class: "choose-btn" %>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <%= b.submit 'Crear', class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
     <div class="carousel slide" id="NewBannerCarousel">  
       <div class="carousel-inner">
         <div class="item active">
           <img alt="Image1" src="http://www.solidbackgrounds.com/images/2880x1800/2880x1800-tiffany-blue-solid-color-background.jpg">
         </div>
-        <button class="new-banner-btn btn red-btn btn-lg" type="button" data-toggle="modal" data-target="#NewBanner">
-          Crear Banner
-        </button>
+        <button class="new-banner-btn btn red-btn btn-lg" type="button" 
+        data-toggle="modal" data-target="#NewBanner">Crear Banner</button>
       </div>
     </div>
   <% else %>
@@ -446,3 +375,83 @@
     <div id="clubs-partial"><%= render 'clubs' %></div>
 	</div>
 </div>
+
+<!-- Modals -->
+
+<% if current_user.is_admin? %>
+  <div class="modal fade" id="EditBanner">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Cambiar banner</h4>
+        </div>
+        <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
+          <div class="modal-body">
+            <div class="modal-left-column">
+              <div>
+                <%= b.label "Imagen 1" %>
+                <%= b.file_field :image1 %>
+              </div>
+              <div>
+                <%= b.label "Imagen 2" %>
+                <%= b.file_field :image2 %>
+              </div>
+            </div>
+            <div class="modal-right-column">
+              <div>
+                <%= b.label "Imagen 3" %>
+                <%= b.file_field :image3 %>
+              </div>
+              <div>
+                <%= b.label "Imagen 4" %>
+                <%= b.file_field :image4 %>
+              </div>
+            </div>
+            <div class="modal-btns">
+              <%= b.submit 'Guardar', class: "btn mint-btn" %>
+              <button type="button" class="btn hot-pink-btn" 
+              data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="NewBanner">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Crear banner</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for :banner, url: banners_path(@banner) do |b| %>
+            <div class="row images-fields">
+              <%= b.label "Imagen 1", class: "label label-success image-label" %>
+              <%= b.file_field :image1, class: "choose-btn" %>
+            </div>
+            <div class="row images-fields">
+              <%= b.label "Imagen 2", class: "label label-success image-label" %>
+              <%= b.file_field :image2, class: "choose-btn" %>
+            </div>
+            <div class="row images-fields">
+              <%= b.label "Imagen 3", class: "label label-success image-label" %>
+              <%= b.file_field :image3, class: "choose-btn" %>
+            </div>
+            <div class="row images-fields">
+              <%= b.label "Imagen 4", class: "label label-success image-label" %>
+              <%= b.file_field :image4, class: "choose-btn" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <%= b.submit 'Crear', class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+  </div>
+<% end %>

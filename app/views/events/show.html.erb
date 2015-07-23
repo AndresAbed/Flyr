@@ -107,37 +107,40 @@
             Cerrar</span></button>
             <h4 class="modal-title">Editar</h4>
           </div>
+        </div>
+        <div class="modal-body">
           <%= form_for :event, url: event_path(@event), method: :patch do |e| %>
-            <div class="modal-body">
-              <div class="row">
-                <%= e.text_field :name, :placeholder => 'Nombre del evento',
-                class: 'form-control name-address-field' %>
+            <div class="modal-main-column">
+              <div>
+                <%= e.label "Nombre" %><br>
+                <%= e.text_field :name, class: "form-control" %>
               </div>
-              <div class="row modal-row-2">
-                <%= e.label "Fecha", class: 'label label-danger title-label' %>
+              <div>
+                <%= e.label "Fecha" %><br>
                 <%= e.date_select :date, :start_year => Date.current.year, 
-                :end_year => Date.current.year+5 %>
-
-                <%= e.label "Hora", class: 'label label-danger title-label' %>
+                :end_year => Date.current.year+5, html: {class: "form-control"} %>
+              </div>
+              <div>
+                <%= e.label "Hora" %><br>
                 <%= e.time_select :hour, :ignore_date => true %>
-
-                <%= e.label "Edad", class: 'label label-danger title-label' %>
+              </div>
+              <div>
+                <%= e.label "Edad" %><br>
                 <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
               </div>
-              <div class="row">
-                <h4><%= e.label "Descripción del evento", 
-                class: 'label label-success title-label' %></h4>
-                <%= e.text_area :description, class: 'desc-area' %>
+              <div>
+                <%= e.label "Descripción" %><br>
+                <%= e.text_area :description, class: "form-control" %>
               </div>
-              <div class="row modal-row-4">
-                <%= e.label "Portada", class: 'image-title' %>
+              <div>
+              <%= e.label "Imagen de portada" %><br>
                 <%= e.file_field :image %>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" 
+            </div>  
+            <div class="modal-btns">
+              <%= e.submit "Crear evento", class: "btn mint-btn" %>
+              <button type="button" class="btn hot-pink-btn" 
               data-dismiss="modal">Cancelar</button>
-              <%= e.submit "Guardar", class: "btn btn-primary" %>
             </div>
           <% end %>
         </div>

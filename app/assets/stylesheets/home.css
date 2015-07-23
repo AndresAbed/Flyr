@@ -28,17 +28,24 @@
 	transition: all .3s ease-in-out;
 }
 
-.images-fields{
-	margin-left: 100px;
-	display: inline-flex;
+.modal-body #banner_image1{
+  color: #fff;
+  margin-top: 10px;
 }
 
-.image-label{
-	font-size: 10pt;
+.modal-body #banner_image2{
+  color: #fff;
+  margin-top: 10px;
 }
 
-.choose-btn{
-	margin-left: 60px;
+.modal-body #banner_image3{
+  color: #fff;
+  margin-top: 10px;
+}
+
+.modal-body #banner_image4{
+  color: #fff;
+  margin-top: 10px;
 }
 
 .slide {

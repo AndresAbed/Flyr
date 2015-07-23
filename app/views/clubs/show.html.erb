@@ -71,7 +71,7 @@
             <button type="button" class="mint-btn btn-sm" 
             data-toggle="modal" data-target="#CreateEvent">
             <i class="fa fa-plus"></i>
-            <b>Crear Evento</b>
+            <b>Nuevo Evento</b>
             </button>
           <% end %>  
           <% if current_user.is_admin? %>
@@ -145,20 +145,24 @@
               <span aria-hidden="true">&times;</span><span class="sr-only">
               Cerrar</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">Añadir</h4>
+            <h4 class="modal-title" id="myModalLabel">Servicios y comodidades</h4>
           </div>
           <div class="modal-body">
             <%= form_for :feature, url: club_features_path(@club), 
             remote: true, html:{id: :new_feature} do |f| %>
-              <div class="row">
-                <%= f.label "Tipo de servicio o comodidad" %><br>
-                <%= f.text_field :name %>
+              <div class="modal-main-column">
+                <div>
+                  <%= f.label "Tipo de servicio" %><br>
+                  <%= f.text_field :name, class: "form-control" %>
+                </div>
               </div>
-              <div class="row">
-                <%= f.submit "Aceptar"%>
+              <div class="modal-btns">
+                <%= f.submit "Agregar", class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
               </div>
             <% end %>
-          </div>
+          </div>  
         </div>
       </div>
     </div>
@@ -169,19 +173,23 @@
             <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span><span class="sr-only">
             Cerrar</span></button>
-            <h4 class="modal-title" id="myModalLabel">Añadir</h4>
+            <h4 class="modal-title" id="myModalLabel">Música</h4>
           </div>
           <div class="modal-body">
             <%= form_for :music, url: club_musics_path(@club), 
             remote: true, html:{id: :new_music} do |f| %>
-              <div class="row">
-                <%= f.label "tipo de musica" %><br>
-                <%= f.text_field :name %>
+              <div class="modal-main-column">
+                <div>
+                  <%= f.label "tipo de musica" %><br>
+                  <%= f.text_field :name, class: "form-control" %>
+                </div>
+              </div>  
+              <div class="modal-btns">
+                <%= f.submit "Agregar", class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
               </div>
-              <div class="row">
-                <%= f.submit "Aceptar"%>
-              </div>
-            <% end %>
+            <% end %>  
           </div>
         </div>
       </div>
@@ -197,41 +205,54 @@
           </div>
           <div class="modal-body">
             <%= form_for :club, url: club_path(@club), method: :patch do |c| %>
-              <div class="row">
-                <%= c.label "Nombre"%><br>
-                <%= c.text_field :name, :placeholder => 'Nombre del boliche' %>
+              <div class="modal-left-column">
+                <div>
+                  <%= c.label "Nombre"%><br>
+                  <%= c.text_field :name, :placeholder => 'Nombre del boliche',
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Dirección"%><br>
+                  <%= c.text_field :address, :placeholder => 'Dirección',
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Facebook"%><br>
+                  <%= c.text_field :facebook, :placeholder => 'Facebook url',
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Twitter URL" %><br>
+                  <%= c.text_field :twitter,
+                  class: "form-control" %>
+                </div>
               </div>
-              <div class="row">
-                <%= c.label "Dirección"%><br>
-                <%= c.text_field :address, :placeholder => 'Dirección' %>
-              </div>
-              <div class="row">
-                <%= c.label "Facebook"%><br>
-                <%= c.text_field :facebook, :placeholder => 'Facebook url' %>
-              </div>
-              <div class="row">
-                <%= c.label "Twitter URL" %><br>
-                <%= c.text_field :twitter %>
-              </div>
-              <div class="row">
-                <%= c.label "Google+ URL" %><br>
-                <%= c.text_field :googleplus %>
-              </div>
-              <div class="row">
-                <%= c.label "Instagram URL" %><br>
-                <%= c.text_field :instagram %>
-              </div>
-              <div class="row">
-                <%= c.label "Youtube URL" %><br>
-                <%= c.text_field :youtube %>
-              </div>
-              <div class="row">
-                <%= c.label "Logo" %><br>
-                <%= c.file_field :logo %>
-              </div>
-              <div class="row">
-                <%= c.submit "Guardar", class: "btn blue-btn" %>
-              </div>
+              <div class="modal-right-column">
+                <div>
+                  <%= c.label "Google+ URL" %><br>
+                  <%= c.text_field :googleplus,
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Instagram URL" %><br>
+                  <%= c.text_field :instagram,
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Youtube URL" %><br>
+                  <%= c.text_field :youtube,
+                  class: "form-control" %>
+                </div>
+                <div>
+                  <%= c.label "Logo" %><br>
+                  <%= c.file_field :logo %>
+                </div>
+              </div>  
+              <div class="modal-btns">
+                <%= c.submit "Guardar", class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
+                </div>
             <% end %>
           </div>
         </div>
@@ -248,38 +269,43 @@
             <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span><span class="sr-only">
             Cerrar</span></button>
-            <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
+            <h4 class="modal-title" id="myModalLabel">Nuevo evento</h4>
           </div>
           <div class="modal-body">
             <%= form_for :clubevent, url: club_clubevents_path(@club) do |e| %>
-              <div class="row">
-                <%= e.label "Nombre" %><br>
-                <%= e.text_field :name %>
+              <div class="modal-main-column">
+                <div>
+                  <%= e.label "Nombre" %><br>
+                  <%= e.text_field :name, class: "form-control" %>
+                </div>
+                <div>
+                  <%= e.label "Fecha" %><br>
+                  <%= e.date_select :date, :start_year => Date.current.year, 
+                  :end_year => Date.current.year+5 %>
+                </div>
+                <div>
+                  <%= e.label "Hora" %><br>
+                  <%= e.time_select :hour, :ignore_date => true %>
+                </div>
+                <div>
+                  <%= e.label "Edad" %><br>
+                  <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+                </div>
+                <div>
+                  <%= e.label "Descripción" %><br>
+                  <%= e.text_area :description, class: "form-control" %>
+                </div>
+                <div>
+                <%= e.label "Imagen de portada" %><br>
+                  <%= e.file_field :image %>
+                </div>
+              </div>  
+              <div class="modal-btns">
+                <%= e.submit "Crear evento", class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
               </div>
-              <div class="row">
-                <%= e.label "Fecha" %><br>
-                <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
-              </div>
-              <div class="row">
-                <%= e.label "Hora" %><br>
-                <%= e.time_select :hour, :ignore_date => true %>
-              </div>
-              <div class="row">
-                <%= e.label "Edad" %><br>
-                <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
-              </div>
-              <div class="row">
-                <%= e.label "Información" %><br>
-                <%= e.text_area :description %>
-              </div>
-              <div class="row">
-              <%= e.label "Imagen del evento" %><br>
-                <%= e.file_field :image %>
-              </div>
-              <div class="row">
-                <%= e.submit "Crear evento", class: "btn blue-btn" %>
-              </div>
-            <% end %>
+            <% end %>  
           </div>
         </div>
       </div>

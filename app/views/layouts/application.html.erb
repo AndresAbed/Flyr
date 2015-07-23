@@ -124,8 +124,8 @@
           </div>
         </div>  
       </nav>
+      <!-- Navbar Modals -->
       <% if current_user.is_admin? %>
-        <!-- New clubs and events -->
         <div class="modal fade" id="NewClub">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -133,48 +133,53 @@
                 <button type="button" class="close" data-dismiss="modal">
                   <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Crear boliche</h4>
+                <h4 class="modal-title" id="myModalLabel">Nuevo boliche</h4>
               </div>
-              <%= form_for :club, url: clubs_path do |c| %>
-                <div class="modal-body">
-                 <div class="row">
-                    <%= c.label "Nombre" %><br>
-                    <%= c.text_field :name %>
+              <div class="modal-body">
+                <%= form_for :club, url: clubs_path do |c| %>
+                  <div class="modal-left-column">
+                    <div>
+                      <%= c.label "Nombre" %><br>
+                      <%= c.text_field :name, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Dirección" %><br>
+                      <%= c.text_field :address, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Facebook URL" %><br>
+                      <%= c.text_field :facebook, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Twitter URL" %><br>
+                      <%= c.text_field :twitter, class: "form-control" %>
+                    </div>
                   </div>
-                  <div class="row">
-                    <%= c.label "Dirección" %><br>
-                    <%= c.text_field :address %>
+                  <div class="modal-right-column">
+                    <div>
+                      <%= c.label "Google+ URL" %><br>
+                      <%= c.text_field :googleplus, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Instagram URL" %><br>
+                      <%= c.text_field :instagram, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Youtube URL" %><br>
+                      <%= c.text_field :youtube, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= c.label "Logo" %><br>
+                      <%= c.file_field :logo %>
+                    </div>
                   </div>
-                  <div class="row">
-                    <%= c.label "Facebook URL" %><br>
-                    <%= c.text_field :facebook %>
-                  </div>
-                  <div class="row">
-                    <%= c.label "Twitter URL" %><br>
-                    <%= c.text_field :twitter %>
-                  </div>
-                  <div class="row">
-                    <%= c.label "Google+ URL" %><br>
-                    <%= c.text_field :googleplus %>
-                  </div>
-                  <div class="row">
-                    <%= c.label "Instagram URL" %><br>
-                    <%= c.text_field :instagram %>
-                  </div>
-                  <div class="row">
-                    <%= c.label "Youtube URL" %><br>
-                    <%= c.text_field :youtube %>
-                  </div>
-                  <div class="row">
-                    <%= c.label "Logo" %><br>
-                    <%= c.file_field :logo %>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <%= c.submit 'Crear', class: "btn btn-primary" %>
-                </div>
-              <% end %>
+                  <div class="modal-btns">
+                    <%= c.submit 'Crear', class: "btn mint-btn" %>
+                    <button type="button" class="btn hot-pink-btn" 
+                    data-dismiss="modal">Cancelar</button>
+                  </div> 
+                <% end %>
+              </div>  
             </div>
           </div>
         </div>
@@ -187,53 +192,57 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Crear evento</h4>
               </div>
-              <%= form_for :event, url: events_path do |e| %>
-                <div class="modal-body">
-                  <div class="row">
-                    <%= e.label "Nombre" %><br>
-                    <%= e.text_field :name %>
+              <div class="modal-body">
+                <%= form_for :event, url: events_path do |e| %>
+                  <div class="modal-main-column">
+                    <div>
+                      <%= e.label "Nombre" %><br>
+                      <%= e.text_field :name, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= e.label "Dirección" %><br>
+                      <%= e.text_field :address, class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= e.label "Fecha" %><br>
+                      <%= e.date_select :date, :start_year => Date.current.year, 
+                      :end_year => Date.current.year+5 %>
+                    </div>
+                    <div>
+                      <%= e.label "Hora" %><br>
+                      <%= e.time_select :hour, :ignore_date => true %>
+                    </div>
+                    <div>
+                      <%= e.label "Edad" %><br>
+                      <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
+                    </div>
+                    <div>
+                      <%= e.label "Información" %><br>
+                      <%= e.text_area :description, class: "form-control" %>
+                    </div>
+                    <div>
+                    <%= e.label "Imagen del evento" %><br>
+                      <%= e.file_field :image %>
+                    </div>
+                    <div>
+                    <%= e.label "Logo del evento" %><br>
+                      <%= e.file_field :event_logo %>
+                    </div>
+                  </div>  
+                  <div class="modal-btns">
+                    <%= e.submit 'Crear', class: "btn mint-btn" %>
+                    <button type="button" class="btn hot-pink-btn" 
+                    data-dismiss="modal">Cancelar</button>
                   </div>
-                  <div class="row">
-                    <%= e.label "Dirección" %><br>
-                    <%= e.text_field :address %>
-                  </div>
-                  <div class="row">
-                    <%= e.label "Fecha" %><br>
-                    <%= e.date_select :date, :start_year => Date.current.year, :end_year => Date.current.year+5 %>
-                  </div>
-                  <div class="row">
-                    <%= e.label "Hora" %><br>
-                    <%= e.time_select :hour, :ignore_date => true %>
-                  </div>
-                  <div class="row">
-                    <%= e.label "Edad" %><br>
-                    <%= e.select :age, [['+16'],['+18'],['+21'],['+23'],['+25']] %>
-                  </div>
-                  <div class="row">
-                    <%= e.label "Información" %><br>
-                    <%= e.text_area :description %>
-                  </div>
-                  <div class="row">
-                  <%= e.label "Imagen del evento" %><br>
-                    <%= e.file_field :image %>
-                  </div>
-                  <div class="row">
-                  <%= e.label "Logo del evento" %><br>
-                    <%= e.file_field :event_logo %>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <%= e.submit 'Crear', class: "btn btn-primary" %>
-                </div>
-              <% end %>
+                <% end %>
+              </div>  
             </div>
           </div>
         </div>
       <% end %>
     <% else %>
       <div class="modal fade" id="rrpp-modal" tabindex="-1" 
-            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -277,7 +286,6 @@
     <audio id="notificationSound" preload="auto">
       <source src="https://a.clyp.it/0knhbnzu.mp3" type="audio/mpeg">
       <source src="https://a.clyp.it/0knhbnzu.ogg" type="audio/ogg">
-      Your browser does not support the audio tag.
     </audio>
 
     <%= yield %>
