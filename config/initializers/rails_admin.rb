@@ -2,7 +2,7 @@ RailsAdmin.config do |config|
 
   RailsAdmin.config do |config|
     config.authorize_with do
-      if not current_user or not current_user.is_admin?
+      if not current_user.is_admin?
         raise ActionController::RoutingError.new('Not Found')
       end  
     end
