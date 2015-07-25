@@ -1,39 +1,20 @@
 $(document).ready(function(){
-  animationClick('.sign_in_container', '#sign_in_btn', 'fadeInDownBig');
-
-  function animationClick(form, btn, animation){
-    var form = $(form);
-    var btn = $(btn);
-    btn.click(function() {
-      form.addClass('animated ' + animation);
-      form.css({
-        "position":"absolute", 
-        "display":"block", 
-        "margin-top":"200px", 
-        "margin-left":"auto", 
-        "margin-right":"auto", 
-        "left":"0", 
-        "right":"0"
-      });
-      window.setTimeout( function(){
-        form.removeClass('animated ' + animation);
-      }, 1000);
-    });
+  var showForm = function(){
+    var form = $('.sign-in-container');
+    form.addClass('animated fadeInDownBig');
+    form.addClass('sign-in-container-show');
+    window.setTimeout( function(){
+      form.removeClass('fadeInDownBig');
+    }, 1000);
   };
-});
-
-$(document).ready(function(){
-  animationClick('.sign_in_container', '#close', 'fadeOutUp');
-
-  function animationClick(form, closeBtn, animation){
-    var form = $(form);
-    var closeBtn = $(closeBtn);
-    closeBtn.click(function() {
-      form.addClass('animated ' + animation);
-      window.setTimeout( function(){
-        form.removeClass('animated ' + animation);
-        form.hide();
-      }, 1000);
-    });
-  };
-});
+  var hideForm = function(){
+    var form = $('.sign-in-container');
+    form.addClass('animated fadeOutUp');
+    window.setTimeout( function(){
+      form.removeClass('animated fadeOutUp');
+      form.removeClass('sign-in-container-show');
+    }, 1000);
+  }
+  $('#sign-in-btn').click(showForm);
+  $('#close-btn').click(hideForm);
+})

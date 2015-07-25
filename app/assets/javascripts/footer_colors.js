@@ -13,7 +13,7 @@ $(document).ready(function(){
 
   var resetFooter = function(){
     $("#footer").css({
-      "background-color":"#1b354c", 
+      "background-color":"#1b354c",
       "transition":makeBackgroundTransition()
     })
     $(".social i").css({
