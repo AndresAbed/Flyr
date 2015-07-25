@@ -33,7 +33,7 @@ class Clubevent < ActiveRecord::Base
 
   # Url for pending events
   def eventUrl
-    Rails.application.routes.url_helpers.club_clubevent_path(club_id, slug)
+    Rails.application.routes.url_helpers.club_clubevent_path(slug, slug)
   end
 
   # Worker methods
