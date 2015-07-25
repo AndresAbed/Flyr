@@ -19,6 +19,10 @@
   outline: 0px none !important;
 }
 
+html, body{
+  height: 100%;
+}
+
 .btn-default:hover{
   border-color: transparent;
 }
