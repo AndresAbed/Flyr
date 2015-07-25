@@ -53,6 +53,8 @@
 }
 
 .edit-form .elements .form-control:focus{
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #5FCF80;
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #5FCF80;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #5FCF80;
   border-color: #5FCF80;
 }

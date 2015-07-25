@@ -16,6 +16,7 @@
 
 *{
   font-family: 'Titillium Web', sans-serif;
+  outline: 0px none !important;
 }
 
 .btn-default:hover{
@@ -86,6 +87,8 @@ a:hover, a:focus {
   border-left: none;
   border-right: none;
   font-size: 13px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -103,6 +106,9 @@ a:hover, a:focus {
 
 .navbar-static-top .nav>li:hover{
   border-top: 4px solid #42c6f3;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
 
@@ -132,6 +138,9 @@ a:hover, a:focus {
   padding-bottom: 0;
   background: transparent;
   font-weight: bold;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
@@ -156,11 +165,17 @@ a:hover, a:focus {
   background: transparent;
   border: none;
   font-weight: bold;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
 .navbar-static-top .nav li.dropdown button:hover{
   color: #42c6f3;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }
 
@@ -185,6 +200,9 @@ a:hover, a:focus {
   padding-bottom: 0;
   background: transparent;
   font-weight: bold;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
@@ -221,7 +239,10 @@ a:hover, a:focus {
 
 .navbar-static-top .nav li.dropdown>ul>li>a:hover{
   color: #42c6f3;
-  transition: color .2s ease-in-out;  
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 
 .navbar-default .navbar-nav .open > a, 
@@ -305,6 +326,9 @@ a:hover, a:focus {
 
   .nav li.dropdown>ul>li>a:hover{
     color: #42c6f3 !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   }
 }
@@ -412,18 +436,24 @@ ul.social li a {
 }
 
 .facebook-share{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
   padding: 5px 14px;
   font-size: 20px;
 }
 
 .twitter-share{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
   padding: 5px 10px;
   font-size: 20px;
 }
 
 .google-share{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
   padding: 5px 10px;
   font-size: 20px;
@@ -468,6 +498,8 @@ ul.social li a {
   background-color: #13C1C4;
   color: #fff;
   position: relative;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
   border-bottom: none;
 }
@@ -479,6 +511,10 @@ ul.social li a {
   position: absolute;
   right: 15px;
   top: 50%;
+  -webkit-transform: translateY(-70%);
+  -moz-transform: translateY(-70%);
+  -ms-transform: translateY(-70%);
+  -o-transform: translateY(-70%);
   transform: translateY(-70%);
 }
 
@@ -491,6 +527,8 @@ ul.social li a {
   background-color: #394263;
   padding: 0;
   text-align: center;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
 
@@ -500,7 +538,7 @@ ul.social li a {
 }
 
 .modal-body .modal-main-column{
-  width: 60%;
+  width: 70%;
   display: inline-block;
 }
 
@@ -509,7 +547,7 @@ ul.social li a {
 }
 
 .modal-body .modal-main-column textarea{
-  max-width: 360px;
+  max-width: 400px;
   min-height: 140px;
 }
 
@@ -556,6 +594,8 @@ ul.social li a {
   background-color: #ffffff;
   background-image: none;
   border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px;
 }
 

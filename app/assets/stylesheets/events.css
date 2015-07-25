@@ -41,15 +41,22 @@
   top: 5px;
   width: 100%;
   z-index: -1;
+  -webkit-transition: top .2s ease-in-out;
+  -moz-transition: top .2s ease-in-out;
+  -o-transition: top .2s ease-in-out;
   transition: top .2s ease-in-out;
 }
 
 .event-btns-show{
   top: -40px;
+  -webkit-transition: top .2s ease-in-out;
+  -moz-transition: top .2s ease-in-out;
+  -o-transition: top .2s ease-in-out;
   transition: top .2s ease-in-out;
 }
 
 .event-columns{
+  display: -webkit-flex;
   display: flex;
   margin-top: 20px;
 }
@@ -60,6 +67,8 @@
 
 .event-description{
   background-color: #394263;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
@@ -83,6 +92,8 @@
   margin: 20px auto;
   background-color: #FCB150;
   padding: 5px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
   font-size: 18pt;
 }
@@ -93,6 +104,8 @@
   text-align: center;
   background-color: #394263;
   padding: 15px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
@@ -100,6 +113,8 @@
   background-color: #394263;
   position: relative;
   margin: 35px 5px;
+  -webkit-border-radius: 75px 3px 3px 75px;
+  -moz-border-radius: 75px 3px 3px 75px;
   border-radius: 75px 3px 3px 75px;
   height: 75px;
   text-align: center;
@@ -108,9 +123,15 @@
 .list-container > img{
   width: 100px;
   height: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
   border-radius: 100px;
   position: absolute;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
   transform: translateY(-50%);
   left: -10px;
 
@@ -131,6 +152,10 @@
   position: absolute;
   right: 10px;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -151,6 +176,7 @@
 }
 
 .lists-index-btns{
+  display: -webkit-flex;
   display: flex;
   float: right;
 }
@@ -174,10 +200,14 @@
   background-color: #394263;
   margin-left: 20px;
   padding-top: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
 .event-logo{
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
   border-radius: 150px;
   height: 230px;
   width: 230px;
@@ -194,16 +224,23 @@
 
 .event-logo-info .club-name a{
   color: #fff;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }
 
 .event-logo-info .club-name a:hover{
   color: #9099B7;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }
 
 .event-info{
-  display: -webkit-inline-box;
+  display: -webkit-flex;
+  display: flex;
   color: #fff;
   width: 100%;
   font-size: 14pt;
@@ -216,6 +253,7 @@
   font-size: 14pt;
   border-right: 1px solid #262F4E;
   border-top: 3px solid #E64C65;
+  display: inline-block;
 }
 
 .event-date i{
@@ -238,6 +276,7 @@
   padding: 20px 0;
   font-size: 14pt;
   border-top: 3px solid #11A8AB;
+  display: inline-block;
 }
 
 .event-hour i{
@@ -261,6 +300,7 @@
   font-size: 14pt;
   border-left: 1px solid #262F4E;
   border-top: 3px solid #FCB150;
+  display: inline-block;
 }
 
 .event-age i{
@@ -291,6 +331,8 @@
   font-size: 12pt;
   padding: 20px 10px;
   margin: 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
 
@@ -303,13 +345,19 @@
   border: none;
   width: 100%;
   margin: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
   margin-bottom: 15px;
 }
 
 .event-address-section #map{
   height: 400px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
 
@@ -331,6 +379,10 @@
     top: auto;
     bottom: 10px;
     display: -webkit-box;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
     transform: none;
   }
   .event-lists .list-btns .add-name {

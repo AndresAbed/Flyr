@@ -4,7 +4,7 @@
 <body class="welcome-body">
   <div class="banner">
     <div class="layout">
-      <div id="sign_in_btn">
+      <div id="sign-in-btn">
         <a href="#" class="round">
           <span>Ingresar</span>
           <span class="round">Descubrí todo lo que tiene Flyr para vos</span>
@@ -39,7 +39,7 @@
         </nav>
       </div>
       <!-- Sign in form -->
-      <div class="">
+      <div>
         <div class="welcome-alert">
           <% if alert %>
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
@@ -48,10 +48,10 @@
             </div>
           <% end %>
         </div>
-        <div class="sign_in_container">
-          <div class="sign_in_form">
+        <div class="sign-in-container">
+          <div class="sign-in-form">
             <div class="header">
-              <i id="close" class="ion-android-close"></i>
+              <i id="close-btn" class="ion-android-close"></i>
               <h2>Iniciar sesión</h2>
             </div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -59,12 +59,12 @@
                 <span class="input-group-addon"><i class="ion-person"></i></span>
                 <%= f.text_field :username, autofocus: true, autocomplete: "off",
                  :placeholder => "Usuario", 
-                 class: "form-control sign_in_field" %>
+                 class: "form-control sign-in-field" %>
               </div>
               <div class="input-group form-content">
                 <span class="input-group-addon"><i class="ion-locked"></i></span>
                 <%= f.password_field :password, :placeholder => "Contraseña",
-                class: "form-control sign_in_field" %>
+                class: "form-control sign-in-field" %>
               </div>
               <div class="form-content"><%= f.submit "Ingresar", class: "btn btn-default" %></div>
               <div class="links">
@@ -74,7 +74,7 @@
             <div class="oauth-btns">
               <% if current_user %>
                 Signed in as <strong><%= current_user.username %></strong>!
-                <%= link_to "Sign out", signout_path, id: "sign_out" %>
+                <%= link_to "Sign out", signout_path, id: "sign-out" %>
               <% else %>
                 <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
                   <i id="social-icons" class="fa fa-facebook"></i>
@@ -100,79 +100,16 @@
       <img class="img-circle" src="http://s18.postimg.org/x9usn9hw9/image.png" alt="Generic placeholder image">
       <h3>Inicias sesión</h3>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-      <button id="details-button" type="button" class="btn btn-default"
-       data-toggle="modal" data-target="#myModal">
-        <i class="ion-information-circled"></i>
-        <span>Mas detalles</span>
-      </button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="numbers">
       <img class="img-circle" src="http://s18.postimg.org/58gr9kcm1/image.png" alt="Generic placeholder image">
       <h3>Elegís un evento</h3>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-      <button id="details-button" type="button" class="btn btn-default"
-       data-toggle="modal" data-target="#myModal">
-        <i class="ion-information-circled"></i>
-        <span>Mas detalles</span>
-      </button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="numbers">
       <img class="img-circle" src="http://s18.postimg.org/avd471f4p/image.png" alt="Generic placeholder image">
       <h3>Pones tu nombre en lista</h3>
       <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-      <button id="details-button" type="button" class="btn btn-default"
-       data-toggle="modal" data-target="#myModal">
-        <i class="ion-information-circled"></i>
-        <span>Mas detalles</span>
-      </button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 

@@ -394,8 +394,8 @@
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 class="modal-title" id="myModalLabel">Cambiar banner</h4>
         </div>
-        <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
-          <div class="modal-body">
+        <div class="modal-body">
+          <%= form_for :banner, url: banner_path(@banner), method: :patch do |b| %>
             <div class="modal-left-column">
               <div>
                 <%= b.label "Imagen 1" %>
@@ -421,8 +421,8 @@
               <button type="button" class="btn hot-pink-btn" 
               data-dismiss="modal">Cancelar</button>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>  
       </div>
     </div>
   </div>
@@ -437,25 +437,30 @@
         </div>
         <div class="modal-body">
           <%= form_for :banner, url: banners_path(@banner) do |b| %>
-            <div class="row images-fields">
-              <%= b.label "Imagen 1", class: "label label-success image-label" %>
-              <%= b.file_field :image1, class: "choose-btn" %>
+            <div class="modal-left-column">
+              <div>
+                <%= b.label "Imagen 1" %>
+                <%= b.file_field :image1 %>
+              </div>
+              <div>
+                <%= b.label "Imagen 2" %>
+                <%= b.file_field :image2 %>
+              </div>
             </div>
-            <div class="row images-fields">
-              <%= b.label "Imagen 2", class: "label label-success image-label" %>
-              <%= b.file_field :image2, class: "choose-btn" %>
+            <div class="modal-right-column">
+              <div>
+                <%= b.label "Imagen 3" %>
+                <%= b.file_field :image3 %>
+              </div>
+              <div>
+                <%= b.label "Imagen 4" %>
+                <%= b.file_field :image4 %>
+              </div>
             </div>
-            <div class="row images-fields">
-              <%= b.label "Imagen 3", class: "label label-success image-label" %>
-              <%= b.file_field :image3, class: "choose-btn" %>
-            </div>
-            <div class="row images-fields">
-              <%= b.label "Imagen 4", class: "label label-success image-label" %>
-              <%= b.file_field :image4, class: "choose-btn" %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <%= b.submit 'Crear', class: "btn btn-primary" %>
+            <div class="modal-btns">
+              <%= b.submit 'Guardar', class: "btn mint-btn" %>
+              <button type="button" class="btn hot-pink-btn" 
+              data-dismiss="modal">Cancelar</button>
             </div>
           <% end %>
         </div>  
