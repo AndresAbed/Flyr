@@ -137,15 +137,6 @@ min-width: 100%;
   transition: width .3s ease-in-out;
 }
 
-@media (max-width: 600px){
-  #modal-banner{
-    display: none;
-  }
-  .carousel{
-    display: none;
-  }
-}
-
 /* Events */
 .events-panel-header{
   text-align: center;
@@ -363,30 +354,6 @@ min-width: 100%;
   }
 }
 
-@media(max-width: 600px){
-  .tab-pane .search{
-    width: 90%;
-  }
-  .day-event-empty{
-    font-size: 20pt !important;
-  }
-  .day-event-empty i{
-    font-size: 35pt !important;
-  }
-}
-
-@media (max-width: 550px){
-  .events-panel-header i {
-    font-size: 28pt !important;
-  }
-  .events-panel-header .title{
-    font-size: 20pt;
-  }
-  .events-panel-header .subtitle {
-    font-size: 16pt;
-  }
-}
-
 /* Clubs */
 
 .clubs-grid-header{
@@ -486,18 +453,6 @@ min-width: 100%;
   }
 }
 
-@media(max-width: 700px){
-  .clubs-search-empty {
-    font-size: 26pt;
-  }
-}
-
-@media(max-width: 600px){
-  .clubs-grid-header .search{
-    width: 90%;
-  }
-}
-
 @media (max-width: 750px){
   .clubs-grid-header i {
     font-size: 36pt;
@@ -507,14 +462,8 @@ min-width: 100%;
   }
 }
 
-@media (max-width: 550px){
-  .clubs-grid-header i {
-    font-size: 28pt;
-  }
-  .clubs-grid-header .title{
-    font-size: 20pt;
-  }
-  .clubs-grid-header .subtitle {
-    font-size: 16pt;
+@media(max-width: 700px){
+  .clubs-search-empty {
+    font-size: 26pt;
   }
 }

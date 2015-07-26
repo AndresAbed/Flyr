@@ -354,9 +354,3 @@
     font-size: 40pt;
   }
 }
-
-@media (max-width: 600px){
-  .welcome-alert{
-    width: 90%;
-  }
-}

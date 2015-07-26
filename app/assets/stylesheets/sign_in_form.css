@@ -156,9 +156,3 @@
     margin-top: 50px;
   }
 }
-
-@media (max-width: 400px){
-  .sign-in-form{
-    width: 100%;
-  }
-}

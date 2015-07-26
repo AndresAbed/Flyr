@@ -361,18 +361,18 @@
   border-radius: 0 0 3px 3px;
 }
 
-@media(max-width: 991px){
+@media(max-width: 990px){
   .event-lists .list-container {
-    height: 100px;
+    height: 90px;
   }
   .list-container > p {
-    line-height: 60px;
+    line-height: 45px;
     text-align: right;
     margin-right: 15px;
   }
   .list-container > img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
   .event-lists .list-btns {
     position: absolute;
@@ -422,51 +422,5 @@
   .event-name{
     font-size: 70pt;
     margin-top: 25px;
-  }
-}
-
-@media(max-width: 650px){
-  .event-logo{
-    width: 170px;
-    height: 170px;
-  }
-}
-
-@media(max-width: 600px){
-  .event-lists .lists-title{
-    font-size: 14pt;
-  }
-  .event-lists .lists-empty{
-    font-size: 12pt;
-  }
-}
-
-@media(min-width: 500px) and (max-width: 700px){
-  .event-name{
-    font-size: 60pt;
-    margin-top: 45px;
-  }
-}
-
-@media(max-width: 500px){
-  .event-name{
-    font-size: 55pt;
-    margin-top: 45px;
-  }
-  .event-logo{
-    width: 140px;
-    height: 140px;
-  }
-  .event-logo-info .club-name {
-    font-size: 18pt;
-  }
-  .event-date{
-    font-size: 12pt;
-  }
-  .event-hour{
-    font-size: 12pt;
-  }
-  .event-age{
-    font-size: 12pt;
   }
 }

@@ -94,9 +94,3 @@
     margin-right: auto;
   }
 }
-
-@media (max-width: 600px){
-  .account-edit-body > .container{
-    width: 95%;
-  }
-}
