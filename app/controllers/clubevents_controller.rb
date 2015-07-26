@@ -13,7 +13,15 @@ class ClubeventsController < ApplicationController
     @clubevent.ended = false
 
     if @clubevent.save
-      redirect_to club_clubevent_path(@club, @clubevent)
+      @clublist = Clublist.new ({
+      list_name: "Flyr",
+      list_image: current_user.profile_img,
+      clubevent_id: @clubevent.id, 
+      club_id: @club.id})
+
+      if @clublist.save 
+        redirect_to club_clubevent_path(@club, @clubevent)
+      end  
     end
   end
 

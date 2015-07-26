@@ -5,7 +5,13 @@ class EventsController < ApplicationController
     @event.ended = false
     
 	  if @event.save
-      redirect_to @event
+      @list = List.new ({
+        list_name: "Flyr",
+        list_image: current_user.profile_img,
+        event_id: @event.id})
+      if @list.save 
+        redirect_to @event
+      end
 	  end
   end
 
