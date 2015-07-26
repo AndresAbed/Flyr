@@ -116,6 +116,11 @@
                 <%= e.text_field :name, class: "form-control" %>
               </div>
               <div>
+                <%= e.label "Dirección" %><br>
+                <%= e.text_field :address, id:'edit-event-address', 
+                class: "form-control", placeholder: "Escribe una dirección..." %>
+              </div>
+              <div>
                 <%= e.label "Fecha" %><br>
                 <%= e.date_select :date, :start_year => Date.current.year, 
                 :end_year => Date.current.year+5, html: {class: "form-control"} %>

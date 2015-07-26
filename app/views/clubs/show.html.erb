@@ -208,40 +208,40 @@
               <div class="modal-left-column">
                 <div>
                   <%= c.label "Nombre"%><br>
-                  <%= c.text_field :name, :placeholder => 'Nombre del boliche',
+                  <%= c.text_field :name, :placeholder => 'Nombre',
                   class: "form-control" %>
                 </div>
                 <div>
                   <%= c.label "Dirección"%><br>
-                  <%= c.text_field :address, :placeholder => 'Dirección',
-                  class: "form-control" %>
+                  <%= c.text_field :address, id: "new-club-address",
+                  class: "form-control", placeholder: 'Escribe una dirección...' %>
                 </div>
                 <div>
-                  <%= c.label "Facebook"%><br>
-                  <%= c.text_field :facebook, :placeholder => 'Facebook url',
-                  class: "form-control" %>
+                  <%= c.label "Facebook" %><br>
+                  <%= c.text_field :facebook, class: "form-control",
+                  placeholder: "Facebook" %>
                 </div>
                 <div>
-                  <%= c.label "Twitter URL" %><br>
-                  <%= c.text_field :twitter,
-                  class: "form-control" %>
+                  <%= c.label "Twitter" %><br>
+                  <%= c.text_field :twitter, class: "form-control",
+                  placeholder: "Twitter" %>
                 </div>
               </div>
               <div class="modal-right-column">
                 <div>
-                  <%= c.label "Google+ URL" %><br>
-                  <%= c.text_field :googleplus,
-                  class: "form-control" %>
+                  <%= c.label "Google+" %><br>
+                  <%= c.text_field :googleplus, class: "form-control",
+                  placeholder: "Google Plus" %>
                 </div>
                 <div>
-                  <%= c.label "Instagram URL" %><br>
-                  <%= c.text_field :instagram,
-                  class: "form-control" %>
+                  <%= c.label "Instagram" %><br>
+                  <%= c.text_field :instagram, class: "form-control",
+                  placeholder: "Instagram" %>
                 </div>
                 <div>
-                  <%= c.label "Youtube URL" %><br>
-                  <%= c.text_field :youtube,
-                  class: "form-control" %>
+                  <%= c.label "Youtube" %><br>
+                  <%= c.text_field :youtube, class: "form-control",
+                  placeholder: "Youtube" %>
                 </div>
                 <div>
                   <%= c.label "Logo" %><br>
@@ -276,7 +276,8 @@
               <div class="modal-main-column">
                 <div>
                   <%= e.label "Nombre" %><br>
-                  <%= e.text_field :name, class: "form-control" %>
+                  <%= e.text_field :name, placeholder: "Nombre",
+                  class: "form-control" %>
                 </div>
                 <div>
                   <%= e.label "Fecha" %><br>

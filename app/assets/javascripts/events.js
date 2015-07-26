@@ -12,3 +12,25 @@ $(document).ready(function(){
   $('.event-hour').tooltip();
   $('.event-age').tooltip();
 })
+
+$(document).ready(function(){
+  $(function() {
+    var completer = new GmapsCompleter({
+      inputField: '#new-event-address',
+      errorField: '#gmaps-error'
+    });
+    completer.autoCompleteInit({
+      region: "AR"
+    });
+  });
+
+  $(function() {
+    var completer = new GmapsCompleter({
+      inputField: '#edit-event-address',
+      errorField: '#gmaps-error'
+    });
+    completer.autoCompleteInit({
+      region: "AR"
+    });
+  });
+})

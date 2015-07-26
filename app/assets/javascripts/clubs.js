@@ -106,3 +106,25 @@ $(document).ready(function(){
     $(this).find("span").removeClass("club-event-span-up");
   });
 })
+
+$(document).ready(function(){
+  $(function() {
+    var completer = new GmapsCompleter({
+      inputField: '#new-club-address',
+      errorField: '#gmaps-error'
+    });
+    completer.autoCompleteInit({
+      region: "AR"
+    });
+  });
+
+  $(function() {
+    var completer = new GmapsCompleter({
+      inputField: '#edit-club-address',
+      errorField: '#gmaps-error'
+    });
+    completer.autoCompleteInit({
+      region: "AR"
+    });
+  });
+})

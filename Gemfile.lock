@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/kristianmandrup/gmaps-autocomplete-rails.git
+  revision: 9d70d80ca610066844dc2e24d261959f44a6ed53
+  specs:
+    gmaps-autocomplete-rails (0.1.4)
+      rails (>= 3.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -300,6 +307,7 @@ DEPENDENCIES
   devise
   friendly_id
   geocoder
+  gmaps-autocomplete-rails!
   gmaps4rails
   guard-livereload
   jbuilder (~> 2.0)

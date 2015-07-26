@@ -14,6 +14,7 @@
   width: 100%;
   background-color: #091e31;
   color: white;
+  position: relative;
 }
 
 .header h2{
@@ -90,6 +91,7 @@
   margin-left: 170px;
   cursor: pointer;
   margin-top: 5px;
+  right: 15px;
 }
 
 .other-forms{
