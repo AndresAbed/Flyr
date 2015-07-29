@@ -99,6 +99,72 @@
   color: #97A0C1;
 }
 
+.place-photos{
+  background-color: #394263;
+  min-height: 150px;
+  margin: 20px 0;
+  position: relative;
+  text-align: center;
+}
+
+.place-photos #new-gallery{
+  position: absolute;
+  top: 5px;
+  background-color: transparent;
+  font-size: 12pt;
+  left: 0;
+}
+
+#new-gallery + .tooltip > .tooltip-inner{
+  background-color: #13C1C4;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+#new-gallery + .tooltip.left .tooltip-arrow {
+  border-left-color: #13C1C4;
+}
+
+.place-photos #edit-gallery{
+  position: absolute;
+  top: 3px;
+  background-color: transparent;
+  font-size: 12pt;
+  left: 0;
+}
+
+#edit-gallery + .tooltip > .tooltip-inner{
+  background-color: #13C1C4;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+#edit-gallery + .tooltip.left .tooltip-arrow {
+  border-left-color: #13C1C4;
+}
+
+.place-photos .gallery-title{
+  text-align: center;
+  font-size: 13pt;
+  color: #fff;
+  padding: 10px 0;
+  margin-bottom: 5px;
+  width: 100%;
+  display: block;
+  background-color: #13C1C4;s
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+
+.place-photos img{
+  width: 30%;
+  height: 100px;
+  border-radius: 3px;
+  border: 6px solid #51587A;
+  margin: 6px 3px;
+}
+
 .club-events{
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -226,3 +292,21 @@
   margin-top: 10px;
 }
 
+.modal-body .modal-left-column #clubimage_img1,
+.modal-body .modal-left-column #clubimage_img2,
+.modal-body .modal-left-column #clubimage_img3,
+.modal-body .modal-right-column #clubimage_img4,
+.modal-body .modal-right-column #clubimage_img5,
+.modal-body .modal-right-column #clubimage_img6{
+  color: #fff;
+  margin-top: 10px;
+}
+
+@media(max-width: 1200px){
+  .club-main-container{
+    margin-top: 20px;
+  }
+  .club-event-item {
+    min-height: 200px;
+   } 
+}

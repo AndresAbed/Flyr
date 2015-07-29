@@ -13,6 +13,7 @@ class ClubsController < ApplicationController
     @eventsNumber = @club.clubevents.count
     @listsNumber = @club.clublists.count
     @events = @club.clubevents.where(ended: false, approved: true)
+    @clubimage = Clubimage.all
   end
 
   def update

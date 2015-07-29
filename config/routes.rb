@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         resources :clublistusers, only: [:create, :destroy]
       end
     end
+    resources :clubimages
   end
 
   # Pending Events

@@ -37,6 +37,10 @@ a:hover, a:focus {
   font-size: 10pt;
 }
 
+.tooltip.in {
+  opacity: 1;
+}
+
 .ui-autocomplete{
   z-index: 9999;
 }

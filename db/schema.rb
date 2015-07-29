@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628232942) do
+ActiveRecord::Schema.define(version: 20150728231843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,36 @@ ActiveRecord::Schema.define(version: 20150628232942) do
   end
 
   add_index "clubevents", ["slug"], name: "index_clubevents_on_slug", using: :btree
+
+  create_table "clubimages", force: :cascade do |t|
+    t.integer  "club_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "img1_file_name"
+    t.string   "img1_content_type"
+    t.integer  "img1_file_size"
+    t.datetime "img1_updated_at"
+    t.string   "img2_file_name"
+    t.string   "img2_content_type"
+    t.integer  "img2_file_size"
+    t.datetime "img2_updated_at"
+    t.string   "img3_file_name"
+    t.string   "img3_content_type"
+    t.integer  "img3_file_size"
+    t.datetime "img3_updated_at"
+    t.string   "img4_file_name"
+    t.string   "img4_content_type"
+    t.integer  "img4_file_size"
+    t.datetime "img4_updated_at"
+    t.string   "img5_file_name"
+    t.string   "img5_content_type"
+    t.integer  "img5_file_size"
+    t.datetime "img5_updated_at"
+    t.string   "img6_file_name"
+    t.string   "img6_content_type"
+    t.integer  "img6_file_size"
+    t.datetime "img6_updated_at"
+  end
 
   create_table "clublists", force: :cascade do |t|
     t.string   "list_name"

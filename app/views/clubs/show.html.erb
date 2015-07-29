@@ -89,6 +89,56 @@
           <% end %> 
         </div>
       </div>
+      <div class="place-photos">
+        <span class="gallery-title"><b>Conocé el lugar</b></span>
+        <% if @club.clubimages.present? %>
+          <button type="button" class="mint-btn btn-sm" 
+          data-toggle="modal" data-target="#ChangePhotos"
+          id="edit-gallery" title="Actualizar fotos" data-placement="left">
+          <i class="fa fa-pencil"></i></button>
+          <% if @club.clubimages.first.img1.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img1.url%>" >
+              <img src="<%= @club.clubimages.first.img1.url%>">
+            </a>
+          <% end %>  
+          <% if @club.clubimages.first.img2.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img2.url%>" >
+              <img src="<%= @club.clubimages.first.img2.url%>">
+            </a>
+          <% end %>
+          <% if @club.clubimages.first.img3.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img3.url%>" >
+              <img src="<%= @club.clubimages.first.img3.url%>">
+            </a>
+          <% end %>
+          <% if @club.clubimages.first.img4.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img4.url%>" >
+              <img src="<%= @club.clubimages.first.img4.url%>">
+            </a>
+          <% end %>
+          <% if @club.clubimages.first.img5.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img5.url%>" >
+              <img src="<%= @club.clubimages.first.img5.url%>">
+            </a>
+          <% end %>
+          <% if @club.clubimages.first.img6.present? %>
+            <a class="fancybox" rel="gallery" 
+            href="<%= @club.clubimages.first.img6.url%>" >
+              <img src="<%= @club.clubimages.first.img6.url%>">
+            </a>
+          <% end %>
+        <% else %>
+           <button type="button" class="mint-btn btn-sm" 
+          data-toggle="modal" data-target="#NewPhotos" 
+          id="new-gallery" title="Crear galería" data-placement="left">
+          <i class="fa fa-plus"></i></button>  
+        <% end %>
+      </div>
       <div class="club-events">
         <span class="club-events-title">
           <b>Eventos</b>
@@ -124,17 +174,6 @@
       </div>
     </div>
   </div>
-  <!--
-  <div class="club-main-container">
-    <div class="club-stuff-container">
-        <div class="club-events-galery">
-          <div class="club-galery">
-            <p>Conocé el lugar</p>
-          </div>
-        </div>
-    </div>
-  </div>
-  -->
   <!-- Modals -->
   <% if current_user.is_admin? %>
     <div class="modal fade" id="AddFeature">
@@ -213,7 +252,7 @@
                 </div>
                 <div>
                   <%= c.label "Dirección"%><br>
-                  <%= c.text_field :address, id: "new-club-address",
+                  <%= c.text_field :address, id: "edit-club-address",
                   class: "form-control", placeholder: 'Escribe una dirección...' %>
                 </div>
                 <div>
@@ -308,6 +347,102 @@
               </div>
             <% end %>  
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="NewPhotos">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Crear galería</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for :clubimage, url: club_clubimages_path(@club) do |b| %>
+              <div class="modal-left-column">
+                <div>
+                  <%= b.label "Imagen 1" %>
+                  <%= b.file_field :img1 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 2" %>
+                  <%= b.file_field :img2 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 3" %>
+                  <%= b.file_field :img3 %>
+                </div>
+              </div>
+              <div class="modal-right-column">
+                <div>
+                  <%= b.label "Imagen 4" %>
+                  <%= b.file_field :img4 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 5" %>
+                  <%= b.file_field :img5 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 6" %>
+                  <%= b.file_field :img6 %>
+                </div>
+              </div>
+              <div class="modal-btns">
+                <%= b.submit 'Guardar', class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
+              </div>
+            <% end %>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ChangePhotos">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Actualizar fotos</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for :clubimage, url: club_clubimage_path(@club, @clubimage), method: :patch do |b| %>
+              <div class="modal-left-column">
+                <div>
+                  <%= b.label "Imagen 1" %>
+                  <%= b.file_field :img1 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 2" %>
+                  <%= b.file_field :img2 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 3" %>
+                  <%= b.file_field :img3 %>
+                </div>
+              </div>
+              <div class="modal-right-column">
+                <div>
+                  <%= b.label "Imagen 4" %>
+                  <%= b.file_field :img4 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 5" %>
+                  <%= b.file_field :img5 %>
+                </div>
+                <div>
+                  <%= b.label "Imagen 6" %>
+                  <%= b.file_field :img6 %>
+                </div>
+              </div>
+              <div class="modal-btns">
+                <%= b.submit 'Guardar', class: "btn mint-btn" %>
+                <button type="button" class="btn hot-pink-btn" 
+                data-dismiss="modal">Cancelar</button>
+              </div>
+            <% end %>
+          </div>  
         </div>
       </div>
     </div>

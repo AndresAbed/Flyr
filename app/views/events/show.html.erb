@@ -58,21 +58,18 @@
           <img class="event-logo" src="<%= @event.event_logo.url %>">
           <p class="club-name">Flyr</p>
           <div class="event-info">
-            <div class="event-date" data-toggle="tooltip" 
-            data-placement="top" title="Fecha">
+            <div class="event-date" data-placement="top" title="Fecha">
               <i class="fa fa-calendar"></i>
               <span>
                 <%= l @event.date, :format => '%B' %>
                 <%= @event.date.strftime('%d').to_i %>
               </span>
             </div>
-            <div class="event-hour" data-toggle="tooltip" 
-            data-placement="top" title="Hora">
+            <div class="event-hour" data-placement="top" title="Hora">
               <i class="fa fa-clock-o"></i>
               <span><%= @event.hour.strftime("%H:%M") %></span>
             </div>
-            <div class="event-age" data-toggle="tooltip" 
-            data-placement="top" title="Edad">
+            <div class="event-age" data-placement="top" title="Edad">
               <i class="fa fa-thumbs-up"></i>
               <span><%= @event.age %></span>
             </div>

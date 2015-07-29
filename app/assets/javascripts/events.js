@@ -13,6 +13,8 @@ $(document).ready(function(){
   $('.event-age').tooltip();
 })
 
+/* Gmaps autocomplete */
+
 $(document).ready(function(){
   $(function() {
     var completer = new GmapsCompleter({

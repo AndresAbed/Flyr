@@ -1,21 +1,15 @@
 $(document).ready(function(){
-  $(".cover-container").fancybox({
-    maxWidth: 1400,
-    maxHeight: 1400,
-    openEffect: 'elastic',
-    closeEffect: 'elastic',
-    helpers:{
-      title:{type: 'inside'}
-    }
-  });
   $(".club-logo").fancybox({
     maxWidth: 1400,
     maxHeight: 1400,
     openEffect: 'elastic',
     closeEffect: 'elastic',
-    helpers:{
-      title:{type: 'inside'}
-    }
+  });
+  $(".fancybox").fancybox({
+    maxWidth: 1400,
+    maxHeight: 1400,
+    openEffect  : 'fade',
+    closeEffect : 'fade'
   });
 });
 
@@ -96,6 +90,11 @@ $(document).ready(function(){
   });
 })
 
+$(document).ready(function(){
+  $('#new-gallery').tooltip();
+  $('#edit-gallery').tooltip();
+})
+
 /* Events */
 
 $(document).ready(function(){
@@ -106,6 +105,8 @@ $(document).ready(function(){
     $(this).find("span").removeClass("club-event-span-up");
   });
 })
+
+/* Gmaps autocomplete */
 
 $(document).ready(function(){
   $(function() {

@@ -16,7 +16,7 @@
   padding: 10px 0;
   width: 100%;
   display: block;
-  background-color: #13C1C4;
+  background-color: #CC324C;
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
@@ -43,13 +43,13 @@
   transition: all .2s ease-in-out;
 }
 
-.features-btns .mint-btn{
+.features-btns .hot-pink-btn{
   font-size: 10pt;
   width: 90px;
   padding: 5px;
 }
 
-.features-btns .mint-btn:first-child{
+.features-btns .hot-pink-btn:first-child{
   margin-bottom: 10px;
 }
 
@@ -80,7 +80,7 @@
   margin-left: 5px;
 }
 
-@media (max-width: 950px){
+@media (max-width: 1200px){
   .features-btns{
     width: 200px;
     left: 50% !important;

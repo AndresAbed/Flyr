@@ -7,6 +7,7 @@ class Club < ActiveRecord::Base
   has_many :features, dependent: :destroy
   has_many :clubevents, dependent: :destroy
   has_many :clublists
+  has_many :clubimages, dependent: :destroy
 
   # Paperclip config
   has_attached_file :logo, 
