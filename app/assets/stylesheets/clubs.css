@@ -10,46 +10,60 @@
   -webkit-justify-content: center;
   -moz-justify-content: center;
   justify-content: center;
+  padding: 0;
 }
 
 .club-left-column{
   width: 25%;
   margin-top: 20px;
+  margin-right: auto;
 }
 
 .club-mid-column{
   width: 45%;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .club-logo-info{
   color: white;
   text-align: center;
-  background-color: #394263;
-  padding: 20px 0 40px 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  margin-bottom: 20px;
   position: relative;
-  overflow: hidden;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.club-image:hover{
+  cursor: pointer;
 }
 
 .club-logo{
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
   border-radius: 150px;
-  height: 230px;
-  width: 230px;
-  border: 10px solid #51587A;
+  height: 250px;
+  width: 250px;
+  border: 10px solid #394263;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 115px;
+  z-index: 1;
 }
 
 .club-logo:hover{
   cursor: pointer;
 }
 
-.club-info{
-  padding: 15px 0;
+.club-logo-info .sub-container{
+  padding: 65px 0 15px 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #394263;
+  margin-left: auto;
+  margin-top: auto;
 }
 
 .club-info .club-name {
@@ -60,18 +74,21 @@
 }
 
 .events-lists-count{
-  font-size: 16pt;
+  font-size: 20pt;
 }
 
 .club-events-info span{
-  font-size: 12pt;
+  font-size: 15pt;
   padding: 5px;
 }
 
 .club-logo-info .buttons{
   position: absolute;
   width: 100%;
-  bottom: -35px;
+  top: -35px;
+  text-align: left;
+  margin-left: 10px;
+  z-index: 2;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -79,7 +96,7 @@
 }
 
 .club-buttons-show{
-  bottom: 10px !important;
+  top: 10px !important;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -102,7 +119,7 @@
 .place-photos{
   background-color: #394263;
   min-height: 150px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   position: relative;
   text-align: center;
 }
@@ -163,6 +180,7 @@
   border-radius: 3px;
   border: 6px solid #51587A;
   margin: 6px 3px;
+  object-fit: cover;
 }
 
 .club-events{
@@ -242,6 +260,7 @@
 .club-right-column{
   width: 25%;
   margin-top: 20px;
+  margin-left: auto;
 }
 
 .club-address-section p{
@@ -309,4 +328,11 @@
   .club-event-item {
     min-height: 200px;
    } 
+}
+
+@media(max-width: 991px){
+  .club-logo{
+    width: 200px;
+    height: 200px;
+  }
 }

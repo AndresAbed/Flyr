@@ -7,6 +7,61 @@
   <% end %>
 </head>
 <body class="club-show">
+  <div class="container club-logo-info">
+    <img class="club-image" src="<%= @club.image.url %>" href="<%= @club.image.url %>">
+    <img class="club-logo" src="<%= @club.logo.url %>" href="<%= @club.logo.url %>">
+    <div class="sub-container">
+      <div class="club-info">
+        <span class="club-events-info">
+          <% if @eventsNumber == 1 %>
+            <b class="events-lists-count"><%= @eventsNumber %></b><span>Evento</span>
+          <% else %>  
+            <b class="events-lists-count"><%= @eventsNumber %></b><span>Eventos</span>
+          <% end %>  
+          <% if @listsNumber == 1 %>
+            <b class="events-lists-count"><%= @listsNumber %></b><span>Lista</span>
+          <% else %>  
+            <b class="events-lists-count"><%= @listsNumber %></b><span>Listas</span>
+          <% end %>  
+        </span>
+      </div>
+      <div class="social-links-container">
+        <a href="<%= @club.facebook %>" target="_blank" title="<%= @club.name %> en Facebook"
+          class="club-social-links"><i class="fa fa-facebook fb-icon"></i></a>
+        <a href="<%= @club.googleplus %>" target="_blank" title="<%= @club.name %> en Google+"
+          class="club-social-links"><i class="fa fa-google-plus google-plus-icon"></i></a>
+        <a href="<%= @club.twitter %>" target="_blank" title="<%= @club.name %> en Twitter"
+          class="club-social-links"><i class="fa fa-twitter twitter-icon"></i></a>
+        <a href="<%= @club.instagram %>" target="_blank" title="<%= @club.name %> en Instagram"
+          class="club-social-links"><i class="fa fa-instagram instagram-icon"></i></a>
+        <a href="<%= @club.youtube %>" target="_blank" title="<%= @club.name %> en Youtube"
+          class="club-social-links"><i class="fa fa-youtube youtube-icon"></i></a>
+      </div>
+      <div class="buttons">
+        <% if current_user.is_admin? || 
+          current_user.is_pr? && current_user.club_id == @club.id %>
+          <button type="button" class="mint-btn btn-sm" 
+          data-toggle="modal" data-target="#CreateEvent">
+          <i class="fa fa-plus"></i>
+          <b>Nuevo Evento</b>
+          </button>
+        <% end %>  
+        <% if current_user.is_admin? %>
+          <button type="button" class="mint-btn btn-sm" 
+          data-toggle="modal" data-target="#EditProfile">
+          <i class="fa fa-pencil"></i>
+          <b>Editar Perfil</b>
+          </button>
+          <%= link_to club_path(@club), method: :delete, 
+          data: { confirm: '¿Eliminar perfil?' },
+          class: 'red-btn btn-sm' do %>
+            <i class="fa fa-trash-o"></i>
+            <b>Eliminar</b>
+          <% end %>
+        <% end %> 
+      </div>
+    </div>  
+  </div>
   <div class="container club-main-container">
     <div class="club-left-column">
       <div class="features">
@@ -33,62 +88,6 @@
       </div>
     </div>
     <div class="club-mid-column">
-      <div class="club-logo-info">
-        <img class="club-logo" src="<%= @club.logo.url %>" href="<%= @club.logo.url %>">
-        <div class="club-info">
-          <span class="club-name"><%= @club.name %></span>
-          <br>
-          <span class="club-events-info">
-            <% if @eventsNumber == 1 %>
-              <b class="events-lists-count"><%= @eventsNumber %></b><span>Evento</span>
-            <% else %>  
-              <b class="events-lists-count"><%= @eventsNumber %></b><span>Eventos</span>
-            <% end %>  
-            <% if @listsNumber == 1 %>
-              <b class="events-lists-count"><%= @listsNumber %></b><span>Lista</span>
-            <% else %>  
-              <b class="events-lists-count"><%= @listsNumber %></b><span>Listas</span>
-            <% end %>  
-          </span>
-        </div>
-        <div class="club-social-networks">
-          <div class="social-links-container">
-            <a href="<%= @club.facebook %>" target="_blank" title="<%= @club.name %> en Facebook"
-              class="club-social-links"><i class="fa fa-facebook fb-icon"></i></a>
-            <a href="<%= @club.googleplus %>" target="_blank" title="<%= @club.name %> en Google+"
-              class="club-social-links"><i class="fa fa-google-plus google-plus-icon"></i></a>
-            <a href="<%= @club.twitter %>" target="_blank" title="<%= @club.name %> en Twitter"
-              class="club-social-links"><i class="fa fa-twitter twitter-icon"></i></a>
-            <a href="<%= @club.instagram %>" target="_blank" title="<%= @club.name %> en Instagram"
-              class="club-social-links"><i class="fa fa-instagram instagram-icon"></i></a>
-            <a href="<%= @club.youtube %>" target="_blank" title="<%= @club.name %> en Youtube"
-              class="club-social-links"><i class="fa fa-youtube youtube-icon"></i></a>
-          </div>
-        </div>
-        <div class="buttons">
-          <% if current_user.is_admin? || 
-            current_user.is_pr? && current_user.club_id == @club.id %>
-            <button type="button" class="mint-btn btn-sm" 
-            data-toggle="modal" data-target="#CreateEvent">
-            <i class="fa fa-plus"></i>
-            <b>Nuevo Evento</b>
-            </button>
-          <% end %>  
-          <% if current_user.is_admin? %>
-            <button type="button" class="mint-btn btn-sm" 
-            data-toggle="modal" data-target="#EditProfile">
-            <i class="fa fa-pencil"></i>
-            <b>Editar Perfil</b>
-            </button>
-            <%= link_to club_path(@club), method: :delete, 
-            data: { confirm: '¿Eliminar perfil?' },
-            class: 'red-btn btn-sm' do %>
-              <i class="fa fa-trash-o"></i>
-              <b>Eliminar</b>
-            <% end %>
-          <% end %> 
-        </div>
-      </div>
       <div class="place-photos">
         <span class="gallery-title"><b>Conocé el lugar</b></span>
         <% if @club.clubimages.present? %>
@@ -285,6 +284,10 @@
                 <div>
                   <%= c.label "Logo" %><br>
                   <%= c.file_field :logo %>
+                </div>
+                <div>
+                  <%= c.label "Portada" %><br>
+                  <%= c.file_field :image %>
                 </div>
               </div>  
               <div class="modal-btns">

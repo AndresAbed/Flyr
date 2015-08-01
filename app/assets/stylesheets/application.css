@@ -427,7 +427,7 @@ ul.social li a {
 .sharer{
   position: fixed;
   display: block;
-  top: 30%;
+  top: 50%;
   left: 0;
   z-index: 10;
 }

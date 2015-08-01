@@ -1,5 +1,11 @@
 $(document).ready(function(){
   $(".club-logo").fancybox({
+    maxWidth: 500,
+    maxHeight: 500,
+    openEffect: 'elastic',
+    closeEffect: 'elastic',
+  });
+  $(".club-image").fancybox({
     maxWidth: 1400,
     maxHeight: 1400,
     openEffect: 'elastic',
@@ -82,11 +88,11 @@ $(document).ready(function(){
 /* Profile buttons */
 
 $(document).ready(function(){
-  $(".club-logo-info").mouseover(function(){
-    $(".club-logo-info .buttons").addClass("club-buttons-show");
+  $(".sub-container").mouseover(function(){
+    $(".sub-container .buttons").addClass("club-buttons-show");
   });
-  $(".club-logo-info").mouseout(function(){
-    $(".club-logo-info .buttons").removeClass("club-buttons-show");
+  $(".sub-container").mouseout(function(){
+    $(".sub-container .buttons").removeClass("club-buttons-show");
   });
 })
 

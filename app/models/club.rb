@@ -15,6 +15,11 @@ class Club < ActiveRecord::Base
   validates_attachment_presence :logo
   validates_attachment :logo, content_type: { content_type: 
     ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  has_attached_file :image, 
+  url: "/images/clubs/:id/:style/:basename.:extension"
+  validates_attachment_presence :image
+  validates_attachment :image, content_type: { content_type: 
+    ["image/jpg", "image/jpeg", "image/png", "image/gif"] }  
 
   #Geocoder
   geocoded_by :address
