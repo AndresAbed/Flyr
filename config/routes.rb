@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'browser/incompatible', as: :browser
+
+  # Pending Events
+  get 'clubevents/pending'
+
+  get 'user/profile'
+
+  #Home
+  get 'home/index', as: :home
+
+  #Banner
+  resources :banners
+
   #Rails admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -34,15 +47,4 @@ Rails.application.routes.draw do
     end
     resources :clubimages
   end
-
-  # Pending Events
-  get 'clubevents/pending'
-
-  get 'user/profile'
-
-  #Home
-  get 'home/index', as: :home
-
-  #Banner
-  resources :banners
 end

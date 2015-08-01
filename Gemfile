@@ -69,3 +69,5 @@ end
 gem 'rails_admin'
 # Whenever
 gem 'whenever', :require => false
+# Browser
+gem "browser"

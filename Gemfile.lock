@@ -46,6 +46,7 @@ GEM
     addressable (2.3.8)
     arel (6.0.0)
     bcrypt (3.1.10)
+    browser (0.9.1)
     builder (3.2.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
@@ -303,6 +304,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  browser
   coffee-rails (~> 4.0.0)
   devise
   friendly_id
