@@ -79,7 +79,7 @@
   margin-left: 5px;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1400px){
   .music-btns{
     width: 200px;
     left: 50% !important;

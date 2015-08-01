@@ -10,7 +10,7 @@
         Lista <%= l.list_name %>
       </p>
       <div class="list-btns">
-        <% if l.user_id != current_user.id %>
+        <% if l.user_id != current_user.id and not current_user.is_admin? %>
           <%= form_for :clublist_user, 
           url: club_clubevent_clublist_clublistusers_path(@club, @clubevent, l),
           remote: true do |f| %>
