@@ -48,9 +48,13 @@
   border: 10px solid #394263;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
   bottom: 115px;
   z-index: 1;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .club-logo:hover{
@@ -64,13 +68,6 @@
   background-color: #394263;
   margin-left: auto;
   margin-top: auto;
-}
-
-.club-info .club-name {
-  font-size: 22pt;
-  font-weight: bold;
-  color: #fff;
-  text-transform: none;
 }
 
 .events-lists-count{
@@ -168,7 +165,7 @@
   margin-bottom: 5px;
   width: 100%;
   display: block;
-  background-color: #13C1C4;s
+  background-color: #13C1C4;
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
@@ -177,6 +174,8 @@
 .place-photos img{
   width: 30%;
   height: 100px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
   border: 6px solid #51587A;
   margin: 6px 3px;
@@ -300,7 +299,8 @@
   border-radius: 0 0 3px 3px;
 }
 
-.modal-body .modal-right-column #club_logo{
+.modal-body .modal-right-column #club_logo,
+.modal-body .modal-right-column #club_image{
   color: #fff;
   margin-top: 10px;
 }
