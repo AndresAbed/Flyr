@@ -28,6 +28,15 @@ class ApplicationController < ActionController::Base
     end 
   end
 
+  before_action :require_login, :except => [:new_oauth_session]
+  skip_before_action :require_login, if: :devise_controller?
+
+  def require_login
+    if not current_user
+      redirect_to root_path, notice: "Debes iniciar sesión"
+    end
+  end
+
   def log_in_using_OAuth?
     if session[:user_id]
       User.find(session[:user_id]) 

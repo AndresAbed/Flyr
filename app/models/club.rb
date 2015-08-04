@@ -37,12 +37,11 @@ class Club < ActiveRecord::Base
 
   def update_events_addresses
     if address_changed?
-      clubevents.where(ended: false)
-                .update_all({
-                  address: address,
-                  latitude: latitude,
-                  longitude: longitude
-                  })
+      clubevents.where(ended: false).update_all({
+      address: address,
+      latitude: latitude,
+      longitude: longitude
+      })
     end
   end
 

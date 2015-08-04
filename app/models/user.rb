@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.image = auth.info.image
       user.oauth_token = auth.credentials.token
-      user.skip_confirmation!
+      #user.skip_confirmation!
       user.save(:validate => false)
     end
   end

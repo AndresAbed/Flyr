@@ -19,15 +19,17 @@ Rails.application.routes.draw do
   #Devise
   devise_for :users
   devise_scope :user do
-    root to: "devise/sessions#new"
+    unauthenticated :user do
+      root to: "devise/sessions#new"
+    end
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 
   #Omniauth
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#new_oauth_session'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: :signout
-  resources :sessions, only: [:create, :destroy]
+  get 'signout', to: 'sessions#destroy_oauth_session', as: :signout
+  resources :sessions, only: [:new_oauth_session, :destroy_oauth_session]
 
   #Events
   resources :events do
