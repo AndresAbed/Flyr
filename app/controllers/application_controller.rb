@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     end 
   end
 
-  before_action :require_login, :except => [:new_oauth_session]
+  before_action :require_login, :except => [:new_oauth_session, :incompatible]
   skip_before_action :require_login, if: :devise_controller?
 
   def require_login

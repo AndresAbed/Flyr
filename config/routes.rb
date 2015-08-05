@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'browser/incompatible', as: :browser
+  get 'browser/incompatible', as: :browser_incompatible
 
   # Pending Events
   get 'clubevents/pending'
