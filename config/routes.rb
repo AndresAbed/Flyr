@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'home/index', as: :home
 
   #Banner
-  resources :banners
+  resources :banners, only: [:create, :update]
 
   #Rails admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
