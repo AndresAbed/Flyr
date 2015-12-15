@@ -12,12 +12,14 @@ Rails.application.routes.draw do
 
   #Rails admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get "home/index", as: :home
   #Devise
   devise_for :users
   devise_scope :user do
     unauthenticated :user do
       root to: "devise/sessions#new"
+    end
+    authenticated :user do
+      root to: "home#index", as: :home
     end
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
