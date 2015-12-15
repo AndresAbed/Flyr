@@ -43,13 +43,8 @@ class ApplicationController < ActionController::Base
     end 
   end
 
-  def after_sign_in_path_for(resource)
-    session[:previous_url] || home_path
-    request.env['omniauth.origin'] || stored_location_for(resource) || home_path
-	end
-
   def events_to_approve
-    Clubevent.select("slug, id, name, club_id, club_logo_file_name")
+    Clubevent.select("slug, name, club_id, club_logo_file_name")
               .where(ended: false, approved: false)
               .order("created_at ASC")
   end

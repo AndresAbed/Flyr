@@ -1,5 +1,6 @@
 class Clubevent < ActiveRecord::Base
   validates :name, presence: true
+  validates :name, uniqueness: {message: "Is used"}
   validates :description, presence: true
 
   belongs_to :club
@@ -33,7 +34,7 @@ class Clubevent < ActiveRecord::Base
 
   # Url for pending events
   def eventUrl
-    Rails.application.routes.url_helpers.club_clubevent_path(slug, slug)
+    Rails.application.routes.url_helpers.club_clubevent_path(club_id, slug)
   end
 
   # Worker methods

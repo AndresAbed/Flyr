@@ -16,7 +16,7 @@ RSpec.describe BannersController, :type => :controller do
   describe 'PUT #update' do
     it 'updates the banner' do
       banner = FactoryGirl.create(:banner)
-      post :update, id: banner.id, banner: {
+      put :update, id: banner.id, banner: {
         image1: fixture_file_upload(Rails.root.join('spec', 'images', 'brain.png'), 'image/jpg'),
         image2: fixture_file_upload(Rails.root.join('spec', 'images', 'brain.png'), 'image/jpg'),
         image3: fixture_file_upload(Rails.root.join('spec', 'images', 'brain.png'), 'image/jpg'),

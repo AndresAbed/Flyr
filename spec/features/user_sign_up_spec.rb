@@ -13,6 +13,6 @@ feature 'User signs up' do
     choose('user_admin_true')
     click_on 'Crear'
 
-    expect(current_path).to eq("/home/index")
+    expect(current_path).to eq(home_path)
   end
 end

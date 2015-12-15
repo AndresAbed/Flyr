@@ -7,15 +7,12 @@ Rails.application.routes.draw do
 
   get 'user/profile'
 
-  #Home
-  get 'home/index', as: :home
-
   #Banner
   resources :banners, only: [:create, :update]
 
   #Rails admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
+  get "home/index", as: :home
   #Devise
   devise_for :users
   devise_scope :user do
